@@ -5,227 +5,100 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>eVisas.in — Get Your Visa, On Time. Guaranteed.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <!-- GSAP -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <!-- VanillaTilt -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
   <style>
-    /* ─────────────────────────────────────────
-       RESET & BASE
-    ───────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: auto; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #050810;
-      color: #e8eeff;
-      overflow-x: hidden;
-      cursor: none;
-    }
+    body { font-family: 'Inter', sans-serif; background: #f8faff; color: #0f1629; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
 
-    /* ─────────────────────────────────────────
-       CSS VARIABLES
-    ───────────────────────────────────────── */
     :root {
-      --blue: #4f8ef7;
-      --blue-dark: #2563eb;
-      --blue-glow: rgba(79,142,247,0.35);
-      --purple: #8b5cf6;
-      --gold: #f5a623;
-      --green: #22c55e;
-      --red: #ef4444;
-      --teal: #14b8a6;
-      --glass: rgba(255,255,255,0.04);
-      --glass-hover: rgba(255,255,255,0.07);
-      --glass-border: rgba(255,255,255,0.08);
-      --glass-border-hover: rgba(79,142,247,0.4);
-      --card: rgba(8,14,32,0.85);
-      --muted: #6b7fa8;
-      --muted-light: #9aafd4;
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --blue-glow: rgba(37,99,235,0.25);
+      --blue-bg: #eff6ff;
+      --purple: #7c3aed;
+      --gold: #d97706;
+      --green: #16a34a;
+      --red: #dc2626;
+      --teal: #0d9488;
+      --text: #0f1629;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --border-hover: rgba(37,99,235,0.35);
+      --surface: #ffffff;
+      --surface-alt: #f1f5ff;
+      --card-shadow: 0 2px 12px rgba(15,22,41,0.07), 0 1px 3px rgba(15,22,41,0.05);
+      --card-shadow-hover: 0 12px 40px rgba(15,22,41,0.12), 0 2px 8px rgba(15,22,41,0.06);
     }
 
-    /* ─────────────────────────────────────────
-       CUSTOM CURSOR
-    ───────────────────────────────────────── */
-    #cursor {
-      position: fixed; top: 0; left: 0; z-index: 9999;
-      pointer-events: none; mix-blend-mode: difference;
-    }
-    #cursor-dot {
-      position: absolute;
-      width: 8px; height: 8px;
-      background: #fff; border-radius: 50%;
-      transform: translate(-50%,-50%);
-      transition: width 0.2s, height 0.2s, background 0.2s;
-    }
-    #cursor-ring {
-      position: absolute;
-      width: 36px; height: 36px;
-      border: 1.5px solid rgba(255,255,255,0.6);
-      border-radius: 50%;
-      transform: translate(-50%,-50%);
-      transition: width 0.25s, height 0.25s, border-color 0.25s;
-    }
-    body.cursor-hover #cursor-dot { width: 0; height: 0; }
-    body.cursor-hover #cursor-ring { width: 60px; height: 60px; border-color: var(--blue); }
-
-    /* ─────────────────────────────────────────
-       SCROLLBAR
-    ───────────────────────────────────────── */
+    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #050810; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
     ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 
-    /* ─────────────────────────────────────────
-       NOISE TEXTURE OVERLAY
-    ───────────────────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.025;
-    }
-
-    /* ─────────────────────────────────────────
-       CANVAS BACKGROUND
-    ───────────────────────────────────────── */
-    #bgCanvas {
-      position: fixed; inset: 0; z-index: 0;
-      pointer-events: none;
-    }
-
-    /* ─────────────────────────────────────────
-       GRADIENT MESH
-    ───────────────────────────────────────── */
-    .mesh {
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      overflow: hidden;
-    }
-    .mesh-orb {
-      position: absolute; border-radius: 50%;
-      filter: blur(100px); opacity: 0.12;
-    }
-    .mo1 { width:700px;height:700px; background:var(--blue);   top:-200px;left:-200px; animation: drift 18s ease-in-out infinite; }
-    .mo2 { width:500px;height:500px; background:var(--purple); top:30%;right:-150px;   animation: drift 22s ease-in-out infinite reverse; }
-    .mo3 { width:600px;height:600px; background:var(--teal);   bottom:-200px;left:20%; animation: drift 20s ease-in-out infinite 5s; }
-    .mo4 { width:300px;height:300px; background:var(--gold);   top:60%;left:50%;       animation: drift 16s ease-in-out infinite 10s; }
-    @keyframes drift {
-      0%,100% { transform: translate(0,0) scale(1); }
-      25%      { transform: translate(40px,-60px) scale(1.05); }
-      50%      { transform: translate(-30px,40px) scale(0.95); }
-      75%      { transform: translate(50px,30px) scale(1.03); }
-    }
-
-    /* ─────────────────────────────────────────
-       PROGRESS BAR
-    ───────────────────────────────────────── */
+    /* ── PROGRESS BAR ── */
     #progress-bar {
-      position: fixed; top: 0; left: 0; z-index: 9000;
-      height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--purple), var(--gold));
-      transform-origin: left;
-      transform: scaleX(0);
+      position: fixed; top: 0; left: 0; z-index: 9000; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      transform-origin: left; transform: scaleX(0);
     }
 
-    /* ─────────────────────────────────────────
-       LOADER
-    ───────────────────────────────────────── */
+    /* ── LOADER ── */
     #loader {
       position: fixed; inset: 0; z-index: 8000;
-      background: #050810;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 2rem;
+      background: #fff;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
     }
     .loader-logo {
-      font-size: 3rem; font-weight: 900; letter-spacing: -2px;
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--gold));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-size: 300% 300%;
-      animation: gradShift 2s ease infinite;
-    }
-    .loader-bar-wrap {
-      width: 200px; height: 2px;
-      background: rgba(255,255,255,0.08); border-radius: 1px; overflow: hidden;
-    }
-    .loader-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      border-radius: 1px;
-      animation: loaderFill 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
-    }
-    @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
-    @keyframes gradShift {
-      0%,100% { background-position: 0% 50%; }
-      50%      { background-position: 100% 50%; }
-    }
-
-    /* ─────────────────────────────────────────
-       NAVBAR
-    ───────────────────────────────────────── */
-    #nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-      padding: 0 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
-      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
-    }
-    #nav.solid {
-      background: rgba(5,8,16,0.85);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--glass-border);
-    }
-    .nav-logo {
-      font-size: 1.45rem; font-weight: 900; letter-spacing: -0.5px;
+      font-size: 2.5rem; font-weight: 900; letter-spacing: -1px;
       background: linear-gradient(135deg, var(--blue), var(--purple));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      position: relative; z-index: 1;
+    }
+    .loader-bar-wrap { width: 180px; height: 3px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+    .loader-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); animation: loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+    @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
+
+    /* ── NAVBAR ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
+      height: 68px; background: rgba(248,250,255,0.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #nav.solid { border-color: var(--border); box-shadow: 0 1px 20px rgba(15,22,41,0.06); }
+    .nav-logo {
+      font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .nav-links { display: flex; gap: 2.5rem; align-items: center; }
-    .nav-links a {
-      font-size: 0.875rem; font-weight: 500; color: var(--muted);
-      transition: color 0.2s; position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 1.5px; background: var(--blue);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover { color: #fff; }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
     .nav-actions { display: flex; gap: 0.75rem; align-items: center; }
     .btn-ghost {
-      padding: 0.5rem 1.2rem;
-      background: none; border: 1px solid var(--glass-border);
-      border-radius: 10px; font-size: 0.85rem; font-weight: 500;
-      color: var(--muted-light); cursor: pointer;
-      transition: all 0.25s; font-family: inherit;
+      padding: 0.5rem 1.2rem; background: none;
+      border: 1px solid var(--border); border-radius: 10px;
+      font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+      cursor: pointer; transition: all 0.2s; font-family: inherit;
     }
-    .btn-ghost:hover { border-color: var(--blue); color: #fff; background: rgba(79,142,247,0.08); }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-bg); }
     .btn-pill {
       padding: 0.55rem 1.4rem;
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
       border: none; border-radius: 100px; font-size: 0.875rem; font-weight: 600;
       color: #fff; cursor: pointer; font-family: inherit;
-      box-shadow: 0 0 20px var(--blue-glow);
-      transition: all 0.25s;
-      position: relative; overflow: hidden;
+      box-shadow: 0 4px 14px var(--blue-glow);
+      transition: all 0.2s;
     }
-    .btn-pill::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-      opacity: 0; transition: opacity 0.25s;
-    }
-    .btn-pill:hover { transform: translateY(-1px); box-shadow: 0 0 35px var(--blue-glow); }
-    .btn-pill:hover::before { opacity: 1; }
-    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1; }
-    .ham span { display: block; height: 1.5px; background: #fff; border-radius: 1px; transition: all 0.3s; }
+    .btn-pill:hover { transform: translateY(-1px); box-shadow: 0 6px 20px var(--blue-glow); }
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .ham span { display: block; height: 1.5px; background: var(--text); border-radius: 1px; transition: all 0.3s; }
     .ham span:nth-child(1) { width: 24px; }
     .ham span:nth-child(2) { width: 18px; }
     .ham span:nth-child(3) { width: 24px; }
@@ -233,846 +106,393 @@
     .ham.open span:nth-child(2) { opacity: 0; }
     .ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* ─────────────────────────────────────────
-       MOBILE MENU
-    ───────────────────────────────────────── */
+    /* ── MOBILE MENU ── */
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 490;
-      background: rgba(5,8,16,0.97); backdrop-filter: blur(30px);
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
       flex-direction: column; align-items: center; justify-content: center;
       gap: 2.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s;
     }
     .mobile-menu.open { opacity: 1; pointer-events: all; display: flex; }
-    .mobile-menu a { font-size: 1.6rem; font-weight: 700; color: var(--muted-light); transition: color 0.2s; }
-    .mobile-menu a:hover { color: #fff; }
+    .mobile-menu a { font-size: 1.5rem; font-weight: 700; color: var(--text-muted); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text); }
 
-    /* ─────────────────────────────────────────
-       SECTION WRAPPER
-    ───────────────────────────────────────── */
+    /* ── LAYOUT ── */
     .s { position: relative; z-index: 2; padding: 100px 5%; }
     .s-sm { padding: 60px 5%; }
     .container { max-width: 1200px; margin: 0 auto; }
     .s-tag {
       display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 1rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1rem;
     }
     .s-tag .line { display: block; width: 24px; height: 1.5px; background: var(--blue); }
-    .s-title {
-      font-size: clamp(2rem, 4.5vw, 3.5rem);
-      font-weight: 900; letter-spacing: -1.5px; line-height: 1.05;
-      margin-bottom: 1.25rem;
-    }
-    .s-sub {
-      font-size: 1rem; color: var(--muted); line-height: 1.75;
-      max-width: 540px;
-    }
-    .split-line { overflow: hidden; }
-    .split-line span { display: block; }
+    .s-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; color: var(--text); }
+    .s-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 540px; }
 
-    /* ─────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────── */
+    /* ── HERO ── */
     #hero {
       position: relative; z-index: 2;
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 140px 5% 80px;
-      text-align: center;
-      overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 140px 5% 100px; text-align: center; overflow: hidden;
       background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80&fit=crop');
-      background-size: cover;
-      background-position: center 40%;
+      background-size: cover; background-position: center 40%;
     }
     #hero::after {
-      content: '';
-      position: absolute; inset: 0; z-index: -1;
-      background: linear-gradient(to bottom,
-        rgba(5,8,16,0.75) 0%,
-        rgba(5,8,16,0.55) 40%,
-        rgba(5,8,16,0.85) 80%,
-        rgba(5,8,16,1) 100%);
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.88) 0%, rgba(248,250,255,0.82) 50%, rgba(248,250,255,0.95) 100%);
     }
+    #hero > * { position: relative; z-index: 1; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 0.45rem 1.1rem;
-      background: rgba(79,142,247,0.1);
-      border: 1px solid rgba(79,142,247,0.25);
-      border-radius: 100px; font-size: 0.78rem; font-weight: 600;
-      color: #a0c4ff; margin-bottom: 2rem;
-      opacity: 0; transform: translateY(20px);
+      background: rgba(37,99,235,0.08); border: 1px solid rgba(37,99,235,0.2);
+      border-radius: 100px; font-size: 0.78rem; font-weight: 600; color: var(--blue);
+      margin-bottom: 2rem; opacity: 0; transform: translateY(16px);
     }
-    .badge-dot {
-      width: 7px; height: 7px; background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--green);
-      animation: badgePulse 2s ease infinite;
-    }
-    @keyframes badgePulse {
-      0%,100% { transform: scale(1); box-shadow: 0 0 8px var(--green); }
-      50%      { transform: scale(1.5); box-shadow: 0 0 15px var(--green); }
-    }
-    .hero-title {
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 900; letter-spacing: -3px; line-height: 0.95;
-      margin-bottom: 1.5rem;
-    }
-    .hero-title .word { overflow: hidden; display: inline-block; }
-    .hero-title .word span { display: inline-block; }
+    .badge-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s ease infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.5); } }
+    .hero-title { font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -2.5px; line-height: 1; margin-bottom: 1.5rem; color: var(--text); }
     .grad-text {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--gold) 100%);
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 60%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-size: 200% 200%;
-      animation: gradShift 4s ease infinite;
     }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--muted); max-width: 560px; line-height: 1.8;
-      margin-bottom: 2.5rem;
-      opacity: 0; transform: translateY(20px);
-    }
+    .hero-sub { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); max-width: 540px; line-height: 1.8; margin-bottom: 2.5rem; opacity: 0; transform: translateY(16px); }
 
-    /* Search bar */
+    /* Search */
     .search-wrap {
-      width: 100%; max-width: 680px;
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(30px);
-      border: 1px solid var(--glass-border);
-      border-radius: 18px; padding: 6px 6px 6px 20px;
-      display: flex; align-items: center; gap: 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
-      transition: border-color 0.3s, box-shadow 0.3s;
-      opacity: 0; transform: translateY(20px);
+      width: 100%; max-width: 660px; background: #fff;
+      border: 1.5px solid var(--border); border-radius: 16px;
+      padding: 6px 6px 6px 20px; display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 8px 30px rgba(15,22,41,0.1); transition: all 0.25s;
+      opacity: 0; transform: translateY(16px);
     }
-    .search-wrap:focus-within {
-      border-color: rgba(79,142,247,0.5);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(79,142,247,0.1);
-    }
+    .search-wrap:focus-within { border-color: var(--blue); box-shadow: 0 8px 30px rgba(15,22,41,0.1), 0 0 0 4px rgba(37,99,235,0.1); }
     .search-icon { font-size: 1.1rem; flex-shrink: 0; }
-    .search-wrap input {
-      flex: 1; background: none; border: none; outline: none;
-      font-size: 0.95rem; color: #fff; font-family: 'Inter', sans-serif;
-    }
-    .search-wrap input::placeholder { color: var(--muted); }
+    .search-wrap input { flex: 1; background: none; border: none; outline: none; font-size: 0.95rem; color: var(--text); font-family: 'Inter', sans-serif; }
+    .search-wrap input::placeholder { color: var(--text-light); }
     .search-btn {
-      padding: 0.75rem 1.75rem; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      border: none; border-radius: 12px;
-      font-size: 0.875rem; font-weight: 700; color: #fff;
-      cursor: pointer; font-family: 'Inter', sans-serif;
-      transition: all 0.25s;
-      box-shadow: 0 4px 20px var(--blue-glow);
+      padding: 0.75rem 1.6rem; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      border: none; border-radius: 10px; font-size: 0.875rem; font-weight: 700;
+      color: #fff; cursor: pointer; font-family: inherit; transition: all 0.2s;
+      box-shadow: 0 4px 14px var(--blue-glow);
     }
-    .search-btn:hover { transform: scale(1.04); box-shadow: 0 6px 30px var(--blue-glow); }
+    .search-btn:hover { transform: scale(1.03); }
 
-    /* Filter chips */
-    .chips {
-      display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center;
-      margin-top: 1.25rem;
-      opacity: 0; transform: translateY(15px);
-    }
-    .chip {
-      padding: 0.4rem 1rem;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 100px; font-size: 0.78rem; font-weight: 500;
-      color: var(--muted); cursor: pointer; transition: all 0.2s;
-    }
-    .chip:hover, .chip.on {
-      background: rgba(79,142,247,0.12);
-      border-color: rgba(79,142,247,0.4);
-      color: #a0c4ff;
-    }
+    /* Chips */
+    .chips { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 1.25rem; opacity: 0; transform: translateY(12px); }
+    .chip { padding: 0.4rem 1rem; background: #fff; border: 1.5px solid var(--border); border-radius: 100px; font-size: 0.78rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+    .chip:hover, .chip.on { background: var(--blue-bg); border-color: var(--blue); color: var(--blue); font-weight: 600; }
 
-    /* Stats row */
-    .hero-stats {
-      display: flex; gap: 3.5rem; margin-top: 4rem; flex-wrap: wrap; justify-content: center;
-      opacity: 0; transform: translateY(15px);
-    }
+    /* Hero Stats */
+    .hero-stats { display: flex; gap: 3rem; margin-top: 3.5rem; flex-wrap: wrap; justify-content: center; opacity: 0; transform: translateY(12px); }
     .hstat { text-align: center; }
-    .hstat-num {
-      font-size: 2.2rem; font-weight: 900; letter-spacing: -1px;
-      background: linear-gradient(135deg, #fff, var(--muted-light));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hstat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    .hstat-num { font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: var(--text); }
+    .hstat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-    /* Scroll indicator */
+    /* Scroll hint */
     .scroll-hint {
-      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      font-size: 0.72rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase;
-      animation: bounce 2s ease infinite;
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-size: 0.68rem; color: var(--text-light); letter-spacing: 1.5px; text-transform: uppercase;
+      animation: scrollBounce 2s ease infinite; z-index: 1;
     }
-    .scroll-hint-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, transparent, var(--muted));
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50%      { transform: translateX(-50%) translateY(6px); }
-    }
+    .scroll-hint-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--text-light)); }
+    @keyframes scrollBounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
-    /* ─────────────────────────────────────────
-       MARQUEE / LOGO BAND
-    ───────────────────────────────────────── */
+    /* ── MARQUEE ── */
     .marquee-section {
-      position: relative; z-index: 2;
-      padding: 30px 0; overflow: hidden;
-      border-top: 1px solid var(--glass-border);
-      border-bottom: 1px solid var(--glass-border);
-      background: rgba(255,255,255,0.015);
+      position: relative; z-index: 2; padding: 24px 0; overflow: hidden;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: #fff;
     }
-    .marquee-track {
-      display: flex; gap: 3rem;
-      animation: marquee 25s linear infinite;
-      width: max-content;
-    }
+    .marquee-track { display: flex; gap: 2.5rem; animation: marquee 28s linear infinite; width: max-content; }
     .marquee-track:hover { animation-play-state: paused; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .marquee-item {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.85rem; font-weight: 600; color: var(--muted);
-      white-space: nowrap; padding: 0 1rem;
-    }
-    .marquee-item span { font-size: 1.5rem; }
-    .marquee-sep { color: rgba(255,255,255,0.1); font-size: 1.2rem; }
+    .marquee-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; padding: 0 0.75rem; }
+    .marquee-item span { font-size: 1.4rem; }
+    .marquee-sep { color: var(--border); font-size: 1rem; }
 
-    /* ─────────────────────────────────────────
-       DESTINATIONS
-    ───────────────────────────────────────── */
-    #destinations {}
-    .dest-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;
-    }
-    .view-all {
-      font-size: 0.85rem; color: var(--blue); font-weight: 600;
-      display: flex; align-items: center; gap: 0.4rem;
-      padding: 0.5rem 1rem;
-      border: 1px solid rgba(79,142,247,0.25);
-      border-radius: 8px; transition: all 0.2s;
-    }
-    .view-all:hover { background: rgba(79,142,247,0.08); gap: 0.7rem; }
-    .tabs {
-      display: flex; gap: 0.4rem; margin-bottom: 2rem; flex-wrap: wrap;
-    }
-    .tab-btn {
-      padding: 0.5rem 1.25rem;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
-      color: var(--muted); cursor: pointer; transition: all 0.2s;
-      font-family: inherit;
-    }
-    .tab-btn.on, .tab-btn:hover {
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      border-color: transparent; color: #fff;
-      box-shadow: 0 4px 15px var(--blue-glow);
-    }
-    .dest-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 1.25rem;
-    }
+    /* ── DESTINATIONS ── */
+    .dest-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .view-all { font-size: 0.85rem; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border: 1.5px solid rgba(37,99,235,0.25); border-radius: 8px; transition: all 0.2s; }
+    .view-all:hover { background: var(--blue-bg); }
+    .tabs { display: flex; gap: 0.4rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .tab-btn { padding: 0.5rem 1.25rem; background: #fff; border: 1.5px solid var(--border); border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .tab-btn.on, .tab-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 4px 12px var(--blue-glow); }
+    .dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.25rem; }
 
-    /* CARD */
-    .dcard {
-      background: var(--card);
-      border: 1px solid var(--glass-border);
-      border-radius: 20px; overflow: hidden;
-      cursor: pointer;
-      transform-style: preserve-3d;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .dcard:hover {
-      border-color: rgba(79,142,247,0.35);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(79,142,247,0.1);
-    }
-    .dcard-img {
-      height: 150px; position: relative; overflow: hidden;
-    }
-    .dcard-bg {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      transition: transform 0.5s ease;
-    }
-    .dcard:hover .dcard-bg { transform: scale(1.08); }
-    .dcard-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 40%, rgba(5,8,16,0.9));
-    }
-    .dcard-flag {
-      position: absolute; bottom: 12px; left: 14px;
-      font-size: 2rem; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
-    }
-    .dcard-badge {
-      position: absolute; top: 12px; right: 12px;
-      padding: 0.25rem 0.65rem;
-      background: rgba(0,0,0,0.65); backdrop-filter: blur(12px);
-      border-radius: 6px; font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.08);
-    }
-    .be { color: #4ade80; }
-    .bv { color: #fb923c; }
-    .bs { color: #facc15; }
-    .bf { color: #60a5fa; }
+    /* Destination Card */
+    .dcard { background: #fff; border: 1.5px solid var(--border); border-radius: 18px; overflow: hidden; cursor: pointer; transition: all 0.3s; box-shadow: var(--card-shadow); }
+    .dcard:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
+    .dcard-img { height: 150px; position: relative; overflow: hidden; }
+    .dcard-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .dcard:hover .dcard-bg { transform: scale(1.07); }
+    .dcard-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55)); }
+    .dcard-flag { position: absolute; bottom: 12px; left: 14px; font-size: 2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+    .dcard-badge { position: absolute; top: 12px; right: 12px; padding: 0.22rem 0.6rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-radius: 6px; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.4px; color: var(--text); }
+    .be { color: #16a34a; } .bv { color: #d97706; } .bs { color: #7c3aed; } .bf { color: #2563eb; }
     .dcard-body { padding: 1rem 1.25rem 1.25rem; }
-    .dcard-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; }
-    .dcard-meta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .dmeta {
-      display: flex; align-items: center; gap: 0.3rem;
-      font-size: 0.75rem; color: var(--muted);
-    }
-    .dcard-footer {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 0.9rem; padding-top: 0.9rem;
-      border-top: 1px solid var(--glass-border);
-    }
-    .dcard-price .big { font-size: 1.1rem; font-weight: 800; }
-    .dcard-price small { font-size: 0.7rem; color: var(--muted); display: block; }
-    .apply-btn {
-      padding: 0.4rem 1rem;
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      border: none; border-radius: 8px;
-      font-size: 0.78rem; font-weight: 700; color: #fff;
-      cursor: pointer; font-family: inherit;
-      transition: all 0.2s;
-      box-shadow: 0 2px 10px var(--blue-glow);
-    }
+    .dcard-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; color: var(--text); }
+    .dcard-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .dmeta { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--text-muted); background: var(--surface-alt); padding: 0.2rem 0.55rem; border-radius: 6px; }
+    .dcard-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+    .dcard-price .big { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .dcard-price small { font-size: 0.68rem; color: var(--text-muted); display: block; }
+    .apply-btn { padding: 0.45rem 1rem; background: linear-gradient(135deg, var(--blue), #1d4ed8); border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700; color: #fff; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 2px 10px var(--blue-glow); }
     .apply-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px var(--blue-glow); }
 
-    /* ─────────────────────────────────────────
-       HOW IT WORKS
-    ───────────────────────────────────────── */
-    #how { background: linear-gradient(180deg, transparent, rgba(79,142,247,0.03), transparent); }
-    .steps-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem; margin-top: 4rem; position: relative;
-    }
-    .steps-grid::before {
-      content: '';
-      position: absolute; top: 44px; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
-    }
-    .step-card {
-      text-align: center; padding: 2.5rem 1.5rem;
-      background: var(--card); border: 1px solid var(--glass-border);
-      border-radius: 24px; transition: all 0.35s;
-      position: relative;
-    }
-    .step-card:hover {
-      border-color: rgba(79,142,247,0.3);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 40px rgba(79,142,247,0.06);
-    }
-    .step-icon {
-      width: 64px; height: 64px; border-radius: 20px; margin: 0 auto 1.5rem;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, rgba(79,142,247,0.15), rgba(79,142,247,0.05));
-      border: 1px solid rgba(79,142,247,0.2);
-      box-shadow: 0 8px 25px rgba(79,142,247,0.15);
-      transition: transform 0.3s;
-    }
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--surface-alt); }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
+    .step-card { text-align: center; padding: 2.5rem 1.5rem; background: #fff; border: 1.5px solid var(--border); border-radius: 22px; transition: all 0.3s; box-shadow: var(--card-shadow); position: relative; }
+    .step-card:hover { border-color: var(--blue); transform: translateY(-6px); box-shadow: var(--card-shadow-hover); }
+    .step-icon { width: 64px; height: 64px; border-radius: 18px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; background: var(--blue-bg); border: 1.5px solid rgba(37,99,235,0.2); transition: transform 0.3s; }
     .step-card:hover .step-icon { transform: scale(1.1) rotate(-3deg); }
-    .step-num {
-      position: absolute; top: 18px; right: 18px;
-      font-size: 3.5rem; font-weight: 900; color: rgba(255,255,255,0.03);
-      letter-spacing: -2px; line-height: 1;
-    }
-    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .step-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+    .step-num { position: absolute; top: 16px; right: 18px; font-size: 3rem; font-weight: 900; color: rgba(37,99,235,0.06); letter-spacing: -2px; line-height: 1; }
+    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+    .step-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* ─────────────────────────────────────────
-       FEATURES — Bento grid
-    ───────────────────────────────────────── */
-    #features {}
-    .bento {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 100px;
-      gap: 1.25rem; margin-top: 4rem;
-    }
-    .bento-card {
-      background: var(--card); border: 1px solid var(--glass-border);
-      border-radius: 24px; padding: 1.75rem;
-      transition: all 0.35s; overflow: hidden; position: relative;
-    }
-    .bento-card:hover { border-color: var(--glass-border-hover); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
+    /* ── FEATURES — BENTO ── */
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 100px; gap: 1.25rem; margin-top: 4rem; }
+    .bento-card { background: #fff; border: 1.5px solid var(--border); border-radius: 22px; padding: 1.75rem; overflow: hidden; position: relative; transition: all 0.3s; box-shadow: var(--card-shadow); }
+    .bento-card:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
     .b1 { grid-column: span 5; grid-row: span 3; }
-    .b2 { grid-column: span 4; grid-row: span 2; }
-    .b3 { grid-column: span 3; grid-row: span 2; }
-    .b4 { grid-column: span 4; grid-row: span 2; }
-    .b5 { grid-column: span 3; grid-row: span 2; }
-    .b6 { grid-column: span 5; grid-row: span 2; }
-    .bento-icon {
-      width: 48px; height: 48px; border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin-bottom: 1.25rem;
-    }
-    .bento-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .bento-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
-    .bento-bg-num {
-      position: absolute; bottom: -10px; right: -5px;
-      font-size: 7rem; font-weight: 900; color: rgba(255,255,255,0.02);
-      line-height: 1; letter-spacing: -5px; pointer-events: none;
-    }
-    .bento-visual {
-      margin-top: 1.5rem; border-radius: 12px; overflow: hidden;
-      background: rgba(79,142,247,0.06); border: 1px solid var(--glass-border);
-      padding: 1rem; font-size: 0.75rem; color: var(--muted); line-height: 2;
-    }
-    .bv-row { display: flex; justify-content: space-between; align-items: center; }
-    .bv-bar { height: 6px; border-radius: 3px; margin: 4px 0; background: var(--glass-border); overflow: hidden; }
-    .bv-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--blue), var(--purple)); }
+    .b2 { grid-column: span 7; grid-row: span 2; }
+    .b3 { grid-column: span 4; grid-row: span 2; }
+    .b4 { grid-column: span 3; grid-row: span 2; }
+    .b5 { grid-column: span 5; grid-row: span 2; }
+    .b6 { grid-column: span 7; grid-row: span 2; }
+    .bento-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1rem; }
+    .bento-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+    .bento-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+    .bento-visual { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    .bv-row { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); font-weight: 500; }
+    .bv-bar { height: 4px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
+    .bv-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 2px; transition: width 0.8s ease; }
+    .bento-bg-num { position: absolute; bottom: -20px; right: 12px; font-size: 6rem; font-weight: 900; color: rgba(37,99,235,0.05); line-height: 1; }
 
-    /* ─────────────────────────────────────────
-       TRUST BAND
-    ───────────────────────────────────────── */
-    .trust-band {
-      position: relative; z-index: 2;
-      padding: 50px 5%;
-      background: linear-gradient(135deg, rgba(79,142,247,0.06), rgba(139,92,246,0.04));
-      border-top: 1px solid var(--glass-border);
-      border-bottom: 1px solid var(--glass-border);
-    }
-    .trust-grid {
-      display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
-    }
+    /* ── TRUST STATS ── */
+    #trust { background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%); }
+    .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2rem; margin-top: 3rem; }
     .tstat { text-align: center; }
-    .tstat-num {
-      font-size: 2.5rem; font-weight: 900; letter-spacing: -1.5px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .tstat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; }
+    .tstat-num { font-size: 2.4rem; font-weight: 900; letter-spacing: -1px; color: #fff; }
+    .tstat-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 0.3rem; }
 
-    /* ─────────────────────────────────────────
-       TESTIMONIALS
-    ───────────────────────────────────────── */
-    #testimonials {}
-    .tgrid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.25rem; margin-top: 3.5rem;
-    }
-    .tcard {
-      padding: 1.75rem;
-      background: var(--card); border: 1px solid var(--glass-border);
-      border-radius: 22px; transition: all 0.3s;
-      position: relative; overflow: hidden;
-    }
-    .tcard::before {
-      content: '"'; position: absolute; top: 10px; right: 20px;
-      font-size: 6rem; font-weight: 900; color: rgba(79,142,247,0.06);
-      line-height: 1; font-family: serif;
-    }
-    .tcard:hover { border-color: rgba(79,142,247,0.25); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-    .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1rem; }
-    .tcard-text { font-size: 0.9rem; color: #b8c8e8; line-height: 1.75; margin-bottom: 1.25rem; }
-    .tcard-author { display: flex; align-items: center; gap: 0.8rem; }
-    .avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 800; color: #fff; flex-shrink: 0;
-    }
-    .author-name { font-size: 0.88rem; font-weight: 700; }
-    .author-meta { font-size: 0.75rem; color: var(--muted); }
+    /* ── TESTIMONIALS ── */
+    .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
+    .tcard { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; padding: 1.75rem; transition: all 0.3s; box-shadow: var(--card-shadow); }
+    .tcard:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+    .stars { color: #f59e0b; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .tcard-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
+    .tcard-author { display: flex; align-items: center; gap: 0.75rem; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .author-name { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+    .author-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
 
-    /* ─────────────────────────────────────────
-       PRICING
-    ───────────────────────────────────────── */
-    #pricing {}
-    .pricing-toggle-row {
-      display: flex; align-items: center; gap: 1rem; justify-content: center;
-      margin-top: 1.5rem;
-    }
-    .toggle-label { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; }
-    .toggle-label.active { color: #fff; font-weight: 600; }
-    .toggle-track {
-      width: 48px; height: 26px; border-radius: 100px;
-      background: var(--blue); cursor: pointer;
-      position: relative; transition: background 0.3s;
-      border: 1px solid rgba(79,142,247,0.4);
-    }
-    .toggle-thumb {
-      position: absolute; top: 3px; left: 3px;
-      width: 18px; height: 18px; background: #fff; border-radius: 50%;
-      transition: transform 0.3s;
-    }
-    .toggle-track.annual .toggle-thumb { transform: translateX(22px); }
+    /* ── PRICING ── */
+    #pricing { background: var(--surface-alt); }
+    .pricing-toggle-row { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+    .tl-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .tl-label.active { color: var(--text); }
+    .toggle-track { width: 44px; height: 24px; background: var(--border); border-radius: 100px; cursor: pointer; position: relative; transition: background 0.3s; }
+    .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; background: #fff; border-radius: 50%; transition: transform 0.3s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
     .toggle-track.annual { background: var(--green); }
-    .save-pill {
-      padding: 0.2rem 0.7rem;
-      background: rgba(34,197,94,0.12); color: var(--green);
-      border: 1px solid rgba(34,197,94,0.25);
-      border-radius: 100px; font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    .pgrid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1.5rem; margin-top: 3.5rem; align-items: start;
-    }
-    .pcard {
-      background: var(--card); border: 1px solid var(--glass-border);
-      border-radius: 24px; padding: 2rem;
-      position: relative; overflow: hidden;
-      transition: all 0.35s;
-    }
-    .pcard.featured {
-      border-color: rgba(79,142,247,0.4);
-      background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(139,92,246,0.05));
-      box-shadow: 0 0 60px rgba(79,142,247,0.12), 0 0 0 1px rgba(79,142,247,0.15);
-    }
-    .pcard:hover { transform: translateY(-6px); }
-    .pcard.featured:hover { box-shadow: 0 25px 60px rgba(79,142,247,0.2); }
-    .featured-ribbon {
-      position: absolute; top: 0; right: 0;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff; font-size: 0.68rem; font-weight: 800;
-      padding: 0.4rem 1.1rem; border-radius: 0 24px 0 14px;
-      letter-spacing: 1px;
-    }
-    .plan-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
-    .plan-price-row { margin-bottom: 0.5rem; }
-    .plan-amount { font-size: 2.8rem; font-weight: 900; letter-spacing: -1.5px; }
+    .toggle-track.annual .toggle-thumb { transform: translateX(20px); }
+    .save-pill { padding: 0.2rem 0.6rem; background: rgba(22,163,74,0.1); color: var(--green); border: 1px solid rgba(22,163,74,0.2); border-radius: 100px; font-size: 0.68rem; font-weight: 700; }
+    .pgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; align-items: start; }
+    .pcard { background: #fff; border: 1.5px solid var(--border); border-radius: 22px; padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; box-shadow: var(--card-shadow); }
+    .pcard.featured { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(37,99,235,0.15), var(--card-shadow-hover); background: linear-gradient(135deg, rgba(37,99,235,0.03), rgba(124,58,237,0.02)); }
+    .pcard:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+    .featured-ribbon { position: absolute; top: 0; right: 0; background: linear-gradient(135deg, var(--blue), var(--purple)); color: #fff; font-size: 0.65rem; font-weight: 800; padding: 0.35rem 1rem; border-radius: 0 22px 0 12px; letter-spacing: 1px; }
+    .plan-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+    .plan-amount { font-size: 2.6rem; font-weight: 900; letter-spacing: -1.5px; color: var(--text); }
     .plan-amount sub { font-size: 1rem; font-weight: 600; vertical-align: super; letter-spacing: 0; }
-    .plan-amount sup { font-size: 1rem; font-weight: 500; color: var(--muted); letter-spacing: 0; }
-    .plan-desc { font-size: 0.84rem; color: var(--muted); margin-bottom: 1.75rem; line-height: 1.6; }
-    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
-    .plan-list li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.85rem; }
-    .li-check { color: var(--green); font-size: 0.85rem; margin-top: 1px; flex-shrink: 0; }
-    .li-cross { color: #334155; font-size: 0.85rem; margin-top: 1px; flex-shrink: 0; }
-    .plan-list li.dim { color: var(--muted); }
-    .plan-cta {
-      width: 100%; padding: 0.85rem;
-      border-radius: 12px; font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; font-family: inherit; transition: all 0.25s; border: none;
-    }
-    .plan-cta-primary {
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      color: #fff; box-shadow: 0 4px 20px var(--blue-glow);
-    }
-    .plan-cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 28px var(--blue-glow); }
-    .plan-cta-ghost { background: var(--glass); color: #fff; border: 1px solid var(--glass-border) !important; }
-    .plan-cta-ghost:hover { border-color: rgba(79,142,247,0.35) !important; background: rgba(79,142,247,0.06); }
+    .plan-amount sup { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+    .plan-desc { font-size: 0.84rem; color: var(--text-muted); margin: 0.5rem 0 1.75rem; line-height: 1.6; }
+    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+    .plan-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.84rem; color: var(--text); }
+    .li-check { color: var(--green); flex-shrink: 0; }
+    .li-cross { color: var(--border); flex-shrink: 0; }
+    .plan-list li.dim { color: var(--text-light); }
+    .plan-cta { width: 100%; padding: 0.85rem; border-radius: 12px; font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; border: none; }
+    .plan-cta-primary { background: linear-gradient(135deg, var(--blue), #1d4ed8); color: #fff; box-shadow: 0 4px 14px var(--blue-glow); }
+    .plan-cta-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--blue-glow); }
+    .plan-cta-ghost { background: #fff; color: var(--text); border: 1.5px solid var(--border) !important; }
+    .plan-cta-ghost:hover { border-color: var(--blue) !important; color: var(--blue); background: var(--blue-bg); }
 
-    /* ─────────────────────────────────────────
-       BLOG
-    ───────────────────────────────────────── */
-    #blog {}
-    .bgrid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1.5rem; margin-top: 3.5rem;
-    }
-    .blog-card {
-      background: var(--card); border: 1px solid var(--glass-border);
-      border-radius: 22px; overflow: hidden; cursor: pointer;
-      transition: all 0.35s;
-    }
-    .blog-card:hover { transform: translateY(-6px); border-color: rgba(79,142,247,0.3); box-shadow: 0 20px 45px rgba(0,0,0,0.25); }
-    .blog-img {
-      height: 190px; position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
+    /* ── BLOG ── */
+    .bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
+    .blog-card { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; overflow: hidden; cursor: pointer; transition: all 0.3s; box-shadow: var(--card-shadow); }
+    .blog-card:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
+    .blog-img { height: 190px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     .blog-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s; }
     .blog-card:hover .blog-bg { transform: scale(1.07); }
-    .blog-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(5,8,16,0.3), rgba(5,8,16,0.5)); }
-    .blog-emoji { position: relative; z-index: 1; font-size: 3.5rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6)); }
-    .blog-tag-pill {
-      position: absolute; bottom: 14px; left: 14px; z-index: 1;
-      padding: 0.28rem 0.75rem;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(12px);
-      border-radius: 100px; font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.5px; color: var(--gold);
-      border: 1px solid rgba(245,166,35,0.25);
-    }
-    .blog-body { padding: 1.35rem 1.5rem 1.5rem; }
-    .blog-meta-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
-    .blog-date { font-size: 0.75rem; color: var(--muted); }
-    .b-sep { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
-    .blog-read-time { font-size: 0.75rem; color: var(--muted); }
-    .blog-title { font-size: 1rem; font-weight: 700; line-height: 1.45; margin-bottom: 0.65rem; }
-    .blog-excerpt { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
-    .blog-footer-row {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--glass-border);
-    }
+    .blog-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.15), rgba(0,0,0,0.35)); }
+    .blog-emoji { position: relative; z-index: 1; font-size: 3.5rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
+    .blog-tag-pill { position: absolute; bottom: 14px; left: 14px; z-index: 1; padding: 0.25rem 0.7rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-radius: 100px; font-size: 0.68rem; font-weight: 700; color: var(--text); }
+    .blog-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .blog-meta-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.7rem; }
+    .blog-date, .blog-read-time { font-size: 0.72rem; color: var(--text-light); }
+    .b-sep { width: 3px; height: 3px; background: var(--text-light); border-radius: 50%; }
+    .blog-title { font-size: 0.98rem; font-weight: 700; line-height: 1.45; margin-bottom: 0.6rem; color: var(--text); }
+    .blog-excerpt { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+    .blog-footer-row { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
     .blog-author-row { display: flex; align-items: center; gap: 0.5rem; }
-    .blog-av { width: 28px; height: 28px; border-radius: 50%; font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; justify-content: center; color: #fff; }
-    .blog-author-name { font-size: 0.8rem; font-weight: 600; }
+    .blog-av { width: 28px; height: 28px; border-radius: 50%; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; color: #fff; }
+    .blog-author-name { font-size: 0.8rem; font-weight: 600; color: var(--text); }
     .blog-read-link { font-size: 0.8rem; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; }
     .blog-card:hover .blog-read-link { gap: 0.5rem; }
 
-    /* ─────────────────────────────────────────
-       FAQ
-    ───────────────────────────────────────── */
-    #faq {}
-    .faq-wrap {
-      max-width: 780px; margin: 4rem auto 0;
-      display: flex; flex-direction: column; gap: 0.75rem;
-    }
-    .faq-item {
-      background: var(--card); border: 1px solid var(--glass-border);
-      border-radius: 16px; overflow: hidden;
-      transition: border-color 0.3s;
-    }
-    .faq-item.open { border-color: rgba(79,142,247,0.3); }
-    .faq-q {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.3rem 1.5rem; cursor: pointer; gap: 1rem;
-      transition: background 0.2s;
-    }
-    .faq-q:hover { background: var(--glass); }
-    .faq-q-text { font-size: 0.95rem; font-weight: 600; line-height: 1.4; }
-    .faq-icon {
-      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; color: var(--muted-light);
-      transition: all 0.35s;
-    }
-    .faq-item.open .faq-icon { background: rgba(79,142,247,0.15); border-color: rgba(79,142,247,0.3); color: var(--blue); transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0,1,0,1), padding 0.3s;
-      padding: 0 1.5rem;
-    }
-    .faq-item.open .faq-a {
-      max-height: 400px;
-      transition: max-height 0.55s cubic-bezier(0.5,0,0.1,1), padding 0.3s;
-      padding: 0 1.5rem 1.3rem;
-    }
-    .faq-a p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+    /* ── FAQ ── */
+    #faq { background: var(--surface-alt); }
+    .faq-wrap { max-width: 780px; margin: 4rem auto 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .faq-item { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.3s; box-shadow: var(--card-shadow); }
+    .faq-item.open { border-color: var(--blue); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; cursor: pointer; gap: 1rem; transition: background 0.2s; }
+    .faq-q:hover { background: var(--blue-bg); }
+    .faq-q-text { font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--text); }
+    .faq-icon { width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0; background: var(--surface-alt); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--text-muted); transition: all 0.3s; }
+    .faq-item.open .faq-icon { background: var(--blue-bg); border-color: var(--blue); color: var(--blue); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0,1,0,1), padding 0.3s; padding: 0 1.5rem; }
+    .faq-item.open .faq-a { max-height: 400px; transition: max-height 0.5s cubic-bezier(0.5,0,0.1,1), padding 0.3s; padding: 0 1.5rem 1.25rem; }
+    .faq-a p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; }
 
-    /* ─────────────────────────────────────────
-       CTA BANNER
-    ───────────────────────────────────────── */
-    #cta {
-      position: relative; z-index: 2;
-      padding: 0 5% 100px;
-    }
-    .cta-inner {
-      border-radius: 32px; padding: 5rem 3rem;
-      text-align: center;
-      background: linear-gradient(135deg, rgba(79,142,247,0.12), rgba(139,92,246,0.08), rgba(245,166,35,0.05));
-      border: 1px solid rgba(79,142,247,0.2);
-      position: relative; overflow: hidden;
-    }
-    .cta-inner::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(79,142,247,0.15), transparent 60%);
-      pointer-events: none;
-    }
-    .cta-inner h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900; letter-spacing: -1px; margin-bottom: 1rem;
-      position: relative; z-index: 1;
-    }
-    .cta-inner p { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; position: relative; z-index: 1; }
-    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-    .cta-btn-primary {
-      padding: 0.9rem 2.2rem;
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      border: none; border-radius: 14px; font-size: 1rem; font-weight: 700;
-      color: #fff; cursor: pointer; font-family: inherit;
-      box-shadow: 0 6px 25px var(--blue-glow); transition: all 0.25s;
-    }
-    .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 35px var(--blue-glow); }
-    .cta-btn-outline {
-      padding: 0.9rem 2.2rem;
-      background: transparent; border: 1px solid var(--glass-border);
-      border-radius: 14px; font-size: 1rem; font-weight: 600;
-      color: #fff; cursor: pointer; font-family: inherit; transition: all 0.25s;
-    }
-    .cta-btn-outline:hover { border-color: rgba(255,255,255,0.4); background: var(--glass); }
+    /* ── CTA BANNER ── */
+    #cta { background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%); }
+    .cta-inner { text-align: center; max-width: 680px; margin: 0 auto; }
+    .cta-inner h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 1rem; }
+    .cta-inner p { font-size: 1rem; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 2.5rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary { padding: 0.9rem 2.2rem; background: #fff; color: var(--blue); border: none; border-radius: 100px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+    .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+    .cta-btn-outline { padding: 0.9rem 2.2rem; background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); border-radius: 100px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .cta-btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
 
-    /* ─────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────── */
-    footer {
-      position: relative; z-index: 2;
-      padding: 70px 5% 35px;
-      border-top: 1px solid var(--glass-border);
-      background: rgba(3,5,12,0.9);
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3.5rem; margin-bottom: 3.5rem;
-    }
-    .footer-brand .nav-logo { font-size: 1.75rem; display: inline-block; margin-bottom: 1.1rem; }
-    .footer-brand p { font-size: 0.85rem; color: var(--muted); line-height: 1.8; max-width: 280px; }
-    .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted-light); margin-bottom: 1.3rem; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
-    .footer-col ul li a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem; }
-    .footer-col ul li a:hover { color: #fff; }
-    .footer-bottom {
-      padding-top: 1.75rem; border-top: 1px solid var(--glass-border);
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-    }
-    .footer-bottom p { font-size: 0.78rem; color: var(--muted); }
+    /* ── FOOTER ── */
+    footer { background: #0f1629; color: #94a3b8; padding: 80px 5% 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.75; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #cbd5e1; margin-bottom: 1.25rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-col li a { font-size: 0.85rem; color: #64748b; transition: color 0.2s; }
+    .footer-col li a:hover { color: #fff; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; border-top: 1px solid #1e293b; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.8rem; color: #475569; }
     .social-row { display: flex; gap: 0.75rem; }
-    .s-btn {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: var(--glass); border: 1px solid var(--glass-border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.88rem; color: var(--muted); cursor: pointer;
-      transition: all 0.2s;
-    }
-    .s-btn:hover { background: rgba(79,142,247,0.15); border-color: rgba(79,142,247,0.3); color: var(--blue); transform: translateY(-2px); }
+    .s-btn { width: 34px; height: 34px; border-radius: 8px; background: #1e293b; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: #64748b; cursor: pointer; transition: all 0.2s; }
+    .s-btn:hover { background: var(--blue); color: #fff; }
 
-    /* ─────────────────────────────────────────
-       TOAST
-    ───────────────────────────────────────── */
-    .toast {
-      position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
-      background: rgba(15,22,45,0.95); backdrop-filter: blur(20px);
-      border: 1px solid rgba(79,142,247,0.3); border-radius: 12px;
-      padding: 0.85rem 1.5rem; font-size: 0.88rem; font-weight: 500; color: #e8eeff;
-      z-index: 9999; pointer-events: none; opacity: 0;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      transition: opacity 0.3s, transform 0.3s;
-      white-space: nowrap;
-    }
-    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-    /* ─────────────────────────────────────────
-       WHATSAPP
-    ───────────────────────────────────────── */
-    .wa-float {
-      position: fixed; bottom: 30px; right: 30px; z-index: 600;
-    }
-    .wa-btn {
-      width: 58px; height: 58px; border-radius: 50%;
-      background: #25d366;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 25px rgba(37,211,102,0.5);
-      cursor: pointer; transition: all 0.3s;
-      position: relative;
-    }
-    .wa-btn:hover { transform: scale(1.12); box-shadow: 0 10px 35px rgba(37,211,102,0.65); }
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 400; }
+    .wa-btn { width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.4); transition: all 0.3s; position: relative; }
+    .wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
     .wa-btn svg { width: 28px; height: 28px; fill: #fff; }
-    .wa-ping {
-      position: absolute; top: -3px; right: -3px;
-      width: 16px; height: 16px; background: var(--red);
-      border-radius: 50%; border: 2.5px solid #050810;
-    }
-    .wa-ping::before {
-      content: ''; position: absolute; inset: -4px;
-      border-radius: 50%; background: rgba(239,68,68,0.35);
-      animation: ripple 1.8s ease infinite;
-    }
-    @keyframes ripple {
-      0%   { transform: scale(0.8); opacity: 0.8; }
-      100% { transform: scale(2); opacity: 0; }
-    }
-    .wa-tooltip-box {
-      position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
-      background: #1a2035; color: #fff; font-size: 0.8rem; font-weight: 600;
-      padding: 0.55rem 1rem; border-radius: 10px; white-space: nowrap;
-      border: 1px solid var(--glass-border);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      opacity: 0; pointer-events: none; transition: opacity 0.2s;
-    }
-    .wa-tooltip-box::after {
-      content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
-      border: 6px solid transparent; border-left-color: #1a2035;
-    }
+    .wa-ping { position: absolute; top: 0; right: 0; width: 14px; height: 14px; background: #ef4444; border-radius: 50%; border: 2px solid #f8faff; animation: ping 2s ease infinite; }
+    @keyframes ping { 0%,100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+    .wa-tooltip-box { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #fff; color: var(--text); font-size: 0.8rem; font-weight: 600; padding: 0.5rem 1rem; border-radius: 10px; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 1px solid var(--border); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .wa-float:hover .wa-tooltip-box { opacity: 1; }
 
-    /* ─────────────────────────────────────────
-       REVEAL ANIMATIONS
-    ───────────────────────────────────────── */
-    .reveal-up   { opacity: 0; transform: translateY(40px); }
-    .reveal-left { opacity: 0; transform: translateX(-40px); }
-    .reveal-right{ opacity: 0; transform: translateX(40px); }
-    .reveal-scale{ opacity: 0; transform: scale(0.92); }
+    /* ── TOAST ── */
+    .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: #0f1629; color: #e8eeff; border-radius: 12px; padding: 0.85rem 1.5rem; font-size: 0.88rem; font-weight: 500; z-index: 9999; pointer-events: none; opacity: 0; box-shadow: 0 10px 40px rgba(0,0,0,0.25); transition: opacity 0.3s, transform 0.3s; white-space: nowrap; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* ─────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────── */
+    /* ── COUNTRY DETAIL PAGE ── */
+    #countryPage {
+      position: fixed; inset: 0; z-index: 1000;
+      background: #f8faff; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    #countryPage.open { transform: translateX(0); }
+    .cp-topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(248,250,255,0.95); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cp-back { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; background: none; border: none; font-family: inherit; transition: color 0.2s; padding: 0; }
+    .cp-back:hover { color: var(--blue); }
+    .cp-hero { position: relative; height: 300px; overflow: hidden; }
+    .cp-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .cp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(15,22,41,0.7)); }
+    .cp-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 5%; display: flex; align-items: flex-end; gap: 1.5rem; }
+    .cp-flag { font-size: 4rem; line-height: 1; }
+    .cp-country-name { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; letter-spacing: -1.5px; }
+    .cp-visa-type { font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.75); }
+    .cp-body { max-width: 1100px; margin: 0 auto; padding: 3rem 5% 6rem; display: grid; grid-template-columns: 1fr 360px; gap: 2.5rem; }
+    .cp-left {}
+    .cp-right {}
+    .cp-section-title { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 1.25rem; }
+    .cp-key-facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+    .cp-fact { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; padding: 1.1rem 1.25rem; box-shadow: var(--card-shadow); }
+    .cp-fact-label { font-size: 0.7rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .cp-fact-value { font-size: 1.05rem; font-weight: 800; color: var(--text); }
+    .cp-about { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; }
+    .cp-req-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .cp-req-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--text); }
+    .cp-req-list li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .cp-sticky-card { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; padding: 1.75rem; box-shadow: var(--card-shadow-hover); position: sticky; top: 80px; }
+    .cp-price-big { font-size: 2.5rem; font-weight: 900; color: var(--text); letter-spacing: -1px; margin-bottom: 0.25rem; }
+    .cp-price-sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .cp-includes { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
+    .cp-includes li { display: flex; align-items: center; gap: 0.65rem; font-size: 0.84rem; color: var(--text); }
+    .cp-includes li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; }
+    .cp-apply-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--blue), #1d4ed8); border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 4px 20px var(--blue-glow); margin-bottom: 0.75rem; }
+    .cp-apply-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--blue-glow); }
+    .cp-whatsapp-btn { width: 100%; padding: 0.85rem; background: #fff; border: 1.5px solid #25d366; border-radius: 14px; font-size: 0.9rem; font-weight: 700; color: #16a34a; cursor: pointer; font-family: inherit; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .cp-whatsapp-btn:hover { background: #f0fdf4; }
+    .cp-guarantee { display: flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; padding: 0.75rem 1rem; background: var(--blue-bg); border-radius: 10px; font-size: 0.78rem; color: var(--blue); font-weight: 600; }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
-      .b1,.b2,.b3,.b4,.b5,.b6 { grid-column: span 1; grid-row: span 1; }
-      .steps-grid::before { display: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .b1 { grid-column: span 12; grid-row: span 3; }
+      .b2 { grid-column: span 12; grid-row: span 2; }
+      .b3 { grid-column: span 6; grid-row: span 2; }
+      .b4 { grid-column: span 6; grid-row: span 2; }
+      .b5 { grid-column: span 6; grid-row: span 2; }
+      .b6 { grid-column: span 6; grid-row: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .cp-body { grid-template-columns: 1fr; }
+      .cp-sticky-card { position: static; }
     }
     @media (max-width: 768px) {
-      body { cursor: auto; }
-      #cursor { display: none; }
-      .nav-links { display: none; }
-      .nav-actions { display: none; }
+      .nav-links, .nav-actions { display: none; }
       .ham { display: flex; }
-      .s { padding: 70px 5%; }
-      .hero-title { font-size: clamp(2.5rem, 10vw, 4rem); letter-spacing: -2px; }
-      .hero-stats { gap: 1.75rem; }
-      .bento { grid-template-columns: 1fr; }
-      .pgrid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .trust-grid { gap: 2rem; }
-      .search-wrap { flex-wrap: wrap; }
-      .search-btn { width: 100%; }
-      .cta-inner { padding: 3rem 1.5rem; }
-      .steps-grid { grid-template-columns: 1fr; }
-      .dest-grid { grid-template-columns: 1fr; }
-      .tgrid { grid-template-columns: 1fr; }
-      .bgrid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
-      .chips { gap: 0.4rem; }
-      .chip { font-size: 0.72rem; padding: 0.35rem 0.8rem; }
-      .hero-stats { gap: 1.25rem; }
-      .hstat-num { font-size: 1.8rem; }
+      .bento { grid-auto-rows: auto; }
+      .b1,.b2,.b3,.b4,.b5,.b6 { grid-column: span 12; grid-row: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .s { padding: 80px 5%; }
+      .hero-stats { gap: 2rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div id="cursor">
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
-</div>
-
-<!-- Scroll Progress Bar -->
 <div id="progress-bar"></div>
 
-<!-- Loader -->
+<!-- LOADER -->
 <div id="loader">
   <div class="loader-logo">eVisas.in</div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
 
-<!-- Background -->
-<canvas id="bgCanvas"></canvas>
-<div class="mesh">
-  <div class="mesh-orb mo1"></div>
-  <div class="mesh-orb mo2"></div>
-  <div class="mesh-orb mo3"></div>
-  <div class="mesh-orb mo4"></div>
-</div>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#destinations" onclick="closeMobile()">Destinations</a>
-  <a href="#how" onclick="closeMobile()">How It Works</a>
-  <a href="#features" onclick="closeMobile()">Features</a>
-  <a href="#pricing" onclick="closeMobile()">Pricing</a>
-  <a href="#blog" onclick="closeMobile()">Blog</a>
-  <a href="#faq" onclick="closeMobile()">FAQ</a>
-  <button class="btn-pill" style="font-size:1rem;padding:0.8rem 2.5rem;" onclick="closeMobile();setTimeout(scrollToDest,300)">Apply Now</button>
-</div>
-
-<!-- Navbar -->
+<!-- NAVBAR -->
 <nav id="nav">
-  <a href="#" class="nav-logo">eVisas.in</a>
+  <div class="nav-logo">eVisas.in</div>
   <div class="nav-links">
-    <a href="#destinations">Destinations</a>
-    <a href="#how">How It Works</a>
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#blog">Blog</a>
-    <a href="#faq">FAQ</a>
+    <a href="#destinations" onclick="event.preventDefault();scrollToDest()">Destinations</a>
+    <a href="#how" onclick="event.preventDefault();document.getElementById('how').scrollIntoView({behavior:'smooth'})">How It Works</a>
+    <a href="#pricing" onclick="event.preventDefault();document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a>
+    <a href="#blog" onclick="event.preventDefault();document.getElementById('blog').scrollIntoView({behavior:'smooth'})">Blog</a>
   </div>
   <div class="nav-actions">
     <button class="btn-ghost" onclick="showToast('Login feature coming soon! 🔐')">Sign In</button>
@@ -1083,20 +503,20 @@
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════
-     HERO
-═══════════════════════════════════ -->
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="closeMobile();scrollToDest()">Destinations</a>
+  <a href="#how" onclick="closeMobile();setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),300)">How It Works</a>
+  <a href="#pricing" onclick="closeMobile();setTimeout(()=>document.getElementById('pricing').scrollIntoView({behavior:'smooth'}),300)">Pricing</a>
+  <a href="#blog" onclick="closeMobile();setTimeout(()=>document.getElementById('blog').scrollIntoView({behavior:'smooth'}),300)">Blog</a>
+  <button class="btn-pill" style="font-size:1.1rem;padding:0.8rem 2.5rem" onclick="closeMobile();setTimeout(scrollToDest,300)">Apply Now →</button>
+</div>
+
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
-    Trusted by 2 Lakh+ Indian Travelers
-  </div>
-  <h1 class="hero-title">
-    <div class="word">Get&nbsp;Your&nbsp;<span class="grad-text">Visa,</span></div><br/>
-    <div class="word">On&nbsp;Time.</div><br/>
-    <div class="word" style="color:rgba(255,255,255,0.3)">Guaranteed.</div>
-  </h1>
-  <p class="hero-sub">Apply for visas to 120+ destinations from India. We handle the paperwork — you focus on the adventure. Fast, reliable, 100% online.</p>
+  <div class="hero-badge"><div class="badge-dot"></div> Trusted by 2L+ Indian Travelers</div>
+  <h1 class="hero-title">Get Your <span class="grad-text">Visa</span>,<br/>On Time. Guaranteed.</h1>
+  <p class="hero-sub">120+ countries. Expert guidance. WhatsApp updates. Pay in ₹ — no forex charges, no hidden fees.</p>
 
   <div class="search-wrap" id="heroSearch">
     <span class="search-icon">✈️</span>
@@ -1113,44 +533,22 @@
   </div>
 
   <div class="hero-stats" id="heroStats">
-    <div class="hstat">
-      <div class="hstat-num" data-target="120" data-suf="+">0</div>
-      <div class="hstat-label">Destinations</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num" data-target="2" data-suf="L+ Visas">0</div>
-      <div class="hstat-label">Processed</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num" data-target="98" data-suf="%">0</div>
-      <div class="hstat-label">Success Rate</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num" data-target="24" data-suf="hr Avg">0</div>
-      <div class="hstat-label">Processing</div>
-    </div>
-    <div class="hstat">
-      <div class="hstat-num" data-target="4.8" data-suf="★" data-float="true">0</div>
-      <div class="hstat-label">Google Rating</div>
-    </div>
+    <div class="hstat"><div class="hstat-num" data-target="120" data-suf="+">0</div><div class="hstat-label">Destinations</div></div>
+    <div class="hstat"><div class="hstat-num" data-target="2" data-suf="L+ Visas">0</div><div class="hstat-label">Processed</div></div>
+    <div class="hstat"><div class="hstat-num" data-target="98" data-suf="%">0</div><div class="hstat-label">Success Rate</div></div>
+    <div class="hstat"><div class="hstat-num" data-target="24" data-suf="hr Avg">0</div><div class="hstat-label">Processing</div></div>
+    <div class="hstat"><div class="hstat-num" data-target="4.8" data-suf="★" data-float="true">0</div><div class="hstat-label">Google Rating</div></div>
   </div>
 
-  <div class="scroll-hint">
-    <div class="scroll-hint-line"></div>
-    <span>Scroll</span>
-  </div>
+  <div class="scroll-hint"><div class="scroll-hint-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- ═══════════════════════════════════
-     MARQUEE
-═══════════════════════════════════ -->
+<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
-<!-- ═══════════════════════════════════
-     DESTINATIONS
-═══════════════════════════════════ -->
+<!-- DESTINATIONS -->
 <section class="s" id="destinations">
   <div class="container">
     <div class="dest-header reveal-up">
@@ -1172,23 +570,19 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     HOW IT WORKS
-═══════════════════════════════════ -->
+<!-- HOW IT WORKS -->
 <section class="s" id="how">
   <div class="container">
-    <div style="text-align:center; max-width:560px; margin:0 auto;" class="reveal-up">
+    <div style="text-align:center;max-width:560px;margin:0 auto" class="reveal-up">
       <div class="s-tag"><span class="line"></span> Simple Process <span class="line"></span></div>
       <div class="s-title">Your visa in 4 easy steps</div>
-      <p class="s-sub" style="margin:0 auto;">No embassy visits. No confusing paperwork. Just a clean digital experience built for Indian travelers.</p>
+      <p class="s-sub" style="margin:0 auto">No embassy visits. No confusing paperwork. Just a clean digital experience built for Indian travelers.</p>
     </div>
     <div class="steps-grid" id="stepsGrid"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FEATURES — BENTO
-═══════════════════════════════════ -->
+<!-- FEATURES -->
 <section class="s" id="features">
   <div class="container">
     <div class="reveal-up">
@@ -1200,55 +594,54 @@
   </div>
 </section>
 
-<!-- TRUST BAND -->
-<div class="trust-band">
-  <div class="trust-grid" id="trustGrid"></div>
-</div>
+<!-- TRUST STATS -->
+<section class="s" id="trust">
+  <div class="container">
+    <div style="text-align:center" class="reveal-up">
+      <div class="s-tag" style="color:rgba(255,255,255,0.6);justify-content:center"><span class="line" style="background:rgba(255,255,255,0.4)"></span> Our Numbers <span class="line" style="background:rgba(255,255,255,0.4)"></span></div>
+      <div class="s-title" style="color:#fff">Trusted by travelers<br/>across India</div>
+    </div>
+    <div class="trust-grid" id="trustGrid"></div>
+  </div>
+</section>
 
-<!-- ═══════════════════════════════════
-     TESTIMONIALS
-═══════════════════════════════════ -->
+<!-- TESTIMONIALS -->
 <section class="s" id="testimonials">
   <div class="container">
-    <div style="text-align:center; max-width:560px; margin:0 auto;" class="reveal-up">
-      <div class="s-tag"><span class="line"></span> Traveler Reviews <span class="line"></span></div>
-      <div class="s-title">2 Lakh+ Indians<br/>can't be wrong</div>
+    <div class="reveal-up">
+      <div class="s-tag"><span class="line"></span> Real Reviews</div>
+      <div class="s-title">What travelers say</div>
+      <p class="s-sub">Over 2 lakh Indians have used eVisas.in. Here's what some of them had to say.</p>
     </div>
     <div class="tgrid" id="tGrid"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     PRICING
-═══════════════════════════════════ -->
+<!-- PRICING -->
 <section class="s" id="pricing">
   <div class="container">
-    <div style="text-align:center; max-width:560px; margin:0 auto;" class="reveal-up">
-      <div class="s-tag"><span class="line"></span> Transparent Pricing <span class="line"></span></div>
-      <div class="s-title">No hidden fees.<br/>Ever.</div>
-      <p class="s-sub" style="margin:0 auto;">All plans include our on-time guarantee and AI document checker.</p>
+    <div class="reveal-up">
+      <div class="s-tag"><span class="line"></span> Transparent Pricing</div>
+      <div class="s-title">Simple, honest pricing</div>
+      <p class="s-sub">No hidden fees. No forex charges. All amounts in Indian Rupees.</p>
       <div class="pricing-toggle-row">
-        <span class="toggle-label active" id="tlMonthly">Per Visa</span>
-        <div class="toggle-track" id="pricingToggle" onclick="togglePricing()">
-          <div class="toggle-thumb"></div>
-        </div>
-        <span class="toggle-label" id="tlAnnual">Annual Pass</span>
-        <span class="save-pill">SAVE 40%</span>
+        <span class="tl-label active" id="tlMonthly">Per Visa</span>
+        <div class="toggle-track" id="pricingToggle" onclick="togglePricing()"><div class="toggle-thumb"></div></div>
+        <span class="tl-label" id="tlAnnual">Annual</span>
+        <span class="save-pill">Save 40%</span>
       </div>
     </div>
     <div class="pgrid" id="pricingGrid"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     BLOG
-═══════════════════════════════════ -->
+<!-- BLOG -->
 <section class="s" id="blog">
   <div class="container">
     <div class="dest-header reveal-up">
       <div>
-        <div class="s-tag"><span class="line"></span> Travel Guides</div>
-        <div class="s-title">Visa tips &<br/>travel advice</div>
+        <div class="s-tag"><span class="line"></span> Visa Guides</div>
+        <div class="s-title">Learn before you apply</div>
       </div>
       <a href="#blog" class="view-all" onclick="event.preventDefault();document.getElementById('blog').scrollIntoView({behavior:'smooth'})">All articles →</a>
     </div>
@@ -1256,27 +649,23 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FAQ
-═══════════════════════════════════ -->
+<!-- FAQ -->
 <section class="s" id="faq">
   <div class="container">
-    <div style="text-align:center; max-width:560px; margin:0 auto;" class="reveal-up">
-      <div class="s-tag"><span class="line"></span> FAQs <span class="line"></span></div>
-      <div class="s-title">Questions?<br/>We've got answers.</div>
+    <div style="text-align:center;max-width:560px;margin:0 auto" class="reveal-up">
+      <div class="s-tag"><span class="line"></span> FAQ <span class="line"></span></div>
+      <div class="s-title">Questions? We've got answers.</div>
     </div>
     <div class="faq-wrap" id="faqWrap"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     CTA BANNER
-═══════════════════════════════════ -->
-<section id="cta">
+<!-- CTA -->
+<section class="s" id="cta">
   <div class="container">
-    <div class="cta-inner reveal-scale">
-      <h2>Ready to explore the world?</h2>
-      <p>Join 2 lakh+ Indians who've made international travel stress-free with eVisas.in</p>
+    <div class="cta-inner reveal-up">
+      <h2>Ready to travel without visa stress?</h2>
+      <p>Join 2 lakh+ Indian travelers who got their visa on time, every time. Start your application in under 5 minutes.</p>
       <div class="cta-btns">
         <button class="cta-btn-primary" onclick="scrollToDest()">Apply for a Visa →</button>
         <button class="cta-btn-outline" onclick="openWhatsApp()">Talk to an Expert</button>
@@ -1285,25 +674,23 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="container">
+  <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">eVisas.in</div>
-        <p>India's most trusted online visa service. Helping Indian passport holders travel to 120+ countries — fast, simple, and guaranteed.</p>
+        <p>India's most trusted visa service. 120+ countries, expert support, guaranteed on-time delivery.</p>
       </div>
       <div class="footer-col">
         <h4>Destinations</h4>
         <ul>
-          <li><a href="#destinations" onclick="event.preventDefault();scrollToDest()">🇦🇪 UAE Visa</a></li>
-          <li><a href="#destinations" onclick="event.preventDefault();scrollToDest()">🇺🇸 USA Visa</a></li>
-          <li><a href="#destinations" onclick="event.preventDefault();scrollToDest()">🇸🇬 Singapore</a></li>
-          <li><a href="#destinations" onclick="event.preventDefault();scrollToDest()">🇫🇷 Schengen</a></li>
-          <li><a href="#destinations" onclick="event.preventDefault();scrollToDest()">🇬🇧 UK Visa</a></li>
-          <li><a href="#destinations" onclick="event.preventDefault();scrollToDest()">🇹🇭 Thailand</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('uae')">🇦🇪 UAE Visa</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('usa')">🇺🇸 USA Visa</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('singapore')">🇸🇬 Singapore</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('france')">🇫🇷 Schengen</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('uk')">🇬🇧 UK Visa</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('thailand')">🇹🇭 Thailand</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1320,7 +707,7 @@
       <div class="footer-col">
         <h4>Support</h4>
         <ul>
-          <li><a href="#" onclick="showToast('Enter your tracking ID in your email confirmation 🔍')">Track Application</a></li>
+          <li><a href="#" onclick="showToast('Enter your tracking ID from your confirmation email 🔍')">Track Application</a></li>
           <li><a href="#" onclick="showToast('Full refund if visa not delivered on time ✅')">Refund Policy</a></li>
           <li><a href="#" onclick="showToast('Privacy policy coming soon!')">Privacy Policy</a></li>
           <li><a href="#" onclick="showToast('Terms of service coming soon!')">Terms of Service</a></li>
@@ -1341,7 +728,7 @@
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
+<!-- WHATSAPP FLOAT -->
 <div class="wa-float">
   <div class="wa-tooltip-box">Chat with us on WhatsApp 💬</div>
   <a href="https://wa.me/919999999999?text=Hi%2C%20I%20need%20help%20with%20my%20visa%20application" target="_blank" class="wa-btn">
@@ -1350,25 +737,170 @@
   </a>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════════════ -->
+<!-- COUNTRY DETAIL PAGE -->
+<div id="countryPage">
+  <div class="cp-topbar">
+    <button class="cp-back" onclick="closeCountryPage()">← Back to all destinations</button>
+    <button class="btn-pill" id="cpApplyTopBtn" onclick="openWhatsApp()">Apply Now →</button>
+  </div>
+  <div class="cp-hero">
+    <img id="cpHeroImg" src="" alt="" class="cp-hero-img"/>
+    <div class="cp-hero-overlay"></div>
+    <div class="cp-hero-text">
+      <div class="cp-flag" id="cpFlag"></div>
+      <div>
+        <div class="cp-country-name" id="cpName"></div>
+        <div class="cp-visa-type" id="cpVisaType"></div>
+      </div>
+    </div>
+  </div>
+  <div class="cp-body">
+    <div class="cp-left">
+      <div class="cp-key-facts" id="cpFacts"></div>
+      <div class="cp-section-title">About the Visa</div>
+      <p class="cp-about" id="cpAbout"></p>
+      <div class="cp-section-title">Document Requirements</div>
+      <ul class="cp-req-list" id="cpReqs"></ul>
+    </div>
+    <div class="cp-right">
+      <div class="cp-sticky-card">
+        <div class="cp-price-big" id="cpPrice"></div>
+        <div class="cp-price-sub">eVisas.in service fee · All-inclusive</div>
+        <div class="cp-section-title" style="margin-top:1rem">What's Included</div>
+        <ul class="cp-includes" id="cpIncludes"></ul>
+        <button class="cp-apply-btn" id="cpApplyBtn">Start Application →</button>
+        <button class="cp-whatsapp-btn" onclick="openWhatsApp()">💬 Ask on WhatsApp</button>
+        <div class="cp-guarantee">🛡️ On-Time Guarantee — or full refund</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-/* ── DATA ───────────────────────────────────── */
+/* ── DATA ── */
 const DESTS = [
-  {c:'UAE',       f:'🇦🇪', type:'evisa',   region:'middle-east', val:'30 days',  docs:'3 docs', proc:'24 hrs',    price:'₹4,499', img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80&fit=crop'},
-  {c:'Thailand',  f:'🇹🇭', type:'voa',     region:'asia',        val:'30 days',  docs:'2 docs', proc:'On arrival',price:'₹2,999', img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80&fit=crop'},
-  {c:'France',    f:'🇫🇷', type:'sticker', region:'europe',      val:'90 days',  docs:'8 docs', proc:'15 days',   price:'₹8,999', img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80&fit=crop'},
-  {c:'USA',       f:'🇺🇸', type:'sticker', region:'americas',    val:'10 years', docs:'6 docs', proc:'30 days',   price:'₹15,999',img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80&fit=crop'},
-  {c:'Singapore', f:'🇸🇬', type:'evisa',   region:'asia',        val:'30 days',  docs:'3 docs', proc:'3 days',    price:'₹3,499', img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80&fit=crop'},
-  {c:'Maldives',  f:'🇲🇻', type:'voa',     region:'asia',        val:'30 days',  docs:'1 doc',  proc:'On arrival',price:'₹999',   img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80&fit=crop'},
-  {c:'Turkey',    f:'🇹🇷', type:'evisa',   region:'middle-east', val:'90 days',  docs:'2 docs', proc:'24 hrs',    price:'₹2,999', img:'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=80&fit=crop'},
-  {c:'UK',        f:'🇬🇧', type:'sticker', region:'europe',      val:'6 months', docs:'7 docs', proc:'21 days',   price:'₹12,999',img:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80&fit=crop'},
-  {c:'Indonesia', f:'🇮🇩', type:'voa',     region:'asia',        val:'30 days',  docs:'2 docs', proc:'On arrival',price:'₹1,499', img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80&fit=crop'},
-  {c:'Germany',   f:'🇩🇪', type:'sticker', region:'europe',      val:'90 days',  docs:'8 docs', proc:'15 days',   price:'₹9,499', img:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80&fit=crop'},
-  {c:'Malaysia',  f:'🇲🇾', type:'evisa',   region:'asia',        val:'30 days',  docs:'3 docs', proc:'3 days',    price:'₹2,499', img:'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80&fit=crop'},
-  {c:'Kenya',     f:'🇰🇪', type:'evisa',   region:'africa',      val:'90 days',  docs:'3 docs', proc:'3 days',    price:'₹3,999', img:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80&fit=crop'},
+  {
+    c:'UAE', slug:'uae', f:'🇦🇪', type:'evisa', region:'middle-east',
+    val:'30 days', docs:'3 docs', proc:'24 hrs', price:'₹4,499',
+    img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80&fit=crop',
+    fullName:'United Arab Emirates', capital:'Abu Dhabi', currency:'AED (Dirham)', language:'Arabic',
+    successRate:'99%',
+    about:'The UAE e-Visa lets you explore the dazzling cities of Dubai and Abu Dhabi. Issued entirely online, it is delivered to your email within 24 hours. Perfect for tourism, business, and transit.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Recent passport-size photo (white background)','Confirmed return air ticket','Hotel booking or host invitation letter','Last 3 months bank statement (min. ₹1 lakh balance)','Travel insurance covering UAE'],
+    includes:['Professional application review','e-Visa delivery to email','Real-time WhatsApp updates','Re-apply free if rejected (Pro plan)','GST invoice for business travel'],
+  },
+  {
+    c:'Thailand', slug:'thailand', f:'🇹🇭', type:'voa', region:'asia',
+    val:'30 days', docs:'2 docs', proc:'On arrival', price:'₹2,999',
+    img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80&fit=crop',
+    fullName:'Thailand', capital:'Bangkok', currency:'THB (Baht)', language:'Thai',
+    successRate:'98%',
+    about:'Indians can get a Visa on Arrival at major Thai airports. We prepare all your documents in advance so you sail through the VOA counter in minutes — no stress, no confusion.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Recent passport-size photo','Proof of onward travel','Cash for VOA fee (2,000 THB ≈ ₹4,800)','Hotel booking confirmation','Sufficient funds proof (THB 10,000 per person)'],
+    includes:['VOA document preparation kit','Step-by-step airport guide','Completed arrival card','Pre-filled VOA form','24/7 WhatsApp support during travel'],
+  },
+  {
+    c:'France', slug:'france', f:'🇫🇷', type:'sticker', region:'europe',
+    val:'90 days', docs:'8 docs', proc:'15 days', price:'₹8,999',
+    img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80&fit=crop',
+    fullName:'France (Schengen)', capital:'Paris', currency:'EUR (Euro)', language:'French',
+    successRate:'96%',
+    about:'A France Schengen visa allows travel across 27 European countries. Our experts handle your entire application — from document compilation to appointment scheduling — giving you the best chance of approval.',
+    requirements:['Valid Indian passport (min. 3 months beyond return date)','Two recent passport photos (Schengen specs)','Confirmed return air ticket','Proof of accommodation for entire stay','Travel insurance (min. €30,000 cover)','Last 3 months bank statements','ITR / salary slips (last 3 months)','Employment letter / leave approval'],
+    includes:['Expert document review & checklist','Visa appointment scheduling','Application form filling','Embassy submission support','Rejection analysis if needed (Pro plan)'],
+  },
+  {
+    c:'USA', slug:'usa', f:'🇺🇸', type:'sticker', region:'americas',
+    val:'10 years', docs:'6 docs', proc:'30 days', price:'₹15,999',
+    img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&q=80&fit=crop',
+    fullName:'United States of America', capital:'Washington D.C.', currency:'USD (Dollar)', language:'English',
+    successRate:'87%',
+    about:'The US B1/B2 tourist & business visa is valid for 10 years with multiple entries. Our mock interview tool and expert coaching dramatically improve your approval odds — our clients have an 87% success rate vs 68% national average.',
+    requirements:['Valid Indian passport (min. 6 months validity)','DS-160 form (completed online)','Visa fee payment confirmation (MRV receipt)','Appointment confirmation letter','Photo per US specifications','Income proof (ITR, Form 16, bank statements)','Property / asset documents (as applicable)'],
+    includes:['DS-160 form filling','Mock interview practice (50+ questions)','Document checklist & review','Appointment scheduling at nearest consulate','Pre-interview preparation call','Post-interview guidance'],
+  },
+  {
+    c:'Singapore', slug:'singapore', f:'🇸🇬', type:'evisa', region:'asia',
+    val:'30 days', docs:'3 docs', proc:'3 days', price:'₹3,499',
+    img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80&fit=crop',
+    fullName:'Singapore', capital:'Singapore City', currency:'SGD (Dollar)', language:'English',
+    successRate:'97%',
+    about:'Singapore\'s e-Visa (EPAS) is issued online and linked to your passport electronically — no sticker, no stamp needed until arrival. Processed in 3 business days, perfect for short Asia getaways.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Digital passport photo','Confirmed return air ticket','Hotel booking confirmation','Last 3 months bank statement'],
+    includes:['e-Visa application submission','Document quality check','Electronic approval notification','WhatsApp status updates','24/7 expert support'],
+  },
+  {
+    c:'Maldives', slug:'maldives', f:'🇲🇻', type:'voa', region:'asia',
+    val:'30 days', docs:'1 doc', proc:'On arrival', price:'₹999',
+    img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80&fit=crop',
+    fullName:'Maldives', capital:'Malé', currency:'MVR (Rufiyaa)', language:'Dhivehi',
+    successRate:'100%',
+    about:'Indians receive a free 30-day Visa on Arrival in the Maldives — no pre-approval needed. We provide a document checklist and travel guide so you\'re fully prepared for your island getaway.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Confirmed return air ticket','Hotel/resort booking (mandatory)','Proof of sufficient funds'],
+    includes:['Pre-travel document checklist','Arrival guide & customs tips','Hotel booking assistance','24/7 WhatsApp support'],
+  },
+  {
+    c:'Turkey', slug:'turkey', f:'🇹🇷', type:'evisa', region:'middle-east',
+    val:'90 days', docs:'2 docs', proc:'24 hrs', price:'₹2,999',
+    img:'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80&fit=crop',
+    fullName:'Turkey', capital:'Ankara', currency:'TRY (Lira)', language:'Turkish',
+    successRate:'98%',
+    about:'Turkey\'s e-Visa grants a single or multiple entry visit valid for 90 days. It is issued within 24 hours and allows you to explore Istanbul, Cappadocia, the Turquoise Coast, and more.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Active email address','International debit/credit card (for embassy fee)','Return air ticket (may be requested)'],
+    includes:['e-Visa application filing','Instant email delivery','WhatsApp updates','Re-apply support if any issues'],
+  },
+  {
+    c:'UK', slug:'uk', f:'🇬🇧', type:'sticker', region:'europe',
+    val:'6 months', docs:'7 docs', proc:'21 days', price:'₹12,999',
+    img:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop',
+    fullName:'United Kingdom', capital:'London', currency:'GBP (Pound)', language:'English',
+    successRate:'91%',
+    about:'The UK Standard Visitor Visa allows Indians to visit for tourism, business, or family for up to 6 months. Our experts craft a strong application with a compelling cover letter that greatly increases approval odds.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Online application (UKVi portal)','Biometrics appointment at VFS','Bank statements (last 6 months)','Employment letter & leave approval','Property or asset evidence','Travel itinerary & hotel bookings','Sponsor letter (if applicable)'],
+    includes:['UKVi form completion','Biometrics appointment booking','Cover letter drafting','Document compilation & review','VFS submission support','Approval tracking'],
+  },
+  {
+    c:'Indonesia', slug:'indonesia', f:'🇮🇩', type:'voa', region:'asia',
+    val:'30 days', docs:'2 docs', proc:'On arrival', price:'₹1,499',
+    img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80&fit=crop',
+    fullName:'Indonesia', capital:'Jakarta', currency:'IDR (Rupiah)', language:'Bahasa Indonesia',
+    successRate:'99%',
+    about:'Indonesia\'s B211A visa-on-arrival covers Bali and other major gateways. Indians can also apply online via e-VOA before flying. We handle preparation and pre-fill all required documents.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Return air ticket','Hotel booking confirmation','Payment for VOA fee (USD 35)','Onward travel evidence'],
+    includes:['e-VOA application (recommended)','Document kit preparation','Arrival & immigration guide','WhatsApp support in Bali hours'],
+  },
+  {
+    c:'Germany', slug:'germany', f:'🇩🇪', type:'sticker', region:'europe',
+    val:'90 days', docs:'8 docs', proc:'15 days', price:'₹9,499',
+    img:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80&fit=crop',
+    fullName:'Germany (Schengen)', capital:'Berlin', currency:'EUR (Euro)', language:'German',
+    successRate:'95%',
+    about:'A Germany Schengen visa opens doors to 27 European countries. VFS appointments in India can be hard to get — we secure them for you while building a flawless application.',
+    requirements:['Valid Indian passport (min. 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (€30,000 minimum)','Last 3 months bank statements','Salary slips & ITR','Employment confirmation letter','Leave sanction letter'],
+    includes:['VFS appointment booking','Complete document compilation','Application form filling','Expert review & checklist','Embassy submission coordination'],
+  },
+  {
+    c:'Malaysia', slug:'malaysia', f:'🇲🇾', type:'evisa', region:'asia',
+    val:'30 days', docs:'3 docs', proc:'3 days', price:'₹2,499',
+    img:'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80&fit=crop',
+    fullName:'Malaysia', capital:'Kuala Lumpur', currency:'MYR (Ringgit)', language:'Bahasa Malaysia',
+    successRate:'97%',
+    about:'Malaysia\'s eNTRI and e-Visa are fully online. Most Indians qualify for eNTRI (free, 15 days). We help you choose the right visa type and ensure your application is error-free.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Digital passport photo','Return air ticket','Hotel booking or host letter','Onward travel proof'],
+    includes:['Visa type selection (eNTRI or eVisa)','Application submission','Document review','WhatsApp updates','Airport arrival tips'],
+  },
+  {
+    c:'Kenya', slug:'kenya', f:'🇰🇪', type:'evisa', region:'africa',
+    val:'90 days', docs:'3 docs', proc:'3 days', price:'₹3,999',
+    img:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80&fit=crop',
+    fullName:'Kenya', capital:'Nairobi', currency:'KES (Shilling)', language:'Swahili & English',
+    successRate:'97%',
+    about:'Kenya\'s eCitizen e-Visa is perfect for Indian safari lovers and nature enthusiasts. Valid for 90 days, it covers single entry to Nairobi, Mombasa, Masai Mara, and beyond.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Digital passport photo','Return air ticket','Yellow fever vaccination certificate','Hotel or safari lodge booking','Bank statement (last 3 months)'],
+    includes:['eCitizen application filing','Vaccination guidance','Safari booking tips','WhatsApp status updates','e-Visa email delivery'],
+  },
 ];
+
 const TYPE_LABEL = {evisa:'e-Visa', voa:'Visa on Arrival', sticker:'Sticker Visa', free:'Visa Free'};
 const TYPE_CLS   = {evisa:'be', voa:'bv', sticker:'bs', free:'bf'};
 let activeFilter = 'all', activeRegion = 'all', searchQ = '';
@@ -1381,77 +913,56 @@ const STEPS = [
 ];
 
 const FEATURES = [
-  {cls:'b1', icon:'🛡️', iconBg:'rgba(79,142,247,0.12)', title:'On-Time Guarantee', desc:'We guarantee visa delivery before your travel date or we refund your full service fee — no questions asked.', extra:'visual'},
-  {cls:'b2', icon:'🤖', iconBg:'rgba(168,85,246,0.12)',  title:'AI Document Checker', desc:'Our AI scans your documents before submission to catch errors that cause delays or rejections.'},
-  {cls:'b3', icon:'📱', iconBg:'rgba(34,197,94,0.12)',   title:'Live Tracking', desc:'Real-time WhatsApp & SMS updates at every stage of your application.'},
-  {cls:'b4', icon:'💳', iconBg:'rgba(245,166,35,0.12)',  title:'Pay in INR', desc:'No forex markup. Pay via UPI, Net Banking, or any Indian debit/credit card. All amounts in ₹.'},
-  {cls:'b5', icon:'🧑‍💼', iconBg:'rgba(239,68,68,0.12)', title:'Expert Support', desc:'Hindi & English support via phone, WhatsApp, and chat.'},
-  {cls:'b6', icon:'👨‍👩‍👧‍👦', iconBg:'rgba(20,184,166,0.12)', title:'Group Applications', desc:'Apply for your entire family or travel group at once. Bulk discounts for 4+ travelers.'},
+  {cls:'b1', icon:'🛡️', iconBg:'rgba(37,99,235,0.1)', title:'On-Time Guarantee', desc:'We guarantee visa delivery before your travel date or we refund your full service fee — no questions asked.', extra:'visual'},
+  {cls:'b2', icon:'🤖', iconBg:'rgba(124,58,237,0.1)', title:'AI Document Checker', desc:'Our AI scans your documents before submission to catch errors that cause delays or rejections.'},
+  {cls:'b3', icon:'📱', iconBg:'rgba(22,163,74,0.1)',  title:'Live Tracking', desc:'Real-time WhatsApp & SMS updates at every stage of your application.'},
+  {cls:'b4', icon:'💳', iconBg:'rgba(217,119,6,0.1)',  title:'Pay in INR', desc:'No forex markup. Pay via UPI, Net Banking, or any Indian debit/credit card.'},
+  {cls:'b5', icon:'🧑‍💼', iconBg:'rgba(220,38,38,0.1)', title:'Expert Support', desc:'Hindi & English support via phone, WhatsApp, and chat. Available 7 days a week.'},
+  {cls:'b6', icon:'👨‍👩‍👧‍👦', iconBg:'rgba(13,148,136,0.1)', title:'Group Applications', desc:'Apply for your entire family or travel group at once. Bulk discounts for 4+ travelers.'},
 ];
 
 const TRUST = [
-  {num:'2L+', label:'Happy Travelers'},
-  {num:'120+', label:'Destinations'},
-  {num:'98%', label:'Success Rate'},
-  {num:'4.8★', label:'Google Rating'},
-  {num:'24/7', label:'Expert Support'},
-  {num:'₹0', label:'Hidden Fees'},
+  {num:'2L+', label:'Happy Travelers'},{num:'120+', label:'Destinations'},
+  {num:'98%', label:'Success Rate'},{num:'4.8★', label:'Google Rating'},
+  {num:'24/7', label:'Expert Support'},{num:'₹0', label:'Hidden Fees'},
 ];
 
 const TESTIMONIALS = [
-  {name:'Priya Sharma',  city:'Mumbai',    dest:'Dubai Visa',     flag:'🇦🇪', color:'#4f8ef7', text:'Got my UAE visa in just 18 hours! The WhatsApp updates were super helpful. Will use eVisas.in for every trip.'},
-  {name:'Rahul Gupta',   city:'Delhi',     dest:'Thailand Visa',  flag:'🇹🇭', color:'#22c55e', text:'Applied for family of 4. The group application was so smooth. All 4 visas approved in 2 days. Highly recommend!'},
-  {name:'Ananya Nair',   city:'Bangalore', dest:'Singapore Visa', flag:'🇸🇬', color:'#a855f7', text:'The AI document checker caught an error in my photo before I submitted. Saved me from a rejection. Very smart!'},
-  {name:'Vikram Mehta',  city:'Pune',      dest:'Schengen Visa',  flag:'🇪🇺', color:'#f5a623', text:'Schengen is complicated but the team guided me every step. Got approved for 90 days. Outstanding support!'},
-  {name:'Sunita Patel',  city:'Ahmedabad', dest:'US Visa',        flag:'🇺🇸', color:'#ef4444', text:'The mock interview tool is absolute gold. Got my B1/B2 approved on the first attempt. Incredible service!'},
-  {name:'Arjun Reddy',   city:'Hyderabad', dest:'UK Visa',        flag:'🇬🇧', color:'#14b8a6', text:'INR payment saved me forex charges. Quick, transparent and professional. Will use again for Europe trip.'},
+  {name:'Priya Sharma', city:'Mumbai', dest:'Dubai Visa', flag:'🇦🇪', color:'#2563eb', text:'Got my UAE visa in just 18 hours! The WhatsApp updates were super helpful. Will use eVisas.in for every trip.'},
+  {name:'Rahul Gupta', city:'Delhi', dest:'Thailand Visa', flag:'🇹🇭', color:'#16a34a', text:'Applied for family of 4. The group application was so smooth. All 4 visas approved in 2 days. Highly recommend!'},
+  {name:'Ananya Nair', city:'Bangalore', dest:'Singapore Visa', flag:'🇸🇬', color:'#7c3aed', text:'The AI document checker caught an error in my photo before I submitted. Saved me from a rejection. Very smart!'},
+  {name:'Vikram Mehta', city:'Pune', dest:'Schengen Visa', flag:'🇪🇺', color:'#d97706', text:'Schengen is complicated but the team guided me every step. Got approved for 90 days. Outstanding support!'},
+  {name:'Sunita Patel', city:'Ahmedabad', dest:'US Visa', flag:'🇺🇸', color:'#dc2626', text:'The mock interview tool is absolute gold. Got my B1/B2 approved on the first attempt. Incredible service!'},
+  {name:'Arjun Reddy', city:'Hyderabad', dest:'UK Visa', flag:'🇬🇧', color:'#0d9488', text:'INR payment saved me forex charges. Quick, transparent and professional. Will use again for Europe trip.'},
 ];
 
 const PLANS = [
-  {
-    tag:'Basic', amount:'999', per:'/ visa', desc:'Perfect for occasional travelers. Get your visa done right, the first time.',
-    feats:['Single visa application','AI document checker','Email & SMS updates','48-hr processing time'],
-    missing:['Priority processing','Dedicated visa expert'],
-    cta:'Get Started', ctaCls:'plan-cta-ghost', featured:false,
-    annualAmt:'5,999', annualPer:'/ year'
-  },
-  {
-    tag:'Pro', amount:'1,999', per:'/ visa', desc:'For frequent travelers who want speed, expert support, and zero rejections.',
-    feats:['Single visa application','AI document checker','WhatsApp live updates','Priority 24-hr processing','Dedicated visa expert','Free re-apply if rejected'],
-    missing:[],
-    cta:'Apply with Pro →', ctaCls:'plan-cta-primary', featured:true,
-    annualAmt:'11,999', annualPer:'/ year'
-  },
-  {
-    tag:'Business', amount:'4,999', per:'/ month', desc:'For companies managing employee travel visas at scale, with full team controls.',
-    feats:['Unlimited applications','Team dashboard','Bulk / group travel','GST invoices','Account manager','API access'],
-    missing:[],
-    cta:'Contact Sales', ctaCls:'plan-cta-ghost', featured:false,
-    annualAmt:'39,999', annualPer:'/ year'
-  },
+  {tag:'Basic', amount:'999', per:'/ visa', desc:'Perfect for occasional travelers. Get your visa done right, the first time.', feats:['Single visa application','AI document checker','Email & SMS updates','48-hr processing time'], missing:['Priority processing','Dedicated visa expert'], cta:'Get Started', ctaCls:'plan-cta-ghost', featured:false, annualAmt:'5,999', annualPer:'/ year'},
+  {tag:'Pro', amount:'1,999', per:'/ visa', desc:'For frequent travelers who want speed, expert support, and zero rejections.', feats:['Single visa application','AI document checker','WhatsApp live updates','Priority 24-hr processing','Dedicated visa expert','Free re-apply if rejected'], missing:[], cta:'Apply with Pro →', ctaCls:'plan-cta-primary', featured:true, annualAmt:'11,999', annualPer:'/ year'},
+  {tag:'Business', amount:'4,999', per:'/ month', desc:'For companies managing employee travel visas at scale.', feats:['Unlimited applications','Team dashboard','Bulk / group travel','GST invoices','Account manager','API access'], missing:[], cta:'Contact Sales', ctaCls:'plan-cta-ghost', featured:false, annualAmt:'39,999', annualPer:'/ year'},
 ];
 
 const BLOGS = [
-  {emoji:'🇦🇪', tag:'Middle East', img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=700&q=80&fit=crop', title:'Dubai Visa for Indians: Complete 2025 Guide', excerpt:'Everything you need — fees, documents, processing time, and tips to avoid the most common rejection reasons.', date:'Apr 28, 2025', read:'5 min', author:'Priya R.', ac:'#4f8ef7'},
-  {emoji:'🇸🇬', tag:'Asia',        img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=700&q=80&fit=crop', title:'Singapore vs Thailand: Which Visa is Easier?', excerpt:'Comparing costs, processing time, and approval rates for two of India\'s most popular holiday destinations.', date:'Apr 22, 2025', read:'7 min', author:'Rahul M.', ac:'#22c55e'},
-  {emoji:'🇪🇺', tag:'Europe',      img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=700&q=80&fit=crop', title:'Schengen Visa Rejected? Here\'s Why & How to Fix It', excerpt:'The most common reasons Indians get rejected — and exactly how to fix each one before reapplying.', date:'Apr 15, 2025', read:'9 min', author:'Ananya K.', ac:'#a855f7'},
-  {emoji:'🇺🇸', tag:'Americas',    img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=700&q=80&fit=crop', title:'US B1/B2 Interview: 20 Questions & Best Answers', excerpt:'Real questions asked at US consulates in India, with sample answers that got 10,000+ applicants approved.', date:'Apr 10, 2025', read:'12 min', author:'Vikram S.', ac:'#f5a623'},
-  {emoji:'✈️',  tag:'Tips',        img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80&fit=crop', title:'How to Build a Strong Travel History for Visa Approvals', excerpt:'Consulates scrutinise travel history. Here\'s how to build it strategically to maximise approval chances.', date:'Apr 5, 2025', read:'6 min', author:'Sunita P.', ac:'#ef4444'},
-  {emoji:'📋',  tag:'Documents',   img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80&fit=crop', title:'Visa Photo Requirements: Country-Wise Guide 2025', excerpt:'Wrong photo size is the #1 reason for delays. Use this guide to get it right the first time, every time.', date:'Mar 30, 2025', read:'4 min', author:'Arjun R.', ac:'#14b8a6'},
+  {emoji:'🇦🇪', tag:'Middle East', img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=700&q=80&fit=crop', title:'Dubai Visa for Indians: Complete 2025 Guide', excerpt:'Everything you need — fees, documents, processing time, and tips to avoid the most common rejection reasons.', date:'Apr 28, 2025', read:'5 min', author:'Priya R.', ac:'#2563eb'},
+  {emoji:'🇸🇬', tag:'Asia', img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=700&q=80&fit=crop', title:'Singapore vs Thailand: Which Visa is Easier?', excerpt:'Comparing costs, processing time, and approval rates for two of India\'s most popular holiday destinations.', date:'Apr 22, 2025', read:'7 min', author:'Rahul M.', ac:'#16a34a'},
+  {emoji:'🇪🇺', tag:'Europe', img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=700&q=80&fit=crop', title:'Schengen Visa Rejected? Here\'s Why & How to Fix It', excerpt:'The most common reasons Indians get rejected — and exactly how to fix each one before reapplying.', date:'Apr 15, 2025', read:'9 min', author:'Ananya K.', ac:'#7c3aed'},
+  {emoji:'🇺🇸', tag:'Americas', img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=700&q=80&fit=crop', title:'US B1/B2 Interview: 20 Questions & Best Answers', excerpt:'Real questions asked at US consulates in India, with sample answers that got 10,000+ applicants approved.', date:'Apr 10, 2025', read:'12 min', author:'Vikram S.', ac:'#d97706'},
+  {emoji:'✈️', tag:'Tips', img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80&fit=crop', title:'How to Build a Strong Travel History for Visa Approvals', excerpt:'Consulates scrutinise travel history. Here\'s how to build it strategically to maximise approval chances.', date:'Apr 5, 2025', read:'6 min', author:'Sunita P.', ac:'#dc2626'},
+  {emoji:'📋', tag:'Documents', img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80&fit=crop', title:'Visa Photo Requirements: Country-Wise Guide 2025', excerpt:'Wrong photo size is the #1 reason for delays. Use this guide to get it right the first time, every time.', date:'Mar 30, 2025', read:'4 min', author:'Arjun R.', ac:'#0d9488'},
 ];
 
 const FAQS = [
   {q:'How long does it take to get a visa through eVisas.in?', a:'Processing time depends on the destination. Most e-Visas are delivered within 24–72 hours. Sticker visas and embassy appointments take longer — usually 7–30 days. We always show accurate processing times before you apply, and our Pro plan guarantees delivery before your travel date.'},
-  {q:'Is my data safe with eVisas.in?', a:'Absolutely. We use bank-grade 256-bit SSL encryption for all data transmission. Your passport and personal data is stored on ISO 27001 certified servers and is never shared with third parties without your explicit consent. We comply with India\'s IT Act and GDPR for EU travel.'},
-  {q:'What if my visa gets rejected?', a:'If you\'re on our Pro plan, we offer a free re-application with an improved application at no extra service charge. On all plans, we\'ll provide a detailed rejection analysis so you understand what went wrong and how to fix it for your next attempt. Our 98% success rate means rejections are rare.'},
-  {q:'Can I apply for multiple family members at once?', a:'Yes! Our group application feature lets you apply for your entire family or travel group in one go. Fill one primary form and replicate details across members. We offer bulk discounts for groups of 4 or more travelers, and all applications are managed together from a single dashboard.'},
-  {q:'Which payment methods are accepted?', a:'We accept all major Indian payment methods — UPI (PhonePe, GPay, Paytm), Net Banking, Debit Cards, Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options on select cards. All amounts are in INR with zero forex markup. You also get a proper GST invoice for every transaction.'},
-  {q:'Do I need to visit an embassy or consulate?', a:'For e-Visas and most online visas — no! You apply entirely online, upload documents digitally, and receive your visa via email. For countries that require a sticker visa or biometrics (like the UK, US, Schengen), you will need a brief appointment, and we will guide you through scheduling it efficiently.'},
-  {q:'What is the On-Time Guarantee?', a:'We guarantee that your visa will be delivered before your stated travel date. If it isn\'t — and the delay is caused by us or the embassy processing time — we will refund your full service fee, no questions asked. This guarantee excludes cases where documents provided were incorrect or where the applicant did not respond to queries in time.'},
-  {q:'How do I track my application?', a:'After applying, you get a unique tracking ID. Log in to your dashboard at any time to see real-time status updates. We also send automatic notifications via WhatsApp, SMS, and email at every major milestone — from submission to approval to final delivery.'},
+  {q:'Is my data safe with eVisas.in?', a:'Absolutely. We use bank-grade 256-bit SSL encryption for all data transmission. Your passport and personal data is stored on ISO 27001 certified servers and is never shared with third parties without your explicit consent.'},
+  {q:'What if my visa gets rejected?', a:'If you\'re on our Pro plan, we offer a free re-application with an improved application at no extra service charge. On all plans, we\'ll provide a detailed rejection analysis. Our 98% success rate means rejections are rare.'},
+  {q:'Can I apply for multiple family members at once?', a:'Yes! Our group application feature lets you apply for your entire family in one go. Fill one primary form and replicate details across members. We offer bulk discounts for groups of 4 or more.'},
+  {q:'Which payment methods are accepted?', a:'We accept all major Indian payment methods — UPI (PhonePe, GPay, Paytm), Net Banking, Debit Cards, Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All amounts in INR with zero forex markup.'},
+  {q:'Do I need to visit an embassy or consulate?', a:'For e-Visas — no! You apply entirely online. For countries requiring a sticker visa or biometrics (like the UK, US, Schengen), you will need a brief appointment, and we guide you through scheduling it efficiently.'},
+  {q:'What is the On-Time Guarantee?', a:'We guarantee that your visa will be delivered before your stated travel date. If it isn\'t — and the delay is caused by us or embassy processing — we will refund your full service fee, no questions asked.'},
+  {q:'How do I track my application?', a:'After applying, you get a unique tracking ID. Log in to your dashboard at any time to see real-time status updates. We also send automatic notifications via WhatsApp, SMS, and email at every major milestone.'},
 ];
 
-/* ── RENDER FUNCTIONS ───────────────────────── */
+/* ── RENDER FUNCTIONS ── */
 function renderDests() {
   const grid = document.getElementById('destGrid');
   const list = DESTS.filter(d =>
@@ -1460,9 +971,9 @@ function renderDests() {
     d.c.toLowerCase().includes(searchQ.toLowerCase())
   );
   grid.innerHTML = list.map((d, i) => `
-    <div class="dcard reveal-up" style="animation-delay:${i*60}ms" data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+    <div class="dcard reveal-up" style="transition-delay:${i*50}ms" onclick="showCountryDetail('${d.slug}')">
       <div class="dcard-img">
-        <div class="dcard-bg" style="background-image:url('${d.img}');background-size:cover;background-position:center"></div>
+        <div class="dcard-bg" style="background-image:url('${d.img}')"></div>
         <div class="dcard-overlay"></div>
         <div class="dcard-flag">${d.f}</div>
         <span class="dcard-badge ${TYPE_CLS[d.type]}">${TYPE_LABEL[d.type]}</span>
@@ -1476,17 +987,16 @@ function renderDests() {
         </div>
         <div class="dcard-footer">
           <div class="dcard-price"><span class="big">${d.price}</span><small>service fee</small></div>
-          <button class="apply-btn" onclick="applyVisa('${d.c}')">Apply Now</button>
+          <button class="apply-btn" onclick="event.stopPropagation();showCountryDetail('${d.slug}')">View Details →</button>
         </div>
       </div>
     </div>`).join('');
-  if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {max:8, speed:400, glare:true, 'max-glare':0.1});
   initReveal();
 }
 
 function renderSteps() {
   document.getElementById('stepsGrid').innerHTML = STEPS.map((s, i) => `
-    <div class="step-card reveal-up" style="animation-delay:${i*100}ms">
+    <div class="step-card reveal-up" style="transition-delay:${i*80}ms">
       <div class="step-num">0${i+1}</div>
       <div class="step-icon">${s.icon}</div>
       <h3>${s.title}</h3>
@@ -1503,13 +1013,13 @@ function renderBento() {
       <p>${f.desc}</p>
       ${f.extra === 'visual' ? `
         <div class="bento-visual">
-          <div class="bv-row"><span>Application submitted</span><span style="color:#22c55e">✓</span></div>
+          <div class="bv-row"><span>Application submitted</span><span style="color:var(--green)">✓</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:100%"></div></div>
-          <div class="bv-row"><span>Documents verified</span><span style="color:#22c55e">✓</span></div>
+          <div class="bv-row"><span>Documents verified</span><span style="color:var(--green)">✓</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:100%"></div></div>
-          <div class="bv-row"><span>Embassy processing</span><span style="color:#f5a623">⏳</span></div>
+          <div class="bv-row"><span>Embassy processing</span><span style="color:var(--gold)">⏳</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:70%"></div></div>
-          <div class="bv-row"><span>Visa delivery</span><span style="color:#475569">—</span></div>
+          <div class="bv-row"><span>Visa delivery</span><span style="color:var(--text-light)">—</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:0%"></div></div>
         </div>` : `<div class="bento-bg-num">0${FEATURES.indexOf(f)+1}</div>`}
     </div>`).join('');
@@ -1531,7 +1041,7 @@ function renderTestimonials() {
       <div class="stars">★★★★★</div>
       <p class="tcard-text">"${t.text}"</p>
       <div class="tcard-author">
-        <div class="avatar" style="background:${t.color}22;color:${t.color}">${t.name[0]}</div>
+        <div class="avatar" style="background:${t.color}">${t.name[0]}</div>
         <div>
           <div class="author-name">${t.name}</div>
           <div class="author-meta">${t.city} · ${t.flag} ${t.dest}</div>
@@ -1544,27 +1054,23 @@ function renderTestimonials() {
 let isAnnual = false;
 function renderPricing() {
   document.getElementById('pricingGrid').innerHTML = PLANS.map(p => `
-    <div class="pcard ${p.featured ? 'featured' : ''} reveal-up" ${p.featured ? 'data-tilt data-tilt-max="5"' : ''}>
+    <div class="pcard ${p.featured ? 'featured' : ''} reveal-up">
       ${p.featured ? '<div class="featured-ribbon">MOST POPULAR</div>' : ''}
       <div class="plan-tag">${p.tag}</div>
-      <div class="plan-price-row">
-        <div class="plan-amount"><sub>₹</sub>${isAnnual ? p.annualAmt : p.amount}<sup>${isAnnual ? p.annualPer : p.per}</sup></div>
-      </div>
+      <div class="plan-amount"><sub>₹</sub>${isAnnual ? p.annualAmt : p.amount}<sup>${isAnnual ? p.annualPer : p.per}</sup></div>
       <div class="plan-desc">${p.desc}</div>
       <ul class="plan-list">
         ${p.feats.map(f => `<li><span class="li-check">✓</span>${f}</li>`).join('')}
         ${p.missing.map(m => `<li class="dim"><span class="li-cross">✕</span>${m}</li>`).join('')}
       </ul>
-      <button class="plan-cta ${p.ctaCls}">${p.cta}</button>
+      <button class="plan-cta ${p.ctaCls}" onclick="showToast('Redirecting to application... ✈️')">${p.cta}</button>
     </div>`).join('');
-  if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {max:5, speed:400});
   initReveal();
 }
 
 function togglePricing() {
   isAnnual = !isAnnual;
-  const t = document.getElementById('pricingToggle');
-  t.classList.toggle('annual', isAnnual);
+  document.getElementById('pricingToggle').classList.toggle('annual', isAnnual);
   document.getElementById('tlMonthly').classList.toggle('active', !isAnnual);
   document.getElementById('tlAnnual').classList.toggle('active', isAnnual);
   renderPricing();
@@ -1572,9 +1078,9 @@ function togglePricing() {
 
 function renderBlog() {
   document.getElementById('blogGrid').innerHTML = BLOGS.map((b, i) => `
-    <div class="blog-card reveal-up" style="animation-delay:${i*80}ms">
+    <div class="blog-card reveal-up" style="transition-delay:${i*60}ms" onclick="showToast('Blog article coming soon! 📖')">
       <div class="blog-img">
-        <div class="blog-bg" style="background-image:url('${b.img}');background-size:cover;background-position:center"></div>
+        <div class="blog-bg" style="background-image:url('${b.img}')"></div>
         <div class="blog-overlay"></div>
         <span class="blog-emoji">${b.emoji}</span>
         <span class="blog-tag-pill">${b.tag}</span>
@@ -1589,7 +1095,7 @@ function renderBlog() {
         <div class="blog-excerpt">${b.excerpt}</div>
         <div class="blog-footer-row">
           <div class="blog-author-row">
-            <div class="blog-av" style="background:${b.ac}22;color:${b.ac}">${b.author[0]}</div>
+            <div class="blog-av" style="background:${b.ac}">${b.author[0]}</div>
             <span class="blog-author-name">${b.author}</span>
           </div>
           <span class="blog-read-link">Read →</span>
@@ -1601,7 +1107,7 @@ function renderBlog() {
 
 function renderFAQ() {
   document.getElementById('faqWrap').innerHTML = FAQS.map((f, i) => `
-    <div class="faq-item reveal-up" style="animation-delay:${i*60}ms">
+    <div class="faq-item reveal-up" style="transition-delay:${i*50}ms">
       <div class="faq-q" onclick="toggleFAQ(this)">
         <span class="faq-q-text">${f.q}</span>
         <div class="faq-icon">+</div>
@@ -1622,21 +1128,51 @@ function renderMarquee() {
   const items = ['🇦🇪 UAE','🇺🇸 USA','🇫🇷 France','🇸🇬 Singapore','🇹🇭 Thailand','🇬🇧 UK','🇩🇪 Germany','🇮🇩 Indonesia','🇲🇻 Maldives','🇹🇷 Turkey','🇯🇵 Japan','🇦🇺 Australia','🇨🇦 Canada','🇳🇱 Netherlands','🇧🇪 Belgium','🇲🇾 Malaysia','🇰🇪 Kenya','🇧🇭 Bahrain'];
   const track = document.getElementById('marqueeTrack');
   const doubled = [...items, ...items];
-  track.innerHTML = doubled.map((item, i) => {
+  track.innerHTML = doubled.map(item => {
     const [em, ...rest] = item.split(' ');
-    return `<div class="marquee-item"><span>${em}</span>${rest.join(' ')}</div>${i < doubled.length - 1 ? '<div class="marquee-sep">·</div>' : ''}`;
+    return `<div class="marquee-item"><span>${em}</span>${rest.join(' ')}</div><div class="marquee-sep">·</div>`;
   }).join('');
 }
 
-/* ── TOAST ──────────────────────────────────── */
+/* ── COUNTRY DETAIL PAGE ── */
+function showCountryDetail(slug) {
+  const d = DESTS.find(x => x.slug === slug);
+  if (!d) return;
+  document.getElementById('cpHeroImg').src = d.img;
+  document.getElementById('cpFlag').textContent = d.f;
+  document.getElementById('cpName').textContent = d.fullName + ' Visa';
+  document.getElementById('cpVisaType').textContent = TYPE_LABEL[d.type] + ' · ' + d.proc + ' processing · ' + d.val + ' validity';
+  document.getElementById('cpPrice').textContent = d.price;
+  document.getElementById('cpAbout').textContent = d.about;
+  document.getElementById('cpFacts').innerHTML = `
+    <div class="cp-fact"><div class="cp-fact-label">Processing Time</div><div class="cp-fact-value">${d.proc}</div></div>
+    <div class="cp-fact"><div class="cp-fact-label">Validity</div><div class="cp-fact-value">${d.val}</div></div>
+    <div class="cp-fact"><div class="cp-fact-label">Documents Needed</div><div class="cp-fact-value">${d.docs}</div></div>
+    <div class="cp-fact"><div class="cp-fact-label">Success Rate</div><div class="cp-fact-value">${d.successRate}</div></div>
+  `;
+  document.getElementById('cpReqs').innerHTML = d.requirements.map(r => `<li>${r}</li>`).join('');
+  document.getElementById('cpIncludes').innerHTML = d.includes.map(i => `<li>${i}</li>`).join('');
+  const applyBtn = document.getElementById('cpApplyBtn');
+  applyBtn.onclick = () => { showToast('Starting ' + d.c + ' application... ✈️'); setTimeout(openWhatsApp, 1000); };
+
+  const page = document.getElementById('countryPage');
+  page.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  page.scrollTop = 0;
+  window.location.hash = 'visa/' + slug;
+}
+
+function closeCountryPage() {
+  document.getElementById('countryPage').classList.remove('open');
+  document.body.style.overflow = '';
+  history.pushState('', document.title, window.location.pathname);
+}
+
+/* ── TOAST ── */
 let toastTimer;
 function showToast(msg) {
   let t = document.getElementById('toast');
-  if (!t) {
-    t = document.createElement('div');
-    t.id = 'toast'; t.className = 'toast';
-    document.body.appendChild(t);
-  }
+  if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; document.body.appendChild(t); }
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
@@ -1647,12 +1183,7 @@ function openWhatsApp() {
   window.open('https://wa.me/919999999999?text=Hi%2C%20I%20need%20help%20with%20my%20visa%20application', '_blank');
 }
 
-function applyVisa(country) {
-  showToast('Starting ' + country + ' visa application... ✈️');
-  setTimeout(scrollToDest, 800);
-}
-
-/* ── FILTERS ────────────────────────────────── */
+/* ── FILTERS ── */
 function setFilter(el, val) {
   document.querySelectorAll('#heroChips .chip').forEach(c => c.classList.remove('on'));
   el.classList.add('on');
@@ -1674,7 +1205,7 @@ function scrollToDest() {
   document.getElementById('destinations').scrollIntoView({behavior:'smooth'});
 }
 
-/* ── NAV ────────────────────────────────────── */
+/* ── NAV ── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('solid', window.scrollY > 40);
   const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
@@ -1694,88 +1225,17 @@ function closeMobile() {
   document.body.style.overflow = '';
 }
 
-/* ── CUSTOM CURSOR ──────────────────────────── */
-let mx = -100, my = -100, rx = -100, ry = -100;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-function animCursor() {
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  document.getElementById('cursor-dot').style.cssText = `left:${mx}px;top:${my}px`;
-  document.getElementById('cursor-ring').style.cssText = `left:${rx}px;top:${ry}px`;
-  requestAnimationFrame(animCursor);
-}
-animCursor();
-document.querySelectorAll('a,button,[onclick]').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-});
-
-/* ── CANVAS PARTICLES ───────────────────────── */
-(function initParticles() {
-  const canvas = document.getElementById('bgCanvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
-
-  function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  function Particle() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.r = Math.random() * 1.2 + 0.3;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = (Math.random() - 0.5) * 0.3;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    this.hue = Math.random() < 0.6 ? 220 : (Math.random() < 0.5 ? 260 : 40);
-  }
-  for (let i = 0; i < 140; i++) particles.push(new Particle());
-
-  function drawParticles() {
-    ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${p.hue},80%,70%,${p.alpha})`;
-      ctx.fill();
-    });
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(79,142,247,${0.06 * (1 - dist / 100)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(drawParticles);
-  }
-  drawParticles();
-})();
-
-/* ── COUNTER ANIMATION ──────────────────────── */
+/* ── COUNTER ANIMATION ── */
 function animCounters() {
   document.querySelectorAll('[data-target]').forEach(el => {
     const target = parseFloat(el.dataset.target);
     const suf = el.dataset.suf || '';
     const isFloat = el.dataset.float === 'true';
-    const dur = 2200;
+    const dur = 2000;
     const start = performance.now();
     const tick = now => {
       const p = Math.min((now - start) / dur, 1);
-      const ease = 1 - Math.pow(1 - p, 4);
+      const ease = 1 - Math.pow(1 - p, 3);
       const val = isFloat ? (ease * target).toFixed(1) : Math.floor(ease * target);
       el.textContent = val + suf;
       if (p < 1) requestAnimationFrame(tick);
@@ -1784,59 +1244,52 @@ function animCounters() {
   });
 }
 
-/* ── GSAP SCROLL REVEAL ─────────────────────── */
+/* ── CSS SCROLL REVEAL ── */
 function initReveal() {
-  if (!window.gsap || !window.ScrollTrigger) return;
-  gsap.utils.toArray('.reveal-up').forEach(el => {
-    if (el._gsapTriggered) return;
-    el._gsapTriggered = true;
-    gsap.fromTo(el, {opacity:0, y:45}, {
-      opacity:1, y:0, duration:0.85, ease:'power3.out',
-      scrollTrigger: { trigger: el, start:'top 90%', toggleActions:'play none none none' }
-    });
-  });
-  gsap.utils.toArray('.reveal-scale').forEach(el => {
-    if (el._gsapTriggered) return;
-    el._gsapTriggered = true;
-    gsap.fromTo(el, {opacity:0, scale:0.93}, {
-      opacity:1, scale:1, duration:0.9, ease:'power3.out',
-      scrollTrigger: { trigger: el, start:'top 85%', toggleActions:'play none none none' }
-    });
-  });
+  const els = document.querySelectorAll('.reveal-up:not(.visible)');
+  if (!els.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+  els.forEach(el => io.observe(el));
 }
 
-/* ── HERO ENTRANCE (GSAP) ───────────────────── */
+/* ── HERO ENTRANCE ── */
 function heroEntrance() {
-  if (!window.gsap) return;
-  const tl = gsap.timeline({delay: 0.2});
-  tl.to('.hero-badge',  {opacity:1, y:0, duration:0.7, ease:'power3.out'})
-    .to('.hero-title .word span', {opacity:1, y:0, duration:0.9, ease:'power4.out', stagger:0.15}, '-=0.3')
-    .to('.hero-sub',    {opacity:1, y:0, duration:0.7, ease:'power3.out'}, '-=0.4')
-    .to('#heroSearch',  {opacity:1, y:0, duration:0.6, ease:'power3.out'}, '-=0.3')
-    .to('#heroChips',   {opacity:1, y:0, duration:0.6, ease:'power3.out'}, '-=0.4')
-    .to('#heroStats',   {opacity:1, y:0, duration:0.6, ease:'power3.out', onComplete: animCounters}, '-=0.4');
+  const badge = document.querySelector('.hero-badge');
+  const sub = document.querySelector('.hero-sub');
+  const search = document.getElementById('heroSearch');
+  const chips = document.getElementById('heroChips');
+  const stats = document.getElementById('heroStats');
+
+  [badge, sub, search, chips, stats].forEach((el, i) => {
+    if (!el) return;
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200 + i * 150);
+  });
+  setTimeout(animCounters, 900);
 }
 
-/* ── INIT ───────────────────────────────────── */
+/* ── HASH ROUTING ── */
+function handleHash() {
+  const hash = window.location.hash;
+  if (hash.startsWith('#visa/')) {
+    const slug = hash.replace('#visa/', '');
+    showCountryDetail(slug);
+  }
+}
+
+/* ── INIT ── */
 window.addEventListener('load', () => {
-  // Hide loader
-  gsap.to('#loader', {opacity:0, duration:0.6, delay:1.8, onComplete: () => {
-    document.getElementById('loader').style.display = 'none';
-    heroEntrance();
-  }});
-
-  // Lenis smooth scroll
-  if (window.Lenis) {
-    const lenis = new Lenis({duration:1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t))});
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
-  }
-
-  // GSAP plugins
-  if (window.gsap) {
-    gsap.registerPlugin(ScrollTrigger);
-  }
+  setTimeout(() => {
+    const loader = document.getElementById('loader');
+    loader.style.transition = 'opacity 0.5s';
+    loader.style.opacity = '0';
+    setTimeout(() => { loader.style.display = 'none'; heroEntrance(); }, 500);
+  }, 1600);
 
   renderMarquee();
   renderDests();
@@ -1848,16 +1301,13 @@ window.addEventListener('load', () => {
   renderBlog();
   renderFAQ();
 
-  setTimeout(initReveal, 100);
+  setTimeout(initReveal, 200);
+  handleHash();
+});
 
-  // Parallax hero elements
-  if (window.gsap && window.ScrollTrigger) {
-    gsap.to('#hero', {
-      yPercent: 20,
-      ease: 'none',
-      scrollTrigger: { trigger: '#hero', start:'top top', end:'bottom top', scrub: true }
-    });
-  }
+window.addEventListener('hashchange', handleHash);
+document.getElementById('countryPage').addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeCountryPage();
 });
 </script>
 </body>
