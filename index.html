@@ -131,17 +131,23 @@
     .s-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 540px; }
 
     /* ── HERO ── */
+    @keyframes skyDrift {
+      0%   { background-position: 55% 40%; }
+      50%  { background-position: 44% 36%; }
+      100% { background-position: 55% 40%; }
+    }
     #hero {
       position: relative; z-index: 2;
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       padding: 140px 5% 100px; text-align: center; overflow: hidden;
       background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&q=80&fit=crop');
-      background-size: cover; background-position: center 40%;
+      background-size: cover; background-position: 55% 40%;
+      animation: skyDrift 22s ease-in-out infinite;
     }
     #hero::after {
       content: ''; position: absolute; inset: 0; z-index: 0;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.88) 0%, rgba(248,250,255,0.82) 50%, rgba(248,250,255,0.95) 100%);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.48) 0%, rgba(248,250,255,0.60) 45%, rgba(248,250,255,0.88) 100%);
     }
     #hero > * { position: relative; z-index: 1; }
     .hero-badge {
@@ -1172,7 +1178,8 @@ const DESTS = [
 
 const TYPE_LABEL = {evisa:'e-Visa', voa:'Visa on Arrival', sticker:'Sticker Visa', free:'Visa Free'};
 const TYPE_CLS   = {evisa:'be', voa:'bv', sticker:'bs', free:'bf'};
-let activeFilter = 'all', activeRegion = 'all', searchQ = '';
+const POPULAR_SLUGS = ['uae','thailand','singapore','malaysia','indonesia','usa','uk','turkey','maldives'];
+let activeFilter = 'all', activeRegion = 'all', searchQ = '', showingPopular = true;
 
 const STEPS = [
   {icon:'🔍', title:'Search & Select', desc:'Search your destination, compare visa types, check requirements and fees — all in one place.'},
@@ -1291,11 +1298,16 @@ const FAQS = [
 /* ── RENDER FUNCTIONS ── */
 function renderDests() {
   const grid = document.getElementById('destGrid');
-  const list = DESTS.filter(d =>
-    (activeFilter === 'all' || d.type === activeFilter) &&
-    (activeRegion === 'all' || d.region === activeRegion) &&
-    d.c.toLowerCase().includes(searchQ.toLowerCase())
-  );
+  let list;
+  if (showingPopular && activeFilter === 'all' && activeRegion === 'all' && !searchQ) {
+    list = POPULAR_SLUGS.map(s => DESTS.find(d => d.slug === s)).filter(Boolean);
+  } else {
+    list = DESTS.filter(d =>
+      (activeFilter === 'all' || d.type === activeFilter) &&
+      (activeRegion === 'all' || d.region === activeRegion) &&
+      d.c.toLowerCase().includes(searchQ.toLowerCase())
+    );
+  }
   grid.innerHTML = list.map((d, i) => `
     <div class="dcard reveal-up" style="transition-delay:${i*50}ms" onclick="showCountryDetail('${d.slug}')">
       <div class="dcard-img">
@@ -1518,6 +1530,7 @@ function goHome() {
 
 /* ── SHOW ALL COUNTRIES ── */
 function showAllCountries() {
+  showingPopular = false;
   activeFilter = 'all'; activeRegion = 'all'; searchQ = '';
   document.getElementById('searchInput').value = '';
   document.querySelectorAll('#heroChips .chip').forEach(c => c.classList.remove('on'));
@@ -1567,6 +1580,7 @@ function handleSearchKey(e) {
 }
 function commitSearch() {
   document.getElementById('searchSugg').classList.remove('show');
+  showingPopular = false;
   renderDests();
   scrollToDest();
 }
@@ -1693,6 +1707,7 @@ function closePolicyPage() {
 function setFilter(el, val) {
   document.querySelectorAll('#heroChips .chip').forEach(c => c.classList.remove('on'));
   el.classList.add('on');
+  showingPopular = false;
   activeFilter = val;
   renderDests();
   scrollToDest();
@@ -1700,10 +1715,12 @@ function setFilter(el, val) {
 function setRegion(el, val) {
   document.querySelectorAll('#destTabs .tab-btn').forEach(t => t.classList.remove('on'));
   el.classList.add('on');
+  showingPopular = false;
   activeRegion = val;
   renderDests();
 }
 function filterCards() {
+  showingPopular = false;
   searchQ = document.getElementById('searchInput').value;
   renderDests();
 }
