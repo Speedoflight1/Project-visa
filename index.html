@@ -820,15 +820,15 @@
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Google</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://cdn.simpleicons.org/pepsi/004B93" alt="PepsiCo" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
+        <img src="https://cdn.simpleicons.org/pepsico/004B93" alt="PepsiCo" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">PepsiCo</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:130px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://cdn.simpleicons.org/accenture/A100FF" alt="Keith Walking Floor" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
+        <div style="width:32px;height:32px;border-radius:7px;background:#0ea5e9;color:#fff;font-size:0.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;">K</div>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Keith Walking Floor</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:130px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://cdn.simpleicons.org/deloitte/86BC25" alt="Anglo Eastern Group" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
+        <div style="width:32px;height:32px;border-radius:7px;background:#0d9488;color:#fff;font-size:0.9rem;font-weight:800;display:flex;align-items:center;justify-content:center;">A</div>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Anglo Eastern</span>
       </div>
     </div>
@@ -1078,15 +1078,15 @@
         <span style="font-weight:700;color:var(--text)">Google</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://cdn.simpleicons.org/pepsi/004B93" alt="PepsiCo" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
+        <img src="https://cdn.simpleicons.org/pepsico/004B93" alt="PepsiCo" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">PepsiCo</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://cdn.simpleicons.org/accenture/A100FF" alt="Keith Walking Floor" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
+        <div style="width:24px;height:24px;border-radius:5px;background:#0ea5e9;color:#fff;font-size:0.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">K</div>
         <span style="font-weight:700;color:var(--text)">Keith Walking Floor</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://cdn.simpleicons.org/deloitte/86BC25" alt="Anglo Eastern Group" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
+        <div style="width:24px;height:24px;border-radius:5px;background:#0d9488;color:#fff;font-size:0.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">A</div>
         <span style="font-weight:700;color:var(--text)">Anglo Eastern Group</span>
       </div>
     </div>
@@ -1717,14 +1717,10 @@ function renderMarquee() {
     {name:'Infosys',   img:'https://cdn.simpleicons.org/infosys/007CC5'},
     {name:'Wipro',     img:'https://cdn.simpleicons.org/wipro/341C60'},
     {name:'Accenture', img:'https://cdn.simpleicons.org/accenture/A100FF'},
-    {name:'Deloitte',  img:'https://cdn.simpleicons.org/deloitte/86BC25'},
     {name:'Google',    img:'https://cdn.simpleicons.org/google/4285F4'},
-    {name:'Microsoft', img:'https://cdn.simpleicons.org/microsoft/00A4EF'},
-    {name:'IBM',       img:'https://cdn.simpleicons.org/ibm/0F62FE'},
-    {name:'KPMG',      img:'https://cdn.simpleicons.org/kpmg/00338D'},
     {name:'Coursera',  img:'https://cdn.simpleicons.org/coursera/0056D2'},
     {name:'SAP',       img:'https://cdn.simpleicons.org/sap/0FAAFF'},
-    {name:'PepsiCo',   img:'https://cdn.simpleicons.org/pepsi/004B93'},
+    {name:'PepsiCo',   img:'https://cdn.simpleicons.org/pepsico/004B93'},
   ];
   const track = document.getElementById('marqueeTrack');
   const doubled = [...companies, ...companies];
