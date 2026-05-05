@@ -222,16 +222,26 @@
 
     /* ── MARQUEE ── */
     .marquee-section {
-      position: relative; z-index: 2; padding: 24px 0; overflow: hidden;
+      position: relative; z-index: 2; padding: 0; overflow: hidden;
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       background: #fff;
     }
-    .marquee-track { display: flex; gap: 2.5rem; animation: marquee 28s linear infinite; width: max-content; }
+    .marquee-label {
+      text-align: center; padding: 10px 0 6px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--text-light); text-transform: uppercase;
+    }
+    .marquee-track { display: flex; gap: 0; animation: marquee 36s linear infinite; width: max-content; padding: 10px 0 14px; }
     .marquee-track:hover { animation-play-state: paused; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .marquee-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; padding: 0 0.75rem; }
-    .marquee-item span { font-size: 1.4rem; }
-    .marquee-sep { color: var(--border); font-size: 1rem; }
+    .marquee-item {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+      white-space: nowrap; padding: 0 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .marquee-item img { height: 22px; width: auto; object-fit: contain; display: block; }
+    .marquee-sep { display: none; }
 
     /* ── DESTINATIONS ── */
     .dest-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
@@ -716,6 +726,7 @@
 
 <!-- MARQUEE -->
 <div class="marquee-section">
+  <div class="marquee-label">Trusted by leading companies</div>
   <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
@@ -797,27 +808,27 @@
     </div>
     <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;align-items:center;" class="reveal-up">
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/tcs.com" alt="TCS" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/tcs.com" alt="TCS" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">TCS</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/coursera.org" alt="Coursera" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/coursera.org" alt="Coursera" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Coursera</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/google.com" alt="Google" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/google.com" alt="Google" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Google</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">PepsiCo</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:130px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/keithwalkingfloor.com" alt="Keith Walking Floor" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/keithwalkingfloor.com" alt="Keith Walking Floor" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Keith Walking Floor</span>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:130px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/angloeastern.com" alt="Anglo Eastern Group" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/angloeastern.com" alt="Anglo Eastern Group" style="height:32px;width:auto;object-fit:contain;" onerror="logoFallback(this)"/>
         <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Anglo Eastern</span>
       </div>
     </div>
@@ -1055,27 +1066,27 @@
     <div class="s-tag" style="justify-content:center;margin-bottom:0.5rem"><span class="line"></span> Trusted By <span class="line"></span></div>
     <div class="b2b-clients" style="gap:1.5rem;">
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://logo.clearbit.com/tcs.com" alt="TCS" style="height:24px;width:auto;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/tcs.com" alt="TCS" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">TCS</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://logo.clearbit.com/coursera.org" alt="Coursera" style="height:24px;width:auto;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/coursera.org" alt="Coursera" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">Coursera</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://logo.clearbit.com/google.com" alt="Google" style="height:24px;width:auto;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/google.com" alt="Google" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">Google</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" style="height:24px;width:auto;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">PepsiCo</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://logo.clearbit.com/keithwalkingfloor.com" alt="Keith Walking Floor" style="height:24px;width:auto;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/keithwalkingfloor.com" alt="Keith Walking Floor" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">Keith Walking Floor</span>
       </div>
       <div class="b2b-client-badge" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.25rem;">
-        <img src="https://logo.clearbit.com/angloeastern.com" alt="Anglo Eastern Group" style="height:24px;width:auto;" onerror="this.style.display='none'"/>
+        <img src="https://logo.clearbit.com/angloeastern.com" alt="Anglo Eastern Group" style="height:24px;width:auto;" onerror="logoFallback(this)"/>
         <span style="font-weight:700;color:var(--text)">Anglo Eastern Group</span>
       </div>
     </div>
@@ -1701,13 +1712,25 @@ function toggleFAQ(el) {
 }
 
 function renderMarquee() {
-  const items = ['🇦🇪 UAE','🇺🇸 USA','🇫🇷 France','🇸🇬 Singapore','🇹🇭 Thailand','🇬🇧 UK','🇩🇪 Germany','🇮🇩 Indonesia','🇲🇻 Maldives','🇹🇷 Turkey','🇯🇵 Japan','🇦🇺 Australia','🇨🇦 Canada','🇳🇱 Netherlands','🇧🇪 Belgium','🇲🇾 Malaysia','🇰🇪 Kenya','🇧🇭 Bahrain'];
+  const companies = [
+    {name:'TCS', domain:'tcs.com'},
+    {name:'Infosys', domain:'infosys.com'},
+    {name:'Wipro', domain:'wipro.com'},
+    {name:'Accenture', domain:'accenture.com'},
+    {name:'Deloitte', domain:'deloitte.com'},
+    {name:'Google', domain:'google.com'},
+    {name:'PepsiCo', domain:'pepsico.com'},
+    {name:'KPMG', domain:'kpmg.com'},
+    {name:'McKinsey', domain:'mckinsey.com'},
+    {name:'Coursera', domain:'coursera.org'},
+    {name:'Anglo Eastern', domain:'angloeastern.com'},
+    {name:'Keith Walking Floor', domain:'keithwalkingfloor.com'},
+  ];
   const track = document.getElementById('marqueeTrack');
-  const doubled = [...items, ...items];
-  track.innerHTML = doubled.map(item => {
-    const [em, ...rest] = item.split(' ');
-    return `<div class="marquee-item"><span>${em}</span>${rest.join(' ')}</div><div class="marquee-sep">·</div>`;
-  }).join('');
+  const doubled = [...companies, ...companies];
+  track.innerHTML = doubled.map(c =>
+    `<div class="marquee-item"><img src="https://logo.clearbit.com/${c.domain}" alt="${c.name}" onerror="logoFallback(this)"/>${c.name}</div>`
+  ).join('');
 }
 
 /* ── COUNTRY DETAIL PAGE ── */
@@ -1753,6 +1776,15 @@ function showToast(msg) {
   t.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function logoFallback(el) {
+  const alt = el.alt || '?';
+  const init = alt[0].toUpperCase();
+  const palette = ['#2563eb','#7c3aed','#16a34a','#d97706','#0d9488','#dc2626','#0ea5e9'];
+  const color = palette[alt.charCodeAt(0) % palette.length];
+  const h = el.style.height || '32px';
+  el.outerHTML = `<div style="width:${h};height:${h};border-radius:7px;background:${color};color:#fff;font-size:0.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${init}</div>`;
 }
 
 function openWhatsApp(msg) {
