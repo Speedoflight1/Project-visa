@@ -217,18 +217,22 @@
     .scroll-hint-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--text-light)); }
     @keyframes scrollBounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
-    /* ── MARQUEE ── */
+    /* ── MARQUEE (Corporate Trust Strip) ── */
     .marquee-section {
-      position: relative; z-index: 2; padding: 24px 0; overflow: hidden;
+      position: relative; z-index: 2; padding: 18px 0; overflow: hidden;
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: #fff;
+      background: linear-gradient(90deg, #f8faff, #eff6ff, #f8faff);
     }
-    .marquee-track { display: flex; gap: 2.5rem; animation: marquee 28s linear infinite; width: max-content; }
+    .marquee-inner { display: flex; align-items: center; gap: 2rem; padding: 0 5%; max-width: 1400px; margin: 0 auto; }
+    .marquee-label { white-space: nowrap; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); line-height: 1.4; flex-shrink: 0; }
+    .marquee-divider { width: 1px; height: 30px; background: var(--border); flex-shrink: 0; }
+    .marquee-overflow { overflow: hidden; flex: 1; }
+    .marquee-track { display: flex; gap: 2rem; animation: marquee 32s linear infinite; width: max-content; }
     .marquee-track:hover { animation-play-state: paused; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .marquee-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; padding: 0 0.75rem; }
-    .marquee-item span { font-size: 1.4rem; }
-    .marquee-sep { color: var(--border); font-size: 1rem; }
+    .marquee-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); white-space: nowrap; padding: 0 1rem; }
+    .marquee-item img { height: 18px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.55; }
+    .marquee-sep { color: var(--border); font-size: 1.2rem; line-height: 1; align-self: center; }
 
     /* ── DESTINATIONS ── */
     .dest-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
@@ -250,7 +254,7 @@
     .dcard-badge { position: absolute; top: 12px; right: 12px; padding: 0.22rem 0.6rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-radius: 6px; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.4px; color: var(--text); }
     .be { color: #16a34a; } .bv { color: #d97706; } .bs { color: #7c3aed; } .bf { color: #2563eb; }
     .dcard-body { padding: 1rem 1.25rem 1.25rem; }
-    .dcard-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+    .dcard-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; color: var(--text); }
     .dcard-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; }
     .dmeta { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--text-muted); background: var(--surface-alt); padding: 0.2rem 0.55rem; border-radius: 6px; }
     .dcard-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
@@ -727,9 +731,15 @@
   <div class="scroll-hint"><div class="scroll-hint-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- MARQUEE -->
+<!-- CORPORATE TRUST STRIP -->
 <div class="marquee-section">
-  <div class="marquee-track" id="marqueeTrack"></div>
+  <div class="marquee-inner">
+    <div class="marquee-label">Trusted by<br/>Corporates</div>
+    <div class="marquee-divider"></div>
+    <div class="marquee-overflow">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </div>
 </div>
 
 <!-- DESTINATIONS -->
@@ -801,44 +811,6 @@
   </div>
 </section>
 
-<!-- TRUSTED BY (CORPORATE LOGOS) -->
-<section class="s-sm" id="trustedBy" style="background:#fff;border-top:1px solid var(--border);">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:2rem;" class="reveal-up">
-      <div class="s-tag" style="justify-content:center"><span class="line"></span> Trusted by Leading Corporates <span class="line"></span></div>
-      <p style="font-size:0.88rem;color:var(--text-muted);margin-top:0.5rem;">Managing employee travel visas for India's top companies</p>
-    </div>
-    <div style="display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;align-items:center;" class="reveal-up">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/tcs.com" alt="TCS" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">TCS</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/coursera.org" alt="Coursera" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Coursera</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/google.com" alt="Google" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Google</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:110px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/pepsico.com" alt="PepsiCo" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">PepsiCo</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:130px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/keithwalkingfloor.com" alt="Keith Walking Floor" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Keith Walking Floor</span>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;padding:1rem 1.5rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:14px;min-width:130px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''">
-        <img src="https://logo.clearbit.com/angloeastern.com" alt="Anglo Eastern Group" style="height:32px;width:auto;object-fit:contain;" onerror="this.style.display='none'"/>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">Anglo Eastern</span>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:1.5rem;" class="reveal-up">
-      <button onclick="showB2BPage()" style="font-size:0.85rem;color:var(--blue);font-weight:600;background:none;border:1.5px solid rgba(37,99,235,0.25);border-radius:8px;padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;font-family:inherit;" onmouseover="this.style.background='var(--blue-bg)'" onmouseout="this.style.background='none'">Corporate Plans & Custom Quotes →</button>
-    </div>
-  </div>
-</section>
 
 <!-- PRICING -->
 <section class="s" id="pricing">
@@ -846,7 +818,7 @@
     <div class="reveal-up">
       <div class="s-tag"><span class="line"></span> Simple Pricing</div>
       <div class="s-title">Secure your visa starting at just <span class="grad-text">₹499</span></div>
-      <p class="s-sub">No hidden fees. All amounts in Indian Rupees. Remaining government/embassy fees are only charged once your visa is approved.</p>
+      <p class="s-sub">No hidden fees. Complete fees are only charged once your visa is approved.</p>
     </div>
     <div class="pgrid" id="pricingGrid"></div>
     
@@ -1269,7 +1241,7 @@ const DESTS = [
   {
     c:'UAE', slug:'uae', f:'🇦🇪', type:'evisa', region:'middle-east',
     val:'30 days', docs:'3 docs', proc:'24 hrs', price:'₹999',
-    img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=70&fit=crop',
     fullName:'United Arab Emirates', capital:'Abu Dhabi', currency:'AED (Dirham)', language:'Arabic',
     successRate:'99%',
     about:'The UAE e-Visa lets you explore the dazzling cities of Dubai and Abu Dhabi. Issued entirely online, it is delivered to your email within 24 hours. Perfect for tourism, business, and transit.',
@@ -1279,7 +1251,7 @@ const DESTS = [
   {
     c:'Thailand', slug:'thailand', f:'🇹🇭', type:'voa', region:'asia',
     val:'30 days', docs:'2 docs', proc:'On arrival', price:'₹499',
-    img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=70&fit=crop',
     fullName:'Thailand', capital:'Bangkok', currency:'THB (Baht)', language:'Thai',
     successRate:'98%',
     about:'Indians can get a Visa on Arrival at major Thai airports. We prepare all your documents in advance so you sail through the VOA counter in minutes — no stress, no confusion.',
@@ -1289,7 +1261,7 @@ const DESTS = [
   {
     c:'France', slug:'france', f:'🇫🇷', type:'sticker', region:'europe',
     val:'90 days', docs:'8 docs', proc:'15 days', price:'₹1,999',
-    img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&q=70&fit=crop',
     fullName:'France (Schengen)', capital:'Paris', currency:'EUR (Euro)', language:'French',
     successRate:'96%',
     about:'A France Schengen visa allows travel across 27 European countries. Our experts handle your entire application — from document compilation to appointment scheduling — giving you the best chance of approval.',
@@ -1299,7 +1271,7 @@ const DESTS = [
   {
     c:'USA', slug:'usa', f:'🇺🇸', type:'sticker', region:'americas',
     val:'10 years', docs:'6 docs', proc:'30 days', price:'₹3,999',
-    img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=400&q=70&fit=crop',
     fullName:'United States of America', capital:'Washington D.C.', currency:'USD (Dollar)', language:'English',
     successRate:'87%',
     about:'The US B1/B2 tourist & business visa is valid for 10 years with multiple entries. Our mock interview tool and expert coaching dramatically improve your approval odds — our clients have an 87% success rate vs 68% national average.',
@@ -1309,7 +1281,7 @@ const DESTS = [
   {
     c:'Singapore', slug:'singapore', f:'🇸🇬', type:'evisa', region:'asia',
     val:'30 days', docs:'3 docs', proc:'3 days', price:'₹999',
-    img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=400&q=70&fit=crop',
     fullName:'Singapore', capital:'Singapore City', currency:'SGD (Dollar)', language:'English',
     successRate:'97%',
     about:'Singapore\'s e-Visa (EPAS) is issued online and linked to your passport electronically — no sticker, no stamp needed until arrival. Processed in 3 business days, perfect for short Asia getaways.',
@@ -1319,7 +1291,7 @@ const DESTS = [
   {
     c:'Maldives', slug:'maldives', f:'🇲🇻', type:'voa', region:'asia',
     val:'30 days', docs:'1 doc', proc:'On arrival', price:'₹999',
-    img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400&q=70&fit=crop',
     fullName:'Maldives', capital:'Malé', currency:'MVR (Rufiyaa)', language:'Dhivehi',
     successRate:'100%',
     about:'Indians receive a free 30-day Visa on Arrival in the Maldives — no pre-approval needed. We provide a document checklist and travel guide so you\'re fully prepared for your island getaway.',
@@ -1329,7 +1301,7 @@ const DESTS = [
   {
     c:'Turkey', slug:'turkey', f:'🇹🇷', type:'evisa', region:'middle-east',
     val:'90 days', docs:'2 docs', proc:'24 hrs', price:'₹999',
-    img:'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400&q=70&fit=crop',
     fullName:'Turkey', capital:'Ankara', currency:'TRY (Lira)', language:'Turkish',
     successRate:'98%',
     about:'Turkey\'s e-Visa grants a single or multiple entry visit valid for 90 days. It is issued within 24 hours and allows you to explore Istanbul, Cappadocia, the Turquoise Coast, and more.',
@@ -1339,7 +1311,7 @@ const DESTS = [
   {
     c:'UK', slug:'uk', f:'🇬🇧', type:'sticker', region:'europe',
     val:'6 months', docs:'7 docs', proc:'21 days', price:'₹2,999',
-    img:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=70&fit=crop',
     fullName:'United Kingdom', capital:'London', currency:'GBP (Pound)', language:'English',
     successRate:'91%',
     about:'The UK Standard Visitor Visa allows Indians to visit for tourism, business, or family for up to 6 months. Our experts craft a strong application with a compelling cover letter that greatly increases approval odds.',
@@ -1349,7 +1321,7 @@ const DESTS = [
   {
     c:'Indonesia', slug:'indonesia', f:'🇮🇩', type:'voa', region:'asia',
     val:'30 days', docs:'2 docs', proc:'On arrival', price:'₹999',
-    img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=70&fit=crop',
     fullName:'Indonesia', capital:'Jakarta', currency:'IDR (Rupiah)', language:'Bahasa Indonesia',
     successRate:'99%',
     about:'Indonesia\'s B211A visa-on-arrival covers Bali and other major gateways. Indians can also apply online via e-VOA before flying. We handle preparation and pre-fill all required documents.',
@@ -1359,7 +1331,7 @@ const DESTS = [
   {
     c:'Germany', slug:'germany', f:'🇩🇪', type:'sticker', region:'europe',
     val:'90 days', docs:'8 docs', proc:'15 days', price:'₹2,999',
-    img:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&q=70&fit=crop',
     fullName:'Germany (Schengen)', capital:'Berlin', currency:'EUR (Euro)', language:'German',
     successRate:'95%',
     about:'A Germany Schengen visa opens doors to 27 European countries. VFS appointments in India can be hard to get — we secure them for you while building a flawless application.',
@@ -1369,7 +1341,7 @@ const DESTS = [
   {
     c:'Malaysia', slug:'malaysia', f:'🇲🇾', type:'evisa', region:'asia',
     val:'30 days', docs:'3 docs', proc:'3 days', price:'₹1,999',
-    img:'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=400&q=70&fit=crop',
     fullName:'Malaysia', capital:'Kuala Lumpur', currency:'MYR (Ringgit)', language:'Bahasa Malaysia',
     successRate:'97%',
     about:'Malaysia\'s eNTRI and e-Visa are fully online. Most Indians qualify for eNTRI (free, 15 days). We help you choose the right visa type and ensure your application is error-free.',
@@ -1379,38 +1351,38 @@ const DESTS = [
   {
     c:'Kenya', slug:'kenya', f:'🇰🇪', type:'evisa', region:'africa',
     val:'90 days', docs:'3 docs', proc:'3 days', price:'₹1,999',
-    img:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80&fit=crop',
+    img:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=70&fit=crop',
     fullName:'Kenya', capital:'Nairobi', currency:'KES (Shilling)', language:'Swahili & English',
     successRate:'97%',
     about:'Kenya\'s eCitizen e-Visa is perfect for Indian safari lovers and nature enthusiasts. Valid for 90 days, it covers single entry to Nairobi, Mombasa, Masai Mara, and beyond.',
     requirements:['Valid Indian passport (min. 6 months validity)','Digital passport photo','Return air ticket','Yellow fever vaccination certificate','Hotel or safari lodge booking','Bank statement (last 3 months)'],
     includes:['eCitizen application filing','Vaccination guidance','Safari booking tips','WhatsApp status updates','e-Visa email delivery'],
   },
-  {c:'Japan',slug:'japan',f:'🇯🇵',type:'sticker',region:'asia',val:'15 days',docs:'6 docs',proc:'5 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80&fit=crop',fullName:'Japan',capital:'Tokyo',currency:'JPY (Yen)',language:'Japanese',successRate:'93%',about:'Japan tourist visa for Indians requires a sticker visa from the Japanese consulate. Our experts compile every document to maximize approval chances for this dream destination.',requirements:['Valid passport (min 6 months validity)','Recent photo (45×45mm, white bg)','Confirmed flight & hotel bookings','Bank statement (min ₹2 lakh)','ITR / salary slips (3 months)','Employment letter & leave approval'],includes:['Complete document compilation','Application form filling','Consulate submission','Day-by-day itinerary creation','WhatsApp tracking']},
-  {c:'Vietnam',slug:'vietnam',f:'🇻🇳',type:'evisa',region:'asia',val:'90 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1557456170-0cf4f4d0d362?w=800&q=80&fit=crop',fullName:'Vietnam',capital:'Hanoi',currency:'VND (Dong)',language:'Vietnamese',successRate:'98%',about:'Vietnam e-Visa allows Indians to explore Ha Long Bay, Hoi An, and Ho Chi Minh City. Issued fully online and valid for 90 days with multiple entries.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel booking or itinerary'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
-  {c:'Sri Lanka',slug:'srilanka',f:'🇱🇰',type:'evisa',region:'asia',val:'30 days',docs:'3 docs',proc:'48 hrs',price:'₹499',img:'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80&fit=crop',fullName:'Sri Lanka',capital:'Colombo',currency:'LKR (Rupee)',language:'Sinhala',successRate:'99%',about:'Sri Lanka ETA (Electronic Travel Authorization) is issued online for Indian tourists. Explore beaches, temples, and tea plantations with this easy online visa.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel or host letter'],includes:['ETA application filing','Document review','Email delivery','24/7 WhatsApp support']},
+  {c:'Japan',slug:'japan',f:'🇯🇵',type:'sticker',region:'asia',val:'15 days',docs:'6 docs',proc:'5 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=70&fit=crop',fullName:'Japan',capital:'Tokyo',currency:'JPY (Yen)',language:'Japanese',successRate:'93%',about:'Japan tourist visa for Indians requires a sticker visa from the Japanese consulate. Our experts compile every document to maximize approval chances for this dream destination.',requirements:['Valid passport (min 6 months validity)','Recent photo (45×45mm, white bg)','Confirmed flight & hotel bookings','Bank statement (min ₹2 lakh)','ITR / salary slips (3 months)','Employment letter & leave approval'],includes:['Complete document compilation','Application form filling','Consulate submission','Day-by-day itinerary creation','WhatsApp tracking']},
+  {c:'Vietnam',slug:'vietnam',f:'🇻🇳',type:'evisa',region:'asia',val:'90 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1557456170-0cf4f4d0d362?w=400&q=70&fit=crop',fullName:'Vietnam',capital:'Hanoi',currency:'VND (Dong)',language:'Vietnamese',successRate:'98%',about:'Vietnam e-Visa allows Indians to explore Ha Long Bay, Hoi An, and Ho Chi Minh City. Issued fully online and valid for 90 days with multiple entries.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel booking or itinerary'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
+  {c:'Sri Lanka',slug:'srilanka',f:'🇱🇰',type:'evisa',region:'asia',val:'30 days',docs:'3 docs',proc:'48 hrs',price:'₹499',img:'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=400&q=70&fit=crop',fullName:'Sri Lanka',capital:'Colombo',currency:'LKR (Rupee)',language:'Sinhala',successRate:'99%',about:'Sri Lanka ETA (Electronic Travel Authorization) is issued online for Indian tourists. Explore beaches, temples, and tea plantations with this easy online visa.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel or host letter'],includes:['ETA application filing','Document review','Email delivery','24/7 WhatsApp support']},
   {c:'Cambodia',slug:'cambodia',f:'🇰🇭',type:'evisa',region:'asia',val:'30 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1555652736-e92021d28a10?w=600&q=80',fullName:'Cambodia',capital:'Phnom Penh',currency:'KHR (Riel)',language:'Khmer',successRate:'99%',about:'Cambodia e-Visa is perfect for visiting Angkor Wat and the temples of Siem Reap. Issued online, delivered to your email, and accepted at all major entry points.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (4×6cm, white bg)','Return air ticket'],includes:['e-Visa application filing','Photo quality check','Email delivery','Entry tips for Siem Reap']},
-  {c:'Philippines',slug:'philippines',f:'🇵🇭',type:'free',region:'asia',val:'30 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80&fit=crop',fullName:'Philippines',capital:'Manila',currency:'PHP (Peso)',language:'Filipino',successRate:'100%',about:'Indians receive a free 30-day Visa on Arrival in the Philippines. We prepare a comprehensive travel kit so you clear immigration quickly and start exploring the islands immediately.',requirements:['Valid passport (min 6 months validity)','Return/onward air ticket','Proof of sufficient funds','Hotel or host confirmation'],includes:['Pre-arrival document checklist','Immigration guide','Island travel tips','24/7 WhatsApp support']},
+  {c:'Philippines',slug:'philippines',f:'🇵🇭',type:'free',region:'asia',val:'30 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=400&q=70&fit=crop',fullName:'Philippines',capital:'Manila',currency:'PHP (Peso)',language:'Filipino',successRate:'100%',about:'Indians receive a free 30-day Visa on Arrival in the Philippines. We prepare a comprehensive travel kit so you clear immigration quickly and start exploring the islands immediately.',requirements:['Valid passport (min 6 months validity)','Return/onward air ticket','Proof of sufficient funds','Hotel or host confirmation'],includes:['Pre-arrival document checklist','Immigration guide','Island travel tips','24/7 WhatsApp support']},
   {c:'South Korea',slug:'southkorea',f:'🇰🇷',type:'sticker',region:'asia',val:'30 days',docs:'5 docs',proc:'7 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1617369120004-4fc70312c5e6?w=600&q=80',fullName:'South Korea',capital:'Seoul',currency:'KRW (Won)',language:'Korean',successRate:'91%',about:'South Korea tourist visa (C-3) lets you explore Seoul, Jeju Island, and the K-culture scene. Indians with a valid US, UK, or Schengen visa may enter visa-free — we check your eligibility first.',requirements:['Valid passport (min 6 months validity)','Passport photo (3.5×4.5cm, white bg)','Bank statement (min ₹1.5 lakh)','Return flight & hotel booking','Employment letter / business proof','ITR for last 2 years'],includes:['Eligibility check (visa-free assessment)','Application form filling','Document compilation','Consulate submission coordination','WhatsApp tracking']},
-  {c:'Nepal',slug:'nepal',f:'🇳🇵',type:'free',region:'asia',val:'No limit',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=800&q=80&fit=crop',fullName:'Nepal',capital:'Kathmandu',currency:'NPR (Rupee)',language:'Nepali',successRate:'100%',about:'Indians do not need a visa to enter Nepal — only a valid government ID is required. We provide a complete Nepal travel guide covering trekking permits, TIMS card, and cultural tips.',requirements:['Valid Indian passport OR any government-issued photo ID','Valid Indian currency (Nepal accepts INR notes up to ₹100)'],includes:['Nepal travel guide','Trekking permit guidance (TIMS/ACAP)','Currency & customs tips','Recommended itineraries','24/7 WhatsApp helpline']},
-  {c:'Italy',slug:'italy',f:'🇮🇹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80&fit=crop',fullName:'Italy (Schengen)',capital:'Rome',currency:'EUR (Euro)',language:'Italian',successRate:'94%',about:'An Italy Schengen visa lets you travel across all 27 Schengen countries. Our experts handle every document and can secure fast VFS appointments, giving you the best chance of approval.',requirements:['Valid passport (min 3 months beyond return date)','Two recent Schengen-spec photos','Confirmed return flight & accommodation','Travel insurance (min €30,000 cover)','Last 3 months bank statements','Salary slips & ITR','Employment / leave letter'],includes:['VFS appointment booking','Complete document compilation','Application form filling','Expert review','Embassy submission support']},
-  {c:'Spain',slug:'spain',f:'🇪🇸',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80&fit=crop',fullName:'Spain (Schengen)',capital:'Madrid',currency:'EUR (Euro)',language:'Spanish',successRate:'93%',about:'Spain Schengen visa opens up all of Europe. From Barcelona\'s architecture to Madrid\'s museums, our experts craft a strong application to get you there.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flight & hotel confirmations','Travel insurance (€30,000 minimum)','Bank statements (3 months)','ITR & salary slips','Leave sanction letter'],includes:['VFS appointment scheduling','Document compilation & review','Application form filling','Cover letter drafting','WhatsApp status updates']},
-  {c:'Netherlands',slug:'netherlands',f:'🇳🇱',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&q=80&fit=crop',fullName:'Netherlands (Schengen)',capital:'Amsterdam',currency:'EUR (Euro)',language:'Dutch',successRate:'95%',about:'Netherlands Schengen visa for Indians. Amsterdam, tulip fields, Keukenhof — our experts compile a flawless application and guide you through VFS submission.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (€30,000 cover)','Bank statements (3 months)','Employment & leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert document review','Embassy coordination']},
-  {c:'Greece',slug:'greece',f:'🇬🇷',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&q=80&fit=crop',fullName:'Greece (Schengen)',capital:'Athens',currency:'EUR (Euro)',language:'Greek',successRate:'94%',about:'Greece Schengen visa lets you island-hop between Santorini, Mykonos, and Crete while covering all of Europe. Our team ensures a thorough, rejection-proof application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & island accommodation','Travel insurance (€30,000 cover)','Bank statements (3 months)','Salary slips & ITR'],includes:['VFS appointment booking','Document compilation & review','Application form filling','Island itinerary creation','WhatsApp updates']},
-  {c:'Switzerland',slug:'switzerland',f:'🇨🇭',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',fullName:'Switzerland (Schengen)',capital:'Bern',currency:'CHF (Franc)',language:'German/French',successRate:'92%',about:'Switzerland Schengen visa for the Alps, Geneva, and Zurich. Swiss consulate requires meticulous documentation — our experts know exactly what they want.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Flight & hotel confirmations','Travel insurance (€30,000 cover)','Bank statements (last 6 months)','ITR, salary slips, employment letter'],includes:['VFS appointment booking','Complete document preparation','Application form filling','Switzerland-specific cover letter','Post-submission tracking']},
+  {c:'Nepal',slug:'nepal',f:'🇳🇵',type:'free',region:'asia',val:'No limit',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=400&q=70&fit=crop',fullName:'Nepal',capital:'Kathmandu',currency:'NPR (Rupee)',language:'Nepali',successRate:'100%',about:'Indians do not need a visa to enter Nepal — only a valid government ID is required. We provide a complete Nepal travel guide covering trekking permits, TIMS card, and cultural tips.',requirements:['Valid Indian passport OR any government-issued photo ID','Valid Indian currency (Nepal accepts INR notes up to ₹100)'],includes:['Nepal travel guide','Trekking permit guidance (TIMS/ACAP)','Currency & customs tips','Recommended itineraries','24/7 WhatsApp helpline']},
+  {c:'Italy',slug:'italy',f:'🇮🇹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&q=70&fit=crop',fullName:'Italy (Schengen)',capital:'Rome',currency:'EUR (Euro)',language:'Italian',successRate:'94%',about:'An Italy Schengen visa lets you travel across all 27 Schengen countries. Our experts handle every document and can secure fast VFS appointments, giving you the best chance of approval.',requirements:['Valid passport (min 3 months beyond return date)','Two recent Schengen-spec photos','Confirmed return flight & accommodation','Travel insurance (min €30,000 cover)','Last 3 months bank statements','Salary slips & ITR','Employment / leave letter'],includes:['VFS appointment booking','Complete document compilation','Application form filling','Expert review','Embassy submission support']},
+  {c:'Spain',slug:'spain',f:'🇪🇸',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=400&q=70&fit=crop',fullName:'Spain (Schengen)',capital:'Madrid',currency:'EUR (Euro)',language:'Spanish',successRate:'93%',about:'Spain Schengen visa opens up all of Europe. From Barcelona\'s architecture to Madrid\'s museums, our experts craft a strong application to get you there.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flight & hotel confirmations','Travel insurance (€30,000 minimum)','Bank statements (3 months)','ITR & salary slips','Leave sanction letter'],includes:['VFS appointment scheduling','Document compilation & review','Application form filling','Cover letter drafting','WhatsApp status updates']},
+  {c:'Netherlands',slug:'netherlands',f:'🇳🇱',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=400&q=70&fit=crop',fullName:'Netherlands (Schengen)',capital:'Amsterdam',currency:'EUR (Euro)',language:'Dutch',successRate:'95%',about:'Netherlands Schengen visa for Indians. Amsterdam, tulip fields, Keukenhof — our experts compile a flawless application and guide you through VFS submission.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (€30,000 cover)','Bank statements (3 months)','Employment & leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert document review','Embassy coordination']},
+  {c:'Greece',slug:'greece',f:'🇬🇷',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=400&q=70&fit=crop',fullName:'Greece (Schengen)',capital:'Athens',currency:'EUR (Euro)',language:'Greek',successRate:'94%',about:'Greece Schengen visa lets you island-hop between Santorini, Mykonos, and Crete while covering all of Europe. Our team ensures a thorough, rejection-proof application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & island accommodation','Travel insurance (€30,000 cover)','Bank statements (3 months)','Salary slips & ITR'],includes:['VFS appointment booking','Document compilation & review','Application form filling','Island itinerary creation','WhatsApp updates']},
+  {c:'Switzerland',slug:'switzerland',f:'🇨🇭',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=70&fit=crop',fullName:'Switzerland (Schengen)',capital:'Bern',currency:'CHF (Franc)',language:'German/French',successRate:'92%',about:'Switzerland Schengen visa for the Alps, Geneva, and Zurich. Swiss consulate requires meticulous documentation — our experts know exactly what they want.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Flight & hotel confirmations','Travel insurance (€30,000 cover)','Bank statements (last 6 months)','ITR, salary slips, employment letter'],includes:['VFS appointment booking','Complete document preparation','Application form filling','Switzerland-specific cover letter','Post-submission tracking']},
   {c:'Austria',slug:'austria',f:'🇦🇹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1609825488888-3a766db05542?w=600&q=80',fullName:'Austria (Schengen)',capital:'Vienna',currency:'EUR (Euro)',language:'German',successRate:'93%',about:'Austria Schengen visa unlocks Vienna, Salzburg, and the Alps. Our experts prepare every document to meet Austrian consulate standards and handle VFS appointment booking.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flights & accommodation','Travel insurance (€30,000 minimum)','Bank statements & ITR','Employment/leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert review','WhatsApp tracking']},
   {c:'Portugal',slug:'portugal',f:'🇵🇹',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80',fullName:'Portugal (Schengen)',capital:'Lisbon',currency:'EUR (Euro)',language:'Portuguese',successRate:'95%',about:'Portugal has one of the fastest Schengen visa processing times and highest approval rates for Indians. Explore Lisbon, Porto, and the Algarve with our expert-compiled application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed return flights & stays','Travel insurance (€30,000 cover)','Bank statements (3 months)','Salary slips & employment letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert review','WhatsApp updates']},
   {c:'Bahrain',slug:'bahrain',f:'🇧🇭',type:'evisa',region:'middle-east',val:'14 days',docs:'2 docs',proc:'48 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',fullName:'Bahrain',capital:'Manama',currency:'BHD (Dinar)',language:'Arabic',successRate:'99%',about:'Bahrain e-Visa is one of the easiest Gulf visas for Indians — issued entirely online in 48 hours. Perfect for a weekend trip from any Indian city.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo (white bg)','Return air ticket or onward travel proof'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
   {c:'Oman',slug:'oman',f:'🇴🇲',type:'evisa',region:'middle-east',val:'30 days',docs:'2 docs',proc:'48 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&q=80',fullName:'Oman',capital:'Muscat',currency:'OMR (Rial)',language:'Arabic',successRate:'98%',about:'Oman e-Visa lets Indians explore Muscat, Wahiba Sands, and the stunning Omani coastline. Issued online and delivered to your email within 48 hours.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (white bg)','Return air ticket'],includes:['e-Visa application submission','Document review','Email delivery','WhatsApp tracking']},
   {c:'Qatar',slug:'qatar',f:'🇶🇦',type:'evisa',region:'middle-east',val:'30 days',docs:'2 docs',proc:'24 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=600&q=80',fullName:'Qatar',capital:'Doha',currency:'QAR (Riyal)',language:'Arabic',successRate:'99%',about:'Qatar e-Visa is issued online within 24 hours for most Indian passport holders. Doha\'s skyline, museums, and desert experiences await — and transit passengers can get a free visa too.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Hotel booking confirmation'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp updates']},
   {c:'Egypt',slug:'egypt',f:'🇪🇬',type:'evisa',region:'africa',val:'30 days',docs:'2 docs',proc:'48 hrs',price:'₹1,999',img:'https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80',fullName:'Egypt',capital:'Cairo',currency:'EGP (Pound)',language:'Arabic',successRate:'98%',about:'Egypt e-Visa lets Indians explore the Pyramids of Giza, the Nile, and the Red Sea. Issued online and accepted at all Egyptian international airports.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (white bg)','Return air ticket','Hotel booking confirmation'],includes:['e-Visa application filing','Document review','Email delivery','Travel tips for Cairo & Luxor']},
-  {c:'Tanzania',slug:'tanzania',f:'🇹🇿',type:'evisa',region:'africa',val:'90 days',docs:'3 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80&fit=crop',fullName:'Tanzania',capital:'Dodoma',currency:'TZS (Shilling)',language:'Swahili',successRate:'97%',about:'Tanzania e-Visa for the Serengeti, Kilimanjaro, and Zanzibar. Issued online through the Tanzania Immigration portal — we handle the entire process and Yellow Fever guidance.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Yellow Fever vaccination certificate','Hotel or safari booking'],includes:['Tanzania immigration portal application','Vaccination guidance','Safari booking tips','WhatsApp updates','e-Visa email delivery']},
+  {c:'Tanzania',slug:'tanzania',f:'🇹🇿',type:'evisa',region:'africa',val:'90 days',docs:'3 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=400&q=70&fit=crop',fullName:'Tanzania',capital:'Dodoma',currency:'TZS (Shilling)',language:'Swahili',successRate:'97%',about:'Tanzania e-Visa for the Serengeti, Kilimanjaro, and Zanzibar. Issued online through the Tanzania Immigration portal — we handle the entire process and Yellow Fever guidance.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Yellow Fever vaccination certificate','Hotel or safari booking'],includes:['Tanzania immigration portal application','Vaccination guidance','Safari booking tips','WhatsApp updates','e-Visa email delivery']},
   {c:'Mauritius',slug:'mauritius',f:'🇲🇺',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1543731068-7e0f5beff43a?w=600&q=80',fullName:'Mauritius',capital:'Port Louis',currency:'MUR (Rupee)',language:'English/French',successRate:'100%',about:'Indians get a free 90-day Visa on Arrival in Mauritius — one of the most generous visa policies in the world. We provide a travel preparation kit so you clear immigration smoothly.',requirements:['Valid passport (min 6 months validity)','Return air ticket','Hotel booking confirmation','Proof of sufficient funds'],includes:['Pre-travel document checklist','Arrival & customs guide','Beach & travel tips','24/7 WhatsApp support']},
-  {c:'Morocco',slug:'morocco',f:'🇲🇦',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80&fit=crop',fullName:'Morocco',capital:'Rabat',currency:'MAD (Dirham)',language:'Arabic/French',successRate:'100%',about:'Indians can visit Morocco visa-free for up to 90 days. Explore Marrakech, the Sahara Desert, and Casablanca without any visa hassle. We provide a detailed Morocco travel guide.',requirements:['Valid Indian passport (min 6 months validity)','Return air ticket','Hotel booking or host letter'],includes:['Pre-travel document checklist','Marrakech & Sahara travel tips','Currency & customs guide','24/7 WhatsApp support']},
-  {c:'Canada',slug:'canada',f:'🇨🇦',type:'sticker',region:'americas',val:'10 years',docs:'8 docs',proc:'60 days',price:'₹3,999',img:'https://images.unsplash.com/photo-1519832979-6fa011b87667?w=800&q=80&fit=crop',fullName:'Canada',capital:'Ottawa',currency:'CAD (Dollar)',language:'English/French',successRate:'72%',about:'Canada Visitor Visa (TRV) is one of the most sought-after visas for Indians. Our experts craft a compelling application with strong financial and personal ties documentation to boost your approval chances significantly.',requirements:['Valid passport (min 6 months validity)','Recent passport-size photo','IMM 5257 application form','Proof of funds (min ₹5 lakh equivalent)','Employment letter & leave approval','ITR for last 3 years','Bank statements (6 months)','Property/assets proof'],includes:['Complete document compilation','IMM form filling','Biometrics appointment guidance','Cover letter drafting','Financial strength review','WhatsApp application tracking']},
-  {c:'Mexico',slug:'mexico',f:'🇲🇽',type:'free',region:'americas',val:'180 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&q=80&fit=crop',fullName:'Mexico',capital:'Mexico City',currency:'MXN (Peso)',language:'Spanish',successRate:'100%',about:'Indians with a valid US visa can enter Mexico visa-free. Without a US visa, Indian passport holders still have a simplified entry process. We check your eligibility and prepare all documents.',requirements:['Valid passport (min 6 months validity)','Valid US visa (for visa-free entry)','OR FMM tourist card at border (alternative)','Return flight','Hotel booking'],includes:['Eligibility check (US visa route)','FMM form guidance','Cancún & CDMX travel tips','24/7 WhatsApp support']},
-  {c:'Australia',slug:'australia',f:'🇦🇺',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'5 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80&fit=crop',fullName:'Australia',capital:'Canberra',currency:'AUD (Dollar)',language:'English',successRate:'89%',about:'Australia Tourist Visa (subclass 600) for Indian passport holders. Sydney, Melbourne, the Great Barrier Reef — our experts prepare a compelling application with strong financial documentation.',requirements:['Valid passport (min 6 months validity)','Digital photo','Proof of funds (min ₹4 lakh)','Employment letter & leave approval','Bank statements (6 months)','Return flight booking','Travel insurance recommended'],includes:['ImmiAccount application filing','Document compilation & review','Financial strength assessment','WhatsApp application tracking','Post-grant travel tips']},
-  {c:'New Zealand',slug:'newzealand',f:'🇳🇿',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80&fit=crop',fullName:'New Zealand',capital:'Wellington',currency:'NZD (Dollar)',language:'English',successRate:'90%',about:'New Zealand Visitor Visa lets Indian travelers explore Queenstown, Milford Sound, and Hobbiton. Processed online via the NZeTA or standard visitor visa — we handle both.',requirements:['Valid passport (min 3 months beyond return date)','Digital passport photo','Proof of funds (NZD 1,000 per month)','Return air ticket','Employment letter & leave approval','Bank statements (3 months)'],includes:['NZeTA or visitor visa filing','Document quality review','Financial assessment','WhatsApp tracking','NZ travel tips']},
+  {c:'Morocco',slug:'morocco',f:'🇲🇦',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=400&q=70&fit=crop',fullName:'Morocco',capital:'Rabat',currency:'MAD (Dirham)',language:'Arabic/French',successRate:'100%',about:'Indians can visit Morocco visa-free for up to 90 days. Explore Marrakech, the Sahara Desert, and Casablanca without any visa hassle. We provide a detailed Morocco travel guide.',requirements:['Valid Indian passport (min 6 months validity)','Return air ticket','Hotel booking or host letter'],includes:['Pre-travel document checklist','Marrakech & Sahara travel tips','Currency & customs guide','24/7 WhatsApp support']},
+  {c:'Canada',slug:'canada',f:'🇨🇦',type:'sticker',region:'americas',val:'10 years',docs:'8 docs',proc:'60 days',price:'₹3,999',img:'https://images.unsplash.com/photo-1519832979-6fa011b87667?w=400&q=70&fit=crop',fullName:'Canada',capital:'Ottawa',currency:'CAD (Dollar)',language:'English/French',successRate:'72%',about:'Canada Visitor Visa (TRV) is one of the most sought-after visas for Indians. Our experts craft a compelling application with strong financial and personal ties documentation to boost your approval chances significantly.',requirements:['Valid passport (min 6 months validity)','Recent passport-size photo','IMM 5257 application form','Proof of funds (min ₹5 lakh equivalent)','Employment letter & leave approval','ITR for last 3 years','Bank statements (6 months)','Property/assets proof'],includes:['Complete document compilation','IMM form filling','Biometrics appointment guidance','Cover letter drafting','Financial strength review','WhatsApp application tracking']},
+  {c:'Mexico',slug:'mexico',f:'🇲🇽',type:'free',region:'americas',val:'180 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=400&q=70&fit=crop',fullName:'Mexico',capital:'Mexico City',currency:'MXN (Peso)',language:'Spanish',successRate:'100%',about:'Indians with a valid US visa can enter Mexico visa-free. Without a US visa, Indian passport holders still have a simplified entry process. We check your eligibility and prepare all documents.',requirements:['Valid passport (min 6 months validity)','Valid US visa (for visa-free entry)','OR FMM tourist card at border (alternative)','Return flight','Hotel booking'],includes:['Eligibility check (US visa route)','FMM form guidance','Cancún & CDMX travel tips','24/7 WhatsApp support']},
+  {c:'Australia',slug:'australia',f:'🇦🇺',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'5 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=400&q=70&fit=crop',fullName:'Australia',capital:'Canberra',currency:'AUD (Dollar)',language:'English',successRate:'89%',about:'Australia Tourist Visa (subclass 600) for Indian passport holders. Sydney, Melbourne, the Great Barrier Reef — our experts prepare a compelling application with strong financial documentation.',requirements:['Valid passport (min 6 months validity)','Digital photo','Proof of funds (min ₹4 lakh)','Employment letter & leave approval','Bank statements (6 months)','Return flight booking','Travel insurance recommended'],includes:['ImmiAccount application filing','Document compilation & review','Financial strength assessment','WhatsApp application tracking','Post-grant travel tips']},
+  {c:'New Zealand',slug:'newzealand',f:'🇳🇿',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=400&q=70&fit=crop',fullName:'New Zealand',capital:'Wellington',currency:'NZD (Dollar)',language:'English',successRate:'90%',about:'New Zealand Visitor Visa lets Indian travelers explore Queenstown, Milford Sound, and Hobbiton. Processed online via the NZeTA or standard visitor visa — we handle both.',requirements:['Valid passport (min 3 months beyond return date)','Digital passport photo','Proof of funds (NZD 1,000 per month)','Return air ticket','Employment letter & leave approval','Bank statements (3 months)'],includes:['NZeTA or visitor visa filing','Document quality review','Financial assessment','WhatsApp tracking','NZ travel tips']},
 ];
 
 const TYPE_LABEL = {evisa:'e-Visa', voa:'Visa on Arrival', sticker:'Sticker Visa', free:'Visa Free'};
@@ -1558,7 +1530,7 @@ function renderDests() {
   grid.innerHTML = list.map((d, i) => `
     <div class="dcard reveal-up" style="transition-delay:${i*50}ms" onclick="showCountryDetail('${d.slug}')">
       <div class="dcard-img">
-        <div class="dcard-bg" style="background-image:url('${d.img}')"></div>
+        <div class="dcard-bg" data-bg="${d.img}" style="background-color:#e2e8f0;"></div>
         <div class="dcard-overlay"></div>
         <div class="dcard-flag">${d.f}</div>
         <span class="dcard-badge ${TYPE_CLS[d.type]}">${TYPE_LABEL[d.type]}</span>
@@ -1576,6 +1548,24 @@ function renderDests() {
         </div>
       </div>
     </div>`).join('');
+  // Lazy-load background images as cards enter viewport
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          el.style.backgroundImage = `url('${el.dataset.bg}')`;
+          observer.unobserve(el);
+        }
+      });
+    }, { rootMargin: '150px' });
+    grid.querySelectorAll('.dcard-bg[data-bg]').forEach(el => obs.observe(el));
+  } else {
+    // Fallback: load all immediately
+    grid.querySelectorAll('.dcard-bg[data-bg]').forEach(el => {
+      el.style.backgroundImage = `url('${el.dataset.bg}')`;
+    });
+  }
   initReveal();
 }
 
@@ -1701,13 +1691,25 @@ function toggleFAQ(el) {
 }
 
 function renderMarquee() {
-  const items = ['🇦🇪 UAE','🇺🇸 USA','🇫🇷 France','🇸🇬 Singapore','🇹🇭 Thailand','🇬🇧 UK','🇩🇪 Germany','🇮🇩 Indonesia','🇲🇻 Maldives','🇹🇷 Turkey','🇯🇵 Japan','🇦🇺 Australia','🇨🇦 Canada','🇳🇱 Netherlands','🇧🇪 Belgium','🇲🇾 Malaysia','🇰🇪 Kenya','🇧🇭 Bahrain'];
+  const corps = [
+    {name:'TCS',          logo:'tcs.com'},
+    {name:'Google',       logo:'google.com'},
+    {name:'Infosys',      logo:'infosys.com'},
+    {name:'PepsiCo',      logo:'pepsico.com'},
+    {name:'Wipro',        logo:'wipro.com'},
+    {name:'HCL Tech',     logo:'hcltech.com'},
+    {name:'Mahindra',     logo:'mahindra.com'},
+    {name:'Anglo Eastern',logo:'angloeastern.com'},
+    {name:'Flipkart',     logo:'flipkart.com'},
+    {name:'Coursera',     logo:'coursera.org'},
+    {name:'Bajaj Finserv',logo:'bajajfinserv.in'},
+    {name:'Reliance',     logo:'ril.com'},
+  ];
   const track = document.getElementById('marqueeTrack');
-  const doubled = [...items, ...items];
-  track.innerHTML = doubled.map(item => {
-    const [em, ...rest] = item.split(' ');
-    return `<div class="marquee-item"><span>${em}</span>${rest.join(' ')}</div><div class="marquee-sep">·</div>`;
-  }).join('');
+  const doubled = [...corps, ...corps];
+  track.innerHTML = doubled.map(c =>
+    `<div class="marquee-item"><img src="https://logo.clearbit.com/${c.logo}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'"/>${c.name}</div><div class="marquee-sep">·</div>`
+  ).join('');
 }
 
 /* ── COUNTRY DETAIL PAGE ── */
@@ -1892,7 +1894,7 @@ const POLICIES = {
     subtitle: 'Last updated: 1 May 2025',
     sections: [
       {h:'On-Time Guarantee Refund', body:`<div class="pol-highlight">🛡️ If we fail to deliver your visa before your travel date for any covered reason, you receive a 100% refund of your eVisas.in service fee — automatically, within 24 hours.</div><p>This guarantee applies to all applications where the delay is caused by our team or by embassy processing issues that we were aware of and failed to communicate.</p>`},
-      {h:'Standard Refund Conditions', body:`<ul><li>Refund requests must be submitted within 7 days of the failed delivery date</li><li>The refund covers only the eVisas.in service fee — not government visa fees paid to embassies</li><li>Refunds are processed to the original payment method within 5–7 business days</li><li>For group applications, each applicant's fee is refunded individually</li></ul>`},
+      {h:'Standard Refund Conditions', body:`<ul><li>Refund requests must be submitted within 7 days of the failed delivery date</li><li>The refund covers the eVisas.in service fee for the affected application</li><li>Refunds are processed to the original payment method within 5–7 business days</li><li>For group applications, each applicant's fee is refunded individually</li></ul>`},
       {h:'Non-Refundable Situations', body:`<ul><li>Applications rejected due to incorrect information provided by the applicant</li><li>Documents not submitted or submitted incorrectly by the applicant</li><li>Travel date change after submission without notifying eVisas.in</li><li>Applicant-initiated cancellations after application has been submitted to the embassy</li><li>Visa refused due to applicant's prior overstay, criminal record, or immigration violations</li></ul>`},
       {h:'How to Request a Refund', body:`<p>WhatsApp us at +91 86196 66129 with your booking reference and reason. Our team responds within 2 hours and processes eligible refunds within 24 hours of approval.</p>`},
     ]
@@ -1916,7 +1918,7 @@ const POLICIES = {
       {h:'Acceptance of Terms', body:`<p>By using eVisas.in, you agree to these Terms of Service. If you are applying on behalf of another person, you confirm you have their consent. These terms govern all visa applications, payments, and services provided through eVisas.in.</p>`},
       {h:'Our Services', body:`<p>eVisas.in provides visa application assistance, document preparation, and submission services. We are an authorised visa facilitation service — not an embassy or government body. Final visa approval or rejection is at the sole discretion of the relevant embassy or immigration authority.</p>`},
       {h:'Applicant Responsibilities', body:`<ul><li>You must provide accurate, truthful information — any misrepresentation is your sole responsibility</li><li>Documents submitted must be genuine and valid</li><li>You must notify us immediately of any change in travel dates or personal details after application</li><li>You are responsible for meeting passport validity and other personal eligibility requirements</li></ul>`},
-      {h:'Payment Terms', body:`<div class="pol-highlight">💳 All payments are in Indian Rupees (INR). Service fees are charged at the time of application. Government visa fees are paid separately to the respective embassy/authority.</div><p>We accept UPI, Net Banking, Debit/Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All transactions are secured by Razorpay.</p>`},
+      {h:'Payment Terms', body:`<div class="pol-highlight">💳 All payments are in Indian Rupees (INR). Complete fees are only charged once your visa is approved.</div><p>We accept UPI, Net Banking, Debit/Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All transactions are secured by Razorpay.</p>`},
       {h:'Limitation of Liability', body:`<p>eVisas.in's liability is limited to the service fee paid for the specific application. We are not liable for losses arising from visa refusal, travel cancellations, flight or hotel costs, or any consequential damages. Our On-Time Guarantee refund (service fee only) is the maximum remedy available.</p>`},
       {h:'Governing Law', body:`<p>These terms are governed by Indian law. Any disputes shall be subject to the jurisdiction of courts in Jaipur, Rajasthan, India. For disputes under ₹50,000, we commit to resolution via online mediation within 30 days.</p>`},
     ]
