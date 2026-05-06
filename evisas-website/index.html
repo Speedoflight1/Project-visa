@@ -1543,6 +1543,53 @@ const FAQS = [
   {q:'How do I get updates on my application?', a:'Once your application is submitted, our team sends real-time updates via WhatsApp and email at every stage — document review, embassy submission, and visa approval. WhatsApp us anytime at +91 86196 66129 for a status update.'},
 ];
 
+function renderDests() {
+  const grid = document.getElementById('destGrid');
+  let list;
+  if (showingPopular && activeFilter === 'all' && activeRegion === 'all' && !searchQ) {
+    list = POPULAR_SLUGS.map(s => DESTS.find(d => d.slug === s)).filter(Boolean);
+  } else {
+    list = DESTS.filter(d =>
+      (activeFilter === 'all' || d.type === activeFilter) &&
+      (activeRegion === 'all' || d.region === activeRegion) &&
+      d.c.toLowerCase().includes(searchQ.toLowerCase())
+    );
+  }
+  grid.innerHTML = list.map((d, i) => `
+    <div class="dcard reveal-up" style="transition-delay:${i*50}ms" onclick="showCountryDetail('${d.slug}')">
+      <div class="dcard-img">
+        <div class="dcard-bg" style="background-image:url('${d.img}')"></div>
+        <div class="dcard-overlay"></div>
+        <div class="dcard-flag">${d.f}</div>
+        <span class="dcard-badge ${TYPE_CLS[d.type]}">${TYPE_LABEL[d.type]}</span>
+      </div>
+      <div class="dcard-body">
+        <div class="dcard-name">${d.c} Visa</div>
+        <div class="dcard-meta">
+          <div class="dmeta">⏱ ${d.proc}</div>
+          <div class="dmeta">📅 ${d.val}</div>
+          <div class="dmeta">📄 ${d.docs}</div>
+        </div>
+        <div class="dcard-footer">
+          <div class="dcard-price"><span class="big">${d.price}</span><small>service fee</small></div>
+          <button class="apply-btn" onclick="event.stopPropagation();showCountryDetail('${d.slug}')">View Details →</button>
+        </div>
+      </div>
+    </div>`).join('');
+  initReveal();
+}
+
+function renderSteps() {
+  document.getElementById('stepsGrid').innerHTML = STEPS.map((s, i) => `
+    <div class="step-card reveal-up" style="transition-delay:${i*80}ms">
+      <div class="step-num">0${i+1}</div>
+      <div class="step-icon">${s.icon}</div>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+    </div>`).join('');
+  initReveal();
+}
+
 function renderBento() {
   document.getElementById('bentoGrid').innerHTML = FEATURES.map(f => `
     <div class="bento-card ${f.cls} reveal-up">
