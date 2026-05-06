@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="eVisas.in â India's most trusted visa service. Get your visa for 120+ countries online. Expert guidance, WhatsApp updates, 98% success rate. Pay in â¹, no hidden fees."/>
-  <meta property="og:title" content="eVisas.in â Get Your Visa, On Time. Guaranteed."/>
-  <meta property="og:description" content="120+ countries. Expert guidance. WhatsApp updates. Pay in â¹ â no forex charges, no hidden fees."/>
+  <meta name="description" content="eVisas.in — India's most trusted visa service. Get your visa for 120+ countries online. Expert guidance, WhatsApp updates, 98% success rate. Pay in ₹, no hidden fees."/>
+  <meta property="og:title" content="eVisas.in — Get Your Visa, On Time. Guaranteed."/>
+  <meta property="og:description" content="120+ countries. Expert guidance. WhatsApp updates. Pay in ₹ — no forex charges, no hidden fees."/>
   <meta property="og:image" content="https://evisas.in/logo-white.png.png"/>
   <meta property="og:url" content="https://evisas.in"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="canonical" href="https://evisas.in"/>
   <link rel="icon" href="logo-icon.png.png" type="image/png"/>
-  <title>eVisas.in â Get Your Visa, On Time. Guaranteed.</title>
+  <title>eVisas.in — Get Your Visa, On Time. Guaranteed.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -45,19 +45,19 @@
       --card-shadow-hover: 0 12px 40px rgba(15,22,41,0.12), 0 2px 8px rgba(15,22,41,0.06);
     }
 
-    /* ââ SCROLLBAR ââ */
+    /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #f1f5f9; }
     ::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
 
-    /* ââ PROGRESS BAR ââ */
+    /* ── PROGRESS BAR ── */
     #progress-bar {
       position: fixed; top: 0; left: 0; z-index: 9000; height: 3px;
       background: linear-gradient(90deg, var(--blue), var(--purple));
       transform-origin: left; transform: scaleX(0);
     }
 
-    /* ââ LOADER ââ */
+    /* ── LOADER ── */
     #loader {
       position: fixed; inset: 0; z-index: 8000;
       background: #fff;
@@ -72,7 +72,7 @@
     .loader-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); animation: loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) forwards; }
     @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
 
-    /* ââ NAVBAR ââ */
+    /* ── NAVBAR ── */
     #nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
@@ -112,7 +112,7 @@
     .ham.open span:nth-child(2) { opacity: 0; }
     .ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* ââ MOBILE MENU ââ */
+    /* ── MOBILE MENU ── */
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 490;
       background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
@@ -123,7 +123,7 @@
     .mobile-menu a { font-size: 1.5rem; font-weight: 700; color: var(--text-muted); transition: color 0.2s; }
     .mobile-menu a:hover { color: var(--text); }
 
-    /* ââ LAYOUT ââ */
+    /* ── LAYOUT ── */
     .s { position: relative; z-index: 2; padding: 100px 5%; }
     .s-sm { padding: 60px 5%; }
     .container { max-width: 1200px; margin: 0 auto; }
@@ -136,7 +136,7 @@
     .s-title { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1rem; color: var(--text); }
     .s-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 540px; }
 
-    /* ââ HERO ââ */
+    /* ── HERO ── */
     @keyframes planeDrift {
       0%   { transform: translateX(0) scale(1.06); }
       50%  { transform: translateX(-3%) scale(1.06); }
@@ -217,7 +217,7 @@
     .scroll-hint-line { width: 1px; height: 36px; background: linear-gradient(to bottom, transparent, var(--text-light)); }
     @keyframes scrollBounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
-    /* ââ MARQUEE ââ */
+    /* ── MARQUEE ── */
     .marquee-section {
       position: relative; z-index: 2; padding: 24px 0; overflow: hidden;
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -230,7 +230,7 @@
     .marquee-item span { font-size: 1.4rem; }
     .marquee-sep { color: var(--border); font-size: 1rem; }
 
-    /* ââ DESTINATIONS ââ */
+    /* ── DESTINATIONS ── */
     .dest-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
     .view-all { font-size: 0.85rem; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border: 1.5px solid rgba(37,99,235,0.25); border-radius: 8px; transition: all 0.2s; }
     .view-all:hover { background: var(--blue-bg); }
@@ -259,7 +259,7 @@
     .apply-btn { padding: 0.45rem 1rem; background: linear-gradient(135deg, var(--blue), #1d4ed8); border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700; color: #fff; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 2px 10px var(--blue-glow); }
     .apply-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px var(--blue-glow); }
 
-    /* ââ HOW IT WORKS ââ */
+    /* ── HOW IT WORKS ── */
     #how { background: var(--surface-alt); }
     .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
     .step-card { text-align: center; padding: 2.5rem 1.5rem; background: #fff; border: 1.5px solid var(--border); border-radius: 22px; transition: all 0.3s; box-shadow: var(--card-shadow); position: relative; }
@@ -270,7 +270,7 @@
     .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
     .step-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* ââ FEATURES â BENTO ââ */
+    /* ── FEATURES — BENTO ── */
     .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 100px; gap: 1.25rem; margin-top: 4rem; }
     .bento-card { background: #fff; border: 1.5px solid var(--border); border-radius: 22px; padding: 1.75rem; overflow: hidden; position: relative; transition: all 0.3s; box-shadow: var(--card-shadow); }
     .bento-card:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
@@ -289,14 +289,14 @@
     .bv-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 2px; transition: width 0.8s ease; }
     .bento-bg-num { position: absolute; bottom: -20px; right: 12px; font-size: 6rem; font-weight: 900; color: rgba(37,99,235,0.05); line-height: 1; }
 
-    /* ââ TRUST STATS ââ */
+    /* ── TRUST STATS ── */
     #trust { background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%); }
     .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2rem; margin-top: 3rem; }
     .tstat { text-align: center; }
     .tstat-num { font-size: 2.4rem; font-weight: 900; letter-spacing: -1px; color: #fff; }
     .tstat-label { font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-top: 0.3rem; }
 
-    /* ââ TESTIMONIALS ââ */
+    /* ── TESTIMONIALS ── */
     .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3.5rem; }
     .tcard { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; padding: 1.75rem; transition: all 0.3s; box-shadow: var(--card-shadow); }
     .tcard:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
@@ -307,7 +307,7 @@
     .author-name { font-size: 0.88rem; font-weight: 700; color: var(--text); }
     .author-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
 
-    /* ââ PRICING ââ */
+    /* ── PRICING ── */
     #pricing { background: var(--surface-alt); }
     .pricing-toggle-row { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
     .tl-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
@@ -338,7 +338,7 @@
     .plan-cta-ghost { background: #fff; color: var(--text); border: 1.5px solid var(--border) !important; }
     .plan-cta-ghost:hover { border-color: var(--blue) !important; color: var(--blue); background: var(--blue-bg); }
 
-    /* ââ BLOG ââ */
+    /* ── BLOG ── */
     .bgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; margin-top: 3.5rem; }
     .blog-card { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; overflow: hidden; cursor: pointer; transition: all 0.3s; box-shadow: var(--card-shadow); }
     .blog-card:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
@@ -361,7 +361,7 @@
     .blog-read-link { font-size: 0.8rem; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; }
     .blog-card:hover .blog-read-link { gap: 0.5rem; }
 
-    /* ââ FAQ ââ */
+    /* ── FAQ ── */
     #faq { background: var(--surface-alt); }
     .faq-wrap { max-width: 1100px; margin: 4rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .faq-item { background: #fff; border: 1.5px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.3s; box-shadow: var(--card-shadow); }
@@ -375,7 +375,7 @@
     .faq-item.open .faq-a { max-height: 400px; transition: max-height 0.5s cubic-bezier(0.5,0,0.1,1), padding 0.3s; padding: 0 1.5rem 1.25rem; }
     .faq-a p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; }
 
-    /* ââ CTA BANNER ââ */
+    /* ── CTA BANNER ── */
     #cta { background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%); }
     .cta-inner { text-align: center; max-width: 680px; margin: 0 auto; }
     .cta-inner h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 1rem; }
@@ -386,7 +386,7 @@
     .cta-btn-outline { padding: 0.9rem 2.2rem; background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); border-radius: 100px; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; }
     .cta-btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); }
 
-    /* ââ FOOTER ââ */
+    /* ── FOOTER ── */
     footer { background: #0f1629; color: #94a3b8; padding: 80px 5% 40px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
@@ -402,7 +402,7 @@
     .s-btn { width: 34px; height: 34px; border-radius: 8px; background: #1e293b; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: #64748b; cursor: pointer; transition: all 0.2s; }
     .s-btn:hover { background: var(--blue); color: #fff; }
 
-    /* ââ WHATSAPP FLOAT ââ */
+    /* ── WHATSAPP FLOAT ── */
     .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 400; }
     .wa-btn { width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.4); transition: all 0.3s; position: relative; }
     .wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
@@ -412,11 +412,11 @@
     .wa-tooltip-box { position: absolute; right: 68px; top: 50%; transform: translateY(-50%); background: #fff; color: var(--text); font-size: 0.8rem; font-weight: 600; padding: 0.5rem 1rem; border-radius: 10px; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border: 1px solid var(--border); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .wa-float:hover .wa-tooltip-box { opacity: 1; }
 
-    /* ââ TOAST ââ */
+    /* ── TOAST ── */
     .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px); background: #0f1629; color: #e8eeff; border-radius: 12px; padding: 0.85rem 1.5rem; font-size: 0.88rem; font-weight: 500; z-index: 9999; pointer-events: none; opacity: 0; box-shadow: 0 10px 40px rgba(0,0,0,0.25); transition: opacity 0.3s, transform 0.3s; white-space: nowrap; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* ââ COUNTRY DETAIL PAGE ââ */
+    /* ── COUNTRY DETAIL PAGE ── */
     #countryPage {
       position: fixed; inset: 0; z-index: 1000;
       background: #f8faff; overflow-y: auto;
@@ -450,20 +450,20 @@
     .cp-about { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; }
     .cp-req-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
     .cp-req-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--text); }
-    .cp-req-list li::before { content: 'â'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .cp-req-list li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
     .cp-sticky-card { background: #fff; border: 1.5px solid var(--border); border-radius: 20px; padding: 1.75rem; box-shadow: var(--card-shadow-hover); position: sticky; top: 80px; }
     .cp-price-big { font-size: 2.5rem; font-weight: 900; color: var(--text); letter-spacing: -1px; margin-bottom: 0.25rem; }
     .cp-price-sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1.5rem; }
     .cp-includes { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
     .cp-includes li { display: flex; align-items: center; gap: 0.65rem; font-size: 0.84rem; color: var(--text); }
-    .cp-includes li::before { content: 'â'; color: var(--green); font-weight: 800; flex-shrink: 0; }
+    .cp-includes li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; }
     .cp-apply-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--blue), #1d4ed8); border: none; border-radius: 14px; font-size: 1rem; font-weight: 700; color: #fff; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 4px 20px var(--blue-glow); margin-bottom: 0.75rem; }
     .cp-apply-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--blue-glow); }
     .cp-whatsapp-btn { width: 100%; padding: 0.85rem; background: #fff; border: 1.5px solid #25d366; border-radius: 14px; font-size: 0.9rem; font-weight: 700; color: #16a34a; cursor: pointer; font-family: inherit; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
     .cp-whatsapp-btn:hover { background: #f0fdf4; }
     .cp-guarantee { display: flex; align-items: center; gap: 0.5rem; margin-top: 1.25rem; padding: 0.75rem 1rem; background: var(--blue-bg); border-radius: 10px; font-size: 0.78rem; color: var(--blue); font-weight: 600; }
 
-    /* ââ SEARCH AUTOCOMPLETE ââ */
+    /* ── SEARCH AUTOCOMPLETE ── */
     .search-outer { position: relative; width: 100%; max-width: 660px; }
     .search-outer .search-wrap { max-width: 100%; }
     .search-suggestions { z-index:10000 !important; position:absolute !important; width:100%;
@@ -487,7 +487,7 @@
     .sugg-arrow { color: var(--text-light); font-size: 0.8rem; }
     .sugg-empty { padding: 1rem 1.1rem; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
 
-    /* ââ SHARED SLIDE-IN PAGE STYLES ââ */
+    /* ── SHARED SLIDE-IN PAGE STYLES ── */
     .slide-page {
       position: fixed; inset: 0; z-index: 1000;
       background: #f8faff; overflow-y: auto;
@@ -495,7 +495,7 @@
     }
     .slide-page.open { transform: translateX(0); }
 
-    /* ââ BLOG ARTICLE PAGE ââ */
+    /* ── BLOG ARTICLE PAGE ── */
     .ba-hero { position: relative; height: 420px; overflow: hidden; }
     .ba-hero img { width: 100%; height: 100%; object-fit: cover; }
     .ba-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(15,22,41,0.85) 100%); }
@@ -517,12 +517,12 @@
     .ba-stat-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
     .ba-checklist { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem; }
     .ba-checklist li { display: flex; gap: 0.7rem; font-size: 0.88rem; color: var(--text); padding: 0.65rem 0.9rem; background: #fff; border: 1px solid var(--border); border-radius: 10px; align-items: flex-start; }
-    .ba-checklist li::before { content: 'â'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .ba-checklist li::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
     .ba-cta-box { background: linear-gradient(135deg, var(--blue), var(--purple)); border-radius: 20px; padding: 2.5rem; text-align: center; margin-top: 3rem; }
     .ba-cta-box h3 { color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
     .ba-cta-box p { color: rgba(255,255,255,0.8); font-size: 0.88rem; margin-bottom: 1.5rem; }
 
-    /* ââ GUARANTEE PAGE ââ */
+    /* ── GUARANTEE PAGE ── */
     .gp-hero { background: linear-gradient(135deg, #1e40af 0%, var(--purple) 100%); padding: 80px 5% 60px; text-align: center; }
     .gp-shield { font-size: 4.5rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); }
     .gp-hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 1rem; }
@@ -546,7 +546,7 @@
     .gp-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.75); margin-top: 0.25rem; }
     @media(max-width:768px) { .gp-covered { grid-template-columns: 1fr; } .gp-stats { grid-template-columns: 1fr; } .ba-stats { grid-template-columns: 1fr; } }
 
-    /* ââ B2B PAGE ââ */
+    /* ── B2B PAGE ── */
     .b2b-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 80px 5% 60px; text-align: center; }
     .b2b-hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 1rem; }
     .b2b-hero p { font-size: 1.05rem; color: #94a3b8; max-width: 580px; margin: 0 auto; line-height: 1.75; }
@@ -561,7 +561,7 @@
     .b2b-client-badge { padding: 0.5rem 1.25rem; background: var(--surface-alt); border: 1.5px solid var(--border); border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
     .b2b-pricing { background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(124,58,237,0.05)); border: 1.5px solid rgba(37,99,235,0.2); border-radius: 20px; padding: 2.5rem; text-align: center; margin: 2.5rem 0; }
 
-    /* ââ POLICY PAGE ââ */
+    /* ── POLICY PAGE ── */
     .pol-hero { background: var(--surface-alt); border-bottom: 1px solid var(--border); padding: 60px 5% 40px; }
     .pol-hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; color: var(--text); letter-spacing: -1px; }
     .pol-hero p { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; }
@@ -572,7 +572,7 @@
     .pol-section ul { list-style: disc; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
     .pol-highlight { background: var(--blue-bg); border: 1px solid rgba(37,99,235,0.2); border-radius: 12px; padding: 1.1rem 1.4rem; margin: 1rem 0; font-size: 0.87rem; color: var(--blue); font-weight: 600; }
 
-    /* ââ ABOUT US PAGE ââ */
+    /* ── ABOUT US PAGE ── */
     .about-hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 80px 5% 60px; text-align: center; }
     .about-hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 900; color: #fff; letter-spacing: -1.5px; margin-bottom: 1rem; }
     .about-hero p { font-size: 1.05rem; color: #94a3b8; max-width: 600px; margin: 0 auto; line-height: 1.75; }
@@ -591,11 +591,11 @@
     .travelkart-box h3 { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 0.75rem; }
     .travelkart-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
 
-    /* ââ REVEAL ANIMATION ââ */
+    /* ── REVEAL ANIMATION ── */
     .reveal-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ââ RESPONSIVE ââ */
+    /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .b1 { grid-column: span 12; grid-row: span 3; }
       .b2 { grid-column: span 12; grid-row: span 2; }
@@ -683,7 +683,7 @@
     <a href="#blog" onclick="event.preventDefault();document.getElementById('blog').scrollIntoView({behavior:'smooth'})">Blog</a>
   </div>
   <div class="nav-actions">
-    <button class="btn-pill" onclick="openApplyForm()">Apply Now â</button>
+    <button class="btn-pill" onclick="openApplyForm()">Apply Now →</button>
   </div>
   <div class="ham" id="ham" onclick="toggleMobile()">
     <span></span><span></span><span></span>
@@ -698,19 +698,19 @@
   <a href="#" onclick="closeMobile();setTimeout(showB2BPage,300)" style="color:var(--blue)">Corporates</a>
   <a href="#pricing" onclick="closeMobile();setTimeout(()=>document.getElementById('pricing').scrollIntoView({behavior:'smooth'}),300)">Pricing</a>
   <a href="#blog" onclick="closeMobile();setTimeout(()=>document.getElementById('blog').scrollIntoView({behavior:'smooth'}),300)">Blog</a>
-  <button class="btn-pill" style="font-size:1.1rem;padding:0.8rem 2.5rem" onclick="closeMobile();setTimeout(openApplyForm,300)">Apply Now â</button>
+  <button class="btn-pill" style="font-size:1.1rem;padding:0.8rem 2.5rem" onclick="closeMobile();setTimeout(openApplyForm,300)">Apply Now →</button>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-badge"><div class="badge-dot"></div> Trusted by 2L+ Indian Travelers</div>
   <h1 class="hero-title">Get Your <span class="grad-text">Visa</span>,<br/>On Time. <span style="color:var(--green)">Guaranteed.</span></h1>
-  <p class="hero-sub">120+ countries. Expert guidance. WhatsApp updates. Pay in â¹ â no forex charges, no hidden fees.</p>
+  <p class="hero-sub">120+ countries. Expert guidance. WhatsApp updates. Pay in ₹ — no forex charges, no hidden fees.</p>
 
   <div class="search-outer">
     <div class="search-wrap" id="heroSearch">
-      <span class="search-icon">âï¸</span>
-      <input type="text" id="searchInput" autocomplete="off" placeholder="Search destination â Dubai, USA, Schengen, Thailand..." oninput="handleSearch(this.value)" onkeydown="handleSearchKey(event)" onfocus="handleSearch(this.value)"/>
+      <span class="search-icon">✈️</span>
+      <input type="text" id="searchInput" autocomplete="off" placeholder="Search destination — Dubai, USA, Schengen, Thailand..." oninput="handleSearch(this.value)" onkeydown="handleSearchKey(event)" onfocus="handleSearch(this.value)"/>
       <button class="search-btn" onclick="commitSearch()">Search Visas</button>
     </div>
     <div class="search-suggestions" id="searchSugg"></div>
@@ -721,7 +721,7 @@
     <div class="hstat"><div class="hstat-num" data-target="2" data-suf="L+ Visas">0</div><div class="hstat-label">Processed</div></div>
     <div class="hstat"><div class="hstat-num" data-target="98" data-suf="%">0</div><div class="hstat-label">Success Rate</div></div>
     <div class="hstat"><div class="hstat-num" data-target="24" data-suf="hr">0</div><div class="hstat-label">Processing</div></div>
-    <div class="hstat"><div class="hstat-num" data-target="4.8" data-suf="â" data-float="true">0</div><div class="hstat-label">Google Rating</div></div>
+    <div class="hstat"><div class="hstat-num" data-target="4.8" data-suf="★" data-float="true">0</div><div class="hstat-label">Google Rating</div></div>
   </div>
 
   <div class="scroll-hint"><div class="scroll-hint-line"></div><span>Scroll</span></div>
@@ -740,15 +740,15 @@
         <div class="s-tag"><span class="line"></span> Popular Destinations</div>
         <div class="s-title">Where are you headed?</div>
       </div>
-      <button class="view-all" onclick="showAllCountries()">All Countries â</button>
+      <button class="view-all" onclick="showAllCountries()">All Countries →</button>
     </div>
     <div class="tabs reveal-up" id="destTabs">
-      <button class="tab-btn on" onclick="setRegion(this,'all')">ð All</button>
-      <button class="tab-btn" onclick="setRegion(this,'asia')">ð Asia</button>
-      <button class="tab-btn" onclick="setRegion(this,'europe')">ð° Europe</button>
-      <button class="tab-btn" onclick="setRegion(this,'middle-east')">ð Middle East</button>
-      <button class="tab-btn" onclick="setRegion(this,'americas')">ð½ Americas</button>
-      <button class="tab-btn" onclick="setRegion(this,'africa')">ð¦ Africa</button>
+      <button class="tab-btn on" onclick="setRegion(this,'all')">🌍 All</button>
+      <button class="tab-btn" onclick="setRegion(this,'asia')">🌏 Asia</button>
+      <button class="tab-btn" onclick="setRegion(this,'europe')">🏰 Europe</button>
+      <button class="tab-btn" onclick="setRegion(this,'middle-east')">🌙 Middle East</button>
+      <button class="tab-btn" onclick="setRegion(this,'americas')">🗽 Americas</button>
+      <button class="tab-btn" onclick="setRegion(this,'africa')">🦁 Africa</button>
     </div>
     <div class="dest-grid" id="destGrid"></div>
   </div>
@@ -835,7 +835,7 @@
       </div>
     </div>
     <div style="text-align:center;margin-top:1.5rem;" class="reveal-up">
-      <button onclick="showB2BPage()" style="font-size:0.85rem;color:var(--blue);font-weight:600;background:none;border:1.5px solid rgba(37,99,235,0.25);border-radius:8px;padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;font-family:inherit;" onmouseover="this.style.background='var(--blue-bg)'" onmouseout="this.style.background='none'">Corporate Plans & Custom Quotes â</button>
+      <button onclick="showB2BPage()" style="font-size:0.85rem;color:var(--blue);font-weight:600;background:none;border:1.5px solid rgba(37,99,235,0.25);border-radius:8px;padding:0.5rem 1.2rem;cursor:pointer;transition:all 0.2s;font-family:inherit;" onmouseover="this.style.background='var(--blue-bg)'" onmouseout="this.style.background='none'">Corporate Plans & Custom Quotes →</button>
     </div>
   </div>
 </section>
@@ -845,7 +845,7 @@
   <div class="container">
     <div class="reveal-up">
       <div class="s-tag"><span class="line"></span> Simple Pricing</div>
-      <div class="s-title">Secure your visa starting at just <span class="grad-text">â¹499</span></div>
+      <div class="s-title">Secure your visa starting at just <span class="grad-text">₹499</span></div>
       <p class="s-sub">No hidden fees. All amounts in Indian Rupees. Remaining government/embassy fees are only charged once your visa is approved.</p>
     </div>
     <div class="pgrid" id="pricingGrid"></div>
@@ -861,7 +861,7 @@
         <div class="s-tag"><span class="line"></span> Visa Guides</div>
         <div class="s-title">Learn before you apply</div>
       </div>
-      <button class="view-all" onclick="document.getElementById('blog').scrollIntoView({behavior:'smooth'})">All articles â</button>
+      <button class="view-all" onclick="document.getElementById('blog').scrollIntoView({behavior:'smooth'})">All articles →</button>
     </div>
     <div class="bgrid" id="blogGrid"></div>
   </div>
@@ -885,7 +885,7 @@
       <h2>Ready to travel without visa stress?</h2>
       <p>Join 2 lakh+ Indian travelers who got their visa on time, every time. Start your application in under 5 minutes.</p>
       <div class="cta-btns">
-        <button class="cta-btn-primary" onclick="openApplyForm()">Apply for a Visa â</button>
+        <button class="cta-btn-primary" onclick="openApplyForm()">Apply for a Visa →</button>
         <button class="cta-btn-outline" onclick="openWhatsApp()">Talk to an Expert</button>
       </div>
     </div>
@@ -911,20 +911,20 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             LinkedIn
           </a>
-          <a href="mailto:info@evisas.in" style="font-size:0.85rem;color:#64748b;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#64748b'">âï¸ info@evisas.in</a>
-          <div style="font-size:0.85rem;color:#64748b;display:flex;align-items:flex-start;gap:0.5rem;">ð G9 Tower C, Bhutani Alphathum, Sector 90, Noida UP 201304</div>
-          <a href="https://wa.me/918619666129" target="_blank" style="font-size:0.85rem;color:#64748b;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;" onmouseover="this.style.color='#25d366'" onmouseout="this.style.color='#64748b'">ð¬ +91 86196 66129</a>
+          <a href="mailto:info@evisas.in" style="font-size:0.85rem;color:#64748b;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#64748b'">✉️ info@evisas.in</a>
+          <div style="font-size:0.85rem;color:#64748b;display:flex;align-items:flex-start;gap:0.5rem;">📍 G9 Tower C, Bhutani Alphathum, Sector 90, Noida UP 201304</div>
+          <a href="https://wa.me/918619666129" target="_blank" style="font-size:0.85rem;color:#64748b;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;" onmouseover="this.style.color='#25d366'" onmouseout="this.style.color='#64748b'">💬 +91 86196 66129</a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Destinations</h4>
         <ul>
-          <li><a href="#" onclick="event.preventDefault();showCountryDetail('uae')">ð¦ðª UAE Visa</a></li>
-          <li><a href="#" onclick="event.preventDefault();showCountryDetail('usa')">ðºð¸ USA Visa</a></li>
-          <li><a href="#" onclick="event.preventDefault();showCountryDetail('singapore')">ð¸ð¬ Singapore</a></li>
-          <li><a href="#" onclick="event.preventDefault();showCountryDetail('france')">ð«ð· Schengen</a></li>
-          <li><a href="#" onclick="event.preventDefault();showCountryDetail('uk')">ð¬ð§ UK Visa</a></li>
-          <li><a href="#" onclick="event.preventDefault();showCountryDetail('thailand')">ð¹ð­ Thailand</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('uae')">🇦🇪 UAE Visa</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('usa')">🇺🇸 USA Visa</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('singapore')">🇸🇬 Singapore</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('france')">🇫🇷 Schengen</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('uk')">🇬🇧 UK Visa</a></li>
+          <li><a href="#" onclick="event.preventDefault();showCountryDetail('thailand')">🇹🇭 Thailand</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -934,7 +934,7 @@
           <li><a href="#how" onclick="event.preventDefault();document.getElementById('how').scrollIntoView({behavior:'smooth'})">How It Works</a></li>
           <li><a href="#pricing" onclick="event.preventDefault();document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</a></li>
           <li><a href="#blog" onclick="event.preventDefault();document.getElementById('blog').scrollIntoView({behavior:'smooth'})">Blog</a></li>
-          <li><a href="#" onclick="showToast('Careers page coming soon! ð¼')">Careers</a></li>
+          <li><a href="#" onclick="showToast('Careers page coming soon! 💼')">Careers</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -949,7 +949,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>Â© 2025 eVisas.in Â· All rights reserved Â· G9 Tower C, Bhutani Alphathum, Sector 90, Noida</p>
+      <p>© 2025 eVisas.in · All rights reserved · G9 Tower C, Bhutani Alphathum, Sector 90, Noida</p>
       <div class="social-row">
         <a href="https://www.instagram.com/evisas.in" target="_blank" class="s-btn" title="Instagram" style="text-decoration:none">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -957,7 +957,7 @@
         <a href="https://www.linkedin.com/company/108114664/" target="_blank" class="s-btn" title="LinkedIn" style="text-decoration:none">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-        <a href="mailto:info@evisas.in" class="s-btn" title="Email" style="text-decoration:none">â</a>
+        <a href="mailto:info@evisas.in" class="s-btn" title="Email" style="text-decoration:none">✉</a>
         <a href="https://wa.me/918619666129" target="_blank" class="s-btn" title="WhatsApp" style="text-decoration:none;font-size:0.9rem">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
@@ -968,7 +968,7 @@
 
 <!-- WHATSAPP FLOAT -->
 <div class="wa-float">
-  <div class="wa-tooltip-box">Chat with us on WhatsApp ð¬</div>
+  <div class="wa-tooltip-box">Chat with us on WhatsApp 💬</div>
   <a href="https://wa.me/918619666129?text=Hi%2C%20I%20need%20help%20with%20my%20visa%20application" target="_blank" class="wa-btn">
     <div class="wa-ping"></div>
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -978,8 +978,8 @@
 <!-- BLOG ARTICLE PAGE -->
 <div id="blogPage" class="slide-page">
   <div class="cp-topbar">
-    <button class="cp-back" onclick="closeBlogPage()">â Back to articles</button>
-    <button class="btn-pill" onclick="openApplyForm()">Apply Now â</button>
+    <button class="cp-back" onclick="closeBlogPage()">← Back to articles</button>
+    <button class="btn-pill" onclick="openApplyForm()">Apply Now →</button>
   </div>
   <div class="ba-hero">
     <img id="baHeroImg" src="" alt=""/>
@@ -987,7 +987,7 @@
     <div class="ba-hero-content">
       <div class="ba-tag-pill" id="baTag"></div>
       <div class="ba-title" id="baTitle"></div>
-      <div class="ba-meta"><span id="baDate"></span><span>Â·</span><span id="baRead"></span><span>Â·</span><span id="baAuthor"></span></div>
+      <div class="ba-meta"><span id="baDate"></span><span>·</span><span id="baRead"></span><span>·</span><span id="baAuthor"></span></div>
     </div>
   </div>
   <div class="ba-body" id="baBody"></div>
@@ -996,56 +996,56 @@
 <!-- GUARANTEE PAGE -->
 <div id="guaranteePage" class="slide-page">
   <div class="cp-topbar">
-    <button class="cp-back" onclick="closeGuaranteePage()">â Back</button>
+    <button class="cp-back" onclick="closeGuaranteePage()">← Back</button>
     <div class="nav-logo">eVisas.in</div>
   </div>
   <div class="gp-hero">
-    <div class="gp-shield">ð¡ï¸</div>
+    <div class="gp-shield">🛡️</div>
     <h2 class="s-title" style="color:#fff;font-size:clamp(2rem,5vw,3.5rem);letter-spacing:-1.5px;">Get Your Visa, On Time. <span style="color:#4ade80">Guaranteed.</span></h2>
-    <p>We guarantee your visa is delivered before your travel date â or we refund your full eVisas.in service fee. No questions asked. No conditions. Just results.</p>
+    <p>We guarantee your visa is delivered before your travel date — or we refund your full eVisas.in service fee. No questions asked. No conditions. Just results.</p>
   </div>
   <div class="gp-body">
     <div class="gp-promise">
       <h2>Our Promise to You</h2>
-      <p>Every visa application processed through eVisas.in comes with an On-Time Guarantee. If we miss your travel date due to any delay on our side or embassy processing issues we knew about â you get a 100% refund of your service fee, automatically.</p>
+      <p>Every visa application processed through eVisas.in comes with an On-Time Guarantee. If we miss your travel date due to any delay on our side or embassy processing issues we knew about — you get a 100% refund of your service fee, automatically.</p>
     </div>
     <div class="s-tag" style="justify-content:center;margin-bottom:0.5rem"><span class="line"></span> How It Works <span class="line"></span></div>
     <div class="gp-grid">
-      <div class="gp-card"><div class="gp-card-icon">ð</div><h3>Tell Us Your Travel Date</h3><p>When you apply, enter your exact departure date. We use this to set a hard deadline for your visa delivery and prioritise your application accordingly.</p></div>
-      <div class="gp-card"><div class="gp-card-icon">â¡</div><h3>We Track Every Step</h3><p>Our team monitors your application 24/7 from submission to approval. We follow up with embassies proactively so no time is wasted.</p></div>
-      <div class="gp-card"><div class="gp-card-icon">â</div><h3>Delivered or Refunded</h3><p>Your visa arrives before your travel date â guaranteed. If it doesn't for any covered reason, your full service fee is refunded within 24 hours.</p></div>
+      <div class="gp-card"><div class="gp-card-icon">📅</div><h3>Tell Us Your Travel Date</h3><p>When you apply, enter your exact departure date. We use this to set a hard deadline for your visa delivery and prioritise your application accordingly.</p></div>
+      <div class="gp-card"><div class="gp-card-icon">⚡</div><h3>We Track Every Step</h3><p>Our team monitors your application 24/7 from submission to approval. We follow up with embassies proactively so no time is wasted.</p></div>
+      <div class="gp-card"><div class="gp-card-icon">✅</div><h3>Delivered or Refunded</h3><p>Your visa arrives before your travel date — guaranteed. If it doesn't for any covered reason, your full service fee is refunded within 24 hours.</p></div>
     </div>
     <div class="gp-stats">
       <div><div class="gp-stat-num">98%</div><div class="gp-stat-label">On-Time Delivery Rate</div></div>
       <div><div class="gp-stat-num">2L+</div><div class="gp-stat-label">Visas Delivered</div></div>
-      <div><div class="gp-stat-num">â¹0</div><div class="gp-stat-label">Hidden Fees</div></div>
+      <div><div class="gp-stat-num">₹0</div><div class="gp-stat-label">Hidden Fees</div></div>
     </div>
     <div class="s-tag" style="justify-content:center;margin-bottom:1rem"><span class="line"></span> What's Covered <span class="line"></span></div>
     <div class="gp-covered">
       <div class="gp-covered-box">
-        <h3 style="color:var(--green)">â Covered by Guarantee</h3>
+        <h3 style="color:var(--green)">✓ Covered by Guarantee</h3>
         <ul>
-          <li><span style="color:var(--green);font-weight:700">â</span> Embassy processing delays beyond estimated time</li>
-          <li><span style="color:var(--green);font-weight:700">â</span> Technical issues on eVisas.in platform</li>
-          <li><span style="color:var(--green);font-weight:700">â</span> Document submission errors made by our team</li>
-          <li><span style="color:var(--green);font-weight:700">â</span> Appointment scheduling delays by us</li>
-          <li><span style="color:var(--green);font-weight:700">â</span> Any delay caused by our operational team</li>
+          <li><span style="color:var(--green);font-weight:700">✓</span> Embassy processing delays beyond estimated time</li>
+          <li><span style="color:var(--green);font-weight:700">✓</span> Technical issues on eVisas.in platform</li>
+          <li><span style="color:var(--green);font-weight:700">✓</span> Document submission errors made by our team</li>
+          <li><span style="color:var(--green);font-weight:700">✓</span> Appointment scheduling delays by us</li>
+          <li><span style="color:var(--green);font-weight:700">✓</span> Any delay caused by our operational team</li>
         </ul>
       </div>
       <div class="gp-covered-box">
-        <h3 style="color:var(--red)">â Not Covered</h3>
+        <h3 style="color:var(--red)">✕ Not Covered</h3>
         <ul>
-          <li><span style="color:var(--red);font-weight:700">â</span> Applications submitted less than required processing time before travel</li>
-          <li><span style="color:var(--red);font-weight:700">â</span> Rejection due to incorrect information provided by applicant</li>
-          <li><span style="color:var(--red);font-weight:700">â</span> Missing documents not provided by applicant</li>
-          <li><span style="color:var(--red);font-weight:700">â</span> Embassy closures on public holidays</li>
-          <li><span style="color:var(--red);font-weight:700">â</span> Force majeure events (strikes, natural disasters)</li>
+          <li><span style="color:var(--red);font-weight:700">✕</span> Applications submitted less than required processing time before travel</li>
+          <li><span style="color:var(--red);font-weight:700">✕</span> Rejection due to incorrect information provided by applicant</li>
+          <li><span style="color:var(--red);font-weight:700">✕</span> Missing documents not provided by applicant</li>
+          <li><span style="color:var(--red);font-weight:700">✕</span> Embassy closures on public holidays</li>
+          <li><span style="color:var(--red);font-weight:700">✕</span> Force majeure events (strikes, natural disasters)</li>
         </ul>
       </div>
     </div>
     <div style="text-align:center;margin-top:3rem">
       <h2 class="s-title" style="margin-bottom:1rem">Ready to apply with confidence?</h2>
-      <button class="btn-pill" style="padding:1rem 2.5rem;font-size:1rem" onclick="closeGuaranteePage();scrollToDest()">Apply for a Visa â</button>
+      <button class="btn-pill" style="padding:1rem 2.5rem;font-size:1rem" onclick="closeGuaranteePage();scrollToDest()">Apply for a Visa →</button>
     </div>
   </div>
 </div>
@@ -1053,15 +1053,15 @@
 <!-- B2B / CORPORATE PAGE -->
 <div id="b2bPage" class="slide-page">
   <div class="cp-topbar">
-    <button class="cp-back" onclick="closeB2BPage()">â Back</button>
+    <button class="cp-back" onclick="closeB2BPage()">← Back</button>
     <div class="nav-logo">eVisas.in for Business</div>
   </div>
   <div class="b2b-hero">
     <div class="s-tag" style="color:#94a3b8;justify-content:center;margin-bottom:1rem"><span class="line" style="background:#475569"></span> Corporate Plans <span class="line" style="background:#475569"></span></div>
     <h2 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;letter-spacing:-1.5px;margin-bottom:1rem;">Visa Management<br/>for <span class="grad-text">Teams &amp; Corporates</span></h2>
-    <p>Manage employee travel visas at scale. Dedicated account manager, GST invoicing, API access, and bulk pricing â all in one dashboard.</p>
+    <p>Manage employee travel visas at scale. Dedicated account manager, GST invoicing, API access, and bulk pricing — all in one dashboard.</p>
     <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap">
-      <button class="btn-pill" style="padding:0.9rem 2.2rem;font-size:0.95rem" onclick="openWhatsApp('Hi, I am interested in corporate/B2B visa plans for my company.')">Contact Sales â</button>
+      <button class="btn-pill" style="padding:0.9rem 2.2rem;font-size:0.95rem" onclick="openWhatsApp('Hi, I am interested in corporate/B2B visa plans for my company.')">Contact Sales →</button>
       <button class="cta-btn-outline" style="padding:0.9rem 2.2rem;border-radius:100px;font-size:0.95rem" onclick="openWhatsApp()">Book a Demo</button>
     </div>
   </div>
@@ -1095,12 +1095,12 @@
     </div>
     <div class="s-tag" style="justify-content:center;margin:2rem 0 0.5rem"><span class="line"></span> Enterprise Features <span class="line"></span></div>
     <div class="b2b-feats">
-      <div class="b2b-feat"><div class="b2b-feat-icon">ð</div><h3>Team Dashboard</h3><p>Track all employee applications in one place. Real-time status, deadlines, and alerts â built for HR teams.</p></div>
-      <div class="b2b-feat"><div class="b2b-feat-icon">ð¤</div><h3>Dedicated Account Manager</h3><p>A named visa expert handles all your company applications. Direct phone, email, and WhatsApp access.</p></div>
-      <div class="b2b-feat"><div class="b2b-feat-icon">ð§¾</div><h3>GST Invoicing</h3><p>All invoices are GST-compliant with your company GSTIN. Easy reconciliation for accounts teams.</p></div>
-      <div class="b2b-feat"><div class="b2b-feat-icon">ð</div><h3>API Access</h3><p>Integrate visa status updates directly into your HRMS or travel management system via our REST API.</p></div>
-      <div class="b2b-feat"><div class="b2b-feat-icon">ð°</div><h3>Bulk Pricing</h3><p>Save 15â35% on service fees with volume-based pricing. Custom quotes for 10+ applications/month.</p></div>
-      <div class="b2b-feat"><div class="b2b-feat-icon">ð</div><h3>Secure Data Handling</h3><p>SOC 2 compliant data storage. All employee passport data encrypted in transit and at rest.</p></div>
+      <div class="b2b-feat"><div class="b2b-feat-icon">📊</div><h3>Team Dashboard</h3><p>Track all employee applications in one place. Real-time status, deadlines, and alerts — built for HR teams.</p></div>
+      <div class="b2b-feat"><div class="b2b-feat-icon">👤</div><h3>Dedicated Account Manager</h3><p>A named visa expert handles all your company applications. Direct phone, email, and WhatsApp access.</p></div>
+      <div class="b2b-feat"><div class="b2b-feat-icon">🧾</div><h3>GST Invoicing</h3><p>All invoices are GST-compliant with your company GSTIN. Easy reconciliation for accounts teams.</p></div>
+      <div class="b2b-feat"><div class="b2b-feat-icon">🔌</div><h3>API Access</h3><p>Integrate visa status updates directly into your HRMS or travel management system via our REST API.</p></div>
+      <div class="b2b-feat"><div class="b2b-feat-icon">💰</div><h3>Bulk Pricing</h3><p>Save 15–35% on service fees with volume-based pricing. Custom quotes for 10+ applications/month.</p></div>
+      <div class="b2b-feat"><div class="b2b-feat-icon">🔒</div><h3>Secure Data Handling</h3><p>SOC 2 compliant data storage. All employee passport data encrypted in transit and at rest.</p></div>
     </div>
     <div class="b2b-pricing">
       <div class="s-tag" style="justify-content:center;margin-bottom:0.5rem"><span class="line"></span> Corporate Plans <span class="line"></span></div>
@@ -1111,7 +1111,7 @@
         <input id="cq-contact" type="text" required placeholder="Your Name & Designation *" style="width:100%;padding:0.8rem 1.1rem;border:1.5px solid rgba(37,99,235,0.25);border-radius:10px;font-size:0.9rem;font-family:inherit;outline:none;background:#fff;color:var(--text);" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(37,99,235,0.25)'"/>
         <input id="cq-email" type="email" required placeholder="Work Email *" style="width:100%;padding:0.8rem 1.1rem;border:1.5px solid rgba(37,99,235,0.25);border-radius:10px;font-size:0.9rem;font-family:inherit;outline:none;background:#fff;color:var(--text);" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(37,99,235,0.25)'"/>
         <input id="cq-volume" type="text" placeholder="Approximate visa applications per month" style="width:100%;padding:0.8rem 1.1rem;border:1.5px solid rgba(37,99,235,0.25);border-radius:10px;font-size:0.9rem;font-family:inherit;outline:none;background:#fff;color:var(--text);" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='rgba(37,99,235,0.25)'"/>
-        <button type="submit" class="cta-btn-primary" style="width:100%;padding:0.9rem;font-size:1rem;border-radius:12px;">Get Custom Quote â</button>
+        <button type="submit" class="cta-btn-primary" style="width:100%;padding:0.9rem;font-size:1rem;border-radius:12px;">Get Custom Quote →</button>
       </form>
     </div>
   </div>
@@ -1120,7 +1120,7 @@
 <!-- POLICY PAGE -->
 <div id="policyPage" class="slide-page">
   <div class="cp-topbar">
-    <button class="cp-back" onclick="closePolicyPage()">â Back</button>
+    <button class="cp-back" onclick="closePolicyPage()">← Back</button>
     <div class="nav-logo">eVisas.in</div>
   </div>
   <div class="pol-hero">
@@ -1133,8 +1133,8 @@
 <!-- COUNTRY DETAIL PAGE -->
 <div id="countryPage">
   <div class="cp-topbar">
-    <button class="cp-back" onclick="closeCountryPage()">â Back to all destinations</button>
-    <button class="btn-pill" id="cpApplyTopBtn" onclick="openWhatsApp()">Apply Now â</button>
+    <button class="cp-back" onclick="closeCountryPage()">← Back to all destinations</button>
+    <button class="btn-pill" id="cpApplyTopBtn" onclick="openWhatsApp()">Apply Now →</button>
   </div>
   <div class="cp-hero">
     <img id="cpHeroImg" src="" alt="" class="cp-hero-img"/>
@@ -1158,12 +1158,12 @@
     <div class="cp-right">
       <div class="cp-sticky-card">
         <div class="cp-price-big" id="cpPrice"></div>
-        <div class="cp-price-sub">eVisas.in service fee Â· All-inclusive</div>
+        <div class="cp-price-sub">eVisas.in service fee · All-inclusive</div>
         <div class="cp-section-title" style="margin-top:1rem">What's Included</div>
         <ul class="cp-includes" id="cpIncludes"></ul>
-        <button class="cp-apply-btn" id="cpApplyBtn">Start Application â</button>
-        <button class="cp-whatsapp-btn" onclick="openWhatsApp()">ð¬ Ask on WhatsApp</button>
-        <div class="cp-guarantee">ð¡ï¸ On-Time Guarantee â or full refund</div>
+        <button class="cp-apply-btn" id="cpApplyBtn">Start Application →</button>
+        <button class="cp-whatsapp-btn" onclick="openWhatsApp()">💬 Ask on WhatsApp</button>
+        <div class="cp-guarantee">🛡️ On-Time Guarantee — or full refund</div>
       </div>
     </div>
   </div>
@@ -1172,13 +1172,13 @@
 <!-- ABOUT US PAGE -->
 <div id="aboutPage" class="slide-page">
   <div class="cp-topbar">
-    <button class="cp-back" onclick="closeAboutPage()">â Back</button>
+    <button class="cp-back" onclick="closeAboutPage()">← Back</button>
     <div class="nav-logo">eVisas.in</div>
   </div>
   <div class="about-hero">
     <div class="s-tag" style="color:#94a3b8;justify-content:center;margin-bottom:1rem"><span class="line" style="background:#475569"></span> About Us <span class="line" style="background:#475569"></span></div>
     <h1>India's Most Trusted<br/>Visa Service</h1>
-    <p>We've been helping Indian travelers navigate visa complexities since 2019 â 5 years of expertise, 120+ countries, and 2 lakh+ happy travelers.</p>
+    <p>We've been helping Indian travelers navigate visa complexities since 2019 — 5 years of expertise, 120+ countries, and 2 lakh+ happy travelers.</p>
   </div>
   <div class="about-body">
     <div class="s-tag" style="justify-content:center;margin-bottom:0.5rem"><span class="line"></span> Our Numbers <span class="line"></span></div>
@@ -1187,38 +1187,38 @@
       <div class="about-stat"><div class="about-stat-num">120+</div><div class="about-stat-label">Countries Covered</div></div>
       <div class="about-stat"><div class="about-stat-num">2L+</div><div class="about-stat-label">Visas Processed</div></div>
       <div class="about-stat"><div class="about-stat-num">98%</div><div class="about-stat-label">Success Rate</div></div>
-      <div class="about-stat"><div class="about-stat-num">4.8â</div><div class="about-stat-label">Google Rating</div></div>
+      <div class="about-stat"><div class="about-stat-num">4.8★</div><div class="about-stat-label">Google Rating</div></div>
     </div>
     <div class="s-tag" style="justify-content:center;margin:2rem 0 0.5rem"><span class="line"></span> Our Story <span class="line"></span></div>
     <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.85;max-width:760px;margin:1rem auto 2rem;">
-      eVisas.in was founded in 2019 with one goal: to make visa applications stress-free for Indian passport holders. We saw how confusing, expensive, and uncertain the process was â so we built a service that combines expert human guidance with smart technology.
+      eVisas.in was founded in 2019 with one goal: to make visa applications stress-free for Indian passport holders. We saw how confusing, expensive, and uncertain the process was — so we built a service that combines expert human guidance with smart technology.
       <br/><br/>
-      Over the past 5 years, we've grown into India's most reliable visa facilitation service. Our team of certified visa experts has processed over 2 lakh applications across 120+ countries â from quick UAE e-Visas to complex US and Schengen sticker visas.
+      Over the past 5 years, we've grown into India's most reliable visa facilitation service. Our team of certified visa experts has processed over 2 lakh applications across 120+ countries — from quick UAE e-Visas to complex US and Schengen sticker visas.
       <br/><br/>
-      We are a trusted partner for individual travelers, families, and corporate clients â providing end-to-end visa support with real people behind every application.
+      We are a trusted partner for individual travelers, families, and corporate clients — providing end-to-end visa support with real people behind every application.
     </p>
     <div class="s-tag" style="justify-content:center;margin:0 0 0.5rem"><span class="line"></span> Our Values <span class="line"></span></div>
     <div class="about-values">
-      <div class="about-val"><div class="about-val-icon">ð</div><h3>Global Expertise</h3><p>Our visa experts have deep knowledge of consular requirements across 120+ countries. We stay updated on every policy change so you don't have to.</p></div>
-      <div class="about-val"><div class="about-val-icon">ð¤</div><h3>Trusted Partner</h3><p>We've been trusted by individual travelers, families, and corporate clients alike. Over 2 lakh successful visa applications speak for our reliability.</p></div>
-      <div class="about-val"><div class="about-val-icon">â¡</div><h3>Speed & Transparency</h3><p>We believe in honest timelines and real-time updates. No false promises â just accurate information and fast execution.</p></div>
-      <div class="about-val"><div class="about-val-icon">ð¡ï¸</div><h3>On-Time Guarantee</h3><p>Every application comes with our On-Time Guarantee. If we miss your travel date for any covered reason, you get a full refund.</p></div>
+      <div class="about-val"><div class="about-val-icon">🌍</div><h3>Global Expertise</h3><p>Our visa experts have deep knowledge of consular requirements across 120+ countries. We stay updated on every policy change so you don't have to.</p></div>
+      <div class="about-val"><div class="about-val-icon">🤝</div><h3>Trusted Partner</h3><p>We've been trusted by individual travelers, families, and corporate clients alike. Over 2 lakh successful visa applications speak for our reliability.</p></div>
+      <div class="about-val"><div class="about-val-icon">⚡</div><h3>Speed & Transparency</h3><p>We believe in honest timelines and real-time updates. No false promises — just accurate information and fast execution.</p></div>
+      <div class="about-val"><div class="about-val-icon">🛡️</div><h3>On-Time Guarantee</h3><p>Every application comes with our On-Time Guarantee. If we miss your travel date for any covered reason, you get a full refund.</p></div>
     </div>
     <div class="travelkart-box">
       <div class="s-tag" style="margin-bottom:0.75rem"><span class="line"></span> Our Family</div>
-      <h3>ð§³ eVisas.in is part of the TravelKart Group</h3>
-      <p>TravelKart is our parent group â a comprehensive travel ecosystem that also covers flight bookings, hotel reservations, holiday packages, and travel insurance. Together, eVisas.in and TravelKart provide complete end-to-end travel solutions for Indian travelers heading abroad.</p>
+      <h3>🧳 eVisas.in is part of the TravelKart Group</h3>
+      <p>TravelKart is our parent group — a comprehensive travel ecosystem that also covers flight bookings, hotel reservations, holiday packages, and travel insurance. Together, eVisas.in and TravelKart provide complete end-to-end travel solutions for Indian travelers heading abroad.</p>
       <div style="margin-top:1.25rem;display:flex;gap:1rem;flex-wrap:wrap;">
-        <span style="padding:0.4rem 1rem;background:var(--blue-bg);border:1.5px solid rgba(37,99,235,0.2);border-radius:100px;font-size:0.82rem;font-weight:600;color:var(--blue)">âï¸ eVisas.in â Visa Services</span>
-        <span style="padding:0.4rem 1rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:100px;font-size:0.82rem;font-weight:600;color:var(--text-muted)">ð§³ TravelKart â Travel Booking</span>
+        <span style="padding:0.4rem 1rem;background:var(--blue-bg);border:1.5px solid rgba(37,99,235,0.2);border-radius:100px;font-size:0.82rem;font-weight:600;color:var(--blue)">✈️ eVisas.in — Visa Services</span>
+        <span style="padding:0.4rem 1rem;background:var(--surface-alt);border:1.5px solid var(--border);border-radius:100px;font-size:0.82rem;font-weight:600;color:var(--text-muted)">🧳 TravelKart — Travel Booking</span>
       </div>
     </div>
     <div style="background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:2rem;margin-top:2.5rem;box-shadow:var(--card-shadow);">
       <div class="s-tag" style="margin-bottom:0.75rem"><span class="line"></span> Get in Touch</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
-        <div style="display:flex;align-items:flex-start;gap:0.75rem;"><span style="font-size:1.4rem">ð</span><div><div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.25rem">Address</div><div style="font-size:0.88rem;color:var(--text)">G9 Tower C, Bhutani Alphathum<br/>Sector 90, Noida UP 201304</div></div></div>
-        <div style="display:flex;align-items:flex-start;gap:0.75rem;"><span style="font-size:1.4rem">âï¸</span><div><div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.25rem">Email</div><a href="mailto:info@evisas.in" style="font-size:0.88rem;color:var(--blue)">info@evisas.in</a></div></div>
-        <div style="display:flex;align-items:flex-start;gap:0.75rem;"><span style="font-size:1.4rem">ð¬</span><div><div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.25rem">WhatsApp</div><a href="https://wa.me/918619666129" target="_blank" style="font-size:0.88rem;color:var(--green)">+91 86196 66129</a></div></div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;"><span style="font-size:1.4rem">📍</span><div><div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.25rem">Address</div><div style="font-size:0.88rem;color:var(--text)">G9 Tower C, Bhutani Alphathum<br/>Sector 90, Noida UP 201304</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;"><span style="font-size:1.4rem">✉️</span><div><div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.25rem">Email</div><a href="mailto:info@evisas.in" style="font-size:0.88rem;color:var(--blue)">info@evisas.in</a></div></div>
+        <div style="display:flex;align-items:flex-start;gap:0.75rem;"><span style="font-size:1.4rem">💬</span><div><div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.25rem">WhatsApp</div><a href="https://wa.me/918619666129" target="_blank" style="font-size:0.88rem;color:var(--green)">+91 86196 66129</a></div></div>
       </div>
     </div>
   </div>
@@ -1227,7 +1227,7 @@
 <!-- APPLY FORM MODAL -->
 <div id="applyModal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(15,22,41,0.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:24px;padding:2.5rem;max-width:480px;width:90%;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.25);">
-    <button onclick="closeApplyForm()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text-muted);">â</button>
+    <button onclick="closeApplyForm()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--text-muted);">✕</button>
     <div style="font-size:1.4rem;font-weight:900;letter-spacing:-0.5px;margin-bottom:0.25rem;color:var(--text);">Start Your Application</div>
     <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.75rem;">Fill in your details and we'll reach out on WhatsApp within minutes.</div>
     <form id="applyForm" onsubmit="submitApplyForm(event)" style="display:flex;flex-direction:column;gap:1rem;">
@@ -1243,13 +1243,13 @@
         <label style="font-size:0.78rem;font-weight:700;color:var(--text-muted);display:block;margin-bottom:0.4rem;">Destination Country (optional)</label>
         <select id="af-visa" style="width:100%;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:inherit;outline:none;background:#fff;cursor:pointer;">
           <option value="">Select a destination...</option>
-          <option>ð¦ðª UAE</option><option>ð¹ð­ Thailand</option><option>ð¸ð¬ Singapore</option>
-          <option>ð²ð¾ Malaysia</option><option>ð®ð© Indonesia</option><option>ðºð¸ USA</option>
-          <option>ð¬ð§ UK</option><option>ð¹ð· Turkey</option><option>ð²ð» Maldives</option>
-          <option>ð«ð· France (Schengen)</option><option>ð©ðª Germany (Schengen)</option>
-          <option>ð¯ðµ Japan</option><option>ð¦ðº Australia</option><option>ð¨ð¦ Canada</option>
-          <option>ð»ð³ Vietnam</option><option>ð±ð° Sri Lanka</option><option>ð°ðª Kenya</option>
-          <option>ð¶ð¦ Qatar</option><option>ð´ð² Oman</option><option>ð§ð­ Bahrain</option>
+          <option>🇦🇪 UAE</option><option>🇹🇭 Thailand</option><option>🇸🇬 Singapore</option>
+          <option>🇲🇾 Malaysia</option><option>🇮🇩 Indonesia</option><option>🇺🇸 USA</option>
+          <option>🇬🇧 UK</option><option>🇹🇷 Turkey</option><option>🇲🇻 Maldives</option>
+          <option>🇫🇷 France (Schengen)</option><option>🇩🇪 Germany (Schengen)</option>
+          <option>🇯🇵 Japan</option><option>🇦🇺 Australia</option><option>🇨🇦 Canada</option>
+          <option>🇻🇳 Vietnam</option><option>🇱🇰 Sri Lanka</option><option>🇰🇪 Kenya</option>
+          <option>🇶🇦 Qatar</option><option>🇴🇲 Oman</option><option>🇧🇭 Bahrain</option>
           <option>Other</option>
         </select>
       </div>
@@ -1257,77 +1257,77 @@
         <label style="font-size:0.78rem;font-weight:700;color:var(--text-muted);display:block;margin-bottom:0.4rem;">Tentative Travel Date (optional)</label>
         <input id="af-date" type="date" style="width:100%;padding:0.75rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'"/>
       </div>
-      <button type="submit" class="btn-pill" style="width:100%;padding:0.9rem;font-size:1rem;border-radius:12px;margin-top:0.5rem;">Send via WhatsApp â</button>
+      <button type="submit" class="btn-pill" style="width:100%;padding:0.9rem;font-size:1rem;border-radius:12px;margin-top:0.5rem;">Send via WhatsApp →</button>
       <p style="font-size:0.72rem;color:var(--text-light);text-align:center;margin-top:-0.25rem;">We'll reach out on WhatsApp within minutes. No spam, ever.</p>
     </form>
   </div>
 </div>
 
 <script>
-/* ââ DATA ââ */
+/* ── DATA ── */
 const DESTS = [
   {
-    c:'UAE', slug:'uae', f:'ð¦ðª', type:'evisa', region:'middle-east',
+    c:'UAE', slug:'uae', f:'🇦🇪', type:'evisa', region:'middle-east',
     val:'30 days', docs:'3 docs', proc:'24 hrs', price:'₹999',
     img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80&fit=crop',
     fullName:'United Arab Emirates', capital:'Abu Dhabi', currency:'AED (Dirham)', language:'Arabic',
     successRate:'99%',
     about:'The UAE e-Visa lets you explore the dazzling cities of Dubai and Abu Dhabi. Issued entirely online, it is delivered to your email within 24 hours. Perfect for tourism, business, and transit.',
-    requirements:['Valid Indian passport (min. 6 months validity)','Recent passport-size photo (white background)','Confirmed return air ticket','Hotel booking or host invitation letter','Last 3 months bank statement (min. â¹1 lakh balance)','Travel insurance covering UAE'],
+    requirements:['Valid Indian passport (min. 6 months validity)','Recent passport-size photo (white background)','Confirmed return air ticket','Hotel booking or host invitation letter','Last 3 months bank statement (min. ₹1 lakh balance)','Travel insurance covering UAE'],
     includes:['Professional application review','e-Visa delivery to email','Real-time WhatsApp updates','Re-apply free if rejected (Pro plan)','GST invoice for business travel'],
   },
   {
-    c:'Thailand', slug:'thailand', f:'ð¹ð­', type:'voa', region:'asia',
+    c:'Thailand', slug:'thailand', f:'🇹🇭', type:'voa', region:'asia',
     val:'30 days', docs:'2 docs', proc:'On arrival', price:'₹499',
     img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80&fit=crop',
     fullName:'Thailand', capital:'Bangkok', currency:'THB (Baht)', language:'Thai',
     successRate:'98%',
-    about:'Indians can get a Visa on Arrival at major Thai airports. We prepare all your documents in advance so you sail through the VOA counter in minutes â no stress, no confusion.',
-    requirements:['Valid Indian passport (min. 6 months validity)','Recent passport-size photo','Proof of onward travel','Cash for VOA fee (2,000 THB â â¹4,800)','Hotel booking confirmation','Sufficient funds proof (THB 10,000 per person)'],
+    about:'Indians can get a Visa on Arrival at major Thai airports. We prepare all your documents in advance so you sail through the VOA counter in minutes — no stress, no confusion.',
+    requirements:['Valid Indian passport (min. 6 months validity)','Recent passport-size photo','Proof of onward travel','Cash for VOA fee (2,000 THB ≈ ₹4,800)','Hotel booking confirmation','Sufficient funds proof (THB 10,000 per person)'],
     includes:['VOA document preparation kit','Step-by-step airport guide','Completed arrival card','Pre-filled VOA form','24/7 WhatsApp support during travel'],
   },
   {
-    c:'France', slug:'france', f:'ð«ð·', type:'sticker', region:'europe',
+    c:'France', slug:'france', f:'🇫🇷', type:'sticker', region:'europe',
     val:'90 days', docs:'8 docs', proc:'15 days', price:'₹1,999',
     img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80&fit=crop',
     fullName:'France (Schengen)', capital:'Paris', currency:'EUR (Euro)', language:'French',
     successRate:'96%',
-    about:'A France Schengen visa allows travel across 27 European countries. Our experts handle your entire application â from document compilation to appointment scheduling â giving you the best chance of approval.',
-    requirements:['Valid Indian passport (min. 3 months beyond return date)','Two recent passport photos (Schengen specs)','Confirmed return air ticket','Proof of accommodation for entire stay','Travel insurance (min. â¬30,000 cover)','Last 3 months bank statements','ITR / salary slips (last 3 months)','Employment letter / leave approval'],
+    about:'A France Schengen visa allows travel across 27 European countries. Our experts handle your entire application — from document compilation to appointment scheduling — giving you the best chance of approval.',
+    requirements:['Valid Indian passport (min. 3 months beyond return date)','Two recent passport photos (Schengen specs)','Confirmed return air ticket','Proof of accommodation for entire stay','Travel insurance (min. €30,000 cover)','Last 3 months bank statements','ITR / salary slips (last 3 months)','Employment letter / leave approval'],
     includes:['Expert document review & checklist','Visa appointment scheduling','Application form filling','Embassy submission support','Rejection analysis if needed (Pro plan)'],
   },
   {
-    c:'USA', slug:'usa', f:'ðºð¸', type:'sticker', region:'americas',
+    c:'USA', slug:'usa', f:'🇺🇸', type:'sticker', region:'americas',
     val:'10 years', docs:'6 docs', proc:'30 days', price:'₹3,999',
     img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&q=80&fit=crop',
     fullName:'United States of America', capital:'Washington D.C.', currency:'USD (Dollar)', language:'English',
     successRate:'87%',
-    about:'The US B1/B2 tourist & business visa is valid for 10 years with multiple entries. Our mock interview tool and expert coaching dramatically improve your approval odds â our clients have an 87% success rate vs 68% national average.',
+    about:'The US B1/B2 tourist & business visa is valid for 10 years with multiple entries. Our mock interview tool and expert coaching dramatically improve your approval odds — our clients have an 87% success rate vs 68% national average.',
     requirements:['Valid Indian passport (min. 6 months validity)','DS-160 form (completed online)','Visa fee payment confirmation (MRV receipt)','Appointment confirmation letter','Photo per US specifications','Income proof (ITR, Form 16, bank statements)','Property / asset documents (as applicable)'],
     includes:['DS-160 form filling','Mock interview practice (50+ questions)','Document checklist & review','Appointment scheduling at nearest consulate','Pre-interview preparation call','Post-interview guidance'],
   },
   {
-    c:'Singapore', slug:'singapore', f:'ð¸ð¬', type:'evisa', region:'asia',
+    c:'Singapore', slug:'singapore', f:'🇸🇬', type:'evisa', region:'asia',
     val:'30 days', docs:'3 docs', proc:'3 days', price:'₹999',
     img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80&fit=crop',
     fullName:'Singapore', capital:'Singapore City', currency:'SGD (Dollar)', language:'English',
     successRate:'97%',
-    about:'Singapore\'s e-Visa (EPAS) is issued online and linked to your passport electronically â no sticker, no stamp needed until arrival. Processed in 3 business days, perfect for short Asia getaways.',
+    about:'Singapore\'s e-Visa (EPAS) is issued online and linked to your passport electronically — no sticker, no stamp needed until arrival. Processed in 3 business days, perfect for short Asia getaways.',
     requirements:['Valid Indian passport (min. 6 months validity)','Digital passport photo','Confirmed return air ticket','Hotel booking confirmation','Last 3 months bank statement'],
     includes:['e-Visa application submission','Document quality check','Electronic approval notification','WhatsApp status updates','24/7 expert support'],
   },
   {
-    c:'Maldives', slug:'maldives', f:'ð²ð»', type:'voa', region:'asia',
+    c:'Maldives', slug:'maldives', f:'🇲🇻', type:'voa', region:'asia',
     val:'30 days', docs:'1 doc', proc:'On arrival', price:'₹999',
     img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80&fit=crop',
-    fullName:'Maldives', capital:'MalÃ©', currency:'MVR (Rufiyaa)', language:'Dhivehi',
+    fullName:'Maldives', capital:'Malé', currency:'MVR (Rufiyaa)', language:'Dhivehi',
     successRate:'100%',
-    about:'Indians receive a free 30-day Visa on Arrival in the Maldives â no pre-approval needed. We provide a document checklist and travel guide so you\'re fully prepared for your island getaway.',
+    about:'Indians receive a free 30-day Visa on Arrival in the Maldives — no pre-approval needed. We provide a document checklist and travel guide so you\'re fully prepared for your island getaway.',
     requirements:['Valid Indian passport (min. 6 months validity)','Confirmed return air ticket','Hotel/resort booking (mandatory)','Proof of sufficient funds'],
     includes:['Pre-travel document checklist','Arrival guide & customs tips','Hotel booking assistance','24/7 WhatsApp support'],
   },
   {
-    c:'Turkey', slug:'turkey', f:'ð¹ð·', type:'evisa', region:'middle-east',
+    c:'Turkey', slug:'turkey', f:'🇹🇷', type:'evisa', region:'middle-east',
     val:'90 days', docs:'2 docs', proc:'24 hrs', price:'₹999',
     img:'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80&fit=crop',
     fullName:'Turkey', capital:'Ankara', currency:'TRY (Lira)', language:'Turkish',
@@ -1337,7 +1337,7 @@ const DESTS = [
     includes:['e-Visa application filing','Instant email delivery','WhatsApp updates','Re-apply support if any issues'],
   },
   {
-    c:'UK', slug:'uk', f:'ð¬ð§', type:'sticker', region:'europe',
+    c:'UK', slug:'uk', f:'🇬🇧', type:'sticker', region:'europe',
     val:'6 months', docs:'7 docs', proc:'21 days', price:'₹2,999',
     img:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80&fit=crop',
     fullName:'United Kingdom', capital:'London', currency:'GBP (Pound)', language:'English',
@@ -1347,7 +1347,7 @@ const DESTS = [
     includes:['UKVi form completion','Biometrics appointment booking','Cover letter drafting','Document compilation & review','VFS submission support','Approval tracking'],
   },
   {
-    c:'Indonesia', slug:'indonesia', f:'ð®ð©', type:'voa', region:'asia',
+    c:'Indonesia', slug:'indonesia', f:'🇮🇩', type:'voa', region:'asia',
     val:'30 days', docs:'2 docs', proc:'On arrival', price:'₹999',
     img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80&fit=crop',
     fullName:'Indonesia', capital:'Jakarta', currency:'IDR (Rupiah)', language:'Bahasa Indonesia',
@@ -1357,17 +1357,17 @@ const DESTS = [
     includes:['e-VOA application (recommended)','Document kit preparation','Arrival & immigration guide','WhatsApp support in Bali hours'],
   },
   {
-    c:'Germany', slug:'germany', f:'ð©ðª', type:'sticker', region:'europe',
+    c:'Germany', slug:'germany', f:'🇩🇪', type:'sticker', region:'europe',
     val:'90 days', docs:'8 docs', proc:'15 days', price:'₹2,999',
     img:'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80&fit=crop',
     fullName:'Germany (Schengen)', capital:'Berlin', currency:'EUR (Euro)', language:'German',
     successRate:'95%',
-    about:'A Germany Schengen visa opens doors to 27 European countries. VFS appointments in India can be hard to get â we secure them for you while building a flawless application.',
-    requirements:['Valid Indian passport (min. 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (â¬30,000 minimum)','Last 3 months bank statements','Salary slips & ITR','Employment confirmation letter','Leave sanction letter'],
+    about:'A Germany Schengen visa opens doors to 27 European countries. VFS appointments in India can be hard to get — we secure them for you while building a flawless application.',
+    requirements:['Valid Indian passport (min. 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (€30,000 minimum)','Last 3 months bank statements','Salary slips & ITR','Employment confirmation letter','Leave sanction letter'],
     includes:['VFS appointment booking','Complete document compilation','Application form filling','Expert review & checklist','Embassy submission coordination'],
   },
   {
-    c:'Malaysia', slug:'malaysia', f:'ð²ð¾', type:'evisa', region:'asia',
+    c:'Malaysia', slug:'malaysia', f:'🇲🇾', type:'evisa', region:'asia',
     val:'30 days', docs:'3 docs', proc:'3 days', price:'₹1,999',
     img:'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80&fit=crop',
     fullName:'Malaysia', capital:'Kuala Lumpur', currency:'MYR (Ringgit)', language:'Bahasa Malaysia',
@@ -1377,7 +1377,7 @@ const DESTS = [
     includes:['Visa type selection (eNTRI or eVisa)','Application submission','Document review','WhatsApp updates','Airport arrival tips'],
   },
   {
-    c:'Kenya', slug:'kenya', f:'ð°ðª', type:'evisa', region:'africa',
+    c:'Kenya', slug:'kenya', f:'🇰🇪', type:'evisa', region:'africa',
     val:'90 days', docs:'3 docs', proc:'3 days', price:'₹1,999',
     img:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=800&q=80&fit=crop',
     fullName:'Kenya', capital:'Nairobi', currency:'KES (Shilling)', language:'Swahili & English',
@@ -1386,31 +1386,31 @@ const DESTS = [
     requirements:['Valid Indian passport (min. 6 months validity)','Digital passport photo','Return air ticket','Yellow fever vaccination certificate','Hotel or safari lodge booking','Bank statement (last 3 months)'],
     includes:['eCitizen application filing','Vaccination guidance','Safari booking tips','WhatsApp status updates','e-Visa email delivery'],
   },
-  {c:'Japan',slug:'japan',f:'ð¯ðµ',type:'sticker',region:'asia',val:'15 days',docs:'6 docs',proc:'5 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80&fit=crop',fullName:'Japan',capital:'Tokyo',currency:'JPY (Yen)',language:'Japanese',successRate:'93%',about:'Japan tourist visa for Indians requires a sticker visa from the Japanese consulate. Our experts compile every document to maximize approval chances for this dream destination.',requirements:['Valid passport (min 6 months validity)','Recent photo (45Ã45mm, white bg)','Confirmed flight & hotel bookings','Bank statement (min â¹2 lakh)','ITR / salary slips (3 months)','Employment letter & leave approval'],includes:['Complete document compilation','Application form filling','Consulate submission','Day-by-day itinerary creation','WhatsApp tracking']},
-  {c:'Vietnam',slug:'vietnam',f:'ð»ð³',type:'evisa',region:'asia',val:'90 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1557456170-0cf4f4d0d362?w=800&q=80&fit=crop',fullName:'Vietnam',capital:'Hanoi',currency:'VND (Dong)',language:'Vietnamese',successRate:'98%',about:'Vietnam e-Visa allows Indians to explore Ha Long Bay, Hoi An, and Ho Chi Minh City. Issued fully online and valid for 90 days with multiple entries.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel booking or itinerary'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
-  {c:'Sri Lanka',slug:'srilanka',f:'ð±ð°',type:'evisa',region:'asia',val:'30 days',docs:'3 docs',proc:'48 hrs',price:'₹499',img:'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80&fit=crop',fullName:'Sri Lanka',capital:'Colombo',currency:'LKR (Rupee)',language:'Sinhala',successRate:'99%',about:'Sri Lanka ETA (Electronic Travel Authorization) is issued online for Indian tourists. Explore beaches, temples, and tea plantations with this easy online visa.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel or host letter'],includes:['ETA application filing','Document review','Email delivery','24/7 WhatsApp support']},
-  {c:'Cambodia',slug:'cambodia',f:'ð°ð­',type:'evisa',region:'asia',val:'30 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1555652736-e92021d28a10?w=600&q=80',fullName:'Cambodia',capital:'Phnom Penh',currency:'KHR (Riel)',language:'Khmer',successRate:'99%',about:'Cambodia e-Visa is perfect for visiting Angkor Wat and the temples of Siem Reap. Issued online, delivered to your email, and accepted at all major entry points.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (4Ã6cm, white bg)','Return air ticket'],includes:['e-Visa application filing','Photo quality check','Email delivery','Entry tips for Siem Reap']},
-  {c:'Philippines',slug:'philippines',f:'ðµð­',type:'free',region:'asia',val:'30 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80&fit=crop',fullName:'Philippines',capital:'Manila',currency:'PHP (Peso)',language:'Filipino',successRate:'100%',about:'Indians receive a free 30-day Visa on Arrival in the Philippines. We prepare a comprehensive travel kit so you clear immigration quickly and start exploring the islands immediately.',requirements:['Valid passport (min 6 months validity)','Return/onward air ticket','Proof of sufficient funds','Hotel or host confirmation'],includes:['Pre-arrival document checklist','Immigration guide','Island travel tips','24/7 WhatsApp support']},
-  {c:'South Korea',slug:'southkorea',f:'ð°ð·',type:'sticker',region:'asia',val:'30 days',docs:'5 docs',proc:'7 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1617369120004-4fc70312c5e6?w=600&q=80',fullName:'South Korea',capital:'Seoul',currency:'KRW (Won)',language:'Korean',successRate:'91%',about:'South Korea tourist visa (C-3) lets you explore Seoul, Jeju Island, and the K-culture scene. Indians with a valid US, UK, or Schengen visa may enter visa-free â we check your eligibility first.',requirements:['Valid passport (min 6 months validity)','Passport photo (3.5Ã4.5cm, white bg)','Bank statement (min â¹1.5 lakh)','Return flight & hotel booking','Employment letter / business proof','ITR for last 2 years'],includes:['Eligibility check (visa-free assessment)','Application form filling','Document compilation','Consulate submission coordination','WhatsApp tracking']},
-  {c:'Nepal',slug:'nepal',f:'ð³ðµ',type:'free',region:'asia',val:'No limit',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=800&q=80&fit=crop',fullName:'Nepal',capital:'Kathmandu',currency:'NPR (Rupee)',language:'Nepali',successRate:'100%',about:'Indians do not need a visa to enter Nepal â only a valid government ID is required. We provide a complete Nepal travel guide covering trekking permits, TIMS card, and cultural tips.',requirements:['Valid Indian passport OR any government-issued photo ID','Valid Indian currency (Nepal accepts INR notes up to â¹100)'],includes:['Nepal travel guide','Trekking permit guidance (TIMS/ACAP)','Currency & customs tips','Recommended itineraries','24/7 WhatsApp helpline']},
-  {c:'Italy',slug:'italy',f:'ð®ð¹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80&fit=crop',fullName:'Italy (Schengen)',capital:'Rome',currency:'EUR (Euro)',language:'Italian',successRate:'94%',about:'An Italy Schengen visa lets you travel across all 27 Schengen countries. Our experts handle every document and can secure fast VFS appointments, giving you the best chance of approval.',requirements:['Valid passport (min 3 months beyond return date)','Two recent Schengen-spec photos','Confirmed return flight & accommodation','Travel insurance (min â¬30,000 cover)','Last 3 months bank statements','Salary slips & ITR','Employment / leave letter'],includes:['VFS appointment booking','Complete document compilation','Application form filling','Expert review','Embassy submission support']},
-  {c:'Spain',slug:'spain',f:'ðªð¸',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80&fit=crop',fullName:'Spain (Schengen)',capital:'Madrid',currency:'EUR (Euro)',language:'Spanish',successRate:'93%',about:'Spain Schengen visa opens up all of Europe. From Barcelona\'s architecture to Madrid\'s museums, our experts craft a strong application to get you there.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flight & hotel confirmations','Travel insurance (â¬30,000 minimum)','Bank statements (3 months)','ITR & salary slips','Leave sanction letter'],includes:['VFS appointment scheduling','Document compilation & review','Application form filling','Cover letter drafting','WhatsApp status updates']},
-  {c:'Netherlands',slug:'netherlands',f:'ð³ð±',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&q=80&fit=crop',fullName:'Netherlands (Schengen)',capital:'Amsterdam',currency:'EUR (Euro)',language:'Dutch',successRate:'95%',about:'Netherlands Schengen visa for Indians. Amsterdam, tulip fields, Keukenhof â our experts compile a flawless application and guide you through VFS submission.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (â¬30,000 cover)','Bank statements (3 months)','Employment & leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert document review','Embassy coordination']},
-  {c:'Greece',slug:'greece',f:'ð¬ð·',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&q=80&fit=crop',fullName:'Greece (Schengen)',capital:'Athens',currency:'EUR (Euro)',language:'Greek',successRate:'94%',about:'Greece Schengen visa lets you island-hop between Santorini, Mykonos, and Crete while covering all of Europe. Our team ensures a thorough, rejection-proof application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & island accommodation','Travel insurance (â¬30,000 cover)','Bank statements (3 months)','Salary slips & ITR'],includes:['VFS appointment booking','Document compilation & review','Application form filling','Island itinerary creation','WhatsApp updates']},
-  {c:'Switzerland',slug:'switzerland',f:'ð¨ð­',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',fullName:'Switzerland (Schengen)',capital:'Bern',currency:'CHF (Franc)',language:'German/French',successRate:'92%',about:'Switzerland Schengen visa for the Alps, Geneva, and Zurich. Swiss consulate requires meticulous documentation â our experts know exactly what they want.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Flight & hotel confirmations','Travel insurance (â¬30,000 cover)','Bank statements (last 6 months)','ITR, salary slips, employment letter'],includes:['VFS appointment booking','Complete document preparation','Application form filling','Switzerland-specific cover letter','Post-submission tracking']},
-  {c:'Austria',slug:'austria',f:'ð¦ð¹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1609825488888-3a766db05542?w=600&q=80',fullName:'Austria (Schengen)',capital:'Vienna',currency:'EUR (Euro)',language:'German',successRate:'93%',about:'Austria Schengen visa unlocks Vienna, Salzburg, and the Alps. Our experts prepare every document to meet Austrian consulate standards and handle VFS appointment booking.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flights & accommodation','Travel insurance (â¬30,000 minimum)','Bank statements & ITR','Employment/leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert review','WhatsApp tracking']},
-  {c:'Portugal',slug:'portugal',f:'ðµð¹',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80',fullName:'Portugal (Schengen)',capital:'Lisbon',currency:'EUR (Euro)',language:'Portuguese',successRate:'95%',about:'Portugal has one of the fastest Schengen visa processing times and highest approval rates for Indians. Explore Lisbon, Porto, and the Algarve with our expert-compiled application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed return flights & stays','Travel insurance (â¬30,000 cover)','Bank statements (3 months)','Salary slips & employment letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert review','WhatsApp updates']},
-  {c:'Bahrain',slug:'bahrain',f:'ð§ð­',type:'evisa',region:'middle-east',val:'14 days',docs:'2 docs',proc:'48 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',fullName:'Bahrain',capital:'Manama',currency:'BHD (Dinar)',language:'Arabic',successRate:'99%',about:'Bahrain e-Visa is one of the easiest Gulf visas for Indians â issued entirely online in 48 hours. Perfect for a weekend trip from any Indian city.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo (white bg)','Return air ticket or onward travel proof'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
-  {c:'Oman',slug:'oman',f:'ð´ð²',type:'evisa',region:'middle-east',val:'30 days',docs:'2 docs',proc:'48 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&q=80',fullName:'Oman',capital:'Muscat',currency:'OMR (Rial)',language:'Arabic',successRate:'98%',about:'Oman e-Visa lets Indians explore Muscat, Wahiba Sands, and the stunning Omani coastline. Issued online and delivered to your email within 48 hours.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (white bg)','Return air ticket'],includes:['e-Visa application submission','Document review','Email delivery','WhatsApp tracking']},
-  {c:'Qatar',slug:'qatar',f:'ð¶ð¦',type:'evisa',region:'middle-east',val:'30 days',docs:'2 docs',proc:'24 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=600&q=80',fullName:'Qatar',capital:'Doha',currency:'QAR (Riyal)',language:'Arabic',successRate:'99%',about:'Qatar e-Visa is issued online within 24 hours for most Indian passport holders. Doha\'s skyline, museums, and desert experiences await â and transit passengers can get a free visa too.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Hotel booking confirmation'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp updates']},
-  {c:'Egypt',slug:'egypt',f:'ðªð¬',type:'evisa',region:'africa',val:'30 days',docs:'2 docs',proc:'48 hrs',price:'₹1,999',img:'https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80',fullName:'Egypt',capital:'Cairo',currency:'EGP (Pound)',language:'Arabic',successRate:'98%',about:'Egypt e-Visa lets Indians explore the Pyramids of Giza, the Nile, and the Red Sea. Issued online and accepted at all Egyptian international airports.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (white bg)','Return air ticket','Hotel booking confirmation'],includes:['e-Visa application filing','Document review','Email delivery','Travel tips for Cairo & Luxor']},
-  {c:'Tanzania',slug:'tanzania',f:'ð¹ð¿',type:'evisa',region:'africa',val:'90 days',docs:'3 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80&fit=crop',fullName:'Tanzania',capital:'Dodoma',currency:'TZS (Shilling)',language:'Swahili',successRate:'97%',about:'Tanzania e-Visa for the Serengeti, Kilimanjaro, and Zanzibar. Issued online through the Tanzania Immigration portal â we handle the entire process and Yellow Fever guidance.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Yellow Fever vaccination certificate','Hotel or safari booking'],includes:['Tanzania immigration portal application','Vaccination guidance','Safari booking tips','WhatsApp updates','e-Visa email delivery']},
-  {c:'Mauritius',slug:'mauritius',f:'ð²ðº',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1543731068-7e0f5beff43a?w=600&q=80',fullName:'Mauritius',capital:'Port Louis',currency:'MUR (Rupee)',language:'English/French',successRate:'100%',about:'Indians get a free 90-day Visa on Arrival in Mauritius â one of the most generous visa policies in the world. We provide a travel preparation kit so you clear immigration smoothly.',requirements:['Valid passport (min 6 months validity)','Return air ticket','Hotel booking confirmation','Proof of sufficient funds'],includes:['Pre-travel document checklist','Arrival & customs guide','Beach & travel tips','24/7 WhatsApp support']},
-  {c:'Morocco',slug:'morocco',f:'ð²ð¦',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80&fit=crop',fullName:'Morocco',capital:'Rabat',currency:'MAD (Dirham)',language:'Arabic/French',successRate:'100%',about:'Indians can visit Morocco visa-free for up to 90 days. Explore Marrakech, the Sahara Desert, and Casablanca without any visa hassle. We provide a detailed Morocco travel guide.',requirements:['Valid Indian passport (min 6 months validity)','Return air ticket','Hotel booking or host letter'],includes:['Pre-travel document checklist','Marrakech & Sahara travel tips','Currency & customs guide','24/7 WhatsApp support']},
-  {c:'Canada',slug:'canada',f:'ð¨ð¦',type:'sticker',region:'americas',val:'10 years',docs:'8 docs',proc:'60 days',price:'₹3,999',img:'https://images.unsplash.com/photo-1519832979-6fa011b87667?w=800&q=80&fit=crop',fullName:'Canada',capital:'Ottawa',currency:'CAD (Dollar)',language:'English/French',successRate:'72%',about:'Canada Visitor Visa (TRV) is one of the most sought-after visas for Indians. Our experts craft a compelling application with strong financial and personal ties documentation to boost your approval chances significantly.',requirements:['Valid passport (min 6 months validity)','Recent passport-size photo','IMM 5257 application form','Proof of funds (min â¹5 lakh equivalent)','Employment letter & leave approval','ITR for last 3 years','Bank statements (6 months)','Property/assets proof'],includes:['Complete document compilation','IMM form filling','Biometrics appointment guidance','Cover letter drafting','Financial strength review','WhatsApp application tracking']},
-  {c:'Mexico',slug:'mexico',f:'ð²ð½',type:'free',region:'americas',val:'180 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&q=80&fit=crop',fullName:'Mexico',capital:'Mexico City',currency:'MXN (Peso)',language:'Spanish',successRate:'100%',about:'Indians with a valid US visa can enter Mexico visa-free. Without a US visa, Indian passport holders still have a simplified entry process. We check your eligibility and prepare all documents.',requirements:['Valid passport (min 6 months validity)','Valid US visa (for visa-free entry)','OR FMM tourist card at border (alternative)','Return flight','Hotel booking'],includes:['Eligibility check (US visa route)','FMM form guidance','CancÃºn & CDMX travel tips','24/7 WhatsApp support']},
-  {c:'Australia',slug:'australia',f:'ð¦ðº',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'5 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80&fit=crop',fullName:'Australia',capital:'Canberra',currency:'AUD (Dollar)',language:'English',successRate:'89%',about:'Australia Tourist Visa (subclass 600) for Indian passport holders. Sydney, Melbourne, the Great Barrier Reef â our experts prepare a compelling application with strong financial documentation.',requirements:['Valid passport (min 6 months validity)','Digital photo','Proof of funds (min â¹4 lakh)','Employment letter & leave approval','Bank statements (6 months)','Return flight booking','Travel insurance recommended'],includes:['ImmiAccount application filing','Document compilation & review','Financial strength assessment','WhatsApp application tracking','Post-grant travel tips']},
-  {c:'New Zealand',slug:'newzealand',f:'ð³ð¿',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80&fit=crop',fullName:'New Zealand',capital:'Wellington',currency:'NZD (Dollar)',language:'English',successRate:'90%',about:'New Zealand Visitor Visa lets Indian travelers explore Queenstown, Milford Sound, and Hobbiton. Processed online via the NZeTA or standard visitor visa â we handle both.',requirements:['Valid passport (min 3 months beyond return date)','Digital passport photo','Proof of funds (NZD 1,000 per month)','Return air ticket','Employment letter & leave approval','Bank statements (3 months)'],includes:['NZeTA or visitor visa filing','Document quality review','Financial assessment','WhatsApp tracking','NZ travel tips']},
+  {c:'Japan',slug:'japan',f:'🇯🇵',type:'sticker',region:'asia',val:'15 days',docs:'6 docs',proc:'5 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80&fit=crop',fullName:'Japan',capital:'Tokyo',currency:'JPY (Yen)',language:'Japanese',successRate:'93%',about:'Japan tourist visa for Indians requires a sticker visa from the Japanese consulate. Our experts compile every document to maximize approval chances for this dream destination.',requirements:['Valid passport (min 6 months validity)','Recent photo (45×45mm, white bg)','Confirmed flight & hotel bookings','Bank statement (min ₹2 lakh)','ITR / salary slips (3 months)','Employment letter & leave approval'],includes:['Complete document compilation','Application form filling','Consulate submission','Day-by-day itinerary creation','WhatsApp tracking']},
+  {c:'Vietnam',slug:'vietnam',f:'🇻🇳',type:'evisa',region:'asia',val:'90 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1557456170-0cf4f4d0d362?w=800&q=80&fit=crop',fullName:'Vietnam',capital:'Hanoi',currency:'VND (Dong)',language:'Vietnamese',successRate:'98%',about:'Vietnam e-Visa allows Indians to explore Ha Long Bay, Hoi An, and Ho Chi Minh City. Issued fully online and valid for 90 days with multiple entries.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel booking or itinerary'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
+  {c:'Sri Lanka',slug:'srilanka',f:'🇱🇰',type:'evisa',region:'asia',val:'30 days',docs:'3 docs',proc:'48 hrs',price:'₹499',img:'https://images.unsplash.com/photo-1588416936097-41850ab3d86d?w=800&q=80&fit=crop',fullName:'Sri Lanka',capital:'Colombo',currency:'LKR (Rupee)',language:'Sinhala',successRate:'99%',about:'Sri Lanka ETA (Electronic Travel Authorization) is issued online for Indian tourists. Explore beaches, temples, and tea plantations with this easy online visa.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo','Return flight confirmation','Hotel or host letter'],includes:['ETA application filing','Document review','Email delivery','24/7 WhatsApp support']},
+  {c:'Cambodia',slug:'cambodia',f:'🇰🇭',type:'evisa',region:'asia',val:'30 days',docs:'2 docs',proc:'3 days',price:'₹999',img:'https://images.unsplash.com/photo-1555652736-e92021d28a10?w=600&q=80',fullName:'Cambodia',capital:'Phnom Penh',currency:'KHR (Riel)',language:'Khmer',successRate:'99%',about:'Cambodia e-Visa is perfect for visiting Angkor Wat and the temples of Siem Reap. Issued online, delivered to your email, and accepted at all major entry points.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (4×6cm, white bg)','Return air ticket'],includes:['e-Visa application filing','Photo quality check','Email delivery','Entry tips for Siem Reap']},
+  {c:'Philippines',slug:'philippines',f:'🇵🇭',type:'free',region:'asia',val:'30 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80&fit=crop',fullName:'Philippines',capital:'Manila',currency:'PHP (Peso)',language:'Filipino',successRate:'100%',about:'Indians receive a free 30-day Visa on Arrival in the Philippines. We prepare a comprehensive travel kit so you clear immigration quickly and start exploring the islands immediately.',requirements:['Valid passport (min 6 months validity)','Return/onward air ticket','Proof of sufficient funds','Hotel or host confirmation'],includes:['Pre-arrival document checklist','Immigration guide','Island travel tips','24/7 WhatsApp support']},
+  {c:'South Korea',slug:'southkorea',f:'🇰🇷',type:'sticker',region:'asia',val:'30 days',docs:'5 docs',proc:'7 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1617369120004-4fc70312c5e6?w=600&q=80',fullName:'South Korea',capital:'Seoul',currency:'KRW (Won)',language:'Korean',successRate:'91%',about:'South Korea tourist visa (C-3) lets you explore Seoul, Jeju Island, and the K-culture scene. Indians with a valid US, UK, or Schengen visa may enter visa-free — we check your eligibility first.',requirements:['Valid passport (min 6 months validity)','Passport photo (3.5×4.5cm, white bg)','Bank statement (min ₹1.5 lakh)','Return flight & hotel booking','Employment letter / business proof','ITR for last 2 years'],includes:['Eligibility check (visa-free assessment)','Application form filling','Document compilation','Consulate submission coordination','WhatsApp tracking']},
+  {c:'Nepal',slug:'nepal',f:'🇳🇵',type:'free',region:'asia',val:'No limit',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=800&q=80&fit=crop',fullName:'Nepal',capital:'Kathmandu',currency:'NPR (Rupee)',language:'Nepali',successRate:'100%',about:'Indians do not need a visa to enter Nepal — only a valid government ID is required. We provide a complete Nepal travel guide covering trekking permits, TIMS card, and cultural tips.',requirements:['Valid Indian passport OR any government-issued photo ID','Valid Indian currency (Nepal accepts INR notes up to ₹100)'],includes:['Nepal travel guide','Trekking permit guidance (TIMS/ACAP)','Currency & customs tips','Recommended itineraries','24/7 WhatsApp helpline']},
+  {c:'Italy',slug:'italy',f:'🇮🇹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80&fit=crop',fullName:'Italy (Schengen)',capital:'Rome',currency:'EUR (Euro)',language:'Italian',successRate:'94%',about:'An Italy Schengen visa lets you travel across all 27 Schengen countries. Our experts handle every document and can secure fast VFS appointments, giving you the best chance of approval.',requirements:['Valid passport (min 3 months beyond return date)','Two recent Schengen-spec photos','Confirmed return flight & accommodation','Travel insurance (min €30,000 cover)','Last 3 months bank statements','Salary slips & ITR','Employment / leave letter'],includes:['VFS appointment booking','Complete document compilation','Application form filling','Expert review','Embassy submission support']},
+  {c:'Spain',slug:'spain',f:'🇪🇸',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80&fit=crop',fullName:'Spain (Schengen)',capital:'Madrid',currency:'EUR (Euro)',language:'Spanish',successRate:'93%',about:'Spain Schengen visa opens up all of Europe. From Barcelona\'s architecture to Madrid\'s museums, our experts craft a strong application to get you there.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flight & hotel confirmations','Travel insurance (€30,000 minimum)','Bank statements (3 months)','ITR & salary slips','Leave sanction letter'],includes:['VFS appointment scheduling','Document compilation & review','Application form filling','Cover letter drafting','WhatsApp status updates']},
+  {c:'Netherlands',slug:'netherlands',f:'🇳🇱',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=800&q=80&fit=crop',fullName:'Netherlands (Schengen)',capital:'Amsterdam',currency:'EUR (Euro)',language:'Dutch',successRate:'95%',about:'Netherlands Schengen visa for Indians. Amsterdam, tulip fields, Keukenhof — our experts compile a flawless application and guide you through VFS submission.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & accommodation','Travel insurance (€30,000 cover)','Bank statements (3 months)','Employment & leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert document review','Embassy coordination']},
+  {c:'Greece',slug:'greece',f:'🇬🇷',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800&q=80&fit=crop',fullName:'Greece (Schengen)',capital:'Athens',currency:'EUR (Euro)',language:'Greek',successRate:'94%',about:'Greece Schengen visa lets you island-hop between Santorini, Mykonos, and Crete while covering all of Europe. Our team ensures a thorough, rejection-proof application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed flights & island accommodation','Travel insurance (€30,000 cover)','Bank statements (3 months)','Salary slips & ITR'],includes:['VFS appointment booking','Document compilation & review','Application form filling','Island itinerary creation','WhatsApp updates']},
+  {c:'Switzerland',slug:'switzerland',f:'🇨🇭',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',fullName:'Switzerland (Schengen)',capital:'Bern',currency:'CHF (Franc)',language:'German/French',successRate:'92%',about:'Switzerland Schengen visa for the Alps, Geneva, and Zurich. Swiss consulate requires meticulous documentation — our experts know exactly what they want.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Flight & hotel confirmations','Travel insurance (€30,000 cover)','Bank statements (last 6 months)','ITR, salary slips, employment letter'],includes:['VFS appointment booking','Complete document preparation','Application form filling','Switzerland-specific cover letter','Post-submission tracking']},
+  {c:'Austria',slug:'austria',f:'🇦🇹',type:'sticker',region:'europe',val:'90 days',docs:'8 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1609825488888-3a766db05542?w=600&q=80',fullName:'Austria (Schengen)',capital:'Vienna',currency:'EUR (Euro)',language:'German',successRate:'93%',about:'Austria Schengen visa unlocks Vienna, Salzburg, and the Alps. Our experts prepare every document to meet Austrian consulate standards and handle VFS appointment booking.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Return flights & accommodation','Travel insurance (€30,000 minimum)','Bank statements & ITR','Employment/leave letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert review','WhatsApp tracking']},
+  {c:'Portugal',slug:'portugal',f:'🇵🇹',type:'sticker',region:'europe',val:'90 days',docs:'7 docs',proc:'15 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80',fullName:'Portugal (Schengen)',capital:'Lisbon',currency:'EUR (Euro)',language:'Portuguese',successRate:'95%',about:'Portugal has one of the fastest Schengen visa processing times and highest approval rates for Indians. Explore Lisbon, Porto, and the Algarve with our expert-compiled application.',requirements:['Valid passport (min 3 months beyond return date)','Two Schengen-spec photos','Confirmed return flights & stays','Travel insurance (€30,000 cover)','Bank statements (3 months)','Salary slips & employment letter'],includes:['VFS appointment booking','Document compilation','Application form filling','Expert review','WhatsApp updates']},
+  {c:'Bahrain',slug:'bahrain',f:'🇧🇭',type:'evisa',region:'middle-east',val:'14 days',docs:'2 docs',proc:'48 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',fullName:'Bahrain',capital:'Manama',currency:'BHD (Dinar)',language:'Arabic',successRate:'99%',about:'Bahrain e-Visa is one of the easiest Gulf visas for Indians — issued entirely online in 48 hours. Perfect for a weekend trip from any Indian city.',requirements:['Valid passport (min 6 months validity)','Passport-size digital photo (white bg)','Return air ticket or onward travel proof'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp status updates']},
+  {c:'Oman',slug:'oman',f:'🇴🇲',type:'evisa',region:'middle-east',val:'30 days',docs:'2 docs',proc:'48 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=600&q=80',fullName:'Oman',capital:'Muscat',currency:'OMR (Rial)',language:'Arabic',successRate:'98%',about:'Oman e-Visa lets Indians explore Muscat, Wahiba Sands, and the stunning Omani coastline. Issued online and delivered to your email within 48 hours.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (white bg)','Return air ticket'],includes:['e-Visa application submission','Document review','Email delivery','WhatsApp tracking']},
+  {c:'Qatar',slug:'qatar',f:'🇶🇦',type:'evisa',region:'middle-east',val:'30 days',docs:'2 docs',proc:'24 hrs',price:'₹999',img:'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=600&q=80',fullName:'Qatar',capital:'Doha',currency:'QAR (Riyal)',language:'Arabic',successRate:'99%',about:'Qatar e-Visa is issued online within 24 hours for most Indian passport holders. Doha\'s skyline, museums, and desert experiences await — and transit passengers can get a free visa too.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Hotel booking confirmation'],includes:['e-Visa application filing','Document quality check','Email delivery of visa','WhatsApp updates']},
+  {c:'Egypt',slug:'egypt',f:'🇪🇬',type:'evisa',region:'africa',val:'30 days',docs:'2 docs',proc:'48 hrs',price:'₹1,999',img:'https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80',fullName:'Egypt',capital:'Cairo',currency:'EGP (Pound)',language:'Arabic',successRate:'98%',about:'Egypt e-Visa lets Indians explore the Pyramids of Giza, the Nile, and the Red Sea. Issued online and accepted at all Egyptian international airports.',requirements:['Valid passport (min 6 months validity)','Digital passport photo (white bg)','Return air ticket','Hotel booking confirmation'],includes:['e-Visa application filing','Document review','Email delivery','Travel tips for Cairo & Luxor']},
+  {c:'Tanzania',slug:'tanzania',f:'🇹🇿',type:'evisa',region:'africa',val:'90 days',docs:'3 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80&fit=crop',fullName:'Tanzania',capital:'Dodoma',currency:'TZS (Shilling)',language:'Swahili',successRate:'97%',about:'Tanzania e-Visa for the Serengeti, Kilimanjaro, and Zanzibar. Issued online through the Tanzania Immigration portal — we handle the entire process and Yellow Fever guidance.',requirements:['Valid passport (min 6 months validity)','Digital passport photo','Return air ticket','Yellow Fever vaccination certificate','Hotel or safari booking'],includes:['Tanzania immigration portal application','Vaccination guidance','Safari booking tips','WhatsApp updates','e-Visa email delivery']},
+  {c:'Mauritius',slug:'mauritius',f:'🇲🇺',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1543731068-7e0f5beff43a?w=600&q=80',fullName:'Mauritius',capital:'Port Louis',currency:'MUR (Rupee)',language:'English/French',successRate:'100%',about:'Indians get a free 90-day Visa on Arrival in Mauritius — one of the most generous visa policies in the world. We provide a travel preparation kit so you clear immigration smoothly.',requirements:['Valid passport (min 6 months validity)','Return air ticket','Hotel booking confirmation','Proof of sufficient funds'],includes:['Pre-travel document checklist','Arrival & customs guide','Beach & travel tips','24/7 WhatsApp support']},
+  {c:'Morocco',slug:'morocco',f:'🇲🇦',type:'free',region:'africa',val:'90 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80&fit=crop',fullName:'Morocco',capital:'Rabat',currency:'MAD (Dirham)',language:'Arabic/French',successRate:'100%',about:'Indians can visit Morocco visa-free for up to 90 days. Explore Marrakech, the Sahara Desert, and Casablanca without any visa hassle. We provide a detailed Morocco travel guide.',requirements:['Valid Indian passport (min 6 months validity)','Return air ticket','Hotel booking or host letter'],includes:['Pre-travel document checklist','Marrakech & Sahara travel tips','Currency & customs guide','24/7 WhatsApp support']},
+  {c:'Canada',slug:'canada',f:'🇨🇦',type:'sticker',region:'americas',val:'10 years',docs:'8 docs',proc:'60 days',price:'₹3,999',img:'https://images.unsplash.com/photo-1519832979-6fa011b87667?w=800&q=80&fit=crop',fullName:'Canada',capital:'Ottawa',currency:'CAD (Dollar)',language:'English/French',successRate:'72%',about:'Canada Visitor Visa (TRV) is one of the most sought-after visas for Indians. Our experts craft a compelling application with strong financial and personal ties documentation to boost your approval chances significantly.',requirements:['Valid passport (min 6 months validity)','Recent passport-size photo','IMM 5257 application form','Proof of funds (min ₹5 lakh equivalent)','Employment letter & leave approval','ITR for last 3 years','Bank statements (6 months)','Property/assets proof'],includes:['Complete document compilation','IMM form filling','Biometrics appointment guidance','Cover letter drafting','Financial strength review','WhatsApp application tracking']},
+  {c:'Mexico',slug:'mexico',f:'🇲🇽',type:'free',region:'americas',val:'180 days',docs:'1 doc',proc:'On arrival',price:'₹499',img:'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=800&q=80&fit=crop',fullName:'Mexico',capital:'Mexico City',currency:'MXN (Peso)',language:'Spanish',successRate:'100%',about:'Indians with a valid US visa can enter Mexico visa-free. Without a US visa, Indian passport holders still have a simplified entry process. We check your eligibility and prepare all documents.',requirements:['Valid passport (min 6 months validity)','Valid US visa (for visa-free entry)','OR FMM tourist card at border (alternative)','Return flight','Hotel booking'],includes:['Eligibility check (US visa route)','FMM form guidance','Cancún & CDMX travel tips','24/7 WhatsApp support']},
+  {c:'Australia',slug:'australia',f:'🇦🇺',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'5 days',price:'₹2,999',img:'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80&fit=crop',fullName:'Australia',capital:'Canberra',currency:'AUD (Dollar)',language:'English',successRate:'89%',about:'Australia Tourist Visa (subclass 600) for Indian passport holders. Sydney, Melbourne, the Great Barrier Reef — our experts prepare a compelling application with strong financial documentation.',requirements:['Valid passport (min 6 months validity)','Digital photo','Proof of funds (min ₹4 lakh)','Employment letter & leave approval','Bank statements (6 months)','Return flight booking','Travel insurance recommended'],includes:['ImmiAccount application filing','Document compilation & review','Financial strength assessment','WhatsApp application tracking','Post-grant travel tips']},
+  {c:'New Zealand',slug:'newzealand',f:'🇳🇿',type:'evisa',region:'oceania',val:'3 months',docs:'4 docs',proc:'3 days',price:'₹1,999',img:'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=800&q=80&fit=crop',fullName:'New Zealand',capital:'Wellington',currency:'NZD (Dollar)',language:'English',successRate:'90%',about:'New Zealand Visitor Visa lets Indian travelers explore Queenstown, Milford Sound, and Hobbiton. Processed online via the NZeTA or standard visitor visa — we handle both.',requirements:['Valid passport (min 3 months beyond return date)','Digital passport photo','Proof of funds (NZD 1,000 per month)','Return air ticket','Employment letter & leave approval','Bank statements (3 months)'],includes:['NZeTA or visitor visa filing','Document quality review','Financial assessment','WhatsApp tracking','NZ travel tips']},
 ];
 
 const TYPE_LABEL = {evisa:'e-Visa', voa:'Visa on Arrival', sticker:'Sticker Visa', free:'Visa Free'};
@@ -1419,34 +1419,34 @@ const POPULAR_SLUGS = ['uae','thailand','singapore','malaysia','indonesia','usa'
 let activeFilter = 'all', activeRegion = 'all', searchQ = '', showingPopular = true;
 
 const STEPS = [
-  {icon:'ð', title:'Search & Select', desc:'Search your destination, compare visa types, check requirements and fees â all in one place.'},
-  {icon:'ð', title:'Upload Documents', desc:'Fill a simple form and upload your passport & photos. Our AI checks for errors before submission.'},
-  {icon:'â¡', title:'We Handle It', desc:'Our experts submit your application and track it 24/7. Get real-time WhatsApp updates at every step.'},
-  {icon:'â', title:'Receive & Travel', desc:'Your e-Visa lands in your email. Show it at the airport and explore the world. Safe travels!'},
+  {icon:'🔍', title:'Search & Select', desc:'Search your destination, compare visa types, check requirements and fees — all in one place.'},
+  {icon:'📋', title:'Upload Documents', desc:'Fill a simple form and upload your passport & photos. Our AI checks for errors before submission.'},
+  {icon:'⚡', title:'We Handle It', desc:'Our experts submit your application and track it 24/7. Get real-time WhatsApp updates at every step.'},
+  {icon:'✅', title:'Receive & Travel', desc:'Your e-Visa lands in your email. Show it at the airport and explore the world. Safe travels!'},
 ];
 
 const FEATURES = [
-  {cls:'b1', icon:'ð¡ï¸', iconBg:'rgba(37,99,235,0.1)', title:'On-Time Guarantee', desc:'We guarantee visa delivery before your travel date or we refund your full service fee â no questions asked.', extra:'visual'},
-  {cls:'b2', icon:'ð¤', iconBg:'rgba(124,58,237,0.1)', title:'AI Document Checker', desc:'Our AI scans your documents before submission to catch errors that cause delays or rejections.'},
-  {cls:'b3', icon:'ð±', iconBg:'rgba(22,163,74,0.1)',  title:'Live Tracking', desc:'Real-time WhatsApp & SMS updates at every stage of your application.'},
-  {cls:'b4', icon:'ð³', iconBg:'rgba(217,119,6,0.1)',  title:'Pay in INR', desc:'No forex markup. Pay via UPI, Net Banking, or any Indian debit/credit card.'},
-  {cls:'b5', icon:'ð§âð¼', iconBg:'rgba(220,38,38,0.1)', title:'Expert Support', desc:'Hindi & English support via phone, WhatsApp, and chat. Available 7 days a week.'},
-  {cls:'b6', icon:'ð¨âð©âð§âð¦', iconBg:'rgba(13,148,136,0.1)', title:'Group Applications', desc:'Apply for your entire family or travel group at once. Bulk discounts for 4+ travelers.'},
+  {cls:'b1', icon:'🛡️', iconBg:'rgba(37,99,235,0.1)', title:'On-Time Guarantee', desc:'We guarantee visa delivery before your travel date or we refund your full service fee — no questions asked.', extra:'visual'},
+  {cls:'b2', icon:'🤖', iconBg:'rgba(124,58,237,0.1)', title:'AI Document Checker', desc:'Our AI scans your documents before submission to catch errors that cause delays or rejections.'},
+  {cls:'b3', icon:'📱', iconBg:'rgba(22,163,74,0.1)',  title:'Live Tracking', desc:'Real-time WhatsApp & SMS updates at every stage of your application.'},
+  {cls:'b4', icon:'💳', iconBg:'rgba(217,119,6,0.1)',  title:'Pay in INR', desc:'No forex markup. Pay via UPI, Net Banking, or any Indian debit/credit card.'},
+  {cls:'b5', icon:'🧑‍💼', iconBg:'rgba(220,38,38,0.1)', title:'Expert Support', desc:'Hindi & English support via phone, WhatsApp, and chat. Available 7 days a week.'},
+  {cls:'b6', icon:'👨‍👩‍👧‍👦', iconBg:'rgba(13,148,136,0.1)', title:'Group Applications', desc:'Apply for your entire family or travel group at once. Bulk discounts for 4+ travelers.'},
 ];
 
 const TRUST = [
   {num:'2L+', label:'Happy Travelers'},{num:'120+', label:'Destinations'},
-  {num:'98%', label:'Success Rate'},{num:'4.8â', label:'Google Rating'},
-  {num:'24/7', label:'Expert Support'},{num:'â¹0', label:'Hidden Fees'},
+  {num:'98%', label:'Success Rate'},{num:'4.8★', label:'Google Rating'},
+  {num:'24/7', label:'Expert Support'},{num:'₹0', label:'Hidden Fees'},
 ];
 
 const TESTIMONIALS = [
-  {name:'Priya Sharma', city:'Mumbai', dest:'Dubai Visa', flag:'ð¦ðª', color:'#2563eb', text:'Got my UAE visa in just 18 hours! The WhatsApp updates were super helpful. Will use eVisas.in for every trip.'},
-  {name:'Rahul Gupta', city:'Delhi', dest:'Thailand Visa', flag:'ð¹ð­', color:'#16a34a', text:'Applied for family of 4. The group application was so smooth. All 4 visas approved in 2 days. Highly recommend!'},
-  {name:'Ananya Nair', city:'Bangalore', dest:'Singapore Visa', flag:'ð¸ð¬', color:'#7c3aed', text:'The AI document checker caught an error in my photo before I submitted. Saved me from a rejection. Very smart!'},
-  {name:'Vikram Mehta', city:'Pune', dest:'Schengen Visa', flag:'ðªðº', color:'#d97706', text:'Schengen is complicated but the team guided me every step. Got approved for 90 days. Outstanding support!'},
-  {name:'Sunita Patel', city:'Ahmedabad', dest:'US Visa', flag:'ðºð¸', color:'#dc2626', text:'The mock interview tool is absolute gold. Got my B1/B2 approved on the first attempt. Incredible service!'},
-  {name:'Arjun Reddy', city:'Hyderabad', dest:'UK Visa', flag:'ð¬ð§', color:'#0d9488', text:'INR payment saved me forex charges. Quick, transparent and professional. Will use again for Europe trip.'},
+  {name:'Priya Sharma', city:'Mumbai', dest:'Dubai Visa', flag:'🇦🇪', color:'#2563eb', text:'Got my UAE visa in just 18 hours! The WhatsApp updates were super helpful. Will use eVisas.in for every trip.'},
+  {name:'Rahul Gupta', city:'Delhi', dest:'Thailand Visa', flag:'🇹🇭', color:'#16a34a', text:'Applied for family of 4. The group application was so smooth. All 4 visas approved in 2 days. Highly recommend!'},
+  {name:'Ananya Nair', city:'Bangalore', dest:'Singapore Visa', flag:'🇸🇬', color:'#7c3aed', text:'The AI document checker caught an error in my photo before I submitted. Saved me from a rejection. Very smart!'},
+  {name:'Vikram Mehta', city:'Pune', dest:'Schengen Visa', flag:'🇪🇺', color:'#d97706', text:'Schengen is complicated but the team guided me every step. Got approved for 90 days. Outstanding support!'},
+  {name:'Sunita Patel', city:'Ahmedabad', dest:'US Visa', flag:'🇺🇸', color:'#dc2626', text:'The mock interview tool is absolute gold. Got my B1/B2 approved on the first attempt. Incredible service!'},
+  {name:'Arjun Reddy', city:'Hyderabad', dest:'UK Visa', flag:'🇬🇧', color:'#0d9488', text:'INR payment saved me forex charges. Quick, transparent and professional. Will use again for Europe trip.'},
 ];
 
 const PLANS = [
@@ -1462,84 +1462,84 @@ const PLANS = [
     desc:'Everything in Basic + dummy airline ticket, hotel booking & travel insurance included.',
     feats:['Single visa application','Priority WhatsApp updates','Dedicated visa expert','Hotel booking confirmation','Dummy airline ticket (for visa application)','Travel insurance'],
     missing:[],
-    cta:'Apply Now â', ctaCls:'plan-cta-primary', featured:true
+    cta:'Apply Now →', ctaCls:'plan-cta-primary', featured:true
   },
 ];
 
 const BLOGS = [
-  {emoji:'ð¦ðª',tag:'Middle East',img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80&fit=crop',title:'Dubai Visa for Indians: Complete 2025 Guide',excerpt:'Everything you need â fees, documents, processing time, and tips to avoid the most common rejection reasons.',date:'Apr 28, 2025',read:'5 min',author:'Priya R.',ac:'#2563eb',
+  {emoji:'🇦🇪',tag:'Middle East',img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&q=80&fit=crop',title:'Dubai Visa for Indians: Complete 2025 Guide',excerpt:'Everything you need — fees, documents, processing time, and tips to avoid the most common rejection reasons.',date:'Apr 28, 2025',read:'5 min',author:'Priya R.',ac:'#2563eb',
    content:[
-    {type:'stats',items:[{num:'24hrs',label:'Processing Time'},{num:'â¹4,499',label:'eVisas.in Fee'},{num:'99%',label:'Approval Rate'}]},
-    {type:'section',h:'Why Dubai Remains India\'s #1 Visa Destination',p:'Dubai consistently tops the list for Indian travelers â over 40 lakh Indians visit every year. The UAE e-Visa is simple, fully online, and issued within 24 hours. Whether you\'re going for the Burj Khalifa, a business meeting, or a family vacation, the visa process is straightforward when you have the right documents.'},
-    {type:'tip',title:'Processing Time Tip',text:'Apply at least 72 hours before travel â though most get approved in under 24 hours, buffer time is always wise.'},
+    {type:'stats',items:[{num:'24hrs',label:'Processing Time'},{num:'₹4,499',label:'eVisas.in Fee'},{num:'99%',label:'Approval Rate'}]},
+    {type:'section',h:'Why Dubai Remains India\'s #1 Visa Destination',p:'Dubai consistently tops the list for Indian travelers — over 40 lakh Indians visit every year. The UAE e-Visa is simple, fully online, and issued within 24 hours. Whether you\'re going for the Burj Khalifa, a business meeting, or a family vacation, the visa process is straightforward when you have the right documents.'},
+    {type:'tip',title:'Processing Time Tip',text:'Apply at least 72 hours before travel — though most get approved in under 24 hours, buffer time is always wise.'},
     {type:'section',h:'Documents You\'ll Need',p:'The UAE e-Visa requires only 3 core documents for most applicants:'},
-    {type:'checklist',items:['Valid Indian passport with at least 6 months validity','Recent passport-size photo (white background, 70% face coverage)','Confirmed return air ticket (booking reference is sufficient)','Hotel booking or host invitation letter','Last 3 months bank statement (min. â¹1 lakh average balance)','Travel insurance covering UAE (recommended but not always required)']},
+    {type:'checklist',items:['Valid Indian passport with at least 6 months validity','Recent passport-size photo (white background, 70% face coverage)','Confirmed return air ticket (booking reference is sufficient)','Hotel booking or host invitation letter','Last 3 months bank statement (min. ₹1 lakh average balance)','Travel insurance covering UAE (recommended but not always required)']},
     {type:'section',h:'Common Rejection Reasons to Avoid',p:'Most UAE e-Visa rejections happen due to avoidable errors. The top reasons are: photo on a non-white background, bank balance below threshold, or mismatched name spelling between the passport and the booking. Our AI document checker catches all of these before submission.'},
-    {type:'quote',text:'"Got my Dubai visa in 18 hours flat. The WhatsApp updates were incredibly reassuring. Applied on Monday evening, visa in my inbox by Tuesday morning." â Priya Sharma, Mumbai'},
-    {type:'tip',title:'Pro Tip',text:'If you\'re a frequent Dubai traveler, consider applying for a 90-day multi-entry visa. At â¹7,999 through eVisas.in, it works out much cheaper per trip than applying each time.'},
+    {type:'quote',text:'"Got my Dubai visa in 18 hours flat. The WhatsApp updates were incredibly reassuring. Applied on Monday evening, visa in my inbox by Tuesday morning." — Priya Sharma, Mumbai'},
+    {type:'tip',title:'Pro Tip',text:'If you\'re a frequent Dubai traveler, consider applying for a 90-day multi-entry visa. At ₹7,999 through eVisas.in, it works out much cheaper per trip than applying each time.'},
    ]},
-  {emoji:'ð¸ð¬',tag:'Asia',img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=900&q=80&fit=crop',title:'Singapore vs Thailand: Which Visa is Easier for Indians?',excerpt:'Comparing costs, processing time, and approval rates for two of India\'s most popular holiday destinations.',date:'Apr 22, 2025',read:'7 min',author:'Rahul M.',ac:'#16a34a',
+  {emoji:'🇸🇬',tag:'Asia',img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=900&q=80&fit=crop',title:'Singapore vs Thailand: Which Visa is Easier for Indians?',excerpt:'Comparing costs, processing time, and approval rates for two of India\'s most popular holiday destinations.',date:'Apr 22, 2025',read:'7 min',author:'Rahul M.',ac:'#16a34a',
    content:[
     {type:'stats',items:[{num:'97%',label:'Singapore Approval'},{num:'98%',label:'Thailand Approval'},{num:'3 days',label:'Singapore Processing'}]},
-    {type:'section',h:'The Big Question: Singapore or Thailand First?',p:'Both Singapore and Thailand are among the easiest Asian visas for Indians â but they work very differently. Singapore issues a proper e-Visa (EPAS) online in 3 business days. Thailand offers a Visa on Arrival at the airport. The right choice depends on your travel style and how much advance planning you do.'},
-    {type:'section',h:'Singapore: The Online Advantage',p:'Singapore\'s e-Visa (called EPAS) is applied online and linked electronically to your passport. No sticker, no stamp needed until you arrive. Processing takes 3 business days, the fee is modest, and approval rates are among the highest in Asia for Indians. The downside: you must apply in advance â you can\'t get it at the border.'},
-    {type:'tip',title:'Singapore Tip',text:'If you have a valid US, UK, Australian, or Canadian visa, Singapore allows visa-free entry. Check your eligibility before applying â you might not need a visa at all!'},
-    {type:'section',h:'Thailand: The Visa on Arrival Option',p:'Thailand\'s Visa on Arrival (VOA) is available at Bangkok Suvarnabhumi, Phuket, and Chiang Mai airports. Cost is 2,000 THB (ââ¹4,800) paid in cash at the counter. The catch: VOA queues can be very long â sometimes 2+ hours â and you need cash in Thai Baht. We recommend applying for an e-Visa before travel to skip the queue entirely.'},
-    {type:'checklist',items:['Singapore: Apply 5â7 days before travel online','Thailand: Apply for e-Visa 2 weeks before OR get VOA at airport','Singapore fee: â¹3,499 (eVisas.in) + SGD 30 govt fee','Thailand VOA: 2,000 THB cash at airport','Both require: passport 6 months valid, return ticket, hotel booking']},
-    {type:'quote',text:'"Applied for both Singapore and Thailand in one go through eVisas.in. Got the Singapore approval in 2 days and the Thailand e-Visa in 3. Zero airport queues." â Rahul Gupta, Delhi'},
+    {type:'section',h:'The Big Question: Singapore or Thailand First?',p:'Both Singapore and Thailand are among the easiest Asian visas for Indians — but they work very differently. Singapore issues a proper e-Visa (EPAS) online in 3 business days. Thailand offers a Visa on Arrival at the airport. The right choice depends on your travel style and how much advance planning you do.'},
+    {type:'section',h:'Singapore: The Online Advantage',p:'Singapore\'s e-Visa (called EPAS) is applied online and linked electronically to your passport. No sticker, no stamp needed until you arrive. Processing takes 3 business days, the fee is modest, and approval rates are among the highest in Asia for Indians. The downside: you must apply in advance — you can\'t get it at the border.'},
+    {type:'tip',title:'Singapore Tip',text:'If you have a valid US, UK, Australian, or Canadian visa, Singapore allows visa-free entry. Check your eligibility before applying — you might not need a visa at all!'},
+    {type:'section',h:'Thailand: The Visa on Arrival Option',p:'Thailand\'s Visa on Arrival (VOA) is available at Bangkok Suvarnabhumi, Phuket, and Chiang Mai airports. Cost is 2,000 THB (≈₹4,800) paid in cash at the counter. The catch: VOA queues can be very long — sometimes 2+ hours — and you need cash in Thai Baht. We recommend applying for an e-Visa before travel to skip the queue entirely.'},
+    {type:'checklist',items:['Singapore: Apply 5–7 days before travel online','Thailand: Apply for e-Visa 2 weeks before OR get VOA at airport','Singapore fee: ₹3,499 (eVisas.in) + SGD 30 govt fee','Thailand VOA: 2,000 THB cash at airport','Both require: passport 6 months valid, return ticket, hotel booking']},
+    {type:'quote',text:'"Applied for both Singapore and Thailand in one go through eVisas.in. Got the Singapore approval in 2 days and the Thailand e-Visa in 3. Zero airport queues." — Rahul Gupta, Delhi'},
     {type:'section',h:'Our Recommendation',p:'For first-time Southeast Asia travelers: start with Singapore (easier immigration, English-speaking, safe). For beach lovers who want to be spontaneous: Thailand VOA works, but book the e-Visa version for a smoother experience. Either way, eVisas.in handles both seamlessly.'},
    ]},
-  {emoji:'ðªðº',tag:'Europe',img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80&fit=crop',title:'Schengen Visa Rejected? Here\'s Why & How to Fix It',excerpt:'The most common reasons Indians get rejected â and exactly how to fix each one before reapplying.',date:'Apr 15, 2025',read:'9 min',author:'Ananya K.',ac:'#7c3aed',
+  {emoji:'🇪🇺',tag:'Europe',img:'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=900&q=80&fit=crop',title:'Schengen Visa Rejected? Here\'s Why & How to Fix It',excerpt:'The most common reasons Indians get rejected — and exactly how to fix each one before reapplying.',date:'Apr 15, 2025',read:'9 min',author:'Ananya K.',ac:'#7c3aed',
    content:[
     {type:'stats',items:[{num:'32%',label:'India Rejection Rate'},{num:'68%',label:'Strong App Approval'},{num:'15 days',label:'Avg Processing'}]},
-    {type:'section',h:'Why Schengen Rejections Are More Common Than You Think',p:'India has one of the highest Schengen visa rejection rates globally â roughly 28â32% of applications are refused. But the good news: the vast majority of rejections are due to fixable documentation errors, not genuine immigration concerns. Understanding why you were refused is the first step to a successful reapplication.'},
+    {type:'section',h:'Why Schengen Rejections Are More Common Than You Think',p:'India has one of the highest Schengen visa rejection rates globally — roughly 28–32% of applications are refused. But the good news: the vast majority of rejections are due to fixable documentation errors, not genuine immigration concerns. Understanding why you were refused is the first step to a successful reapplication.'},
     {type:'section',h:'The Top 7 Reasons for Schengen Rejection',p:'After analyzing 10,000+ Indian Schengen applications, these are the most common rejection reasons:'},
-    {type:'checklist',items:['Insufficient bank balance (rule: min â¬60â100/day + return ticket cost)','Bank statement showing recent large deposits (looks suspicious â embassies want to see 3-month history)','Travel insurance below â¬30,000 cover or with a gap in dates','Vague or undetailed travel itinerary (must account for every day)','Employment letter missing salary details or leave approval','Mismatch between declared itinerary and booked accommodation','Weak ties to India (no property, no family, no job â suggests immigration intent)']},
-    {type:'tip',title:'The #1 Fix',text:'Get a 3-month bank statement showing a consistent balance â NOT a single large top-up before applying. Embassies flag sudden deposits as document manipulation.'},
-    {type:'section',h:'How to Reapply Successfully',p:'You can reapply immediately after a Schengen rejection â there\'s no mandatory waiting period. However, you must address every refusal reason clearly in your new application. Our Pro plan includes a free reapplication with a detailed rejection analysis and a personalized action plan to fix each issue.'},
-    {type:'quote',text:'"Got rejected twice before using eVisas.in. They analyzed my refusal letter, rewrote my cover letter, and helped me get the right bank statement format. Approved on my third try." â Ananya Nair, Bangalore'},
+    {type:'checklist',items:['Insufficient bank balance (rule: min €60–100/day + return ticket cost)','Bank statement showing recent large deposits (looks suspicious — embassies want to see 3-month history)','Travel insurance below €30,000 cover or with a gap in dates','Vague or undetailed travel itinerary (must account for every day)','Employment letter missing salary details or leave approval','Mismatch between declared itinerary and booked accommodation','Weak ties to India (no property, no family, no job — suggests immigration intent)']},
+    {type:'tip',title:'The #1 Fix',text:'Get a 3-month bank statement showing a consistent balance — NOT a single large top-up before applying. Embassies flag sudden deposits as document manipulation.'},
+    {type:'section',h:'How to Reapply Successfully',p:'You can reapply immediately after a Schengen rejection — there\'s no mandatory waiting period. However, you must address every refusal reason clearly in your new application. Our Pro plan includes a free reapplication with a detailed rejection analysis and a personalized action plan to fix each issue.'},
+    {type:'quote',text:'"Got rejected twice before using eVisas.in. They analyzed my refusal letter, rewrote my cover letter, and helped me get the right bank statement format. Approved on my third try." — Ananya Nair, Bangalore'},
     {type:'tip',title:'Cover Letter Strategy',text:'Every strong Schengen application needs a custom cover letter that explains your travel purpose, your ties to India (job, family, property), and your ability to fund the trip. This single document can flip a rejection into an approval.'},
    ]},
-  {emoji:'ðºð¸',tag:'Americas',img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=900&q=80&fit=crop',title:'US B1/B2 Interview: 20 Questions & Best Answers',excerpt:'Real questions asked at US consulates in India, with sample answers that got 10,000+ applicants approved.',date:'Apr 10, 2025',read:'12 min',author:'Vikram S.',ac:'#d97706',
+  {emoji:'🇺🇸',tag:'Americas',img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=900&q=80&fit=crop',title:'US B1/B2 Interview: 20 Questions & Best Answers',excerpt:'Real questions asked at US consulates in India, with sample answers that got 10,000+ applicants approved.',date:'Apr 10, 2025',read:'12 min',author:'Vikram S.',ac:'#d97706',
    content:[
     {type:'stats',items:[{num:'87%',label:'eVisas.in Success Rate'},{num:'68%',label:'National Average'},{num:'10yr',label:'Visa Validity'}]},
-    {type:'section',h:'The US Visa Interview: What to Really Expect',p:'The US B1/B2 visa interview at Indian consulates (Mumbai, Delhi, Chennai, Kolkata, Hyderabad) is typically 2â5 minutes long. The consular officer has already reviewed your file â the interview is about confirming your intent and verifying your story. Confidence, clarity, and consistency matter more than memorized scripts.'},
+    {type:'section',h:'The US Visa Interview: What to Really Expect',p:'The US B1/B2 visa interview at Indian consulates (Mumbai, Delhi, Chennai, Kolkata, Hyderabad) is typically 2–5 minutes long. The consular officer has already reviewed your file — the interview is about confirming your intent and verifying your story. Confidence, clarity, and consistency matter more than memorized scripts.'},
     {type:'tip',title:'Golden Rule',text:'Never lie or exaggerate. Consular officers are trained to detect inconsistencies. Be honest, brief, and consistent with what\'s in your DS-160 form.'},
     {type:'section',h:'Most Asked Questions & How to Answer',p:'Here are the most common questions at Indian consulates, with the type of answer that works:'},
-    {type:'checklist',items:['"What is the purpose of your visit?" â State it simply: Tourism / Business meeting / Conference. One sentence.', '"Who is sponsoring your trip?" â Be clear: self-funded / company-sponsored. Have bank statements ready.','"Do you have family in the US?" â Be honest. Having family is fine â but state you\'re visiting, not immigrating.','"What do you do in India?" â Job title, company name, how long you\'ve been there. Stability matters.','"Have you traveled abroad before?" â List recent trips confidently. Strong travel history helps enormously.','"Why do you want to visit the US?" â Specific reason: Niagara, Grand Canyon, Disney, client meeting.','"When do you plan to return?" â Give your exact return date and explain why you must be back (job, family).','"What is your monthly salary?" â State it clearly. Show Form 16 or salary slips if asked.']},
+    {type:'checklist',items:['"What is the purpose of your visit?" → State it simply: Tourism / Business meeting / Conference. One sentence.', '"Who is sponsoring your trip?" → Be clear: self-funded / company-sponsored. Have bank statements ready.','"Do you have family in the US?" → Be honest. Having family is fine — but state you\'re visiting, not immigrating.','"What do you do in India?" → Job title, company name, how long you\'ve been there. Stability matters.','"Have you traveled abroad before?" → List recent trips confidently. Strong travel history helps enormously.','"Why do you want to visit the US?" → Specific reason: Niagara, Grand Canyon, Disney, client meeting.','"When do you plan to return?" → Give your exact return date and explain why you must be back (job, family).','"What is your monthly salary?" → State it clearly. Show Form 16 or salary slips if asked.']},
     {type:'section',h:'What the 13% Rejection Cases Have in Common',p:'Most US visa rejections under Section 214(b) come from failing to demonstrate strong ties to India. The officer must believe you will return. Weak cases: no steady job, no property, no dependents, first-time passport with no travel history. Our mock interview tool and coaching session address all of these systematically.'},
-    {type:'quote',text:'"The mock interview tool asked me every single question that came up in my real interview. Got approved in under 3 minutes. The preparation was everything." â Vikram Mehta, Pune'},
+    {type:'quote',text:'"The mock interview tool asked me every single question that came up in my real interview. Got approved in under 3 minutes. The preparation was everything." — Vikram Mehta, Pune'},
    ]},
-  {emoji:'âï¸',tag:'Tips',img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80&fit=crop',title:'How to Build a Strong Travel History for Visa Approvals',excerpt:'Consulates scrutinise travel history. Here\'s how to build it strategically to maximise approval chances.',date:'Apr 5, 2025',read:'6 min',author:'Sunita P.',ac:'#dc2626',
+  {emoji:'✈️',tag:'Tips',img:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80&fit=crop',title:'How to Build a Strong Travel History for Visa Approvals',excerpt:'Consulates scrutinise travel history. Here\'s how to build it strategically to maximise approval chances.',date:'Apr 5, 2025',read:'6 min',author:'Sunita P.',ac:'#dc2626',
    content:[
-    {type:'stats',items:[{num:'3Ã',label:'Higher Approval with History'},{num:'5+',label:'Stamps = Strong Profile'},{num:'0',label:'Cost for VOA Countries'}]},
-    {type:'section',h:'Why Travel History Is Your Most Powerful Visa Asset',p:'Every consular officer reviews your passport stamps before deciding. A passport full of previous visas â especially from the US, UK, EU, or other strong democracies â signals you\'re a legitimate traveler with no immigration intent. A blank passport, especially for a first US or Schengen application, is a significant hurdle.'},
+    {type:'stats',items:[{num:'3×',label:'Higher Approval with History'},{num:'5+',label:'Stamps = Strong Profile'},{num:'0',label:'Cost for VOA Countries'}]},
+    {type:'section',h:'Why Travel History Is Your Most Powerful Visa Asset',p:'Every consular officer reviews your passport stamps before deciding. A passport full of previous visas — especially from the US, UK, EU, or other strong democracies — signals you\'re a legitimate traveler with no immigration intent. A blank passport, especially for a first US or Schengen application, is a significant hurdle.'},
     {type:'section',h:'The Smart Sequence: Start Easy, Go Big',p:'The most effective strategy is to build your passport profile progressively. Start with zero-hassle destinations that leave stamps or entry records, then use that history to apply for harder visas.'},
-    {type:'checklist',items:['Step 1: Visa-free destinations â Nepal, Maldives, Mauritius, Morocco (leave stamps)','Step 2: Easy e-Visas â UAE, Thailand, Singapore, Sri Lanka (leave entry records)','Step 3: Mid-tier sticker visas â Turkey, Malaysia, Indonesia','Step 4: Premium destinations â US, UK, Canada, Australia, Schengen','Step 5: Once you have US/UK/Schengen â most other visas become significantly easier']},
-    {type:'tip',title:'The Southeast Asia Trick',text:'Visit 3â4 SE Asian countries (Thailand, Vietnam, Cambodia, Singapore) in a single trip. You\'ll collect 6â8 stamps in your passport and build a strong travel profile at a very low cost.'},
-    {type:'section',h:'How to Document Your Travel History Correctly',p:'Always carry your old passports if they contain stamps from previous trips. Even if your passport has expired, the stamps are valid evidence. Make high-quality photocopies of every entry/exit stamp. When applying for visas, include these as supporting documents even when not explicitly required â it demonstrates your travel pattern clearly.'},
-    {type:'quote',text:'"After 4 SE Asian trips, I applied for UK and got it approved first time. Travel history was specifically mentioned as a positive factor by my visa advisor." â Sunita Patel, Ahmedabad'},
+    {type:'checklist',items:['Step 1: Visa-free destinations — Nepal, Maldives, Mauritius, Morocco (leave stamps)','Step 2: Easy e-Visas — UAE, Thailand, Singapore, Sri Lanka (leave entry records)','Step 3: Mid-tier sticker visas — Turkey, Malaysia, Indonesia','Step 4: Premium destinations — US, UK, Canada, Australia, Schengen','Step 5: Once you have US/UK/Schengen — most other visas become significantly easier']},
+    {type:'tip',title:'The Southeast Asia Trick',text:'Visit 3–4 SE Asian countries (Thailand, Vietnam, Cambodia, Singapore) in a single trip. You\'ll collect 6–8 stamps in your passport and build a strong travel profile at a very low cost.'},
+    {type:'section',h:'How to Document Your Travel History Correctly',p:'Always carry your old passports if they contain stamps from previous trips. Even if your passport has expired, the stamps are valid evidence. Make high-quality photocopies of every entry/exit stamp. When applying for visas, include these as supporting documents even when not explicitly required — it demonstrates your travel pattern clearly.'},
+    {type:'quote',text:'"After 4 SE Asian trips, I applied for UK and got it approved first time. Travel history was specifically mentioned as a positive factor by my visa advisor." — Sunita Patel, Ahmedabad'},
    ]},
-  {emoji:'ð',tag:'Documents',img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80&fit=crop',title:'Visa Photo Requirements: Country-Wise Guide 2025',excerpt:'Wrong photo size is the #1 reason for processing delays. Use this guide to get it right the first time.',date:'Mar 30, 2025',read:'4 min',author:'Arjun R.',ac:'#0d9488',
+  {emoji:'📋',tag:'Documents',img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80&fit=crop',title:'Visa Photo Requirements: Country-Wise Guide 2025',excerpt:'Wrong photo size is the #1 reason for processing delays. Use this guide to get it right the first time.',date:'Mar 30, 2025',read:'4 min',author:'Arjun R.',ac:'#0d9488',
    content:[
     {type:'stats',items:[{num:'#1',label:'Photo = Top Delay Reason'},{num:'23%',label:'Apps Delayed by Photo'},{num:'10+',label:'Different Spec Sets'}]},
-    {type:'section',h:'Why Visa Photos Cause More Problems Than You Think',p:'Passport-size photo requirements vary significantly between countries â and a single incorrect photo can delay your application by days or cause outright rejection. The three most common errors are: wrong background colour, incorrect dimensions, and face coverage outside the required range. This guide covers the major destinations.'},
+    {type:'section',h:'Why Visa Photos Cause More Problems Than You Think',p:'Passport-size photo requirements vary significantly between countries — and a single incorrect photo can delay your application by days or cause outright rejection. The three most common errors are: wrong background colour, incorrect dimensions, and face coverage outside the required range. This guide covers the major destinations.'},
     {type:'section',h:'Country-by-Country Photo Specifications',p:''},
-    {type:'checklist',items:['ð¦ðª UAE: 4Ã6cm (43Ã55mm), white background, 80% face, matte finish','ðºð¸ USA: 5Ã5cm (2Ã2 inch), white background, 50% face, no glasses','ðªðº Schengen: 3.5Ã4.5cm, white/light grey background, 70â80% face, neutral expression','ð¬ð§ UK: 35Ã45mm, plain light grey background, no glasses since 2018','ð¸ð¬ Singapore: 35Ã45mm, white background, 70â80% face, eyes open','ð¯ðµ Japan: 45Ã45mm, white background, face 32â36mm height, taken within 6 months','ð¨ð¦ Canada: 50Ã70mm (2Ã2.75 inch), white background, 31â36mm face height','ð¦ðº Australia: 35Ã45mm, white background, neutral expression, no glasses']},
-    {type:'tip',title:'Universal Rules That Apply Everywhere',text:'Plain background (white or light grey) Â· Neutral expression, mouth closed Â· Eyes fully open and clearly visible Â· No glasses (most countries now ban them) Â· Taken within the last 6 months Â· No headgear unless for religious reasons Â· High resolution, not pixelated or blurry'},
-    {type:'section',h:'Digital Photo Requirements (for e-Visas)',p:'Online visa applications require digital photos â not scanned prints. Requirements are typically: JPEG format, minimum 600Ã600 pixels, maximum 5MB file size, and a white background. Our AI photo checker verifies your digital photo against the destination-specific requirements before you submit.'},
-    {type:'quote',text:'"Saved 4 days of delay because the AI checker flagged my photo had a slightly grey background instead of pure white. Fixed it in 2 minutes." â Arjun Reddy, Hyderabad'},
+    {type:'checklist',items:['🇦🇪 UAE: 4×6cm (43×55mm), white background, 80% face, matte finish','🇺🇸 USA: 5×5cm (2×2 inch), white background, 50% face, no glasses','🇪🇺 Schengen: 3.5×4.5cm, white/light grey background, 70–80% face, neutral expression','🇬🇧 UK: 35×45mm, plain light grey background, no glasses since 2018','🇸🇬 Singapore: 35×45mm, white background, 70–80% face, eyes open','🇯🇵 Japan: 45×45mm, white background, face 32–36mm height, taken within 6 months','🇨🇦 Canada: 50×70mm (2×2.75 inch), white background, 31–36mm face height','🇦🇺 Australia: 35×45mm, white background, neutral expression, no glasses']},
+    {type:'tip',title:'Universal Rules That Apply Everywhere',text:'Plain background (white or light grey) · Neutral expression, mouth closed · Eyes fully open and clearly visible · No glasses (most countries now ban them) · Taken within the last 6 months · No headgear unless for religious reasons · High resolution, not pixelated or blurry'},
+    {type:'section',h:'Digital Photo Requirements (for e-Visas)',p:'Online visa applications require digital photos — not scanned prints. Requirements are typically: JPEG format, minimum 600×600 pixels, maximum 5MB file size, and a white background. Our AI photo checker verifies your digital photo against the destination-specific requirements before you submit.'},
+    {type:'quote',text:'"Saved 4 days of delay because the AI checker flagged my photo had a slightly grey background instead of pure white. Fixed it in 2 minutes." — Arjun Reddy, Hyderabad'},
    ]},
 ];
 
 const FAQS = [
-  {q:'How long does it take to get a visa through eVisas.in?', a:'Processing time depends on the destination. Most e-Visas are delivered within 24â72 hours. Sticker visas and embassy appointments take longer â usually 7â30 days. We always show accurate processing times before you apply, and our Pro plan guarantees delivery before your travel date.'},
+  {q:'How long does it take to get a visa through eVisas.in?', a:'Processing time depends on the destination. Most e-Visas are delivered within 24–72 hours. Sticker visas and embassy appointments take longer — usually 7–30 days. We always show accurate processing times before you apply, and our Pro plan guarantees delivery before your travel date.'},
   {q:'Is my data safe with eVisas.in?', a:'Absolutely. We use bank-grade 256-bit SSL encryption for all data transmission. Your passport and personal data is stored on ISO 27001 certified servers and is never shared with third parties without your explicit consent.'},
   {q:'What if my visa gets rejected?', a:'If you\'re on our Pro plan, we offer a free re-application with an improved application at no extra service charge. On all plans, we\'ll provide a detailed rejection analysis. Our 98% success rate means rejections are rare.'},
   {q:'Can I apply for multiple family members at once?', a:'Yes! Our group application feature lets you apply for your entire family in one go. Fill one primary form and replicate details across members. We offer bulk discounts for groups of 4 or more.'},
-  {q:'Which payment methods are accepted?', a:'We accept all major Indian payment methods â UPI (PhonePe, GPay, Paytm), Net Banking, Debit Cards, Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All amounts in INR with zero forex markup.'},
-  {q:'Do I need to visit an embassy or consulate?', a:'For e-Visas â no! You apply entirely online. For countries requiring a sticker visa or biometrics (like the UK, US, Schengen), you will need a brief appointment, and we guide you through scheduling it efficiently.'},
-  {q:'What is the On-Time Guarantee?', a:'We guarantee that your visa will be delivered before your stated travel date. If it isn\'t â and the delay is caused by us or embassy processing â we will refund your full service fee, no questions asked.'},
+  {q:'Which payment methods are accepted?', a:'We accept all major Indian payment methods — UPI (PhonePe, GPay, Paytm), Net Banking, Debit Cards, Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All amounts in INR with zero forex markup.'},
+  {q:'Do I need to visit an embassy or consulate?', a:'For e-Visas — no! You apply entirely online. For countries requiring a sticker visa or biometrics (like the UK, US, Schengen), you will need a brief appointment, and we guide you through scheduling it efficiently.'},
+  {q:'What is the On-Time Guarantee?', a:'We guarantee that your visa will be delivered before your stated travel date. If it isn\'t — and the delay is caused by us or embassy processing — we will refund your full service fee, no questions asked.'},
   {q:'How do I get updates on my application?', a:'Once your application is submitted, our team sends real-time updates via WhatsApp and email at every stage — document review, embassy submission, and visa approval. WhatsApp us anytime at +91 86196 66129 for a status update.'},
 ];
 
@@ -1551,13 +1551,13 @@ function renderBento() {
       <p>${f.desc}</p>
       ${f.extra === 'visual' ? `
         <div class="bento-visual">
-          <div class="bv-row"><span>Application submitted</span><span style="color:var(--green)">â</span></div>
+          <div class="bv-row"><span>Application submitted</span><span style="color:var(--green)">✓</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:100%"></div></div>
-          <div class="bv-row"><span>Documents verified</span><span style="color:var(--green)">â</span></div>
+          <div class="bv-row"><span>Documents verified</span><span style="color:var(--green)">✓</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:100%"></div></div>
-          <div class="bv-row"><span>Embassy processing</span><span style="color:var(--gold)">â³</span></div>
+          <div class="bv-row"><span>Embassy processing</span><span style="color:var(--gold)">⏳</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:70%"></div></div>
-          <div class="bv-row"><span>Visa delivery</span><span style="color:var(--text-light)">â</span></div>
+          <div class="bv-row"><span>Visa delivery</span><span style="color:var(--text-light)">—</span></div>
           <div class="bv-bar"><div class="bv-fill" style="width:0%"></div></div>
         </div>` : `<div class="bento-bg-num">0${FEATURES.indexOf(f)+1}</div>`}
     </div>`).join('');
@@ -1576,13 +1576,13 @@ function renderTrust() {
 function renderTestimonials() {
   document.getElementById('tGrid').innerHTML = TESTIMONIALS.map(t => `
     <div class="tcard reveal-up">
-      <div class="stars">âââââ</div>
+      <div class="stars">★★★★★</div>
       <p class="tcard-text">"${t.text}"</p>
       <div class="tcard-author">
         <div class="avatar" style="background:${t.color}">${t.name[0]}</div>
         <div>
           <div class="author-name">${t.name}</div>
-          <div class="author-meta">${t.city} Â· ${t.flag} ${t.dest}</div>
+          <div class="author-meta">${t.city} · ${t.flag} ${t.dest}</div>
         </div>
       </div>
     </div>`).join('');
@@ -1594,11 +1594,11 @@ function renderPricing() {
     <div class="pcard ${p.featured ? 'featured' : ''} reveal-up">
       ${p.featured ? '<div class="featured-ribbon">MOST POPULAR</div>' : ''}
       <div class="plan-tag">${p.tag}</div>
-      <div class="plan-amount"><sub>â¹</sub>${p.amount}<sup>${p.per}</sup></div>
+      <div class="plan-amount"><sub>₹</sub>${p.amount}<sup>${p.per}</sup></div>
       <div class="plan-desc">${p.desc}</div>
       <ul class="plan-list">
-        ${p.feats.map(f => `<li><span class="li-check">â</span>${f}</li>`).join('')}
-        ${p.missing.map(m => `<li class="dim"><span class="li-cross">â</span>${m}</li>`).join('')}
+        ${p.feats.map(f => `<li><span class="li-check">✓</span>${f}</li>`).join('')}
+        ${p.missing.map(m => `<li class="dim"><span class="li-cross">✕</span>${m}</li>`).join('')}
       </ul>
       <button class="plan-cta ${p.ctaCls}" onclick="openApplyForm('${p.tag}')">${p.cta}</button>
     </div>`).join('');
@@ -1627,7 +1627,7 @@ function renderBlog() {
             <div class="blog-av" style="background:${b.ac}">${b.author[0]}</div>
             <span class="blog-author-name">${b.author}</span>
           </div>
-          <span class="blog-read-link">Read â</span>
+          <span class="blog-read-link">Read →</span>
         </div>
       </div>
     </div>`).join('');
@@ -1654,23 +1654,23 @@ function toggleFAQ(el) {
 }
 
 function renderMarquee() {
-  const items = ['ð¦ðª UAE','ðºð¸ USA','ð«ð· France','ð¸ð¬ Singapore','ð¹ð­ Thailand','ð¬ð§ UK','ð©ðª Germany','ð®ð© Indonesia','ð²ð» Maldives','ð¹ð· Turkey','ð¯ðµ Japan','ð¦ðº Australia','ð¨ð¦ Canada','ð³ð± Netherlands','ð§ðª Belgium','ð²ð¾ Malaysia','ð°ðª Kenya','ð§ð­ Bahrain'];
+  const items = ['🇦🇪 UAE','🇺🇸 USA','🇫🇷 France','🇸🇬 Singapore','🇹🇭 Thailand','🇬🇧 UK','🇩🇪 Germany','🇮🇩 Indonesia','🇲🇻 Maldives','🇹🇷 Turkey','🇯🇵 Japan','🇦🇺 Australia','🇨🇦 Canada','🇳🇱 Netherlands','🇧🇪 Belgium','🇲🇾 Malaysia','🇰🇪 Kenya','🇧🇭 Bahrain'];
   const track = document.getElementById('marqueeTrack');
   const doubled = [...items, ...items];
   track.innerHTML = doubled.map(item => {
     const [em, ...rest] = item.split(' ');
-    return `<div class="marquee-item"><span>${em}</span>${rest.join(' ')}</div><div class="marquee-sep">Â·</div>`;
+    return `<div class="marquee-item"><span>${em}</span>${rest.join(' ')}</div><div class="marquee-sep">·</div>`;
   }).join('');
 }
 
-/* ââ COUNTRY DETAIL PAGE ââ */
+/* ── COUNTRY DETAIL PAGE ── */
 function showCountryDetail(slug) {
   const d = DESTS.find(x => x.slug === slug);
   if (!d) return;
   document.getElementById('cpHeroImg').src = d.img;
   document.getElementById('cpFlag').textContent = d.f;
   document.getElementById('cpName').textContent = d.fullName + ' Visa';
-  document.getElementById('cpVisaType').textContent = TYPE_LABEL[d.type] + ' Â· ' + d.proc + ' processing Â· ' + d.val + ' validity';
+  document.getElementById('cpVisaType').textContent = TYPE_LABEL[d.type] + ' · ' + d.proc + ' processing · ' + d.val + ' validity';
   document.getElementById('cpPrice').textContent = d.price;
   document.getElementById('cpAbout').textContent = d.about;
   document.getElementById('cpFacts').innerHTML = `
@@ -1682,7 +1682,7 @@ function showCountryDetail(slug) {
   document.getElementById('cpReqs').innerHTML = d.requirements.map(r => `<li>${r}</li>`).join('');
   document.getElementById('cpIncludes').innerHTML = d.includes.map(i => `<li>${i}</li>`).join('');
   const applyBtn = document.getElementById('cpApplyBtn');
-  applyBtn.onclick = () => { showToast('Starting ' + d.c + ' application... âï¸'); setTimeout(openWhatsApp, 1000); };
+  applyBtn.onclick = () => { showToast('Starting ' + d.c + ' application... ✈️'); setTimeout(openWhatsApp, 1000); };
 
   const page = document.getElementById('countryPage');
   page.classList.add('open');
@@ -1697,7 +1697,7 @@ function closeCountryPage() {
   history.pushState('', document.title, window.location.pathname);
 }
 
-/* ââ TOAST ââ */
+/* ── TOAST ── */
 let toastTimer;
 function showToast(msg) {
   let t = document.getElementById('toast');
@@ -1713,13 +1713,13 @@ function openWhatsApp(msg) {
   window.open('https://wa.me/918619666129?text=' + encodeURIComponent(text), '_blank');
 }
 
-/* ââ HOME / CLOSE ALL ââ */
+/* ── HOME / CLOSE ALL ── */
 function goHome() {
   closeCountryPage(); closeBlogPage(); closeGuaranteePage(); closeB2BPage(); closePolicyPage(); closeAboutPage();
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-/* ââ SHOW ALL COUNTRIES ââ */
+/* ── SHOW ALL COUNTRIES ── */
 function showAllCountries() {
   showingPopular = false;
   activeFilter = 'all'; activeRegion = 'all'; searchQ = '';
@@ -1730,7 +1730,7 @@ function showAllCountries() {
   document.getElementById('destinations').scrollIntoView({behavior:'smooth'});
 }
 
-/* ââ SEARCH AUTOCOMPLETE ââ */
+/* ── SEARCH AUTOCOMPLETE ── */
 function handleSearch(q) {
   searchQ = q;
   const sugg = document.getElementById('searchSugg');
@@ -1748,9 +1748,9 @@ function handleSearch(q) {
         <span class="sugg-flag">${d.f}</span>
         <div class="sugg-info">
           <div class="sugg-name">${d.fullName || d.c}</div>
-          <div class="sugg-meta">${TYPE_LABEL[d.type]} Â· ${d.proc} Â· ${d.price}</div>
+          <div class="sugg-meta">${TYPE_LABEL[d.type]} · ${d.proc} · ${d.price}</div>
         </div>
-        <span class="sugg-arrow">â</span>
+        <span class="sugg-arrow">→</span>
       </div>`).join('');
     sugg.classList.add('show');
   }
@@ -1780,11 +1780,11 @@ document.addEventListener('click', e => {
   }
 });
 
-/* ââ BLOG ARTICLE PAGE ââ */
+/* ── BLOG ARTICLE PAGE ── */
 function renderBlogContent(content) {
   return content.map(s => {
     if (s.type === 'section') return `<div class="ba-section"><h2>${s.h}</h2><p>${s.p}</p></div>`;
-    if (s.type === 'tip') return `<div class="tip-box"><div class="tip-box-title">ð¡ ${s.title}</div><p>${s.text}</p></div>`;
+    if (s.type === 'tip') return `<div class="tip-box"><div class="tip-box-title">💡 ${s.title}</div><p>${s.text}</p></div>`;
     if (s.type === 'quote') return `<div class="quote-block">${s.text}</div>`;
     if (s.type === 'stats') return `<div class="ba-stats">${s.items.map(i=>`<div class="ba-stat-box"><div class="ba-stat-num">${i.num}</div><div class="ba-stat-label">${i.label}</div></div>`).join('')}</div>`;
     if (s.type === 'checklist') return `<ul class="ba-checklist">${s.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
@@ -1803,8 +1803,8 @@ function showBlogDetail(idx) {
   document.getElementById('baBody').innerHTML = renderBlogContent(b.content) + `
     <div class="ba-cta-box">
       <h3>Ready to Apply?</h3>
-      <p>Get your visa processed by experts â on time, guaranteed.</p>
-      <button class="btn-pill" style="padding:0.85rem 2rem;font-size:0.95rem" onclick="closeBlogPage();scrollToDest()">Apply for a Visa â</button>
+      <p>Get your visa processed by experts — on time, guaranteed.</p>
+      <button class="btn-pill" style="padding:0.85rem 2rem;font-size:0.95rem" onclick="closeBlogPage();scrollToDest()">Apply for a Visa →</button>
     </div>`;
   const page = document.getElementById('blogPage');
   page.classList.add('open');
@@ -1816,7 +1816,7 @@ function closeBlogPage() {
   document.body.style.overflow = '';
 }
 
-/* ââ GUARANTEE PAGE ââ */
+/* ── GUARANTEE PAGE ── */
 function showGuaranteePage() {
   document.getElementById('guaranteePage').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1827,7 +1827,7 @@ function closeGuaranteePage() {
   document.body.style.overflow = '';
 }
 
-/* ââ B2B PAGE ââ */
+/* ── B2B PAGE ── */
 function showB2BPage() {
   document.getElementById('b2bPage').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -1838,14 +1838,14 @@ function closeB2BPage() {
   document.body.style.overflow = '';
 }
 
-/* ââ POLICY PAGES ââ */
+/* ── POLICY PAGES ── */
 const POLICIES = {
   refund: {
     title: 'Refund Policy',
     subtitle: 'Last updated: 1 May 2025',
     sections: [
-      {h:'On-Time Guarantee Refund', body:`<div class="pol-highlight">ð¡ï¸ If we fail to deliver your visa before your travel date for any covered reason, you receive a 100% refund of your eVisas.in service fee â automatically, within 24 hours.</div><p>This guarantee applies to all applications where the delay is caused by our team or by embassy processing issues that we were aware of and failed to communicate.</p>`},
-      {h:'Standard Refund Conditions', body:`<ul><li>Refund requests must be submitted within 7 days of the failed delivery date</li><li>The refund covers only the eVisas.in service fee â not government visa fees paid to embassies</li><li>Refunds are processed to the original payment method within 5â7 business days</li><li>For group applications, each applicant's fee is refunded individually</li></ul>`},
+      {h:'On-Time Guarantee Refund', body:`<div class="pol-highlight">🛡️ If we fail to deliver your visa before your travel date for any covered reason, you receive a 100% refund of your eVisas.in service fee — automatically, within 24 hours.</div><p>This guarantee applies to all applications where the delay is caused by our team or by embassy processing issues that we were aware of and failed to communicate.</p>`},
+      {h:'Standard Refund Conditions', body:`<ul><li>Refund requests must be submitted within 7 days of the failed delivery date</li><li>The refund covers only the eVisas.in service fee — not government visa fees paid to embassies</li><li>Refunds are processed to the original payment method within 5–7 business days</li><li>For group applications, each applicant's fee is refunded individually</li></ul>`},
       {h:'Non-Refundable Situations', body:`<ul><li>Applications rejected due to incorrect information provided by the applicant</li><li>Documents not submitted or submitted incorrectly by the applicant</li><li>Travel date change after submission without notifying eVisas.in</li><li>Applicant-initiated cancellations after application has been submitted to the embassy</li><li>Visa refused due to applicant's prior overstay, criminal record, or immigration violations</li></ul>`},
       {h:'How to Request a Refund', body:`<p>WhatsApp us at +91 86196 66129 with your booking reference and reason. Our team responds within 2 hours and processes eligible refunds within 24 hours of approval.</p>`},
     ]
@@ -1854,11 +1854,11 @@ const POLICIES = {
     title: 'Privacy Policy',
     subtitle: 'Last updated: 1 May 2025',
     sections: [
-      {h:'Information We Collect', body:`<p>When you apply for a visa through eVisas.in, we collect: full name, date of birth, passport number and details, contact information (email, phone), payment details (processed securely via Razorpay â we never store card numbers), and travel documents you upload.</p>`},
+      {h:'Information We Collect', body:`<p>When you apply for a visa through eVisas.in, we collect: full name, date of birth, passport number and details, contact information (email, phone), payment details (processed securely via Razorpay — we never store card numbers), and travel documents you upload.</p>`},
       {h:'How We Use Your Data', body:`<ul><li>Process your visa application with the relevant embassy or immigration authority</li><li>Send application status updates via WhatsApp, SMS, and email</li><li>Improve our services and AI document checker</li><li>Comply with legal obligations and government reporting requirements</li></ul>`},
-      {h:'Data Storage & Security', body:`<div class="pol-highlight">ð All data is encrypted using 256-bit SSL. Servers are ISO 27001 certified. Passport scans are deleted within 90 days of visa delivery.</div><p>We use AWS infrastructure in India with regular third-party security audits. Your data is never sold, rented, or shared with marketing companies.</p>`},
+      {h:'Data Storage & Security', body:`<div class="pol-highlight">🔒 All data is encrypted using 256-bit SSL. Servers are ISO 27001 certified. Passport scans are deleted within 90 days of visa delivery.</div><p>We use AWS infrastructure in India with regular third-party security audits. Your data is never sold, rented, or shared with marketing companies.</p>`},
       {h:'Third-Party Sharing', body:`<p>We share data only with: (1) embassies and visa processing authorities as required for your application, (2) our payment gateway (Razorpay) for transaction processing, and (3) courier services for document delivery when required. All third parties are contractually bound to data protection standards.</p>`},
-      {h:'Your Rights', body:`<ul><li>Access a copy of all data we hold about you â email info@evisas.in</li><li>Request correction of incorrect personal data at any time</li><li>Request deletion of your data after your visa application is complete</li><li>Opt out of marketing communications at any time via the unsubscribe link in emails</li></ul>`},
+      {h:'Your Rights', body:`<ul><li>Access a copy of all data we hold about you — email info@evisas.in</li><li>Request correction of incorrect personal data at any time</li><li>Request deletion of your data after your visa application is complete</li><li>Opt out of marketing communications at any time via the unsubscribe link in emails</li></ul>`},
       {h:'Contact', body:`<p>For any privacy concerns, email us at info@evisas.in or WhatsApp +91 86196 66129. We respond within 24 hours.</p>`},
     ]
   },
@@ -1867,11 +1867,11 @@ const POLICIES = {
     subtitle: 'Last updated: 1 May 2025',
     sections: [
       {h:'Acceptance of Terms', body:`<p>By using eVisas.in, you agree to these Terms of Service. If you are applying on behalf of another person, you confirm you have their consent. These terms govern all visa applications, payments, and services provided through eVisas.in.</p>`},
-      {h:'Our Services', body:`<p>eVisas.in provides visa application assistance, document preparation, and submission services. We are an authorised visa facilitation service â not an embassy or government body. Final visa approval or rejection is at the sole discretion of the relevant embassy or immigration authority.</p>`},
-      {h:'Applicant Responsibilities', body:`<ul><li>You must provide accurate, truthful information â any misrepresentation is your sole responsibility</li><li>Documents submitted must be genuine and valid</li><li>You must notify us immediately of any change in travel dates or personal details after application</li><li>You are responsible for meeting passport validity and other personal eligibility requirements</li></ul>`},
-      {h:'Payment Terms', body:`<div class="pol-highlight">ð³ All payments are in Indian Rupees (INR). Service fees are charged at the time of application. Government visa fees are paid separately to the respective embassy/authority.</div><p>We accept UPI, Net Banking, Debit/Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All transactions are secured by Razorpay.</p>`},
+      {h:'Our Services', body:`<p>eVisas.in provides visa application assistance, document preparation, and submission services. We are an authorised visa facilitation service — not an embassy or government body. Final visa approval or rejection is at the sole discretion of the relevant embassy or immigration authority.</p>`},
+      {h:'Applicant Responsibilities', body:`<ul><li>You must provide accurate, truthful information — any misrepresentation is your sole responsibility</li><li>Documents submitted must be genuine and valid</li><li>You must notify us immediately of any change in travel dates or personal details after application</li><li>You are responsible for meeting passport validity and other personal eligibility requirements</li></ul>`},
+      {h:'Payment Terms', body:`<div class="pol-highlight">💳 All payments are in Indian Rupees (INR). Service fees are charged at the time of application. Government visa fees are paid separately to the respective embassy/authority.</div><p>We accept UPI, Net Banking, Debit/Credit Cards (Visa, Mastercard, RuPay, Amex), and EMI options. All transactions are secured by Razorpay.</p>`},
       {h:'Limitation of Liability', body:`<p>eVisas.in's liability is limited to the service fee paid for the specific application. We are not liable for losses arising from visa refusal, travel cancellations, flight or hotel costs, or any consequential damages. Our On-Time Guarantee refund (service fee only) is the maximum remedy available.</p>`},
-      {h:'Governing Law', body:`<p>These terms are governed by Indian law. Any disputes shall be subject to the jurisdiction of courts in Jaipur, Rajasthan, India. For disputes under â¹50,000, we commit to resolution via online mediation within 30 days.</p>`},
+      {h:'Governing Law', body:`<p>These terms are governed by Indian law. Any disputes shall be subject to the jurisdiction of courts in Jaipur, Rajasthan, India. For disputes under ₹50,000, we commit to resolution via online mediation within 30 days.</p>`},
     ]
   }
 };
@@ -1892,7 +1892,7 @@ function closePolicyPage() {
   document.body.style.overflow = '';
 }
 
-/* ââ FILTERS ââ */
+/* ── FILTERS ── */
 function setFilter(el, val) {
   showingPopular = false;
   activeFilter = val;
@@ -1915,7 +1915,7 @@ function scrollToDest() {
   document.getElementById('destinations').scrollIntoView({behavior:'smooth'});
 }
 
-/* ââ NAV ââ */
+/* ── NAV ── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('solid', window.scrollY > 40);
   const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
@@ -1935,7 +1935,7 @@ function closeMobile() {
   document.body.style.overflow = '';
 }
 
-/* ââ COUNTER ANIMATION ââ */
+/* ── COUNTER ANIMATION ── */
 function animCounters() {
   document.querySelectorAll('[data-target]').forEach(el => {
     const target = parseFloat(el.dataset.target);
@@ -1954,7 +1954,7 @@ function animCounters() {
   });
 }
 
-/* ââ CSS SCROLL REVEAL ââ */
+/* ── CSS SCROLL REVEAL ── */
 function initReveal() {
   const els = document.querySelectorAll('.reveal-up:not(.visible)');
   if (!els.length) return;
@@ -1964,7 +1964,7 @@ function initReveal() {
   els.forEach(el => io.observe(el));
 }
 
-/* ââ HERO ENTRANCE ââ */
+/* ── HERO ENTRANCE ── */
 function heroEntrance() {
   const badge = document.querySelector('.hero-badge');
   const sub = document.querySelector('.hero-sub');
@@ -1982,7 +1982,7 @@ function heroEntrance() {
   setTimeout(animCounters, 900);
 }
 
-/* ââ APPLY FORM ââ */
+/* ── APPLY FORM ── */
 let applyFormPlan = '';
 function openApplyForm(plan) {
   applyFormPlan = plan || '';
@@ -2014,13 +2014,13 @@ function submitApplyForm(e) {
   } catch(_) {}
   closeApplyForm();
   window.open('https://wa.me/918619666129?text=' + encodeURIComponent(msg), '_blank');
-  showToast('Opening WhatsApp â we\'ll reply within minutes! â');
+  showToast('Opening WhatsApp — we\'ll reply within minutes! ✅');
 }
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('applyModal').style.display === 'flex') closeApplyForm();
 });
 
-/* ââ ABOUT US PAGE ââ */
+/* ── ABOUT US PAGE ── */
 function showAboutPage() {
   document.getElementById('aboutPage').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -2031,7 +2031,7 @@ function closeAboutPage() {
   document.body.style.overflow = '';
 }
 
-/* ââ CORPORATE QUOTE ââ */
+/* ── CORPORATE QUOTE ── */
 function submitCorpQuote(e) {
   e.preventDefault();
   const company = document.getElementById('cq-company').value.trim();
@@ -2042,10 +2042,10 @@ function submitCorpQuote(e) {
   if (volume) msg += `\nMonthly Volume: ${volume}`;
   msg += '\n\nPlease send me a custom quote.';
   window.open('https://wa.me/918619666129?text=' + encodeURIComponent(msg), '_blank');
-  showToast('Opening WhatsApp for your custom quote! ð¢');
+  showToast('Opening WhatsApp for your custom quote! 🏢');
 }
 
-/* ââ HASH ROUTING ââ */
+/* ── HASH ROUTING ── */
 function handleHash() {
   const hash = window.location.hash;
   if (hash.startsWith('#visa/')) {
@@ -2054,7 +2054,7 @@ function handleHash() {
   }
 }
 
-/* ââ INIT ââ */
+/* ── INIT ── */
 window.addEventListener('load', () => {
   setTimeout(() => {
     const loader = document.getElementById('loader');
