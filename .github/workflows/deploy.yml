@@ -1,32 +1,18 @@
-name: Deploy to Hostinger
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./evisas-website/
-          server-dir: /public_html/
-          dangerous-clean-slate: true
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
-            *.md
-            *.jpg
-            *.jpeg
-            *.png
+# GitHub Pages deploys automatically from the master branch root.
+# No workflow action needed — pushing to master is all it takes.
+#
+# Settings required (one-time, in GitHub):
+#   Repository → Settings → Pages → Source: Deploy from branch → master / (root)
+#
+# DNS required (one-time, at Hostinger hPanel → DNS Zone):
+#   Remove A record pointing to 46.202.161.26
+#   Add 4 A records pointing to:
+#     185.199.108.153
+#     185.199.109.153
+#     185.199.110.153
+#     185.199.111.153
+#   Add AAAA records:
+#     2606:50c0:8000::153
+#     2606:50c0:8001::153
+#     2606:50c0:8002::153
+#     2606:50c0:8003::153
