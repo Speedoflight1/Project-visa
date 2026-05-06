@@ -63,11 +63,8 @@
       background: #fff;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
     }
-    .loader-logo {
-      font-size: 2.5rem; font-weight: 900; letter-spacing: -1px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
+    .loader-logo { display:flex; align-items:center; justify-content:center; }
+    .loader-logo img { height:90px; width:auto; mix-blend-mode:multiply; }
     .loader-bar-wrap { width: 180px; height: 3px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
     .loader-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); animation: loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) forwards; }
     @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
@@ -82,7 +79,7 @@
     }
     #nav.solid { border-color: var(--border); box-shadow: 0 1px 20px rgba(15,22,41,0.06); }
     .nav-logo { display:flex; align-items:center; }
-    .nav-logo img { height:48px; width:auto; background:linear-gradient(135deg,#1a2a6c,#2563eb); border-radius:10px; padding:6px 14px; }
+    .nav-logo img { height:52px; width:auto; mix-blend-mode:multiply; display:block; }
     .nav-links { display: flex; gap: 2.5rem; align-items: center; }
     .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
@@ -396,7 +393,7 @@
     footer { background: #0f1629; color: #94a3b8; padding: 56px 5% 32px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
-    .footer-brand .nav-logo { display: inline-block; margin-bottom: 1rem; } .footer-brand .nav-logo img { height:52px !important; padding:8px 16px !important; }
+    .footer-brand .nav-logo { display: inline-block; margin-bottom: 1rem; } .footer-brand .nav-logo img { height:60px !important; mix-blend-mode:normal !important; }
     .footer-brand p { font-size: 0.85rem; line-height: 1.75; max-width: 280px; }
     .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #cbd5e1; margin-bottom: 1.25rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
@@ -670,14 +667,14 @@
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="loader-logo">eVisas.in</div>
+  <div class="loader-logo"><img src="logo.jpeg" alt="eVisas.in"/></div>
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
 
 <!-- NAVBAR -->
 <nav id="nav">
   <div class="nav-logo" onclick="goHome()" style="cursor:pointer">
-    <img src="logo-white.png.png" alt="eVisas.in" style="height:36px;width:auto;display:block;mix-blend-mode:multiply;filter:contrast(1.1);" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+    <img src="logo.jpeg" alt="eVisas.in" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
     <span style="display:none;font-size:1.4rem;font-weight:900;letter-spacing:-0.5px;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">eVisas.in</span>
   </div>
   <div class="nav-links">
@@ -872,8 +869,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="nav-logo">
-          <img src="logo-white.png.png" alt="eVisas.in" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1);" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
-          <span style="display:none">eVisas.in</span>
+          <img src="logo-white.png.png" alt="eVisas.in" style="width:auto;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+          <span style="display:none;font-size:1.4rem;font-weight:900;color:#fff;">eVisas.in</span>
         </div>
         <p style="margin-top:0.75rem;">India's most trusted visa service. 120+ countries, expert support, guaranteed on-time delivery.</p>
         <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.5rem;">
@@ -971,7 +968,7 @@
 <div id="guaranteePage" class="slide-page">
   <div class="cp-topbar">
     <button class="cp-back" onclick="closeGuaranteePage()">← Back</button>
-    <div class="nav-logo">eVisas.in</div>
+    <div class="nav-logo"><img src="logo.jpeg" alt="eVisas.in" style="height:40px;width:auto;mix-blend-mode:multiply;"/></div>
   </div>
   <div class="gp-hero">
     <div class="gp-shield">🛡️</div>
@@ -1028,7 +1025,7 @@
 <div id="b2bPage" class="slide-page">
   <div class="cp-topbar">
     <button class="cp-back" onclick="closeB2BPage()">← Back</button>
-    <div class="nav-logo">eVisas.in for Business</div>
+    <div class="nav-logo"><img src="logo.jpeg" alt="eVisas.in" style="height:40px;width:auto;mix-blend-mode:multiply;"/></div>
   </div>
   <div class="b2b-hero">
     <div class="s-tag" style="color:#94a3b8;justify-content:center;margin-bottom:1rem"><span class="line" style="background:#475569"></span> Corporate Plans <span class="line" style="background:#475569"></span></div>
@@ -1095,7 +1092,7 @@
 <div id="policyPage" class="slide-page">
   <div class="cp-topbar">
     <button class="cp-back" onclick="closePolicyPage()">← Back</button>
-    <div class="nav-logo">eVisas.in</div>
+    <div class="nav-logo"><img src="logo.jpeg" alt="eVisas.in" style="height:40px;width:auto;mix-blend-mode:multiply;"/></div>
   </div>
   <div class="pol-hero">
     <h2 id="polTitle" style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:var(--text);letter-spacing:-1px;">Policy</h2>
@@ -1147,7 +1144,7 @@
 <div id="aboutPage" class="slide-page">
   <div class="cp-topbar">
     <button class="cp-back" onclick="closeAboutPage()">← Back</button>
-    <div class="nav-logo">eVisas.in</div>
+    <div class="nav-logo"><img src="logo.jpeg" alt="eVisas.in" style="height:40px;width:auto;mix-blend-mode:multiply;"/></div>
   </div>
   <div class="about-hero">
     <div class="s-tag" style="color:#94a3b8;justify-content:center;margin-bottom:1rem"><span class="line" style="background:#475569"></span> About Us <span class="line" style="background:#475569"></span></div>
