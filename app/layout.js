@@ -24,6 +24,9 @@ export const metadata = {
   alternates: {
     canonical: 'https://evisas.in',
   },
+  verification: {
+    google: 'GOOGLE_SITE_VERIFICATION_CODE',
+  },
 }
 
 const organizationSchema = {
@@ -93,6 +96,11 @@ export default function RootLayout({ children }) {
         <Script id="ga4-init" strategy="afterInteractive">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7HM8W0STLC');`}
         </Script>
+        {/* Google Ads — uncomment and replace AW-XXXXXXXXXX when Google Ads account is created */}
+        {/* <Script src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX" strategy="afterInteractive" />
+        <Script id="gads-init" strategy="afterInteractive">
+          {`gtag('config','AW-XXXXXXXXXX');`}
+        </Script> */}
         {children}
       </body>
     </html>
