@@ -8,7 +8,10 @@ import {
 
 /* ── helpers ── */
 const WA_NUM = '918619666129'
-function openWhatsApp(msg) {
+function openWhatsApp(msg, label = 'general') {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: label })
+  }
   const text = msg || 'Hi, I need help with my visa application'
   if (typeof window !== 'undefined')
     window.open('https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(text), '_blank')
@@ -18,7 +21,7 @@ function openApplyFormWA(plan, country) {
   const base = 'Hi eVisas.in! I want to apply for a visa.'
   const planStr = plan ? `\nPlan: ${plan}` : ''
   const cStr = country ? `\nDestination: ${country}` : ''
-  openWhatsApp(base + cStr + planStr + '\n\nPlease help me proceed.')
+  openWhatsApp(base + cStr + planStr + '\n\nPlease help me proceed.', country || plan || 'apply_form')
 }
 
 /* SVG icons */
