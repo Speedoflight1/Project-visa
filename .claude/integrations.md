@@ -11,7 +11,7 @@
 | **Meta Pixel** | ✅ Live | `2460365381005611` | business.facebook.com → Events Manager |
 | **Microsoft Clarity** | ✅ Live | `wq4abhggfm` | clarity.microsoft.com |
 | **WhatsApp Click Events** | ✅ Live | GA4 event: `whatsapp_click` | GA4 → Reports → Events |
-| **Google Search Console** | ⏳ Pending | Need verification code | search.google.com/search-console |
+| **Google Search Console** | ✅ Live | Verified via HTML tag | search.google.com/search-console |
 | **Google Ads Tag** | 🔜 Ready (disabled) | Replace `AW-XXXXXXXXXX` when account created | ads.google.com |
 
 ---
@@ -25,7 +25,7 @@
 | OG / Twitter meta | ✅ Live | All pages |
 | Canonical tags | ✅ Live | Homepage + all 41 country pages |
 | JSON-LD schema | ✅ Live | Organization (homepage) + Service (country pages) |
-| GSC sitemap submission | ⏳ Pending | Do after GSC verification |
+| GSC sitemap submission | ⏳ Submit now | Go to GSC → Sitemaps → enter sitemap.xml |
 
 ---
 
@@ -44,8 +44,8 @@
 
 ## Pending Actions (in order)
 
-1. **GSC Verification** — see steps below → share verification code → I add it to layout.js
-2. **GSC Sitemap** — after verification: submit `https://evisas.in/sitemap.xml`
+1. ~~**GSC Verification** — DONE (2026-05-13)~~
+2. **GSC Sitemap** — submit `sitemap.xml` in GSC → Sitemaps (do this now)
 3. **Looker Studio** — after GSC: connect GA4 + GSC for one free dashboard
 4. **Google Ads Tag** — when starting ads: get `AW-XXXXXXXXXX` → uncomment tag in `app/layout.js`
 
