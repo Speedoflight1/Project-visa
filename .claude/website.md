@@ -1,6 +1,12 @@
-# Website Context — evisas.in
-> For Claude Code: read this when working on the website
-> Last updated: 2026-05-08
+# ⚠️ DEPRECATED — DO NOT USE
+> This file describes the old pure HTML/CSS site and is no longer accurate.
+> **Read `.claude/SOP.md` instead** — it reflects the current Next.js site.
+> Kept for historical audit reference only. Last updated: 2026-05-08
+
+---
+
+# Website Context — evisas.in (ARCHIVED)
+> Superseded by `.claude/SOP.md` on 2026-05-13
 
 ## Live Site
 - **URL:** https://evisas.in

@@ -1,7 +1,7 @@
 # CLAUDE.md — Master Index
 > This is the navigation file. Keep it SHORT. Deep context lives in `.claude/` sub-files.
 > Read the relevant sub-file for the area you are working on.
-> Last updated: 2026-05-08
+> Last updated: 2026-05-13
 
 ---
 
@@ -37,15 +37,15 @@ If `pwd` shows anything else — stop, run `cd C:\Users\mohit\Documents\claude-p
 
 | Area | Sub-memory file | Folders in repo |
 |------|----------------|-----------------|
-| Website (evisas.in) | `.claude/website.md` | `evisas-website/` |
+| Website (evisas.in) | `.claude/SOP.md` ← **READ THIS** | `app/`, `lib/`, `public/` |
 | Content & Reels | `.claude/content.md` | `content/reel-scripts/`, `content/blog-drafts/` |
 | Automation & APIs | `.claude/automation.md` | `automation/n8n-workflows/`, `automation/bedrock/` |
 | Audit reports & docs | `.claude/docs.md` | `docs/` |
 
 ---
 
-## ⚡ Current Priority (as of 2026-05-08)
-1. Fix dead links + SEO meta tags on evisas.in → see `.claude/website.md`
+## ⚡ Current Priority (as of 2026-05-13)
+1. Website is live with all SEO + tracking done → see `.claude/SOP.md` for full state
 2. Build n8n auto-blog workflow with Telegram approval → see `.claude/automation.md`
 3. Start reel production (voice + video) → see `.claude/content.md`
 
