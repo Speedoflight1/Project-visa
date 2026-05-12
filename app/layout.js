@@ -25,7 +25,7 @@ export const metadata = {
     canonical: 'https://evisas.in',
   },
   verification: {
-    google: 'GOOGLE_SITE_VERIFICATION_CODE',
+    google: 'lcAKjJ5GyKKrQNEBjk9EJmxNa_O-gU262KWHBeKvxNo',
   },
 }
 
