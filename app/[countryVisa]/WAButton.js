@@ -5,6 +5,9 @@ export default function WAButton({ href, label, style, className, children }) {
     if (typeof gtag !== 'undefined') {
       gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: label || 'country_page' })
     }
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Contact')
+    }
   }
   return (
     <a

@@ -12,6 +12,9 @@ function openWhatsApp(msg, label = 'general') {
   if (typeof gtag !== 'undefined') {
     gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: label })
   }
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Contact')
+  }
   const text = msg || 'Hi, I need help with my visa application'
   if (typeof window !== 'undefined')
     window.open('https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(text), '_blank')
