@@ -51,27 +51,73 @@ export default function CountryVisaPage({ params }) {
   }
 
   const visaLabel = TYPE_LABEL[dest.type] || 'Visa'
+  const pageUrl = `https://evisas.in/${dest.urlSlug}-visa-from-india`
+  const priceNum = dest.price.replace(/[₹,]/g, '')
 
-  const pageSchema = {
+  const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `${dest.fullName} ${visaLabel} from India`,
     description: `Apply for ${dest.fullName} ${visaLabel} from India with eVisas.in. ${dest.about}`,
+    url: pageUrl,
     provider: {
       '@type': 'Organization',
       name: 'eVisas.in',
       url: 'https://evisas.in',
+      logo: 'https://evisas.in/logo.jpeg',
     },
     areaServed: 'IN',
     serviceType: `${dest.fullName} Visa Application`,
+    offers: {
+      '@type': 'Offer',
+      price: priceNum,
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'eVisas.in' },
+    },
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://evisas.in' },
+      { '@type': 'ListItem', position: 2, name: `${dest.fullName} Visa`, item: pageUrl },
+    ],
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `How long does ${dest.fullName} visa processing take from India?`,
+        acceptedAnswer: { '@type': 'Answer', text: `${dest.fullName} ${visaLabel} from India takes ${dest.proc} through eVisas.in. We handle the entire application process — documents, submission, and tracking.` },
+      },
+      {
+        '@type': 'Question',
+        name: `What documents are required for ${dest.fullName} visa for Indian citizens?`,
+        acceptedAnswer: { '@type': 'Answer', text: `${dest.fullName} visa from India requires: ${dest.requirements.slice(0, 4).join(', ')}.` },
+      },
+      {
+        '@type': 'Question',
+        name: `What is the eVisas.in service fee for ${dest.fullName} visa?`,
+        acceptedAnswer: { '@type': 'Answer', text: `eVisas.in charges ${dest.price} as a service fee for ${dest.fullName} ${visaLabel} applications. This includes ${dest.includes.slice(0, 3).join(', ')}.` },
+      },
+      {
+        '@type': 'Question',
+        name: `How long can I stay in ${dest.fullName} on this visa?`,
+        acceptedAnswer: { '@type': 'Answer', text: `The ${dest.fullName} ${visaLabel} has a validity of ${dest.val}. Contact our team on WhatsApp for details on extensions or multiple-entry options.` },
+      },
+    ],
   }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="country-page">
         {/* Navbar */}
         <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>

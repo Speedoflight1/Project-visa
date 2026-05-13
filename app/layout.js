@@ -9,17 +9,17 @@ export const metadata = {
     description: '120+ countries. Expert guidance. WhatsApp updates. Pay in ₹ — no forex charges, no hidden fees.',
     url: 'https://evisas.in',
     siteName: 'eVisas.in',
-    images: [{ url: 'https://evisas.in/logo-white.png.png' }],
+    images: [{ url: 'https://evisas.in/logo-white.png', width: 1200, height: 630, alt: 'eVisas.in — Get Your Visa, On Time. Guaranteed.' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'eVisas.in — Get Your Visa, On Time. Guaranteed.',
     description: '120+ countries. Expert guidance. WhatsApp updates.',
-    images: ['https://evisas.in/logo-white.png.png'],
+    images: ['https://evisas.in/logo-white.png'],
   },
   icons: {
-    icon: '/logo-icon.png.png',
+    icon: '/logo-icon.png',
   },
   alternates: {
     canonical: 'https://evisas.in',
