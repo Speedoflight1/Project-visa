@@ -86,19 +86,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://evisas.in/philippines-visa-from-india</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://evisas.in/azerbaijan-visa-from-india</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evisas.in/south-korea-visa-from-india</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://evisas.in/nepal-visa-from-india</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://evisas.in/italy-visa-from-india</loc>
@@ -161,14 +156,9 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://evisas.in/mauritius-visa-from-india</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://evisas.in/morocco-visa-from-india</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://evisas.in/south-africa-visa-from-india</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evisas.in/canada-visa-from-india</loc>
@@ -176,9 +166,19 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://evisas.in/mexico-visa-from-india</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://evisas.in/saudi-arabia-visa-from-india</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/jordan-visa-from-india</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/kuwait-visa-from-india</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evisas.in/australia-visa-from-india</loc>
