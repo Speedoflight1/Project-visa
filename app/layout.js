@@ -26,6 +26,7 @@ export const metadata = {
   },
   verification: {
     google: 'lcAKjJ5GyKKrQNEBjk9EJmxNa_O-gU262KWHBeKvxNo',
+    other: { 'msvalidate.01': 'E81B83CDC08A51B5817ECEC22856F1A0' },
   },
 }
 
