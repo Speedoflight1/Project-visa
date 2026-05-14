@@ -86,31 +86,22 @@ export default function CountryVisaPage({ params }) {
     ],
   }
 
+  const genericFaqs = [
+    { q: `How long does ${dest.fullName} visa processing take from India?`, a: `${dest.fullName} ${visaLabel} from India takes ${dest.proc} through eVisas.in. We handle the entire application process — documents, submission, and tracking.` },
+    { q: `What documents are required for ${dest.fullName} visa for Indian citizens?`, a: `${dest.fullName} visa from India requires: ${dest.requirements.slice(0, 4).join(', ')}.` },
+    { q: `What is the eVisas.in service fee for ${dest.fullName} visa?`, a: `eVisas.in charges ${dest.price} as a service fee for ${dest.fullName} ${visaLabel} applications. This includes ${dest.includes.slice(0, 3).join(', ')}.` },
+    { q: `How long can I stay in ${dest.fullName} on this visa?`, a: `The ${dest.fullName} ${visaLabel} has a validity of ${dest.val}. Contact our team on WhatsApp for details on extensions or multiple-entry options.` },
+  ]
+  const activeFaqs = dest.faqs && dest.faqs.length > 0 ? dest.faqs : genericFaqs
+
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: `How long does ${dest.fullName} visa processing take from India?`,
-        acceptedAnswer: { '@type': 'Answer', text: `${dest.fullName} ${visaLabel} from India takes ${dest.proc} through eVisas.in. We handle the entire application process — documents, submission, and tracking.` },
-      },
-      {
-        '@type': 'Question',
-        name: `What documents are required for ${dest.fullName} visa for Indian citizens?`,
-        acceptedAnswer: { '@type': 'Answer', text: `${dest.fullName} visa from India requires: ${dest.requirements.slice(0, 4).join(', ')}.` },
-      },
-      {
-        '@type': 'Question',
-        name: `What is the eVisas.in service fee for ${dest.fullName} visa?`,
-        acceptedAnswer: { '@type': 'Answer', text: `eVisas.in charges ${dest.price} as a service fee for ${dest.fullName} ${visaLabel} applications. This includes ${dest.includes.slice(0, 3).join(', ')}.` },
-      },
-      {
-        '@type': 'Question',
-        name: `How long can I stay in ${dest.fullName} on this visa?`,
-        acceptedAnswer: { '@type': 'Answer', text: `The ${dest.fullName} ${visaLabel} has a validity of ${dest.val}. Contact our team on WhatsApp for details on extensions or multiple-entry options.` },
-      },
-    ],
+    mainEntity: activeFaqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   }
 
   return (
@@ -261,6 +252,33 @@ export default function CountryVisaPage({ params }) {
             <p style={{ fontSize: '0.8rem', opacity: 0.75 }}>Our fee: {dest.price} · {dest.docs}</p>
           </div>
         </section>
+
+        {/* Long-form SEO Content */}
+        {dest.contentSections && dest.contentSections.length > 0 && (
+          <section style={{ maxWidth: '860px', margin: '0 auto', padding: '0 1.5rem 3rem' }}>
+            {dest.contentSections.map((sec, i) => (
+              <div key={i} style={{ marginBottom: '2.5rem' }}>
+                <h2 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '0.75rem', borderLeft: '4px solid #667eea', paddingLeft: '1rem' }}>
+                  {sec.h2}
+                </h2>
+                <p style={{ color: '#4a5568', lineHeight: 1.85, fontSize: '0.975rem', margin: 0 }}>{sec.body}</p>
+              </div>
+            ))}
+            <div style={{ marginTop: '3rem' }}>
+              <h2 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1.5rem', textAlign: 'center' }}>
+                Frequently Asked Questions
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {activeFaqs.map((faq, i) => (
+                  <div key={i} style={{ background: '#f8faff', borderRadius: '12px', padding: '1.25rem 1.5rem', borderLeft: '4px solid #667eea' }}>
+                    <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '0.5rem', margin: '0 0 0.5rem' }}>{faq.q}</h3>
+                    <p style={{ fontSize: '0.925rem', color: '#4a5568', lineHeight: 1.75, margin: 0 }}>{faq.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Guarantee Strip */}
         <section style={{ background: '#f8faff', borderTop: '1px solid #e2e8f0', padding: '2rem 1.5rem', textAlign: 'center' }}>
