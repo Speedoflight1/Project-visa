@@ -773,6 +773,34 @@ export default function HomePage() {
                 <ul className="cp-req-list">
                   {countryDetail.requirements.map((r, i) => <li key={i}>{r}</li>)}
                 </ul>
+                {countryDetail.contentSections && countryDetail.contentSections.length > 0 && (
+                  <div style={{ marginTop: '2rem' }}>
+                    <div className="cp-section-title">Visa Guide</div>
+                    {countryDetail.contentSections.map((sec, i) => (
+                      <details key={i} style={{ borderBottom: '1px solid #e2e8f0', padding: '0.75rem 0' }}>
+                        <summary style={{ fontWeight: 600, fontSize: '0.95rem', color: '#1a1a2e', cursor: 'pointer', listStyleType: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                          <span>{sec.h2}</span>
+                          <span style={{ fontSize: '1.2rem', color: '#667eea', flexShrink: 0 }}>＋</span>
+                        </summary>
+                        <p style={{ marginTop: '0.75rem', color: '#4a5568', lineHeight: 1.85, fontSize: '0.9rem', marginBottom: 0 }}>{sec.body}</p>
+                      </details>
+                    ))}
+                  </div>
+                )}
+                {countryDetail.faqs && countryDetail.faqs.length > 0 && (
+                  <div style={{ marginTop: '2rem' }}>
+                    <div className="cp-section-title">Frequently Asked Questions</div>
+                    {countryDetail.faqs.map((faq, i) => (
+                      <details key={i} style={{ borderBottom: '1px solid #e2e8f0', padding: '0.75rem 0' }}>
+                        <summary style={{ fontWeight: 600, fontSize: '0.95rem', color: '#1a1a2e', cursor: 'pointer', listStyleType: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                          <span>{faq.q}</span>
+                          <span style={{ fontSize: '1.2rem', color: '#667eea', flexShrink: 0 }}>＋</span>
+                        </summary>
+                        <p style={{ marginTop: '0.75rem', color: '#4a5568', lineHeight: 1.85, fontSize: '0.9rem', marginBottom: 0 }}>{faq.a}</p>
+                      </details>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="cp-right">
                 <div className="cp-sticky-card">
