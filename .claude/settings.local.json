@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \\(Get-Location\\).Path)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\mohit\\\\Documents\\\\claude-project\\\\.claude\\\\worktrees\\\\naughty-nobel-2747ff\\\\app\\\\[countryVisa]\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\mohit\\\\Documents\\\\claude-project\\\\.claude\\\\worktrees\\\\naughty-nobel-2747ff\\\\out\" -ErrorAction SilentlyContinue | ForEach-Object { $_.Name })",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(dir \"C:\\\\Users\\\\mohit\\\\Documents\\\\claude-project\\\\.claude\\\\worktrees\\\\naughty-nobel-2747ff\\\\public\")",
+      "Bash(git commit *)",
+      "Bash(npx vercel *)",
+      "Bash(gh run *)",
+      "Bash(gh api *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://evisas.in/thailand-visa-from-india)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code}\" https://evisas.in/dubai-visa-from-india)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code}\" https://evisas.in/australia-visa-from-india)",
+      "Bash(node -e \"const {DESTS} = require\\('./lib/data'\\); const uae = DESTS.find\\(d=>d.slug==='uae'\\); console.log\\('c:', uae.c, '| fullName:', uae.fullName, '| slug:', uae.slug\\)\")",
+      "Bash(node -e \"const {POPULAR_SLUGS} = require\\('./lib/data'\\); console.log\\(POPULAR_SLUGS\\)\")"
+    ]
+  }
+}

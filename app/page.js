@@ -415,7 +415,7 @@ export default function HomePage() {
           <div className="tabs reveal-up">
             {[
               ['all', '🌍 All'], ['asia', '🌏 Asia'], ['europe', '🏰 Europe'],
-              ['middle-east', '🌙 Middle East'], ['americas', '🗽 Americas'], ['africa', '🦁 Africa'],
+              ['middle-east', '🌙 Middle East'], ['americas', '🗽 Americas'], ['africa', '🦁 Africa'], ['oceania', '🌊 Oceania'],
             ].map(([val, label]) => (
               <button
                 key={val}
