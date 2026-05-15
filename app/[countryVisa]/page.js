@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from '../Logo'
 import { DESTS, TYPE_LABEL } from '../../lib/data'
 import WAButton from './WAButton'
 
@@ -114,7 +115,7 @@ export default function CountryVisaPage({ params }) {
         <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
           <div className="nav-inner">
             <Link href="/" className="nav-logo">
-              <img src="/logo-icon.png" alt="eVisas.in" style={{ height: '52px' }} />
+              <Logo style={{ height: '52px', width: 'auto' }} />
             </Link>
             <div className="nav-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
               <Link href="/" style={{ color: '#2d3748', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
@@ -296,7 +297,7 @@ export default function CountryVisaPage({ params }) {
         <footer style={{ background: '#1a1a2e', color: '#a0aec0', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
-              <img src="/logo-icon.png" alt="eVisas.in" style={{ height: '40px', opacity: 0.9 }} />
+              <Logo style={{ height: '40px', width: 'auto', opacity: 0.9 }} />
             </Link>
             <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>
               G9 Tower C, Bhutani Alphathum, Sector 90, Noida 201304
