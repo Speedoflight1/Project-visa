@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Logo from '../Logo'
 import { PLANS, FAQS } from '../../lib/data'
 
 export const metadata = {
@@ -43,7 +42,7 @@ export default function PricingPage() {
         <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
           <div className="nav-inner">
             <Link href="/" className="nav-logo">
-              <Logo style={{ height: '52px', width: 'auto' }} />
+              <img src="/logo.jpeg" alt="eVisas.in" style={{ height: '52px', borderRadius: '8px' }} />
             </Link>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <Link href="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textDecoration: 'none' }}>← All Visas</Link>
