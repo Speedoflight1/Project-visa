@@ -269,7 +269,7 @@ export default function HomePage() {
       <div id="loader">
         <div className="loader-logo">
           <div className="loader-logo-crop">
-            <Logo variant="icon" style={{ height: '100%', width: 'auto' }} />
+            <img src="/logo-icon.png" alt="eVisas.in" />
           </div>
         </div>
         <div className="loader-bar-wrap"><div className="loader-bar" /></div>
@@ -286,7 +286,7 @@ export default function HomePage() {
       <nav id="nav" className={navSolid ? 'solid' : ''}>
         <div className="nav-logo" onClick={() => { closeCountry(); if (blogDetail !== null) { setBlogDetail(null); unlockScroll() } window.scrollTo({ top: 0, behavior: 'smooth' }) }} style={{ cursor: 'pointer' }}>
           <div className="nav-logo-crop">
-            <Logo style={{ height: '100%', width: 'auto' }} />
+            <img src="/logo-icon.png" alt="eVisas.in" />
           </div>
         </div>
         <div className="nav-links">
@@ -671,7 +671,7 @@ export default function HomePage() {
             <div className="footer-brand">
               <div className="nav-logo">
                 <div className="nav-logo-crop">
-                  <Logo style={{ height: '100%', width: 'auto' }} wordmarkColor="#ffffff" />
+                  <img src="/logo-white.png" alt="eVisas.in" />
                 </div>
                 <span style={{ display: 'none', fontSize: '1.4rem', fontWeight: 900, color: '#fff' }}>eVisas</span>
               </div>
@@ -856,7 +856,7 @@ export default function HomePage() {
       <div id="guaranteePage" className={`slide-page${showGuarantee ? ' open' : ''}`}>
         <div className="cp-topbar">
           <button className="cp-back" onClick={() => { setShowGuarantee(false); unlockScroll() }}>← Back</button>
-          <div className="nav-logo"><div className="nav-logo-crop"><Logo style={{ height: '100%', width: 'auto' }} /></div></div>
+          <div className="nav-logo"><div className="nav-logo-crop"><img src="/logo-icon.png" alt="eVisas.in" /></div></div>
         </div>
         <div className="gp-hero">
           <div className="gp-shield">🛡️</div>
@@ -909,7 +909,7 @@ export default function HomePage() {
       <div id="b2bPage" className={`slide-page${showB2B ? ' open' : ''}`}>
         <div className="cp-topbar">
           <button className="cp-back" onClick={() => { setShowB2B(false); unlockScroll() }}>← Back</button>
-          <div className="nav-logo"><div className="nav-logo-crop"><Logo style={{ height: '100%', width: 'auto' }} /></div></div>
+          <div className="nav-logo"><div className="nav-logo-crop"><img src="/logo-icon.png" alt="eVisas.in" /></div></div>
         </div>
         <div className="b2b-hero">
           <div className="s-tag" style={{ color: '#94a3b8', justifyContent: 'center', marginBottom: '1rem' }}><span className="line" style={{ background: '#475569' }} /> Corporate Plans <span className="line" style={{ background: '#475569' }} /></div>
@@ -958,7 +958,7 @@ export default function HomePage() {
             <>
               <div className="cp-topbar">
                 <button className="cp-back" onClick={() => { setPolicyType(null); unlockScroll() }}>← Back</button>
-                <div className="nav-logo"><div className="nav-logo-crop"><Logo style={{ height: '100%', width: 'auto' }} /></div></div>
+                <div className="nav-logo"><div className="nav-logo-crop"><img src="/logo-icon.png" alt="eVisas.in" /></div></div>
               </div>
               <div className="pol-hero">
                 <h2 style={{ fontSize: 'clamp(1.8rem,4vw,2.8rem)', fontWeight: 900, color: 'var(--text)', letterSpacing: '-1px' }}>{pol.title}</h2>
@@ -981,7 +981,7 @@ export default function HomePage() {
       <div id="aboutPage" className={`slide-page${showAbout ? ' open' : ''}`}>
         <div className="cp-topbar">
           <button className="cp-back" onClick={() => { setShowAbout(false); unlockScroll() }}>← Back</button>
-          <div className="nav-logo"><div className="nav-logo-crop"><Logo style={{ height: '100%', width: 'auto' }} /></div></div>
+          <div className="nav-logo"><div className="nav-logo-crop"><img src="/logo-icon.png" alt="eVisas.in" /></div></div>
         </div>
         <div className="about-hero">
           <div className="s-tag" style={{ color: '#94a3b8', justifyContent: 'center', marginBottom: '1rem' }}><span className="line" style={{ background: '#475569' }} /> About Us <span className="line" style={{ background: '#475569' }} /></div>
