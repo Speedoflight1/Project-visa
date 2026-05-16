@@ -369,7 +369,7 @@ footer { background: #0f1629; color: #94a3b8; padding: 56px 5% 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
 .footer-brand .nav-logo { display: block; margin-bottom: 1rem; }
 .footer-brand .nav-logo-crop { position:relative; overflow:hidden; height:80px; width:280px; }
-.footer-brand .nav-logo-crop img { position:absolute !important; height:260px !important; width:auto !important; top:-100px !important; left:-162px !important; max-width:none !important; }
+.footer-brand .nav-logo-crop img { position:absolute !important; height:260px !important; width:auto !important; top:-100px !important; left:-122px !important; max-width:none !important; }
 .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #cbd5e1; margin-bottom: 1.25rem; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
 .footer-col li a { font-size: 0.85rem; color: #64748b; transition: color 0.2s; }
