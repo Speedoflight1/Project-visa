@@ -435,6 +435,25 @@ export default function HomePage() {
                 className="dcard reveal-up"
                 style={{ transitionDelay: `${i * 50}ms` }}
                 onClick={() => openCountry(d)}
+                onMouseMove={e => {
+                  const el = e.currentTarget
+                  const r = el.getBoundingClientRect()
+                  const x = ((e.clientX - r.left) / r.width * 100).toFixed(1)
+                  const y = ((e.clientY - r.top) / r.height * 100).toFixed(1)
+                  el.style.setProperty('--mx', x + '%')
+                  el.style.setProperty('--my', y + '%')
+                  const rx = (((e.clientY - r.top) - r.height / 2) / r.height * -9).toFixed(2)
+                  const ry = (((e.clientX - r.left) - r.width / 2) / r.width * 9).toFixed(2)
+                  el.style.transition = 'border-color 0.35s ease, box-shadow 0.35s ease'
+                  el.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-7px) scale(1.02)`
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget
+                  el.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.35s ease, box-shadow 0.35s ease'
+                  el.style.transform = ''
+                  el.style.removeProperty('--mx')
+                  el.style.removeProperty('--my')
+                }}
               >
                 <div className="dcard-img">
                   <div className="dcard-bg" style={{ backgroundImage: `url('${d.img}')` }} />

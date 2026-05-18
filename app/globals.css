@@ -291,24 +291,57 @@ img { display: block; max-width: 100%; }
 .dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.25rem; }
 
 /* Destination Card */
-.dcard { background: #fff; border: 1.5px solid var(--border); border-radius: 18px; overflow: hidden; cursor: pointer; transition: all 0.3s; box-shadow: var(--card-shadow); }
-.dcard:hover { border-color: var(--blue); box-shadow: var(--card-shadow-hover); transform: translateY(-4px); }
+.dcard {
+  background: #fff; border: 1.5px solid var(--border); border-radius: 18px;
+  overflow: hidden; cursor: pointer; position: relative;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+/* Spotlight glow — follows cursor via --mx/--my CSS custom props set in JS */
+.dcard::before {
+  content: ''; position: absolute; inset: 0; z-index: 3;
+  border-radius: 18px; pointer-events: none;
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), rgba(37,99,235,0.11), transparent 70%);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.dcard:hover { border-color: var(--blue); box-shadow: 0 18px 48px rgba(37,99,235,0.14), 0 4px 14px rgba(15,22,41,0.08); }
+.dcard:hover::before { opacity: 1; }
 .dcard-img { height: 150px; position: relative; overflow: hidden; }
-.dcard-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.5s ease; }
-.dcard:hover .dcard-bg { transform: scale(1.07); }
+.dcard-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.55s ease; }
+.dcard:hover .dcard-bg { transform: scale(1.08); }
 .dcard-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.75)); }
-.dcard-flag { position: absolute; bottom: 12px; left: 14px; font-size: 2rem; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
-.dcard-badge { position: absolute; top: 12px; right: 12px; padding: 0.22rem 0.6rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-radius: 6px; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.4px; color: var(--text); }
-.be { color: #16a34a; } .bv { color: #d97706; } .bs { color: #7c3aed; } .bf { color: #2563eb; }
-.dcard-body { padding: 1rem 1.25rem 1.25rem; }
-.dcard-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; color: var(--text); }
+.dcard-flag {
+  position: absolute; bottom: 12px; left: 14px; font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
+}
+.dcard:hover .dcard-flag { transform: scale(1.15); }
+/* Type badges — coloured backgrounds */
+.dcard-badge {
+  position: absolute; top: 12px; right: 12px; padding: 0.22rem 0.65rem;
+  backdrop-filter: blur(10px); border-radius: 6px;
+  font-size: 0.67rem; font-weight: 700; letter-spacing: 0.4px;
+}
+.be { background: rgba(22,163,74,0.18);  color: #15803d; border: 1px solid rgba(22,163,74,0.3); }
+.bv { background: rgba(217,119,6,0.18);  color: #b45309; border: 1px solid rgba(217,119,6,0.3); }
+.bs { background: rgba(124,58,237,0.18); color: #7c3aed; border: 1px solid rgba(124,58,237,0.3); }
+.bf { background: rgba(37,99,235,0.15);  color: #1d4ed8; border: 1px solid rgba(37,99,235,0.3); }
+.dcard-body { padding: 1rem 1.25rem 1.25rem; position: relative; z-index: 2; }
+.dcard-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.65rem; color: var(--text); transition: color 0.25s; }
+.dcard:hover .dcard-name { color: var(--blue); }
 .dcard-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; }
 .dmeta { display: flex; align-items: center; gap: 0.3rem; font-size: 0.72rem; color: var(--text-muted); background: var(--surface-alt); padding: 0.2rem 0.55rem; border-radius: 6px; }
 .dcard-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
-.dcard-price .big { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+.dcard-price .big {
+  font-size: 1.1rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
 .dcard-price small { font-size: 0.68rem; color: var(--text-muted); display: block; }
 .apply-btn { padding: 0.45rem 1rem; background: linear-gradient(135deg, var(--blue), #1d4ed8); border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700; color: #fff; cursor: pointer; font-family: inherit; transition: all 0.2s; box-shadow: 0 2px 10px var(--blue-glow); }
-.apply-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px var(--blue-glow); }
+.apply-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 20px var(--blue-glow); }
 
 /* ── HOW IT WORKS ── */
 #how { background: var(--surface-alt); }
