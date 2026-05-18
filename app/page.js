@@ -129,6 +129,35 @@ export default function HomePage() {
     return () => window.removeEventListener('hashchange', handleHash)
   }, [])
 
+  /* ── trust stats counter (triggers when #trust enters viewport) ── */
+  useEffect(() => {
+    const section = document.getElementById('trust')
+    if (!section) return
+    let fired = false
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !fired) {
+        fired = true
+        document.querySelectorAll('[data-trust-target]').forEach(el => {
+          const target = parseFloat(el.dataset.trustTarget)
+          const suf = el.dataset.trustSuf || ''
+          const isFloat = el.dataset.trustFloat === 'true'
+          const dur = 2200
+          const start = performance.now()
+          const tick = now => {
+            const p = Math.min((now - start) / dur, 1)
+            const ease = 1 - Math.pow(1 - p, 3)
+            el.textContent = (isFloat ? (ease * target).toFixed(1) : Math.floor(ease * target)) + suf
+            if (p < 1) requestAnimationFrame(tick)
+          }
+          requestAnimationFrame(tick)
+        })
+        io.disconnect()
+      }
+    }, { threshold: 0.3 })
+    io.observe(section)
+    return () => io.disconnect()
+  }, [])
+
   /* ── helpers ── */
   function lockScroll() { document.body.style.overflow = 'hidden' }
   function unlockScroll() { document.body.style.overflow = '' }
@@ -547,17 +576,24 @@ export default function HomePage() {
             <div className="s-title" style={{ color: '#fff' }}>Trusted by travelers<br />across India</div>
           </div>
           <div className="trust-grid">
-            {TRUST.map((t, i) => (
-              <div key={i} className="tstat reveal-up">
-                <div className="tstat-num">{t.num}</div>
-                <div className="tstat-label">{t.label}</div>
-              </div>
-            ))}
+            {TRUST.map((t, i) => {
+              /* animated targets for numeric stats */
+              const ANIM = { '120+':{ target:120, suf:'+' }, '98%':{ target:98, suf:'%' }, '4.8★':{ target:4.8, suf:'★', float:true } }
+              const a = ANIM[t.num]
+              return (
+                <div key={i} className="tstat reveal-up" style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="tstat-num"
+                    {...(a ? { 'data-trust-target': a.target, 'data-trust-suf': a.suf, ...(a.float ? { 'data-trust-float':'true' } : {}) } : {})}
+                  >{t.num}</div>
+                  <div className="tstat-label">{t.label}</div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
+      {/* ── TESTIMONIALS — auto-scrolling marquee ── */}
       <section className="s" id="testimonials">
         <div className="container">
           <div className="reveal-up">
@@ -565,11 +601,47 @@ export default function HomePage() {
             <div className="s-title">What travelers say</div>
             <p className="s-sub">Over 2 lakh Indians have used eVisas.in. Here&apos;s what some of them had to say.</p>
           </div>
-          <div className="tgrid">
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="tcard reveal-up">
+        </div>
+        {/* Full-width marquee (no container padding) */}
+        <div className="tmarquee-outer">
+          {/* Row 1 — scrolls left */}
+          <div className="tmarquee-track">
+            {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+              <div key={i} className="tcard"
+                onMouseMove={e => {
+                  const r = e.currentTarget.getBoundingClientRect()
+                  e.currentTarget.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%')
+                  e.currentTarget.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%')
+                }}
+                onMouseLeave={e => { e.currentTarget.style.removeProperty('--mx'); e.currentTarget.style.removeProperty('--my') }}
+              >
+                <div className="tcard-quote">&ldquo;</div>
                 <div className="stars">★★★★★</div>
-                <p className="tcard-text">&quot;{t.text}&quot;</p>
+                <p className="tcard-text">{t.text}</p>
+                <div className="tcard-author">
+                  <div className="avatar" style={{ background: t.color }}>{t.name[0]}</div>
+                  <div>
+                    <div className="author-name">{t.name}</div>
+                    <div className="author-meta">{t.city} · {t.flag} {t.dest}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Row 2 — scrolls right (reversed) */}
+          <div className="tmarquee-track rev">
+            {[...TESTIMONIALS].reverse().concat([...TESTIMONIALS].reverse()).map((t, i) => (
+              <div key={i} className="tcard"
+                onMouseMove={e => {
+                  const r = e.currentTarget.getBoundingClientRect()
+                  e.currentTarget.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%')
+                  e.currentTarget.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%')
+                }}
+                onMouseLeave={e => { e.currentTarget.style.removeProperty('--mx'); e.currentTarget.style.removeProperty('--my') }}
+              >
+                <div className="tcard-quote">&ldquo;</div>
+                <div className="stars">★★★★★</div>
+                <p className="tcard-text">{t.text}</p>
                 <div className="tcard-author">
                   <div className="avatar" style={{ background: t.color }}>{t.name[0]}</div>
                   <div>
@@ -593,7 +665,27 @@ export default function HomePage() {
           </div>
           <div className="pgrid">
             {PLANS.map((p, i) => (
-              <div key={i} className={`pcard${p.featured ? ' featured' : ''} reveal-up`}>
+              <div key={i} className={`pcard${p.featured ? ' featured' : ''} reveal-up`}
+                onMouseMove={e => {
+                  const el = e.currentTarget
+                  const r = el.getBoundingClientRect()
+                  const x = ((e.clientX - r.left) / r.width * 100).toFixed(1)
+                  const y = ((e.clientY - r.top) / r.height * 100).toFixed(1)
+                  el.style.setProperty('--mx', x + '%')
+                  el.style.setProperty('--my', y + '%')
+                  const rx = (((e.clientY - r.top) - r.height / 2) / r.height * -7).toFixed(2)
+                  const ry = (((e.clientX - r.left) - r.width / 2) / r.width * 7).toFixed(2)
+                  el.style.transition = 'border-color 0.35s ease, box-shadow 0.35s ease'
+                  el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px) scale(1.015)`
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget
+                  el.style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), border-color 0.35s ease, box-shadow 0.35s ease'
+                  el.style.transform = ''
+                  el.style.removeProperty('--mx')
+                  el.style.removeProperty('--my')
+                }}
+              >
                 {p.featured && <div className="featured-ribbon">MOST POPULAR</div>}
                 <div className="plan-tag">{p.tag}</div>
                 <div className="plan-amount"><sub>₹</sub>{p.amount}<sup>{p.per}</sup></div>
