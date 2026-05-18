@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="eVisas">
+  <title>eVisas</title>
+  <g fill="none" stroke="#22D3A8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 18 L46 18 L46 42"/>
+  </g>
+  <g fill="#22D3A8">
+    <path d="M14 48 L34 41 L30 37 L33 35 L42 38 L46 33 L50 36 L46 41 L48 50 L46 52 L42 44 L34 48 L34 52 L32 53 L30 49 L26 51 L25 49 Z"/>
+  </g>
+</svg>

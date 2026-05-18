@@ -19,7 +19,10 @@ export const metadata = {
     images: ['https://evisas.in/logo-white.png'],
   },
   icons: {
-    icon: '/logo-icon.png',
+    icon: [
+      { url: '/logo-icon.svg', type: 'image/svg+xml' },
+      { url: '/logo-icon.png', sizes: 'any' },
+    ],
   },
   alternates: {
     canonical: 'https://evisas.in',

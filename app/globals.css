@@ -40,14 +40,16 @@ img { display: block; max-width: 100%; }
 /* ── LOADER ── */
 #loader {
   position: fixed; inset: 0; z-index: 8000;
-  background: #fff;
+  background: #000;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
 }
 .loader-logo { display:flex; align-items:center; justify-content:center; }
+.loader-logo-img { width: min(360px, 60vw); height: auto; display: block; }
+/* legacy crop styles kept in case other components reference them */
 .loader-logo-crop { height:180px; display:flex; align-items:center; }
 .loader-logo-crop img { height:180px; width:auto; }
-.loader-bar-wrap { width: 180px; height: 3px; background: #e2e8f0; border-radius: 2px; overflow: hidden; }
-.loader-bar { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); animation: loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+.loader-bar-wrap { width: 180px; height: 3px; background: rgba(255,255,255,0.12); border-radius: 2px; overflow: hidden; }
+.loader-bar { height: 100%; background: #22D3A8; animation: loaderFill 1.6s cubic-bezier(0.4,0,0.2,1) forwards; }
 @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
 
 /* ── NAVBAR ── */
@@ -60,6 +62,9 @@ img { display: block; max-width: 100%; }
 }
 #nav.solid { border-color: var(--border); box-shadow: 0 1px 20px rgba(15,22,41,0.06); }
 .nav-logo { display:flex; align-items:center; }
+.nav-logo-img { height: 36px; width: auto; display: block; }
+@media (max-width: 768px) { .nav-logo-img { height: 30px; } }
+/* legacy crop styles kept in case other components reference them */
 .nav-logo-crop { height:208px; display:flex; align-items:center; overflow:hidden; width:240px; margin-top:-15px; }
 .nav-logo-crop img { height:208px; width:auto; display:block; margin-left:-45px; }
 .nav-links { display: flex; gap: 2.5rem; align-items: center; }

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-label="evisas — get your visa on time">
+  <title>evisas — get your visa on time</title>
+  <text x="20" y="62" font-family="'Manrope','Sora',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-weight="800" font-size="56" letter-spacing="-1.5" fill="#0F172A">evisas</text>
+  <g fill="none" stroke="#22D3A8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M236 24 L262 24 L262 54"/>
+  </g>
+  <text x="40" y="98" font-family="'Manrope','Sora',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-weight="400" font-size="22" letter-spacing="0.2" fill="#0F172A">get your visa on time</text>
+  <g fill="#22D3A8" transform="translate(282 78)">
+    <path d="M0 12 L22 4 L20 8 L11 12 L14 19 L11 19 L7 14 L2 16 Z"/>
+  </g>
+</svg>

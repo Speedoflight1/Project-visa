@@ -114,7 +114,7 @@ export default function CountryVisaPage({ params }) {
         <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
           <div className="nav-inner">
             <Link href="/" className="nav-logo">
-              <img src="/logo-icon.png" alt="eVisas.in" style={{ height: '52px' }} />
+              <img src="/logo-horizontal-light.svg" alt="evisas" style={{ height: '36px', width: 'auto', display: 'block' }} />
             </Link>
             <div className="nav-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
               <Link href="/" style={{ color: '#2d3748', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
@@ -296,7 +296,7 @@ export default function CountryVisaPage({ params }) {
         <footer style={{ background: '#1a1a2e', color: '#a0aec0', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
-              <img src="/logo-icon.png" alt="eVisas.in" style={{ height: '40px', opacity: 0.9 }} />
+              <img src="/logo-horizontal-dark.svg" alt="evisas" style={{ height: '36px', width: 'auto', display: 'block' }} />
             </Link>
             <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>
               G9 Tower C, Bhutani Alphathum, Sector 90, Noida 201304
