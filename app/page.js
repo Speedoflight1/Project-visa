@@ -318,6 +318,8 @@ export default function HomePage() {
 
       {/* ── HERO ── */}
       <section id="hero">
+        {/* Animated dot grid background overlay */}
+        <div className="hero-dot-grid" aria-hidden="true" />
         <div className="hero-badge" style={{ opacity: heroVisible ? 1 : 0, transform: heroVisible ? 'translateY(0)' : 'translateY(16px)', transition: 'opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s' }}>
           <div className="badge-dot" /> Trusted by 2L+ Indian Travelers
         </div>
