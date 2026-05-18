@@ -62,7 +62,7 @@ img { display: block; max-width: 100%; }
 .nav-logo { display:flex; align-items:center; }
 .nav-logo-crop { position:relative; overflow:hidden; height:40px; width:98px; }
 .nav-logo-crop img { position:absolute !important; height:192px !important; width:auto !important; top:-78px !important; left:-119px !important; max-width:none !important; }
-.nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.nav-links { display: flex; gap: 2.5rem; align-items: center; flex: 1; justify-content: center; }
 .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
 .nav-links a:hover { color: var(--text); }
 .nav-actions { display: flex; gap: 0.75rem; align-items: center; margin-left: auto; }
