@@ -709,7 +709,7 @@ export default function HomePage() {
               <div className="s-tag"><span className="line" /> Visa Guides</div>
               <div className="s-title">Learn before you apply</div>
             </div>
-            <button className="view-all" onClick={() => document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' })}>All articles →</button>
+            <a href="/blog" className="view-all">All articles →</a>
           </div>
           <div className="bgrid">
             {BLOGS.map((b, i) => (
@@ -842,7 +842,16 @@ export default function HomePage() {
       {/* ── WHATSAPP FLOAT ── */}
       <div className="wa-float">
         <div className="wa-tooltip-box">Chat with us on WhatsApp 💬</div>
-        <a href="https://wa.me/918619666129?text=Hi%2C%20I%20need%20help%20with%20my%20visa%20application" target="_blank" rel="noreferrer" className="wa-btn">
+        <a
+          href="https://wa.me/918619666129?text=Hi%2C%20I%20need%20help%20with%20my%20visa%20application"
+          target="_blank"
+          rel="noreferrer"
+          className="wa-btn"
+          onClick={() => {
+            if (typeof gtag !== 'undefined') gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'float_button' })
+            if (typeof fbq !== 'undefined') fbq('track', 'Contact')
+          }}
+        >
           <div className="wa-ping" />
           <WaSvg />
         </a>
@@ -923,7 +932,7 @@ export default function HomePage() {
                   <ul className="cp-includes">
                     {countryDetail.includes.map((inc, i) => <li key={i}>{inc}</li>)}
                   </ul>
-                  <button className="cp-apply-btn" onClick={() => { showToastMsg('Starting ' + countryDetail.c + ' application... ✈️'); setTimeout(() => openWhatsApp(), 1000) }}>Start Application →</button>
+                  <button className="cp-apply-btn" onClick={() => { openWhatsApp('Hi eVisas.in! I want to apply for a ' + countryDetail.c + ' visa. Please help me proceed.', countryDetail.c); showToastMsg('Opening WhatsApp — we\'ll reply within minutes! ✅') }}>Start Application →</button>
                   <button className="cp-whatsapp-btn" onClick={() => openWhatsApp()}>💬 Ask on WhatsApp</button>
                   <div className="cp-guarantee">🛡️ On-Time Guarantee — or full refund</div>
                 </div>
