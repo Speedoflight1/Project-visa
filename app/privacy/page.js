@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Privacy Policy — eVisas.in | How We Protect Your Data',
   description: 'eVisas.in privacy policy. 256-bit SSL encryption, ISO 27001 certified servers. Passport scans deleted within 90 days. We never sell your data. Read how we protect your information.',
   alternates: { canonical: 'https://evisas.in/privacy' },
+  robots: { index: false, follow: true },
 }
 
 const breadcrumbSchema = {

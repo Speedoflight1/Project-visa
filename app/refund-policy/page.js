@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Refund Policy — eVisas.in | On-Time Guarantee & Refunds',
   description: 'eVisas.in refund policy. On-Time Guarantee: full service fee refund if visa is not delivered before your travel date. Standard refund conditions and how to request a refund.',
   alternates: { canonical: 'https://evisas.in/refund-policy' },
+  robots: { index: false, follow: true },
 }
 
 const breadcrumbSchema = {

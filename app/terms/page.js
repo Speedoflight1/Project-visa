@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Terms of Service — eVisas.in',
   description: 'eVisas.in terms of service. INR payments, service fee charged only on approval, On-Time Guarantee, and applicant responsibilities. Governed by Indian law.',
   alternates: { canonical: 'https://evisas.in/terms' },
+  robots: { index: false, follow: true },
 }
 
 const breadcrumbSchema = {
