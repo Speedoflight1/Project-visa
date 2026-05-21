@@ -15,7 +15,8 @@ export function generateMetadata({ params }) {
 
   const visaLabelMeta = TYPE_LABEL[dest.type] || 'Visa'
   const title = `${dest.fullName} ${visaLabelMeta} from India 2026 — Apply Online | eVisas.in`
-  const description = `Get your ${dest.fullName} ${visaLabelMeta} from India in ${dest.proc}. ${dest.successRate} success rate · ${dest.val} validity · from ${dest.price}. Expert help on WhatsApp, pay in ₹, zero hidden fees.`
+  const procPhrase = /^on arrival$/i.test(dest.proc) ? '— available on arrival' : `in ${dest.proc}`
+  const description = `Get your ${dest.fullName} ${visaLabelMeta} from India ${procPhrase}. ${dest.successRate} success rate · ${dest.val} validity · from ${dest.price}. Expert help on WhatsApp, pay in ₹, zero hidden fees.`
 
   return {
     title,
