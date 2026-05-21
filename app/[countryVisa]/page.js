@@ -133,24 +133,28 @@ export default function CountryVisaPage({ params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="country-page">
         {/* Navbar */}
-        <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
-          <div className="nav-inner">
-            <Link href="/" className="nav-logo">
-              <div className="nav-logo-crop">
-                <img src="/logo-icon.png" alt="eVisas.in" />
-              </div>
-            </Link>
-            <div className="nav-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-              <Link href="/" style={{ color: '#2d3748', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
-              <WAButton
-                href={`https://wa.me/918619666129?text=Hi%2C%20I%20want%20to%20apply%20for%20${encodeURIComponent(dest.fullName)}%20visa%20from%20India`}
-                label={dest.fullName}
-                className="btn-primary"
-                style={{ padding: '0.5rem 1.25rem', fontSize: '0.9rem' }}
-              >
-                Apply on WhatsApp
-              </WAButton>
+        <nav style={{
+          display: 'flex', alignItems: 'center', gap: '2.5rem',
+          height: '54px', padding: '0 5%',
+          background: 'rgba(248,250,255,0.9)', backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid #e2e8f0', boxShadow: '0 1px 20px rgba(15,22,41,0.06)',
+          position: 'sticky', top: 0, zIndex: 500,
+        }}>
+          <Link href="/" className="nav-logo">
+            <div className="nav-logo-crop">
+              <img src="/logo-icon.png" alt="eVisas.in" />
             </div>
+          </Link>
+          <div className="nav-links">
+            <Link href="/" style={{ color: '#2d3748', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
+            <WAButton
+              href={`https://wa.me/918619666129?text=Hi%2C%20I%20want%20to%20apply%20for%20${encodeURIComponent(dest.fullName)}%20visa%20from%20India`}
+              label={dest.fullName}
+              className="btn-primary"
+              style={{ padding: '0.5rem 1.25rem', fontSize: '0.9rem' }}
+            >
+              Apply on WhatsApp
+            </WAButton>
           </div>
         </nav>
 
@@ -360,7 +364,7 @@ export default function CountryVisaPage({ params }) {
         <footer style={{ background: '#1a1a2e', color: '#a0aec0', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
-              <img src="/logo.jpeg" alt="eVisas.in" style={{ height: '40px', borderRadius: '6px', opacity: 0.9 }} />
+              <img src="/logo-white.png" alt="eVisas.in" style={{ height: '36px', opacity: 0.9 }} />
             </Link>
             <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>
               G9 Tower C, Bhutani Alphathum, Sector 90, Noida 201304
