@@ -41,6 +41,16 @@ export function generateMetadata({ params }) {
   }
 }
 
+// Converts flag emoji (e.g. 🇹🇭) to ISO code (e.g. "th") for flagcdn.com
+function flagEmojiToISO(emoji) {
+  try {
+    return [...emoji]
+      .map(c => String.fromCharCode(c.codePointAt(0) - 0x1F1E6 + 65))
+      .join('')
+      .toLowerCase()
+  } catch { return null }
+}
+
 export default function CountryVisaPage({ params }) {
   const slug = params.countryVisa.replace('-visa-from-india', '')
   const dest = DESTS.find((d) => d.urlSlug === slug)
@@ -149,7 +159,13 @@ export default function CountryVisaPage({ params }) {
           textAlign: 'center',
           color: '#fff',
         }}>
-          <p style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>{dest.f}</p>
+          <img
+            src={`https://flagcdn.com/w80/${flagEmojiToISO(dest.f)}.png`}
+            alt={`${dest.fullName} flag`}
+            width="80"
+            height="53"
+            style={{ borderRadius: '6px', marginBottom: '0.75rem', boxShadow: '0 2px 8px rgba(0,0,0,0.25)' }}
+          />
           <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '0.75rem', color: '#fff' }}>
             {dest.fullName} Visa from India
           </h1>
