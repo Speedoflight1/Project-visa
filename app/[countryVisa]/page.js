@@ -13,8 +13,9 @@ export function generateMetadata({ params }) {
   const dest = DESTS.find((d) => d.urlSlug === slug)
   if (!dest) return { title: 'Visa — eVisas.in' }
 
-  const title = `${dest.fullName} Visa from India — eVisas.in`
-  const description = `Apply for ${dest.fullName} ${TYPE_LABEL[dest.type] || 'Visa'} from India. Processing: ${dest.proc} · Validity: ${dest.val} · ${dest.successRate} success rate. Expert assistance, WhatsApp updates, pay in ₹.`
+  const visaLabelMeta = TYPE_LABEL[dest.type] || 'Visa'
+  const title = `${dest.fullName} ${visaLabelMeta} from India 2026 — Apply Online | eVisas.in`
+  const description = `Get your ${dest.fullName} ${visaLabelMeta} from India in ${dest.proc}. ${dest.successRate} success rate · ${dest.val} validity · from ${dest.price}. Expert help on WhatsApp, pay in ₹, zero hidden fees.`
 
   return {
     title,
@@ -75,6 +76,8 @@ export default function CountryVisaPage({ params }) {
       availability: 'https://schema.org/InStock',
       seller: { '@type': 'Organization', name: 'eVisas.in' },
     },
+    datePublished: '2024-01-01',
+    dateModified: '2026-05-21',
   }
 
   const breadcrumbSchema = {
@@ -85,6 +88,12 @@ export default function CountryVisaPage({ params }) {
       { '@type': 'ListItem', position: 2, name: `${dest.fullName} Visa`, item: pageUrl },
     ],
   }
+
+  // Related destinations: same region first, then popular
+  const popularSlugs = ['dubai', 'thailand', 'singapore', 'usa', 'uk', 'schengen', 'australia', 'canada', 'malaysia', 'japan']
+  const sameRegion = DESTS.filter(d => d.urlSlug !== dest.urlSlug && d.region === dest.region)
+  const popular = DESTS.filter(d => d.urlSlug !== dest.urlSlug && popularSlugs.includes(d.urlSlug) && d.region !== dest.region)
+  const relatedDests = [...sameRegion, ...popular].slice(0, 6)
 
   const genericFaqs = [
     { q: `How long does ${dest.fullName} visa processing take from India?`, a: `${dest.fullName} ${visaLabel} from India takes ${dest.proc} through eVisas.in. We handle the entire application process — documents, submission, and tracking.` },
@@ -280,6 +289,40 @@ export default function CountryVisaPage({ params }) {
           </section>
         )}
 
+        {/* Related Destinations — internal linking for SEO */}
+        {relatedDests.length > 0 && (
+          <section style={{ maxWidth: '860px', margin: '0 auto', padding: '0 1.5rem 3rem' }}>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#1a1a2e', marginBottom: '1.25rem', textAlign: 'center' }}>
+              More Visa Services from India
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '0.875rem' }}>
+              {relatedDests.map(r => (
+                <Link
+                  key={r.urlSlug}
+                  href={`/${r.urlSlug}-visa-from-india`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    background: '#f8faff',
+                    borderRadius: '12px',
+                    padding: '0.875rem 1.125rem',
+                    textDecoration: 'none',
+                    border: '1px solid #e2e8f0',
+                    transition: 'border-color 0.2s',
+                  }}
+                >
+                  <span style={{ fontSize: '1.5rem' }}>{r.f}</span>
+                  <div>
+                    <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1a1a2e' }}>{r.c} Visa</div>
+                    <div style={{ fontSize: '0.78rem', color: '#718096' }}>{r.proc} · {r.price}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Guarantee Strip */}
         <section style={{ background: '#f8faff', borderTop: '1px solid #e2e8f0', padding: '2rem 1.5rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '700px', margin: '0 auto' }}>
@@ -301,6 +344,16 @@ export default function CountryVisaPage({ params }) {
             <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>
               G9 Tower C, Bhutani Alphathum, Sector 90, Noida 201304
             </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '1rem', fontSize: '0.85rem' }}>
+              <Link href="/dubai-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Dubai Visa</Link>
+              <Link href="/thailand-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Thailand Visa</Link>
+              <Link href="/singapore-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Singapore Visa</Link>
+              <Link href="/schengen-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Schengen Visa</Link>
+              <Link href="/usa-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>USA Visa</Link>
+              <Link href="/uk-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>UK Visa</Link>
+              <Link href="/australia-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Australia Visa</Link>
+              <Link href="/canada-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Canada Visa</Link>
+            </div>
             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
               <Link href="/" style={{ color: '#a0aec0', textDecoration: 'none' }}>Home</Link>
               <a href="https://wa.me/918619666129" target="_blank" rel="noopener noreferrer" style={{ color: '#a0aec0', textDecoration: 'none' }}>WhatsApp</a>
