@@ -363,8 +363,10 @@ export default function CountryVisaPage({ params }) {
         {/* Footer */}
         <footer style={{ background: '#1a1a2e', color: '#a0aec0', padding: '2.5rem 1.5rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-            <Link href="/" style={{ display: 'inline-block', marginBottom: '1rem' }}>
-              <img src="/logo-white.png" alt="eVisas.in" style={{ height: '36px', opacity: 0.9 }} />
+            <Link href="/" className="nav-logo footer-brand" style={{ display: 'inline-block', marginBottom: '1rem' }}>
+              <div className="nav-logo-crop">
+                <img src="/logo-white.png" alt="eVisas.in" />
+              </div>
             </Link>
             <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>
               G9 Tower C, Bhutani Alphathum, Sector 90, Noida 201304
