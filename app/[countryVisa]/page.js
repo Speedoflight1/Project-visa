@@ -136,7 +136,9 @@ export default function CountryVisaPage({ params }) {
         <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
           <div className="nav-inner">
             <Link href="/" className="nav-logo">
-              <img src="/logo.jpeg" alt="eVisas.in" style={{ height: '52px', borderRadius: '8px' }} />
+              <div className="nav-logo-crop">
+                <img src="/logo-icon.png" alt="eVisas.in" />
+              </div>
             </Link>
             <div className="nav-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
               <Link href="/" style={{ color: '#2d3748', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
