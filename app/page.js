@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import Link from 'next/link'
 import {
   DESTS, TYPE_LABEL, TYPE_CLS, POPULAR_SLUGS,
   STEPS, FEATURES, TRUST, TESTIMONIALS, PLANS, BLOGS, FAQS, POLICIES,
@@ -312,12 +313,12 @@ export default function HomePage() {
 
       {/* ── NAVBAR ── */}
       <nav id="nav" className={navSolid ? 'solid' : ''}>
-        <div className="nav-logo" onClick={() => { closeCountry(); if (blogDetail !== null) { setBlogDetail(null); unlockScroll() } window.scrollTo({ top: 0, behavior: 'smooth' }) }} style={{ cursor: 'pointer' }}>
+        <Link href="/" className="nav-logo" onClick={() => { closeCountry(); if (blogDetail !== null) { setBlogDetail(null); unlockScroll() } }} style={{ cursor: 'pointer' }}>
           <div className="nav-logo-crop">
             <img src="/logo-icon.png" alt="eVisas" onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block' }} />
           </div>
           <span style={{ display: 'none', fontSize: '1.4rem', fontWeight: 900, letterSpacing: '-0.5px', background: 'linear-gradient(135deg,var(--blue),var(--purple))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>eVisas</span>
-        </div>
+        </Link>
         <div className="nav-links">
           <a href="#destinations" onClick={e => { e.preventDefault(); scrollToDest() }}>Destinations</a>
           <a href="#how" onClick={e => { e.preventDefault(); document.getElementById('how')?.scrollIntoView({ behavior: 'smooth' }) }}>How It Works</a>
