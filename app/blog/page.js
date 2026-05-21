@@ -28,15 +28,21 @@ export default function BlogPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="country-page">
-        <nav className="navbar" style={{ position: 'relative', boxShadow: '0 2px 20px rgba(0,0,0,0.08)' }}>
-          <div className="nav-inner">
-            <Link href="/" className="nav-logo">
-              <img src="/logo.jpeg" alt="eVisas.in" style={{ height: '52px', borderRadius: '8px' }} />
-            </Link>
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <Link href="/" style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textDecoration: 'none' }}>← Home</Link>
-              <a href="https://wa.me/918619666129?text=Hi%2C%20I%20want%20to%20apply%20for%20a%20visa" target="_blank" rel="noopener noreferrer" className="btn-pill" style={{ fontSize: '0.85rem', padding: '0.55rem 1.4rem' }}>Apply Now →</a>
+        <nav style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          height: '54px', padding: '0 5%',
+          background: 'rgba(248,250,255,0.95)', backdropFilter: 'blur(20px)',
+          borderBottom: '1px solid #e2e8f0', boxShadow: '0 1px 20px rgba(15,22,41,0.06)',
+          position: 'sticky', top: 0, zIndex: 500,
+        }}>
+          <Link href="/" className="nav-logo" style={{ textDecoration: 'none' }}>
+            <div className="nav-logo-crop">
+              <img src="/logo-icon.png" alt="eVisas.in" />
             </div>
+          </Link>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+            <Link href="/" style={{ fontSize: '0.9rem', color: '#64748b', textDecoration: 'none' }}>← Home</Link>
+            <a href="https://wa.me/918619666129?text=Hi%2C%20I%20want%20to%20apply%20for%20a%20visa" target="_blank" rel="noopener noreferrer" className="btn-pill" style={{ fontSize: '0.85rem', padding: '0.55rem 1.4rem' }}>Apply Now →</a>
           </div>
         </nav>
 
@@ -56,7 +62,7 @@ export default function BlogPage() {
           <div className="container">
             <div className="bgrid">
               {BLOGS.map((b, i) => (
-                <div key={i} className="blog-card" style={{ cursor: 'default' }}>
+                <Link key={i} href={`/blog/${b.slug}`} className="blog-card" style={{ textDecoration: 'none', display: 'block', cursor: 'pointer' }}>
                   <div className="blog-img">
                     <div className="blog-bg" style={{ backgroundImage: `url('${b.img}')` }} />
                     <div className="blog-overlay" />
@@ -76,10 +82,10 @@ export default function BlogPage() {
                         <div className="blog-av" style={{ background: b.ac }}>{b.author[0]}</div>
                         <span className="blog-author-name">{b.author}</span>
                       </div>
-                      <a href="https://wa.me/918619666129?text=Hi%2C%20I%20need%20help%20with%20my%20visa%20application" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.82rem', color: 'var(--blue)', textDecoration: 'none', fontWeight: 600 }}>Ask Expert →</a>
+                      <span style={{ fontSize: '0.82rem', color: 'var(--blue)', fontWeight: 600 }}>Read →</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 

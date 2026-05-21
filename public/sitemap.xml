@@ -220,4 +220,70 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- Blog listing -->
+  <url>
+    <loc>https://evisas.in/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog posts — existing guides -->
+  <url>
+    <loc>https://evisas.in/blog/dubai-visa-for-indians-complete-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/singapore-vs-thailand-visa-for-indians</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/schengen-visa-rejected-reasons-fix</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/us-b1-b2-visa-interview-questions-indians</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/build-travel-history-visa-approvals</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/visa-photo-requirements-country-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog posts — US conference series -->
+  <url>
+    <loc>https://evisas.in/blog/us-b1-visa-indian-tech-professionals-conferences</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/aws-reinvent-2026-us-visa-guide-indians</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/dreamforce-2026-us-visa-guide-indians</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/microsoft-ignite-2026-us-visa-guide-indians</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://evisas.in/blog/google-io-us-visa-guide-indian-developers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
