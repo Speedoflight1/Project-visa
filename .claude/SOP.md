@@ -156,3 +156,7 @@ One long React page with these sections in order:
 | Earlier | Claude Code | Added 41 country static pages | SEO — each country gets its own indexed URL |
 | Earlier | Claude Code | Added Meta Pixel `2460365381005611` | Future Meta ad tracking |
 | Earlier | Claude Code | Added GA4 `G-7HM8W0STLC` | Website analytics |
+| 2026-05-19 | Claude Code | Fixed nav logo, nav links centering, loader logo — all using precise CSS crop | SVG approach failed (fonts not loaded); PNG crop is reliable |
+| 2026-05-19 | Claude Code | Added Tailwind CSS v3 + shadcn/ui/Magic UI/Aceternity foundation | Enable modern animated UI components; preflight disabled to protect existing CSS |
+| 2026-05-19 | Claude Code | Hero section: dot grid overlay, shimmer headline, gradient stat numbers, badge sweep, search pulse | Visual upgrade using CSS animations only — no JS changes, all tracking intact |
+| 2026-05-21 | Claude Code | Fixed 6 dead-click/tracking bugs: (1) removed 1s setTimeout before WhatsApp open on country page CTA — was silently blocked on iOS/Android; (2) fixed duplicate z-index in .search-suggestions (200 was overriding 10000); (3) added GA4+Pixel tracking to float WA button; (4) added cursor:default to bento/step cards that looked clickable but weren't; (5) fixed All Articles button scrolling to itself; (6) added iOS safe-area-inset to WA float | Clarity data showed 26% dead clicks — these were the root causes |
