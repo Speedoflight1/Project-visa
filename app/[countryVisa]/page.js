@@ -27,11 +27,13 @@ export function generateMetadata({ params }) {
       url: `https://evisas.in/${dest.urlSlug}-visa-from-india`,
       siteName: 'eVisas.in',
       type: 'website',
+      images: [{ url: 'https://evisas.in/logo-white.png', width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: ['https://evisas.in/logo-white.png'],
     },
     alternates: {
       canonical: `https://evisas.in/${dest.urlSlug}-visa-from-india`,
