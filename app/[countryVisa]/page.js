@@ -158,6 +158,21 @@ export default function CountryVisaPage({ params }) {
           </div>
         </nav>
 
+        {/* Breadcrumb */}
+        <nav aria-label="breadcrumb" style={{
+          padding: '0.6rem 5%',
+          background: '#f8fafc',
+          borderBottom: '1px solid #e2e8f0',
+          fontSize: '0.8rem',
+          color: '#94a3b8',
+        }}>
+          <Link href="/" style={{ color: '#64748b', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 0.4rem' }}>›</span>
+          <Link href="/" style={{ color: '#64748b', textDecoration: 'none' }}>Destinations</Link>
+          <span style={{ margin: '0 0.4rem' }}>›</span>
+          <span style={{ color: '#0f172a', fontWeight: 500 }}>{dest.fullName} Visa from India</span>
+        </nav>
+
         {/* Hero */}
         <section className="country-hero" style={{
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
