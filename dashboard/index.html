@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>evisas.in — Operations Dashboard</title>
+  <meta name="description" content="Local operations dashboard for evisas.in visa service website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       DESIGN SYSTEM — evisas.in Operations Dashboard
+       ═══════════════════════════════════════════════════════ */
+    :root {
+      --bg-primary: #07070d;
+      --bg-secondary: #0d0d16;
+      --bg-card: rgba(255,255,255,0.025);
+      --bg-card-hover: rgba(255,255,255,0.05);
+      --bg-glass: rgba(12,12,24,0.85);
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --text-primary: #e8e8f0;
+      --text-secondary: #8888a0;
+      --text-muted: #55556a;
+      --accent: #6366f1;
+      --accent-glow: rgba(99,102,241,0.25);
+      --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+      --success: #22c55e;
+      --success-bg: rgba(34,197,94,0.1);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245,158,11,0.1);
+      --danger: #ef4444;
+      --danger-bg: rgba(239,68,68,0.1);
+      --hot: #ef4444;
+      --warm: #f59e0b;
+      --cold: #6366f1;
+      --sidebar-w: 300px;
+      --header-h: 56px;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient glow */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ═══════════ SIDEBAR ═══════════ */
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--bg-glass);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      z-index: 10;
+      overflow-y: auto;
+    }
+
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 2px 12px var(--accent-glow);
+    }
+
+    .logo-text h1 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════ ACTION BUTTONS ═══════════ */
+    .actions {
+      padding: 16px 12px;
+      flex: 1;
+    }
+
+    .actions-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      padding: 0 8px;
+      margin-bottom: 8px;
+    }
+
+    .action-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      margin-bottom: 4px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+      text-align: left;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      transform: translateX(2px);
+    }
+
+    .action-btn.active {
+      background: rgba(99,102,241,0.08);
+      border-color: rgba(99,102,241,0.2);
+      color: var(--text-primary);
+    }
+
+    .action-btn.running {
+      background: rgba(99,102,241,0.08);
+      border-color: rgba(99,102,241,0.3);
+      color: var(--text-primary);
+    }
+
+    .action-btn.running::after {
+      content: '';
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+      50% { opacity: 0.4; transform: translateY(-50%) scale(0.7); }
+    }
+
+    .action-icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .action-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .action-name {
+      display: block;
+      line-height: 1.3;
+    }
+
+    .action-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .model-badge {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+
+    .badge-opus { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    .badge-sonnet { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .badge-groq { background: rgba(245,158,11,0.15); color: #fbbf24; }
+
+    .token-est {
+      font-size: 9px;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════ HISTORY PANEL ═══════════ */
+    .history-panel {
+      border-top: 1px solid var(--border);
+      padding: 12px;
+    }
+
+    .history-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      padding: 0 8px;
+      margin-bottom: 8px;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition);
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .history-item:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    .history-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .history-time {
+      margin-left: auto;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* ═══════════ SIDEBAR FOOTER ═══════════ */
+    .sidebar-footer {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .settings-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .settings-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+
+    /* ═══════════ MAIN CONTENT ═══════════ */
+    .main {
+      margin-left: var(--sidebar-w);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ═══════════ HEALTH BAR ═══════════ */
+    .health-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 24px;
+      font-size: 12px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .health-bar.healthy {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .health-bar.unhealthy {
+      background: var(--danger-bg);
+      color: var(--danger);
+      animation: health-flash 2s ease-in-out infinite;
+    }
+
+    @keyframes health-flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .health-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .health-bar.healthy .health-dot { background: var(--success); }
+    .health-bar.unhealthy .health-dot { background: var(--danger); }
+
+    .health-details {
+      margin-left: auto;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    /* ═══════════ STATUS TICKER ═══════════ */
+    .status-ticker {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 24px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      min-height: 50px;
+    }
+
+    .status-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .status-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      flex: 1;
+    }
+
+    .status-text.active {
+      color: var(--text-primary);
+    }
+
+    .progress-bar-wrap {
+      width: 120px;
+      height: 4px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent-gradient);
+      border-radius: 2px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    /* ═══════════ CONTENT AREA ═══════════ */
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .content-area::-webkit-scrollbar { width: 6px; }
+    .content-area::-webkit-scrollbar-track { background: transparent; }
+    .content-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* Welcome state */
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    .welcome-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      filter: grayscale(0.5);
+    }
+
+    .welcome h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .welcome p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    /* Result display */
+    .result-content {
+      display: none;
+    }
+
+    .result-content.visible {
+      display: block;
+      animation: fade-in 0.4s ease;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Markdown rendered content */
+    .md-output {
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .md-output h1 { font-size: 24px; font-weight: 700; margin: 24px 0 12px; color: var(--text-primary); }
+    .md-output h2 { font-size: 20px; font-weight: 600; margin: 20px 0 10px; color: var(--text-primary); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .md-output h3 { font-size: 16px; font-weight: 600; margin: 16px 0 8px; color: var(--text-primary); }
+    .md-output p { margin: 8px 0; color: var(--text-secondary); }
+    .md-output ul, .md-output ol { padding-left: 24px; margin: 8px 0; color: var(--text-secondary); }
+    .md-output li { margin: 4px 0; }
+    .md-output strong { color: var(--text-primary); font-weight: 600; }
+    .md-output em { color: var(--accent); font-style: italic; }
+
+    .md-output code {
+      background: rgba(99,102,241,0.1);
+      color: #a78bfa;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .md-output pre {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+
+    .md-output pre code {
+      background: none;
+      padding: 0;
+      color: var(--text-primary);
+      font-size: 13px;
+    }
+
+    .md-output table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 13px;
+    }
+
+    .md-output th {
+      background: var(--bg-card);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .md-output td {
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .md-output tr:hover td {
+      background: var(--bg-card);
+    }
+
+    .md-output blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 8px 16px;
+      margin: 12px 0;
+      background: rgba(99,102,241,0.05);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--text-secondary);
+    }
+
+    /* ═══════════ APPROVAL BAR ═══════════ */
+    .approval-bar {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+
+    .approval-bar.visible {
+      display: flex;
+      animation: slide-up 0.3s ease;
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .approval-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .approval-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-preview {
+      background: transparent;
+      color: var(--text-primary);
+    }
+
+    .btn-preview:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+    }
+
+    .btn-edit {
+      background: transparent;
+      color: var(--warning);
+      border-color: rgba(245,158,11,0.2);
+    }
+
+    .btn-edit:hover {
+      background: var(--warning-bg);
+    }
+
+    .btn-push {
+      background: rgba(34,197,94,0.1);
+      color: var(--success);
+      border-color: rgba(34,197,94,0.2);
+    }
+
+    .btn-push:hover {
+      background: rgba(34,197,94,0.2);
+      border-color: rgba(34,197,94,0.3);
+    }
+
+    .approval-spacer { flex: 1; }
+
+    /* ═══════════ LEADS FORM ═══════════ */
+    .leads-panel {
+      display: none;
+    }
+
+    .leads-panel.visible {
+      display: block;
+      animation: fade-in 0.4s ease;
+    }
+
+    .lead-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .lead-form h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: inherit;
+      transition: border-color var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .btn-add-lead {
+      padding: 8px 20px;
+      background: var(--accent-gradient);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-add-lead:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    /* Lead cards */
+    .leads-list h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .lead-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 10px;
+      transition: all var(--transition);
+    }
+
+    .lead-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .lead-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .lead-rating {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .rating-hot { background: rgba(239,68,68,0.15); color: var(--hot); }
+    .rating-warm { background: rgba(245,158,11,0.15); color: var(--warm); }
+    .rating-cold { background: rgba(99,102,241,0.15); color: var(--cold); }
+
+    .lead-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .lead-country {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    .lead-delete {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 4px;
+      transition: color var(--transition);
+    }
+
+    .lead-delete:hover { color: var(--danger); }
+
+    .lead-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .lead-message {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .lead-message-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .btn-copy {
+      position: absolute;
+      top: 8px; right: 8px;
+      padding: 4px 10px;
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-secondary);
+      font-size: 10px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-copy:hover { background: var(--accent); color: white; border-color: var(--accent); }
+    .btn-copy.copied { background: var(--success); color: white; border-color: var(--success); }
+
+    /* ═══════════ SETTINGS MODAL ═══════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.visible {
+      display: flex;
+      animation: fade-in 0.2s ease;
+    }
+
+    .modal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      width: 480px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow);
+    }
+
+    .modal h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal .form-group {
+      margin-bottom: 16px;
+    }
+
+    .modal .form-group select {
+      width: 100%;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .btn-modal {
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-cancel {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .btn-cancel:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+    .btn-save {
+      background: var(--accent-gradient);
+      border: none;
+      color: white;
+    }
+
+    .btn-save:hover { transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+
+    /* ═══════════ EDIT MODAL ═══════════ */
+    .edit-area {
+      width: 100%;
+      min-height: 300px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      line-height: 1.6;
+      resize: vertical;
+    }
+
+    .edit-area:focus { outline: none; border-color: var(--accent); }
+
+    /* ═══════════ TOAST NOTIFICATION ═══════════ */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 20px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: var(--shadow);
+      z-index: 200;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success { border-left: 3px solid var(--success); }
+    .toast.error { border-left: 3px solid var(--danger); }
+    .toast.warning { border-left: 3px solid var(--warning); }
+
+    /* ═══════════ SCROLLBAR GLOBAL ═══════════ */
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ═══════════ ANALYTICS PANEL ═══════════ */
+    .analytics-panel {
+      display: none;
+    }
+
+    .analytics-panel.visible {
+      display: block;
+      animation: fade-in 0.4s ease;
+    }
+
+    .analytics-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .analytics-title {
+      font-size: 18px;
+      font-weight: 700;
+      flex: 1;
+    }
+
+    .analytics-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .btn-refresh {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: var(--radius-sm);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .btn-refresh:hover {
+      background: rgba(99,102,241,0.2);
+      border-color: rgba(99,102,241,0.4);
+    }
+
+    .btn-refresh:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-refresh.spinning .refresh-icon {
+      display: inline-block;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* FB token expiry warning */
+    .fb-token-warning {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--warning-bg);
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: var(--warning);
+    }
+
+    .fb-token-expired {
+      background: var(--danger-bg);
+      border-color: rgba(239,68,68,0.25);
+      color: var(--danger);
+    }
+
+    /* Stat grid */
+    .stat-section {
+      margin-bottom: 24px;
+    }
+
+    .stat-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: all var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .stat-value.accent { color: var(--accent); }
+    .stat-value.success { color: var(--success); }
+    .stat-value.warning { color: var(--warning); }
+
+    .stat-trend {
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .trend-up   { color: var(--success); }
+    .trend-down { color: var(--danger); }
+    .trend-flat { color: var(--text-muted); }
+
+    /* Error/not-configured card */
+    .stat-error {
+      background: var(--bg-card);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .stat-error a {
+      color: var(--accent);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* Analytics tables */
+    .analytics-table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .analytics-table-wrap h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .analytics-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    .analytics-table th {
+      padding: 8px 16px;
+      text-align: left;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      background: rgba(0,0,0,0.2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .analytics-table th.num,
+    .analytics-table td.num {
+      text-align: right;
+    }
+
+    .analytics-table td {
+      padding: 8px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+    }
+
+    .analytics-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .analytics-table tr:hover td {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    .page-path {
+      font-family: 'Fira Code', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .no-data-placeholder {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ═══════════ RESPONSIVE ═══════════ */
+    @media (max-width: 768px) {
+      .sidebar { width: 260px; }
+      .main { margin-left: 260px; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ SIDEBAR ═══════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-row">
+        <div class="logo-icon">eV</div>
+        <div class="logo-text">
+          <h1>evisas.in</h1>
+          <span>Operations Dashboard</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div class="actions-label">Actions</div>
+
+      <button class="action-btn" data-task="blog" id="btn-blog" onclick="runTask('blog')">
+        <span class="action-icon">🖊️</span>
+        <div class="action-info">
+          <span class="action-name">Generate Blog Post</span>
+          <div class="action-meta">
+            <span class="model-badge badge-opus">Opus</span>
+            <span class="token-est">~15K tokens</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="action-btn" data-task="fetch-site" id="btn-fetch-site" onclick="runTask('fetch-site')">
+        <span class="action-icon">📊</span>
+        <div class="action-info">
+          <span class="action-name">Fetch Site Data</span>
+          <div class="action-meta">
+            <span class="model-badge badge-sonnet">Sonnet</span>
+            <span class="token-est">~10K tokens</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="action-btn" data-task="analytics" id="btn-analytics" onclick="runTask('analytics')">
+        <span class="action-icon">📈</span>
+        <div class="action-info">
+          <span class="action-name">Analytics Report</span>
+          <div class="action-meta">
+            <span class="model-badge badge-opus">Opus</span>
+            <span class="token-est">~12K tokens</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="action-btn" data-task="content" id="btn-content" onclick="runTask('content')">
+        <span class="action-icon">🎬</span>
+        <div class="action-info">
+          <span class="action-name">Content Scripts</span>
+          <div class="action-meta">
+            <span class="model-badge badge-opus">Opus</span>
+            <span class="token-est">~10K tokens</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="action-btn" data-task="tasks" id="btn-tasks" onclick="runTask('tasks')">
+        <span class="action-icon">📋</span>
+        <div class="action-info">
+          <span class="action-name">Daily Tasks</span>
+          <div class="action-meta">
+            <span class="model-badge badge-opus">Opus</span>
+            <span class="token-est">~8K tokens</span>
+          </div>
+        </div>
+      </button>
+
+      <button class="action-btn" data-task="leads" id="btn-leads" onclick="runTask('leads')">
+        <span class="action-icon">💬</span>
+        <div class="action-info">
+          <span class="action-name">Follow-Up Leads</span>
+          <div class="action-meta">
+            <span class="model-badge badge-groq">Groq</span>
+            <span class="token-est">Free</span>
+          </div>
+        </div>
+      </button>
+
+      <div class="actions-label" style="margin-top:16px;">Live Data</div>
+
+      <button class="action-btn" data-task="analytics-live" id="btn-analytics-live" onclick="showAnalyticsPanel()">
+        <span class="action-icon">📡</span>
+        <div class="action-info">
+          <span class="action-name">Analytics Dashboard</span>
+          <div class="action-meta">
+            <span class="model-badge badge-sonnet" style="background:rgba(34,197,94,0.15);color:#4ade80;">Live</span>
+            <span class="token-est">0 tokens</span>
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <!-- History Panel -->
+    <div class="history-panel" id="history-panel">
+      <div class="history-label">Recent Results</div>
+      <div id="history-list">
+        <div class="history-item" style="color: var(--text-muted); font-style: italic;">No results yet</div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="settings-btn" id="btn-settings" onclick="openSettings()">
+        <span>⚙️</span> Settings
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══════════ MAIN CONTENT ═══════════ -->
+  <main class="main">
+    <!-- Health Bar -->
+    <div class="health-bar healthy" id="health-bar">
+      <div class="health-dot"></div>
+      <span id="health-text">evisas.in — All systems operational</span>
+      <span class="health-details" id="health-details">Checking...</span>
+    </div>
+
+    <!-- Status Ticker -->
+    <div class="status-ticker" id="status-ticker">
+      <span class="status-icon" id="status-icon">⏸️</span>
+      <span class="status-text" id="status-text">Ready — click any action to begin</span>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area" id="content-area">
+      <!-- Welcome State -->
+      <div class="welcome" id="welcome-state">
+        <div class="welcome-icon">🌏</div>
+        <h2>evisas.in Operations</h2>
+        <p>Select an action from the sidebar to generate content, audit your site, pull analytics, or manage leads.</p>
+      </div>
+
+      <!-- Result Content -->
+      <div class="result-content" id="result-content">
+        <div class="md-output" id="md-output"></div>
+      </div>
+
+      <!-- Analytics Live Panel -->
+      <div class="analytics-panel" id="analytics-panel">
+
+        <div class="analytics-header">
+          <span style="font-size:20px;">📡</span>
+          <div class="analytics-title">Analytics Dashboard</div>
+          <span class="analytics-meta" id="analytics-last-updated">—</span>
+          <button class="btn-refresh" id="btn-refresh-analytics" onclick="refreshAnalytics()">
+            <span class="refresh-icon">↻</span> Refresh Now
+          </button>
+        </div>
+
+        <!-- FB Token Expiry Warning -->
+        <div id="fb-token-warning" style="display:none"></div>
+
+        <!-- GA4 Section -->
+        <div class="stat-section" id="ga4-section">
+          <div class="stat-section-title">
+            <span>📊</span> Google Analytics (GA4) — Last 28 days
+          </div>
+          <div id="ga4-stats">
+            <div class="no-data-placeholder">Loading…</div>
+          </div>
+        </div>
+
+        <!-- GSC Section -->
+        <div class="stat-section" id="gsc-section">
+          <div class="stat-section-title">
+            <span>🔍</span> Google Search Console — Last 28 days
+          </div>
+          <div id="gsc-stats">
+            <div class="no-data-placeholder">Loading…</div>
+          </div>
+        </div>
+
+        <!-- Facebook Section -->
+        <div class="stat-section" id="fb-section">
+          <div class="stat-section-title">
+            <span>📘</span> Facebook Ads — Last 28 days
+          </div>
+          <div id="fb-stats">
+            <div class="no-data-placeholder">Loading…</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Leads Panel -->
+      <div class="leads-panel" id="leads-panel">
+        <div class="lead-form">
+          <h3>➕ Add New Lead</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" id="lead-name" placeholder="Lead name">
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" id="lead-phone" placeholder="+91 XXXXX XXXXX">
+            </div>
+            <div class="form-group">
+              <label>Country of Interest</label>
+              <select id="lead-country">
+                <option value="">Select country</option>
+                <option value="usa">🇺🇸 USA</option>
+                <option value="uk">🇬🇧 UK</option>
+                <option value="canada">🇨🇦 Canada</option>
+                <option value="schengen">🇪🇺 Schengen</option>
+                <option value="australia">🇦🇺 Australia</option>
+                <option value="dubai">🇦🇪 Dubai / UAE</option>
+                <option value="singapore">🇸🇬 Singapore</option>
+                <option value="thailand">🇹🇭 Thailand</option>
+                <option value="japan">🇯🇵 Japan</option>
+                <option value="south-korea">🇰🇷 South Korea</option>
+                <option value="malaysia">🇲🇾 Malaysia</option>
+                <option value="turkey">🇹🇷 Turkey</option>
+                <option value="france">🇫🇷 France</option>
+                <option value="germany">🇩🇪 Germany</option>
+                <option value="italy">🇮🇹 Italy</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Inquiry Date</label>
+              <input type="date" id="lead-date">
+            </div>
+            <div class="form-group full">
+              <label>Notes</label>
+              <textarea id="lead-notes" placeholder="Any details about this lead..."></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn-add-lead" onclick="addLead()">Add Lead & Score</button>
+          </div>
+        </div>
+
+        <div class="leads-list">
+          <h3>📊 Scored Leads</h3>
+          <div id="leads-container">
+            <p style="color: var(--text-muted); font-size: 13px;">No leads yet. Add your first lead above.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Approval Bar -->
+    <div class="approval-bar" id="approval-bar">
+      <span class="approval-label">Content Ready —</span>
+      <button class="approval-btn btn-preview" onclick="previewResult()">👁️ Preview</button>
+      <button class="approval-btn btn-edit" onclick="editResult()">✏️ Edit</button>
+      <div class="approval-spacer"></div>
+      <button class="approval-btn btn-push" onclick="sendToClaudeCode()">📤 Send to Claude Code</button>
+    </div>
+  </main>
+
+  <!-- ═══════════ SETTINGS MODAL ═══════════ -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal">
+      <h2>⚙️ Dashboard Settings</h2>
+
+      <div class="form-group">
+        <label>Groq API Key</label>
+        <input type="password" id="setting-groq-key" placeholder="gsk_xxxxxxxxxxxxxxxx" style="width:100%">
+      </div>
+
+      <div class="form-group">
+        <label>Blog Model</label>
+        <select id="model-blog">
+          <option value="opus">Opus 4.6 (Thinking)</option>
+          <option value="opus-4.7">Opus 4.7</option>
+          <option value="sonnet">Sonnet 4.6</option>
+          <option value="gpt">GPT-4o</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Fetch Site Model</label>
+        <select id="model-fetch-site">
+          <option value="sonnet" selected>Sonnet 4.6</option>
+          <option value="opus">Opus 4.6 (Thinking)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Analytics Model</label>
+        <select id="model-analytics">
+          <option value="opus">Opus 4.6 (Thinking)</option>
+          <option value="sonnet">Sonnet 4.6</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Content Scripts Model</label>
+        <select id="model-content">
+          <option value="opus">Opus 4.6 (Thinking)</option>
+          <option value="gpt">GPT-4o</option>
+          <option value="sonnet">Sonnet 4.6</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Daily Tasks Model</label>
+        <select id="model-tasks">
+          <option value="opus">Opus 4.6 (Thinking)</option>
+          <option value="sonnet">Sonnet 4.6</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Health Check Interval</label>
+        <select id="setting-health-interval">
+          <option value="900000">Every 15 minutes</option>
+          <option value="1800000" selected>Every 30 minutes</option>
+          <option value="3600000">Every 1 hour</option>
+          <option value="0">Disabled</option>
+        </select>
+      </div>
+
+      <div style="border-top:1px solid var(--border); margin: 20px 0 16px; padding-top: 16px;">
+        <div style="font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:14px; display:flex; align-items:center; gap:8px;">
+          📡 Analytics Credentials
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Google Service Account Key (file path)</label>
+          <input type="text" id="setting-gsa-path" placeholder="C:\path\to\service-account-key.json" style="width:100%; font-family:monospace; font-size:11px;">
+          <div style="font-size:10px; color:var(--text-muted); margin-top:4px;">
+            Create at <strong>console.cloud.google.com → IAM → Service Accounts</strong>. Grant Viewer on GA4 + Owner on GSC.
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Facebook Long-Lived Access Token</label>
+          <input type="password" id="setting-fb-token" placeholder="EAAxxxx... (60-day token)" style="width:100%;">
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Facebook Token Expiry Date</label>
+          <input type="date" id="setting-fb-expiry" style="width:100%;">
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Facebook Ad Account ID</label>
+          <input type="text" id="setting-fb-account" placeholder="act_123456789" style="width:100%;">
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-modal btn-cancel" onclick="closeSettings()">Cancel</button>
+        <button class="btn-modal btn-save" onclick="saveSettings()">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ EDIT MODAL ═══════════ -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal" style="width: 700px;">
+      <h2>✏️ Edit Content</h2>
+      <textarea class="edit-area" id="edit-textarea"></textarea>
+      <div class="modal-actions">
+        <button class="btn-modal btn-cancel" onclick="closeEdit()">Cancel</button>
+        <button class="btn-modal btn-save" onclick="applyEdit()">Apply Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════ JAVASCRIPT ═══════════ -->
+  <script>
+    // ────────────────────── STATE ──────────────────────
+    const API = 'http://localhost:3333';
+    let currentTask = null;
+    let currentResult = null;
+    let pollingInterval = null;
+    let statusInterval = null;
+    let healthInterval = null;
+    let settings = {};
+
+    // ────────────────────── INIT ──────────────────────
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Request notification permission
+      if ('Notification' in window && Notification.permission === 'default') {
+        Notification.requestPermission();
+      }
+
+      // Load settings
+      await loadSettings();
+
+      // Load history
+      await loadHistory();
+
+      // Load health
+      await checkHealth();
+      healthInterval = setInterval(checkHealth, 60000);
+
+      // Set default date for lead form
+      document.getElementById('lead-date').valueAsDate = new Date();
+    });
+
+    // ────────────────────── TASKS ──────────────────────
+    async function runTask(task) {
+      // Don't run if already running
+      if (currentTask && document.querySelector(`.action-btn[data-task="${currentTask}"]`)?.classList.contains('running')) {
+        showToast('A task is already running. Please wait.', 'warning');
+        return;
+      }
+
+      currentTask = task;
+
+      // Update UI
+      document.querySelectorAll('.action-btn').forEach(b => b.classList.remove('active', 'running'));
+      const btn = document.querySelector(`.action-btn[data-task="${task}"]`);
+      btn.classList.add('active', 'running');
+
+      // Show/hide panels
+      document.getElementById('welcome-state').style.display = 'none';
+      document.getElementById('approval-bar').classList.remove('visible');
+
+      if (task === 'leads') {
+        document.getElementById('result-content').classList.remove('visible');
+        document.getElementById('leads-panel').classList.add('visible');
+        await loadLeads();
+        btn.classList.remove('running');
+        updateStatus('✅', 'Lead panel ready — add or score leads', 100);
+        return;
+      } else {
+        document.getElementById('leads-panel').classList.remove('visible');
+        document.getElementById('result-content').classList.remove('visible');
+      }
+
+      // Get model from settings
+      const model = settings.models?.[task] || 'opus';
+
+      // POST task
+      try {
+        updateStatus('🚀', 'Sending task to server...', 5);
+
+        const res = await fetch(`${API}/task`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ task, model })
+        });
+
+        if (!res.ok) throw new Error('Server error');
+
+        updateStatus('⏳', 'Task queued — watcher will pick it up...', 10);
+
+        // Start polling
+        startPolling();
+      } catch (err) {
+        updateStatus('❌', `Error: ${err.message}. Is server.js running?`, 0);
+        btn.classList.remove('running');
+        showToast('Failed to connect to server. Run start.bat first.', 'error');
+      }
+    }
+
+    function startPolling() {
+      stopPolling();
+
+      // Poll status every 2 seconds
+      statusInterval = setInterval(async () => {
+        try {
+          const res = await fetch(`${API}/status`);
+          const data = await res.json();
+
+          if (data.step && data.message) {
+            const icons = {
+              'idle': '⏸️', 'initializing': '🔄', 'reading': '📖',
+              'context': '🔍', 'ready': '✅', 'scoring': '📊',
+              'waiting': '⏳', 'complete': '✅', 'error': '❌'
+            };
+            updateStatus(icons[data.step] || '⏳', data.message, data.progress || 0);
+          }
+
+          if (data.step === 'complete' || data.step === 'ready' || data.step === 'error') {
+            stopPolling();
+            await loadResult();
+          }
+        } catch (e) {
+          // Silent fail during polling
+        }
+      }, 2000);
+
+      // Also poll result
+      pollingInterval = setInterval(async () => {
+        try {
+          const res = await fetch(`${API}/result`);
+          const data = await res.json();
+
+          if (data.content && data.timestamp && data.task === currentTask) {
+            stopPolling();
+            displayResult(data);
+          }
+        } catch (e) {
+          // Silent
+        }
+      }, 3000);
+    }
+
+    function stopPolling() {
+      if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
+      if (statusInterval) { clearInterval(statusInterval); statusInterval = null; }
+    }
+
+    // ────────────────────── RESULTS ──────────────────────
+    async function loadResult() {
+      try {
+        const res = await fetch(`${API}/result`);
+        const data = await res.json();
+        if (data.content) {
+          displayResult(data);
+        }
+      } catch (e) {
+        // Silent
+      }
+    }
+
+    function displayResult(data) {
+      currentResult = data;
+
+      // Remove running state
+      document.querySelectorAll('.action-btn').forEach(b => b.classList.remove('running'));
+
+      // Show result
+      const output = document.getElementById('md-output');
+      const resultEl = document.getElementById('result-content');
+
+      // Parse markdown
+      output.innerHTML = marked.parse(data.content || '');
+      resultEl.classList.add('visible');
+
+      // Show approval bar for blog/content tasks
+      if (data.task === 'blog' || data.task === 'content') {
+        document.getElementById('approval-bar').classList.add('visible');
+      }
+
+      // Update status
+      updateStatus('✅', `${getTaskName(data.task)} complete!`, 100);
+
+      // Reload history
+      loadHistory();
+
+      showToast(`${getTaskName(data.task)} finished!`, 'success');
+    }
+
+    function getTaskName(task) {
+      const names = {
+        'blog': 'Blog Generation', 'fetch-site': 'Site Audit',
+        'analytics': 'Analytics Report', 'content': 'Content Scripts',
+        'tasks': 'Daily Tasks', 'leads': 'Lead Scoring'
+      };
+      return names[task] || task;
+    }
+
+    // ────────────────────── APPROVAL ──────────────────────
+    function previewResult() {
+      const content = document.getElementById('content-area');
+      content.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function editResult() {
+      if (!currentResult) return;
+      document.getElementById('edit-textarea').value = currentResult.content || '';
+      document.getElementById('edit-modal').classList.add('visible');
+    }
+
+    function closeEdit() {
+      document.getElementById('edit-modal').classList.remove('visible');
+    }
+
+    function applyEdit() {
+      const edited = document.getElementById('edit-textarea').value;
+      if (currentResult) {
+        currentResult.content = edited;
+        document.getElementById('md-output').innerHTML = marked.parse(edited);
+      }
+      closeEdit();
+      showToast('Content updated!', 'success');
+    }
+
+    async function sendToClaudeCode() {
+      if (!currentResult) return;
+
+      try {
+        const res = await fetch(`${API}/approve`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            content: currentResult.content,
+            task: currentResult.task,
+            filename: `${currentResult.task}-${Date.now()}`
+          })
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+          showToast(`Saved to pending/ — open Claude Code to review and push.`, 'success');
+          document.getElementById('approval-bar').classList.remove('visible');
+        }
+      } catch (e) {
+        showToast('Failed to save. Is server running?', 'error');
+      }
+    }
+
+    // ────────────────────── LEADS ──────────────────────
+    async function addLead() {
+      const lead = {
+        name: document.getElementById('lead-name').value.trim(),
+        phone: document.getElementById('lead-phone').value.trim(),
+        country: document.getElementById('lead-country').value,
+        inquiryDate: document.getElementById('lead-date').value,
+        lastContact: new Date().toISOString().split('T')[0],
+        status: 'new',
+        notes: document.getElementById('lead-notes').value.trim()
+      };
+
+      if (!lead.name || !lead.phone) {
+        showToast('Name and phone are required.', 'warning');
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API}/leads`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(lead)
+        });
+
+        if (res.ok) {
+          // Clear form
+          document.getElementById('lead-name').value = '';
+          document.getElementById('lead-phone').value = '';
+          document.getElementById('lead-country').value = '';
+          document.getElementById('lead-notes').value = '';
+          document.getElementById('lead-date').valueAsDate = new Date();
+
+          showToast('Lead added & scored!', 'success');
+          await loadLeads();
+        }
+      } catch (e) {
+        showToast('Failed to add lead. Is server running?', 'error');
+      }
+    }
+
+    async function loadLeads() {
+      try {
+        const res = await fetch(`${API}/leads`);
+        const leads = await res.json();
+        renderLeads(leads);
+      } catch (e) {
+        // Silent
+      }
+    }
+
+    function renderLeads(leads) {
+      const container = document.getElementById('leads-container');
+
+      if (!leads || leads.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); font-size: 13px;">No leads yet. Add your first lead above.</p>';
+        return;
+      }
+
+      container.innerHTML = leads.map(lead => `
+        <div class="lead-card" data-id="${lead.id}">
+          <div class="lead-header">
+            <span class="lead-rating rating-${(lead.rating || 'cold').toLowerCase()}">${lead.rating || 'NEW'}</span>
+            <span class="lead-name">${escapeHtml(lead.name)}</span>
+            <span class="lead-country">${escapeHtml(lead.country || '')} · Score: ${lead.score || 0}</span>
+            <button class="lead-delete" onclick="deleteLead('${lead.id}')" title="Remove lead">✕</button>
+          </div>
+          <div class="lead-meta">
+            📱 ${escapeHtml(lead.phone)} · 📅 Inquiry: ${lead.inquiryDate || 'N/A'} · ⏰ ${lead.daysSinceInquiry || '?'} days ago
+          </div>
+          ${lead.whatsappMessage ? `
+            <div class="lead-message">
+              <div class="lead-message-label">WhatsApp Message (Day ${lead.daysSinceInquiry || '?'})</div>
+              <button class="btn-copy" onclick="copyMessage(this, '${lead.id}')">📋 Copy</button>
+              ${escapeHtml(lead.whatsappMessage)}
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    async function deleteLead(id) {
+      try {
+        await fetch(`${API}/leads/${id}`, { method: 'DELETE' });
+        showToast('Lead removed.', 'success');
+        await loadLeads();
+      } catch (e) {
+        showToast('Failed to delete lead.', 'error');
+      }
+    }
+
+    function copyMessage(btn, leadId) {
+      const msgEl = btn.parentElement;
+      const text = msgEl.textContent.replace('📋 Copy', '').replace(`WhatsApp Message (Day ${msgEl.querySelector('.lead-message-label')?.textContent?.match(/\d+/)?.[0] || '?'})`, '').trim();
+
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '✅ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = '📋 Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    // ────────────────────── HEALTH ──────────────────────
+    async function checkHealth() {
+      try {
+        const res = await fetch(`${API}/health`);
+        const data = await res.json();
+        const bar = document.getElementById('health-bar');
+        const text = document.getElementById('health-text');
+        const details = document.getElementById('health-details');
+
+        if (data.healthy === false) {
+          bar.className = 'health-bar unhealthy';
+          text.textContent = '⚠️ evisas.in — Issues detected!';
+          details.textContent = data.lastCheck ? `Last check: ${timeAgo(data.lastCheck)}` : '';
+
+          // Desktop notification
+          if ('Notification' in window && Notification.permission === 'granted') {
+            new Notification('⚠️ evisas.in Alert', {
+              body: 'Site health check failed. Check the dashboard for details.',
+              icon: '🔴'
+            });
+          }
+        } else {
+          bar.className = 'health-bar healthy';
+          text.textContent = 'evisas.in — All systems operational';
+          details.textContent = data.lastCheck ? `Last check: ${timeAgo(data.lastCheck)}` : 'Checking...';
+        }
+      } catch (e) {
+        const bar = document.getElementById('health-bar');
+        bar.className = 'health-bar healthy';
+        document.getElementById('health-text').textContent = 'evisas.in — Server offline (start server first)';
+      }
+    }
+
+    // ────────────────────── HISTORY ──────────────────────
+    async function loadHistory() {
+      try {
+        const res = await fetch(`${API}/history`);
+        const history = await res.json();
+        renderHistory(history);
+      } catch (e) {
+        // Silent
+      }
+    }
+
+    function renderHistory(history) {
+      const list = document.getElementById('history-list');
+
+      if (!history || history.length === 0) {
+        list.innerHTML = '<div class="history-item" style="color: var(--text-muted); font-style: italic; font-size: 11px;">No results yet</div>';
+        return;
+      }
+
+      const recent = history.slice(-5).reverse();
+      list.innerHTML = recent.map((item, i) => `
+        <div class="history-item" onclick="loadHistoryItem(${history.length - 1 - i})">
+          <div class="history-dot"></div>
+          <span>${getTaskName(item.task)}</span>
+          <span class="history-time">${timeAgo(item.timestamp)}</span>
+        </div>
+      `).join('');
+    }
+
+    async function loadHistoryItem(index) {
+      try {
+        const res = await fetch(`${API}/history`);
+        const history = await res.json();
+
+        if (history[index]) {
+          displayResult(history[index]);
+          document.getElementById('leads-panel').classList.remove('visible');
+        }
+      } catch (e) {
+        showToast('Failed to load history item.', 'error');
+      }
+    }
+
+    // ────────────────────── SETTINGS ──────────────────────
+    async function loadSettings() {
+      try {
+        const res = await fetch(`${API}/settings`);
+        settings = await res.json();
+
+        // Update UI
+        if (settings.groqApiKey)                  document.getElementById('setting-groq-key').value    = settings.groqApiKey;
+        if (settings.googleServiceAccountKeyPath) document.getElementById('setting-gsa-path').value     = settings.googleServiceAccountKeyPath;
+        if (settings.fbAccessToken)               document.getElementById('setting-fb-token').value     = settings.fbAccessToken;
+        if (settings.fbTokenExpiry)               document.getElementById('setting-fb-expiry').value    = settings.fbTokenExpiry;
+        if (settings.fbAdAccountId)               document.getElementById('setting-fb-account').value   = settings.fbAdAccountId;
+        if (settings.models) {
+          Object.entries(settings.models).forEach(([task, model]) => {
+            const sel = document.getElementById(`model-${task}`);
+            if (sel) sel.value = model;
+          });
+        }
+        if (settings.healthCheckInterval !== undefined) {
+          document.getElementById('setting-health-interval').value = settings.healthCheckInterval;
+        }
+
+        // Update badges
+        updateModelBadges();
+      } catch (e) {
+        // Use defaults
+      }
+    }
+
+    function updateModelBadges() {
+      if (!settings.models) return;
+      document.querySelectorAll('.action-btn').forEach(btn => {
+        const task = btn.dataset.task;
+        if (task === 'leads') return;
+        const model = settings.models[task] || 'opus';
+        const badge = btn.querySelector('.model-badge');
+        if (badge) {
+          const labels = { 'opus': 'Opus', 'opus-4.7': 'Opus 4.7', 'sonnet': 'Sonnet', 'gpt': 'GPT-4o' };
+          const classes = { 'opus': 'badge-opus', 'opus-4.7': 'badge-opus', 'sonnet': 'badge-sonnet', 'gpt': 'badge-sonnet' };
+          badge.textContent = labels[model] || model;
+          badge.className = `model-badge ${classes[model] || 'badge-opus'}`;
+        }
+      });
+    }
+
+    function openSettings() {
+      document.getElementById('settings-modal').classList.add('visible');
+    }
+
+    function closeSettings() {
+      document.getElementById('settings-modal').classList.remove('visible');
+    }
+
+    async function saveSettings() {
+      const newSettings = {
+        groqApiKey:                  document.getElementById('setting-groq-key').value.trim(),
+        googleServiceAccountKeyPath: document.getElementById('setting-gsa-path').value.trim(),
+        fbAccessToken:               document.getElementById('setting-fb-token').value.trim(),
+        fbTokenExpiry:               document.getElementById('setting-fb-expiry').value,
+        fbAdAccountId:               document.getElementById('setting-fb-account').value.trim(),
+        models: {
+          blog: document.getElementById('model-blog').value,
+          'fetch-site': document.getElementById('model-fetch-site').value,
+          analytics: document.getElementById('model-analytics').value,
+          content: document.getElementById('model-content').value,
+          tasks: document.getElementById('model-tasks').value,
+          leads: 'groq'
+        },
+        healthCheckInterval: parseInt(document.getElementById('setting-health-interval').value),
+        pollingInterval: 2000,
+        maxHistoryItems: 50
+      };
+
+      try {
+        const res = await fetch(`${API}/settings`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newSettings)
+        });
+
+        if (res.ok) {
+          settings = newSettings;
+          updateModelBadges();
+          closeSettings();
+          showToast('Settings saved!', 'success');
+        }
+      } catch (e) {
+        showToast('Failed to save settings. Is server running?', 'error');
+      }
+    }
+
+    // ────────────────────── ANALYTICS PANEL ──────────────────────
+
+    async function showAnalyticsPanel() {
+      // Update sidebar state
+      document.querySelectorAll('.action-btn').forEach(b => b.classList.remove('active', 'running'));
+      document.getElementById('btn-analytics-live').classList.add('active');
+
+      // Show/hide panels
+      document.getElementById('welcome-state').style.display   = 'none';
+      document.getElementById('result-content').classList.remove('visible');
+      document.getElementById('leads-panel').classList.remove('visible');
+      document.getElementById('analytics-panel').classList.add('visible');
+      document.getElementById('approval-bar').classList.remove('visible');
+
+      updateStatus('📡', 'Loading analytics data…', 30);
+      await loadAnalytics();
+      updateStatus('✅', 'Analytics data loaded', 100);
+    }
+
+    async function loadAnalytics() {
+      try {
+        const res  = await fetch(`${API}/analytics`);
+        const data = await res.json();
+        renderAnalytics(data);
+      } catch (e) {
+        document.getElementById('ga4-stats').innerHTML = '<div class="stat-error">Server offline — start server.js first.</div>';
+      }
+    }
+
+    async function refreshAnalytics() {
+      const btn = document.getElementById('btn-refresh-analytics');
+      btn.disabled = true;
+      btn.classList.add('spinning');
+      btn.querySelector('.refresh-icon').textContent = '↻';
+      updateStatus('🔄', 'Fetching fresh analytics data…', 20);
+
+      try {
+        const res  = await fetch(`${API}/analytics/refresh`, { method: 'POST' });
+        const data = await res.json();
+        if (data.ok) {
+          await loadAnalytics();
+          updateStatus('✅', 'Analytics refreshed', 100);
+          showToast('Analytics data refreshed!', 'success');
+        }
+      } catch (e) {
+        showToast('Refresh failed. Is server running?', 'error');
+        updateStatus('❌', 'Analytics refresh failed', 0);
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove('spinning');
+      }
+    }
+
+    function renderAnalytics(data) {
+      // Last updated
+      const el = document.getElementById('analytics-last-updated');
+      el.textContent = data.timestamp ? `Updated ${timeAgo(data.timestamp)}` : 'Never fetched';
+
+      // FB token warning
+      renderFbTokenWarning(data.fbTokenStatus);
+
+      // GA4
+      renderGA4(data.ga4, data.errors?.ga4 || data.errors?.google);
+
+      // GSC
+      renderGSC(data.gsc, data.errors?.gsc || data.errors?.google);
+
+      // Facebook
+      renderFacebook(data.facebook, data.errors?.facebook);
+    }
+
+    function renderFbTokenWarning(status) {
+      const el = document.getElementById('fb-token-warning');
+      if (!status || (!status.warning && !status.expired)) { el.style.display = 'none'; return; }
+      el.style.display = 'flex';
+      if (status.expired) {
+        el.className = 'fb-token-warning fb-token-expired';
+        el.innerHTML = `⚠️ <strong>Facebook token has EXPIRED</strong> — Renew it at developers.facebook.com/tools/explorer to resume ad data.`;
+      } else {
+        el.className = 'fb-token-warning';
+        el.innerHTML = `⚠️ <strong>Facebook token expires in ${status.daysLeft} days</strong> (${status.expiryDate}) — Renew before it expires to avoid data gaps.`;
+      }
+    }
+
+    function renderGA4(ga4, error) {
+      const el = document.getElementById('ga4-stats');
+      if (error || !ga4) {
+        el.innerHTML = `<div class="stat-error">
+          ${error || 'No data yet — click Refresh Now above.'}
+          ${!ga4 ? `<br><br><a onclick="openSettings()">Open Settings → Analytics Credentials to configure</a>` : ''}
+        </div>`;
+        return;
+      }
+
+      const sessChange = ga4.previousPeriod?.sessions > 0
+        ? Math.round(((ga4.sessions - ga4.previousPeriod.sessions) / ga4.previousPeriod.sessions) * 100)
+        : null;
+      const trendClass = sessChange > 0 ? 'trend-up' : sessChange < 0 ? 'trend-down' : 'trend-flat';
+      const trendText  = sessChange !== null ? `${sessChange > 0 ? '▲' : '▼'} ${Math.abs(sessChange)}% vs prev 28d` : '';
+      const engRate    = ga4.sessions > 0 ? Math.round((ga4.engagedSessions / ga4.sessions) * 100) : 0;
+
+      el.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Sessions</div>
+            <div class="stat-value">${ga4.sessions.toLocaleString()}</div>
+            ${trendText ? `<div class="stat-trend ${trendClass}">${trendText}</div>` : ''}
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Users</div>
+            <div class="stat-value">${ga4.users.toLocaleString()}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">WhatsApp Clicks</div>
+            <div class="stat-value accent">${ga4.whatsappClicks.toLocaleString()}</div>
+            <div class="stat-trend" style="color:var(--text-muted)">Key conversion event</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Engagement Rate</div>
+            <div class="stat-value ${engRate >= 40 ? 'success' : 'warning'}">${engRate}%</div>
+            <div class="stat-trend" style="color:var(--text-muted)">${ga4.engagedSessions} engaged</div>
+          </div>
+        </div>
+        ${ga4.topPages?.length ? `
+        <div class="analytics-table-wrap" style="margin-top:12px;">
+          <h4>Top Pages by Views</h4>
+          <table class="analytics-table">
+            <thead><tr>
+              <th>Page</th>
+              <th class="num">Views</th>
+              <th class="num">Sessions</th>
+            </tr></thead>
+            <tbody>
+              ${ga4.topPages.map(p => `<tr>
+                <td><span class="page-path">${escapeHtml(p.page)}</span></td>
+                <td class="num">${p.views.toLocaleString()}</td>
+                <td class="num">${p.sessions.toLocaleString()}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>` : ''}
+      `;
+    }
+
+    function renderGSC(gsc, error) {
+      const el = document.getElementById('gsc-stats');
+      if (error || !gsc) {
+        el.innerHTML = `<div class="stat-error">
+          ${error || 'No data yet — click Refresh Now above.'}
+          ${!gsc ? `<br><br><a onclick="openSettings()">Open Settings → Analytics Credentials to configure</a>` : ''}
+        </div>`;
+        return;
+      }
+
+      el.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Organic Clicks</div>
+            <div class="stat-value success">${gsc.totalClicks.toLocaleString()}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Impressions</div>
+            <div class="stat-value">${gsc.totalImpressions.toLocaleString()}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Avg CTR</div>
+            <div class="stat-value ${gsc.avgCtr >= 3 ? 'success' : 'warning'}">${gsc.avgCtr}%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Pages Tracked</div>
+            <div class="stat-value">${gsc.topPages?.length || 0}</div>
+          </div>
+        </div>
+        ${gsc.topPages?.length ? `
+        <div class="analytics-table-wrap" style="margin-top:12px;">
+          <h4>Top Pages by Clicks</h4>
+          <table class="analytics-table">
+            <thead><tr>
+              <th>Page</th>
+              <th class="num">Clicks</th>
+              <th class="num">Impr.</th>
+              <th class="num">CTR</th>
+              <th class="num">Position</th>
+            </tr></thead>
+            <tbody>
+              ${gsc.topPages.map(p => `<tr>
+                <td><span class="page-path">${escapeHtml(p.page.replace('https://evisas.in', ''))}</span></td>
+                <td class="num">${p.clicks}</td>
+                <td class="num">${p.impressions.toLocaleString()}</td>
+                <td class="num">${p.ctr}%</td>
+                <td class="num">${p.position}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>` : ''}
+        ${gsc.topQueries?.length ? `
+        <div class="analytics-table-wrap">
+          <h4>Top Search Queries</h4>
+          <table class="analytics-table">
+            <thead><tr>
+              <th>Query</th>
+              <th class="num">Clicks</th>
+              <th class="num">Impressions</th>
+              <th class="num">Position</th>
+            </tr></thead>
+            <tbody>
+              ${gsc.topQueries.map(q => `<tr>
+                <td>${escapeHtml(q.query)}</td>
+                <td class="num">${q.clicks}</td>
+                <td class="num">${q.impressions.toLocaleString()}</td>
+                <td class="num">${q.position}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>` : ''}
+      `;
+    }
+
+    function renderFacebook(fb, error) {
+      const el = document.getElementById('fb-stats');
+      if (error || !fb) {
+        el.innerHTML = `<div class="stat-error">
+          ${error || 'No data yet — click Refresh Now above.'}
+          ${!fb ? `<br><br><a onclick="openSettings()">Open Settings → Analytics Credentials to configure</a>` : ''}
+        </div>`;
+        return;
+      }
+
+      el.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-label">Ad Spend</div>
+            <div class="stat-value warning">₹${parseFloat(fb.spend).toLocaleString()}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Impressions</div>
+            <div class="stat-value">${fb.impressions.toLocaleString()}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Link Clicks</div>
+            <div class="stat-value accent">${fb.linkClicks.toLocaleString()}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">CPC / CPM</div>
+            <div class="stat-value" style="font-size:16px;">₹${fb.cpc} / ₹${fb.cpm}</div>
+            <div class="stat-trend" style="color:var(--text-muted)">CTR ${fb.ctr}%</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Close modals on overlay click
+    document.getElementById('settings-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeSettings();
+    });
+    document.getElementById('edit-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeEdit();
+    });
+
+    // ────────────────────── HELPERS ──────────────────────
+    function updateStatus(icon, message, progress) {
+      document.getElementById('status-icon').textContent = icon;
+      const textEl = document.getElementById('status-text');
+      textEl.textContent = message;
+      textEl.className = progress > 0 ? 'status-text active' : 'status-text';
+      document.getElementById('progress-fill').style.width = `${progress}%`;
+    }
+
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type} show`;
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    function timeAgo(dateStr) {
+      if (!dateStr) return '';
+      const diff = Date.now() - new Date(dateStr).getTime();
+      const mins = Math.floor(diff / 60000);
+      if (mins < 1) return 'Just now';
+      if (mins < 60) return `${mins}m ago`;
+      const hrs = Math.floor(mins / 60);
+      if (hrs < 24) return `${hrs}h ago`;
+      return `${Math.floor(hrs / 24)}d ago`;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>
