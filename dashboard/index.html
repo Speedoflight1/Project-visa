@@ -1537,10 +1537,23 @@
         </div>
 
         <div class="form-group" style="margin-bottom:12px;">
-          <label>Google Service Account Key (file path)</label>
-          <input type="text" id="setting-gsa-path" placeholder="C:\path\to\service-account-key.json" style="width:100%; font-family:monospace; font-size:11px;">
+          <label>Google OAuth Client ID (for GA4)</label>
+          <input type="text" id="setting-oauth-id" placeholder="xxxx.apps.googleusercontent.com" style="width:100%; font-family:monospace; font-size:11px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Google OAuth Client Secret (for GA4)</label>
+          <input type="password" id="setting-oauth-secret" placeholder="GOCSPX-xxxx" style="width:100%;">
           <div style="font-size:10px; color:var(--text-muted); margin-top:4px;">
-            Create at <strong>console.cloud.google.com → IAM → Service Accounts</strong>. Grant Viewer on GA4 + Owner on GSC.
+            After saving, run <code style="background:rgba(99,102,241,0.15);padding:1px 4px;border-radius:3px;">node generate-token.js</code> in the dashboard/ folder to authorize GA4.
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:12px;">
+          <label>Google Service Account Key (file path, for GSC)</label>
+          <input type="text" id="setting-gsa-path" placeholder="C:\path\to\evisas-sa-key.json" style="width:100%; font-family:monospace; font-size:11px;">
+          <div style="font-size:10px; color:var(--text-muted); margin-top:4px;">
+            Service account only — add it as Owner in <strong>GSC → Settings → Users and permissions</strong>.
           </div>
         </div>
 
@@ -2007,7 +2020,9 @@
 
         // Update UI
         if (settings.groqApiKey)                  document.getElementById('setting-groq-key').value    = settings.groqApiKey;
-        if (settings.googleServiceAccountKeyPath) document.getElementById('setting-gsa-path').value     = settings.googleServiceAccountKeyPath;
+        if (settings.googleOAuthClientId)         document.getElementById('setting-oauth-id').value     = settings.googleOAuthClientId;
+        if (settings.googleOAuthClientSecret)     document.getElementById('setting-oauth-secret').value  = settings.googleOAuthClientSecret;
+        if (settings.googleServiceAccountKeyPath) document.getElementById('setting-gsa-path').value      = settings.googleServiceAccountKeyPath;
         if (settings.fbAccessToken)               document.getElementById('setting-fb-token').value     = settings.fbAccessToken;
         if (settings.fbTokenExpiry)               document.getElementById('setting-fb-expiry').value    = settings.fbTokenExpiry;
         if (settings.fbAdAccountId)               document.getElementById('setting-fb-account').value   = settings.fbAdAccountId;
@@ -2055,6 +2070,8 @@
     async function saveSettings() {
       const newSettings = {
         groqApiKey:                  document.getElementById('setting-groq-key').value.trim(),
+        googleOAuthClientId:         document.getElementById('setting-oauth-id').value.trim(),
+        googleOAuthClientSecret:     document.getElementById('setting-oauth-secret').value.trim(),
         googleServiceAccountKeyPath: document.getElementById('setting-gsa-path').value.trim(),
         fbAccessToken:               document.getElementById('setting-fb-token').value.trim(),
         fbTokenExpiry:               document.getElementById('setting-fb-expiry').value,

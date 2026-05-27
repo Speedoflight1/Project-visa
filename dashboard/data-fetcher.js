@@ -1,17 +1,22 @@
 /**
  * data-fetcher.js — Analytics Data Fetcher for evisas.in Dashboard
  *
- * Fetches GA4 + GSC (shared service account) + Facebook Ads data.
- * Uses google-auth-library + direct fetch() — lighter than the full googleapis package.
+ * Auth strategy:
+ *   GA4  → OAuth2 refresh token (run generate-token.js once to set up)
+ *   GSC  → Service account key file (works fine with GSC)
+ *   FB   → Long-lived access token (60-day, manual renewal)
  *
  * Outputs:
  *   analytics.json         — latest snapshot (always overwritten)
  *   analytics-history.json — rolling array of key-metric snapshots (max 52 entries)
  *
  * Credentials stored in settings.json:
- *   googleServiceAccountKeyPath — absolute path to service-account-key.json
+ *   googleRefreshToken          — from generate-token.js (for GA4)
+ *   googleOAuthClientId         — OAuth2 client ID (for GA4)
+ *   googleOAuthClientSecret     — OAuth2 client secret (for GA4)
+ *   googleServiceAccountKeyPath — path to service-account-key.json (for GSC)
  *   fbAccessToken               — long-lived FB token (60-day)
- *   fbTokenExpiry               — ISO date string of when the FB token expires
+ *   fbTokenExpiry               — ISO date string of when FB token expires
  *   fbAdAccountId               — e.g. "act_123456789"
  */
 
@@ -43,17 +48,47 @@ function isoDateDaysAgo(n) {
 }
 
 // ---------------------------------------------------------------------------
-// Google Auth — uses google-auth-library (lightweight vs full googleapis)
+// Google Auth — two methods:
+//   getGA4AccessToken()  → OAuth2 refresh token (works with GA4 UI-blocked accounts)
+//   getGSCAccessToken()  → Service account key file (works perfectly with GSC)
 // ---------------------------------------------------------------------------
 
-async function getGoogleAccessToken(keyFilePath) {
+/**
+ * GA4: Exchange refresh token for short-lived access token using direct HTTPS call.
+ * No extra package needed — just the client ID, secret, and refresh token from settings.
+ */
+async function getGA4AccessToken(settings) {
+  const { googleOAuthClientId, googleOAuthClientSecret, googleRefreshToken } = settings;
+  if (!googleOAuthClientId || !googleOAuthClientSecret || !googleRefreshToken) {
+    throw new Error('GA4 OAuth credentials missing. Run: node generate-token.js');
+  }
+
+  const body = new URLSearchParams({
+    client_id:     googleOAuthClientId,
+    client_secret: googleOAuthClientSecret,
+    refresh_token: googleRefreshToken,
+    grant_type:    'refresh_token',
+  }).toString();
+
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+
+  const data = await res.json();
+  if (!res.ok || data.error) throw new Error(`GA4 token refresh failed: ${data.error_description || data.error}`);
+  return data.access_token;
+}
+
+/**
+ * GSC: Service account key file — works fine here because GSC accepts service accounts.
+ */
+async function getGSCAccessToken(keyFilePath) {
   const { GoogleAuth } = require('google-auth-library');
   const auth = new GoogleAuth({
     keyFile: keyFilePath,
-    scopes: [
-      'https://www.googleapis.com/auth/analytics.readonly',
-      'https://www.googleapis.com/auth/webmasters.readonly',
-    ],
+    scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
   });
   const client = await auth.getClient();
   const token  = await client.getAccessToken();
@@ -272,37 +307,34 @@ async function runAnalyticsFetch() {
     errors:         {},
   };
 
-  // ── Google (GA4 + GSC) ───────────────────────────────────────────────────
-  if (settings.googleServiceAccountKeyPath) {
-    let accessToken;
+  // ── GA4 (OAuth2 refresh token) ───────────────────────────────────────────
+  if (settings.googleRefreshToken && settings.googleOAuthClientId) {
     try {
-      accessToken = await getGoogleAccessToken(settings.googleServiceAccountKeyPath);
+      const ga4Token = await getGA4AccessToken(settings);
+      result.ga4 = await fetchGA4Data(ga4Token);
+      console.log(`  [Analytics] GA4 ✓ — ${result.ga4.sessions} sessions, ${result.ga4.whatsappClicks} WA clicks`);
     } catch (e) {
-      result.errors.google = `Auth failed: ${e.message}`;
-      console.error('  [Analytics] Google auth error:', e.message);
-    }
-
-    if (accessToken) {
-      // GA4
-      try {
-        result.ga4 = await fetchGA4Data(accessToken);
-        console.log(`  [Analytics] GA4 ✓ — ${result.ga4.sessions} sessions, ${result.ga4.whatsappClicks} WA clicks`);
-      } catch (e) {
-        result.errors.ga4 = e.message;
-        console.error('  [Analytics] GA4 error:', e.message);
-      }
-      // GSC
-      try {
-        result.gsc = await fetchGSCData(accessToken);
-        console.log(`  [Analytics] GSC ✓ — ${result.gsc.totalClicks} clicks, ${result.gsc.totalImpressions} impressions`);
-      } catch (e) {
-        result.errors.gsc = e.message;
-        console.error('  [Analytics] GSC error:', e.message);
-      }
+      result.errors.ga4 = e.message;
+      console.error('  [Analytics] GA4 error:', e.message);
     }
   } else {
-    result.errors.google = 'No service account key configured — open Settings → Analytics Credentials to add it.';
-    console.log('  [Analytics] Skipping Google APIs — no service account configured');
+    result.errors.ga4 = 'GA4 not configured — run: node generate-token.js in the dashboard/ folder.';
+    console.log('  [Analytics] Skipping GA4 — no OAuth token. Run: node generate-token.js');
+  }
+
+  // ── GSC (service account) ────────────────────────────────────────────────
+  if (settings.googleServiceAccountKeyPath) {
+    try {
+      const gscToken = await getGSCAccessToken(settings.googleServiceAccountKeyPath);
+      result.gsc = await fetchGSCData(gscToken);
+      console.log(`  [Analytics] GSC ✓ — ${result.gsc.totalClicks} clicks, ${result.gsc.totalImpressions} impressions`);
+    } catch (e) {
+      result.errors.gsc = e.message;
+      console.error('  [Analytics] GSC error:', e.message);
+    }
+  } else {
+    result.errors.gsc = 'GSC not configured — add googleServiceAccountKeyPath to Settings.';
+    console.log('  [Analytics] Skipping GSC — no service account key path configured');
   }
 
   // ── Facebook ─────────────────────────────────────────────────────────────
