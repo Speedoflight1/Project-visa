@@ -2,8 +2,8 @@ import './globals.css'
 import Script from 'next/script'
 
 export const metadata = {
-  title: 'eVisas.in — Get Your Visa, On Time. Guaranteed.',
-  description: 'eVisas.in — India\'s most trusted visa service. Get your visa for 120+ countries online. Expert guidance, WhatsApp updates, 98% success rate. Pay in ₹, no hidden fees.',
+  title: 'Online Visa Services for 120+ Countries from India | eVisas',
+  description: 'India\'s most trusted visa service. Apply online for visas to 120+ countries with expert guidance, WhatsApp updates and a 98% success rate. Pay in ₹ — no hidden fees, on-time delivery guaranteed.',
   openGraph: {
     title: 'eVisas.in — Get Your Visa, On Time. Guaranteed.',
     description: '120+ countries. Expert guidance. WhatsApp updates. Pay in ₹ — no forex charges, no hidden fees.',

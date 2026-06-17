@@ -292,23 +292,25 @@ export default function HomePage() {
   ]
   const marqueeItems = [...corps, ...corps]
 
-  /* ── LOADER ── */
-  if (!loaderDone) {
-    return (
-      <div id="loader">
-        <div className="loader-logo">
-          <div className="loader-logo-crop">
-            <img src="/logo-icon.png" alt="eVisas" />
-          </div>
-        </div>
-        <div className="loader-bar-wrap"><div className="loader-bar" /></div>
-      </div>
-    )
-  }
-
   /* ── MAIN PAGE ── */
+  /* NOTE: The loader is rendered as a fixed-position OVERLAY (see #loader CSS:
+     position:fixed; inset:0; z-index:8000) on top of the always-rendered page,
+     instead of an early `return` that replaces it. This keeps the full page
+     (h1, navbar, all internal links, content) in the static HTML so search
+     engines and SEO crawlers can read it. Users still see the same loader. */
   return (
     <>
+      {!loaderDone && (
+        <div id="loader">
+          <div className="loader-logo">
+            <div className="loader-logo-crop">
+              <img src="/logo-icon.png" alt="eVisas" />
+            </div>
+          </div>
+          <div className="loader-bar-wrap"><div className="loader-bar" /></div>
+        </div>
+      )}
+
       <div id="progress-bar" />
 
       {/* ── NAVBAR ── */}
@@ -460,11 +462,12 @@ export default function HomePage() {
           </div>
           <div className="dest-grid">
             {destList.map((d, i) => (
-              <div
+              <a
                 key={d.slug}
+                href={`/${d.urlSlug}-visa-from-india`}
                 className="dcard reveal-up"
-                style={{ transitionDelay: `${i * 50}ms` }}
-                onClick={() => openCountry(d)}
+                style={{ transitionDelay: `${i * 50}ms`, textDecoration: 'none', color: 'inherit' }}
+                onClick={e => { e.preventDefault(); openCountry(d) }}
                 onMouseMove={e => {
                   const el = e.currentTarget
                   const r = el.getBoundingClientRect()
@@ -503,10 +506,10 @@ export default function HomePage() {
                       <span className="big">{d.price}</span>
                       <small>service fee</small>
                     </div>
-                    <button className="apply-btn" onClick={e => { e.stopPropagation(); openCountry(d) }}>View Details →</button>
+                    <span className="apply-btn">View Details →</span>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -802,9 +805,13 @@ export default function HomePage() {
             <div className="footer-col">
               <h4>Destinations</h4>
               <ul>
-                {[['uae','🇦🇪 UAE Visa'],['usa','🇺🇸 USA Visa'],['singapore','🇸🇬 Singapore'],['france','🇫🇷 Schengen'],['uk','🇬🇧 UK Visa'],['thailand','🇹🇭 Thailand']].map(([slug, label]) => (
-                  <li key={slug}><a href="#" onClick={e => { e.preventDefault(); const d = DESTS.find(x => x.slug === slug); if (d) openCountry(d) }}>{label}</a></li>
-                ))}
+                {[['uae','🇦🇪 UAE Visa'],['usa','🇺🇸 USA Visa'],['singapore','🇸🇬 Singapore'],['france','🇫🇷 Schengen'],['uk','🇬🇧 UK Visa'],['thailand','🇹🇭 Thailand']].map(([slug, label]) => {
+                  const d = DESTS.find(x => x.slug === slug)
+                  const href = d ? `/${d.urlSlug}-visa-from-india` : '#'
+                  return (
+                    <li key={slug}><a href={href} onClick={e => { e.preventDefault(); if (d) openCountry(d) }}>{label}</a></li>
+                  )
+                })}
               </ul>
             </div>
             <div className="footer-col">
