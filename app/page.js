@@ -423,6 +423,9 @@ export default function HomePage() {
                     <img
                       src={`https://www.google.com/s2/favicons?domain=${c.domain}&sz=32`}
                       alt={c.name}
+                      loading="lazy"
+                      width="32"
+                      height="32"
                       onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
                     />
                     <div className="marquee-logo-fallback" style={{ display: 'none' }}>{c.name[0]}</div>
@@ -877,7 +880,7 @@ export default function HomePage() {
               <button className="btn-pill" onClick={() => openWhatsApp()}>Apply Now →</button>
             </div>
             <div className="cp-hero">
-              <img src={countryDetail.img} alt={countryDetail.fullName} className="cp-hero-img" />
+              <img src={countryDetail.img} alt={countryDetail.fullName} className="cp-hero-img" loading="lazy" />
               <div className="cp-hero-overlay" />
               <div className="cp-hero-text">
                 <div className="cp-flag">{countryDetail.f}</div>
@@ -961,7 +964,7 @@ export default function HomePage() {
                 <button className="btn-pill" onClick={() => { setApplyModal(true) }}>Apply Now →</button>
               </div>
               <div className="ba-hero">
-                <img src={b.img} alt={b.title} />
+                <img src={b.img} alt={b.title} loading="lazy" />
                 <div className="ba-hero-overlay" />
                 <div className="ba-hero-content">
                   <div className="ba-tag-pill">{b.tag}</div>
