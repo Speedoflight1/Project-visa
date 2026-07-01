@@ -746,6 +746,11 @@ footer { background: #0f1629; color: #94a3b8; padding: 56px 5% 32px; }
 .reveal-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal-up.visible { opacity: 1; transform: translateY(0); }
 
+/* ── COUNTRY PAGE MAIN GRID ── */
+/* Desktop: two columns (unchanged). Mobile: stacks to one so the
+   Documents / Included / Country Info / CTA cards aren't cramped. */
+.country-main-grid { display: grid; grid-template-columns: 1fr 1fr; }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .b1 { grid-column: span 12; grid-row: span 3; }
@@ -770,4 +775,5 @@ footer { background: #0f1629; color: #94a3b8; padding: 56px 5% 32px; }
   .gp-covered { grid-template-columns: 1fr; }
   .gp-stats { grid-template-columns: 1fr; }
   .ba-stats { grid-template-columns: 1fr; }
+  .country-main-grid { grid-template-columns: 1fr; }
 }

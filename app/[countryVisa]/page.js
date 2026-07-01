@@ -14,6 +14,7 @@ export function generateMetadata({ params }) {
   if (!dest) return { title: 'Visa Services from India | eVisas' }
 
   const visaLabelMeta = TYPE_LABEL[dest.type] || 'Visa'
+  const ogImage = `https://evisas.in/og/${dest.urlSlug}.png`
   const title = `${dest.fullName} ${visaLabelMeta} from India 2026 — Apply Online | eVisas`
   const procPhrase = /^on arrival$/i.test(dest.proc) ? '— available on arrival' : `in ${dest.proc}`
   const description = `Get your ${dest.fullName} ${visaLabelMeta} from India ${procPhrase}. ${dest.successRate} success rate · ${dest.val} validity · from ${dest.price}. Expert help on WhatsApp, pay in ₹, zero hidden fees.`
@@ -27,13 +28,13 @@ export function generateMetadata({ params }) {
       url: `https://evisas.in/${dest.urlSlug}-visa-from-india`,
       siteName: 'eVisas.in',
       type: 'website',
-      images: [{ url: 'https://evisas.in/logo-white.png', width: 1200, height: 630, alt: title }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://evisas.in/logo-white.png'],
+      images: [ogImage],
     },
     alternates: {
       canonical: `https://evisas.in/${dest.urlSlug}-visa-from-india`,
@@ -231,7 +232,7 @@ export default function CountryVisaPage({ params }) {
         </section>
 
         {/* Main Content */}
-        <section style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 1.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+        <section className="country-main-grid" style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 1.5rem', gap: '2rem' }}>
           {/* Requirements */}
           <div style={{ background: '#f8faff', borderRadius: '16px', padding: '2rem' }}>
             <h2 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1.25rem', color: '#1a1a2e' }}>
