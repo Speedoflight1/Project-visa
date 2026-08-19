@@ -187,9 +187,15 @@ export default function CountryVisaPage({ params }) {
           <span style={{ color: '#0f172a', fontWeight: 500 }}>{dest.fullName} Visa from India</span>
         </nav>
 
-        {/* Hero */}
+        {/* Hero — optional background photo (dest.heroImg) sits behind the
+            brand gradient overlay so white text stays readable. Pages without
+            heroImg keep the plain gradient, unchanged. */}
         <section className="country-hero" style={{
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: dest.heroImg
+            ? `linear-gradient(135deg, rgba(102,126,234,0.78) 0%, rgba(118,75,162,0.82) 100%), url('${dest.heroImg}')`
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           padding: '4rem 1.5rem',
           textAlign: 'center',
           color: '#fff',
