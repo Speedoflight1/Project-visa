@@ -45,7 +45,7 @@ const organizationSchema = {
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'G9 Tower C, Bhutani Alphathum, Sector 90',
+    streetAddress: 'SX-104, NPX Urbtech, Sector 153',
     addressLocality: 'Noida',
     addressRegion: 'UP',
     postalCode: '201304',

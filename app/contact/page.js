@@ -31,7 +31,7 @@ const localBusinessSchema = {
   email: 'info@evisas.in',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'G9 Tower C, Bhutani Alphathum, Sector 90',
+    streetAddress: 'SX-104, NPX Urbtech, Sector 153',
     addressLocality: 'Noida',
     addressRegion: 'UP',
     postalCode: '201304',
@@ -97,8 +97,8 @@ export default function ContactPage() {
                 <div>
                   <h3 style={{ fontWeight: 800, color: 'var(--text)', marginBottom: '0.75rem', fontSize: '1rem' }}>📍 Head Office</h3>
                   <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: 1.8, margin: 0 }}>
-                    G9 Tower C, Bhutani Alphathum<br />
-                    Sector 90, Noida<br />
+                    SX-104, NPX Urbtech<br />
+                    Sector 153, Noida<br />
                     Uttar Pradesh — 201304<br />
                     India
                   </p>

@@ -398,7 +398,7 @@ export default function CountryVisaPage({ params }) {
               </div>
             </Link>
             <p style={{ marginBottom: '1rem', fontSize: '0.9rem' }}>
-              G9 Tower C, Bhutani Alphathum, Sector 90, Noida 201304
+              SX-104, NPX Urbtech, Sector 153, Noida 201304
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '1rem', fontSize: '0.85rem' }}>
               <Link href="/dubai-visa-from-india" style={{ color: '#a0aec0', textDecoration: 'none' }}>Dubai Visa</Link>

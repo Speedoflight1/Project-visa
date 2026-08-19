@@ -801,7 +801,7 @@ export default function HomePage() {
                   instagram.com/evisas.in
                 </a>
                 <a href="mailto:info@evisas.in" style={{ fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>✉️ info@evisas.in</a>
-                <div style={{ fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>📍 G9 Tower C, Bhutani Alphathum, Sector 90, Noida UP 201304</div>
+                <div style={{ fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>📍 SX-104, NPX Urbtech, Sector 153, Noida UP 201304</div>
                 <a href="https://wa.me/918619666129" target="_blank" rel="noreferrer" style={{ fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>💬 +91 86196 66129</a>
               </div>
             </div>
@@ -839,7 +839,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p>© 2025 eVisas.in · All rights reserved · G9 Tower C, Bhutani Alphathum, Sector 90, Noida</p>
+            <p>© 2025 eVisas.in · All rights reserved · SX-104, NPX Urbtech, Sector 153, Noida</p>
             <div className="social-row">
               <a href="https://www.instagram.com/evisas.in" target="_blank" rel="noreferrer" className="s-btn" title="Instagram">IG</a>
               <a href="https://www.linkedin.com/company/108114664/" target="_blank" rel="noreferrer" className="s-btn" title="LinkedIn">in</a>

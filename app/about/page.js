@@ -32,7 +32,7 @@ const orgSchema = {
   description: 'India\'s most trusted visa facilitation service. Expert guidance for 120+ countries, WhatsApp updates, On-Time Guarantee.',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'G9 Tower C, Bhutani Alphathum, Sector 90',
+    streetAddress: 'SX-104, NPX Urbtech, Sector 153',
     addressLocality: 'Noida',
     addressRegion: 'UP',
     postalCode: '201304',
@@ -127,7 +127,7 @@ export default function AboutPage() {
                 eVisas.in is part of TravelKart — a comprehensive travel ecosystem covering flight bookings, hotel reservations, holiday packages, and travel insurance.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>📍 G9 Tower C, Bhutani Alphathum, Sector 90, Noida UP 201304</div>
+                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>📍 SX-104, NPX Urbtech, Sector 153, Noida UP 201304</div>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
                 <a href="mailto:info@evisas.in" style={{ fontSize: '0.85rem', color: 'var(--blue)', textDecoration: 'none' }}>✉️ info@evisas.in</a>
